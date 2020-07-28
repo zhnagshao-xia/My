@@ -13,10 +13,10 @@ import {Button} from 'react-native-paper';
 
 const {width, height} = Dimensions.get('window');
 
-const transXY = new Animated.ValueXY({x: 0, y: 0}); // 主卡的位置
-const RectWH = new Animated.ValueXY({x: width * 0.8, y: height * 0.6}); // 主卡的大小
-const otherCardTransY = new Animated.Value(40); // 其他两张卡片的位置
-const otherCardScale = new Animated.Value(0.9); // 其他两张卡片的大小
+const transXY = new Animated.ValueXY({x: 0, y: -30}); // 主卡的位置
+const RectWH = new Animated.ValueXY({x: width * 0.8, y: height * 0.7}); // 主卡的大小
+const otherCardTransY = new Animated.Value(0); // 其他两张卡片的位置
+const otherCardScale = new Animated.Value(0); // 其他两张卡片的大小
 
 // 插值生成第三章卡片的动画值
 const interCardTransY = otherCardTransY.interpolate({
