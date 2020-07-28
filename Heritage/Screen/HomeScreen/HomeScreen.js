@@ -2,7 +2,8 @@ import React from 'react';
 import { ScrollView, Text, View, TouchableOpacity, Image, StyleSheet, ImageBackground } from 'react-native';
 import { Tabs } from '@ant-design/react-native';
 import Swiper from 'react-native-swiper';
-import FontAwesome from 'react-native-vector-icons/FontAwesome'
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Heritage from '../../Heritage'
 
 export default class HoneScreen extends React.Component {
   render() {
@@ -264,8 +265,8 @@ export default class HoneScreen extends React.Component {
 
 
           {/* 第二页 */}
-          <View style={style}>
-            <Text>Content of Second Tab</Text>
+          <View style={{flex:1}}>
+              <Heritage />
           </View>
 
 
