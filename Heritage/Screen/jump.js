@@ -11,6 +11,7 @@ import TribuneScreen from './TribuneScreen/TribuneScreen'
 import CraftsmanshipScreen from './HomeScreen/CraftsmanshipScreen'
 import volunteerScreen from './HomeScreen/volunteerScreen'
 import activityScreen from './HomeScreen/activityScreen'
+import SignUp from './HomeScreen/VolunteerComponents/SignUp'
 
 
 const Tab = createMaterialBottomTabNavigator();
@@ -39,6 +40,12 @@ export default function bottom_nav() {
               <HomeStack.Screen name="传承志" component={CraftsmanshipScreen} />
               <HomeStack.Screen name="志愿者" component={volunteerScreen} />
               <HomeStack.Screen name="活动" component={activityScreen} />
+              <HomeStack.Screen
+                name="signUp"
+                 options={{
+                   title: '填报信息'
+                 }}
+               component={SignUp} />
             </SettingsStack.Navigator>
           )}
         </Tab.Screen>

@@ -5,8 +5,6 @@ import {
   ImageBackground
 } from 'react-native';
 
-
-
 export default function activityScreen() {
   return (
     <View style={styles.container}>
@@ -52,7 +50,6 @@ export default function activityScreen() {
       </View>
     )
   }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -71,8 +68,8 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   biaozhi: {
-    width: 160,
-    height: 160,
+    width: 150,
+    height: 150,
     resizeMode: 'stretch',
   },
   box: {
@@ -99,12 +96,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center"
   },
-  return: {
-    width: 50,
-    height: 50,
-    left: 10,
-
-  },
   one: {
     height: 150,
     width: 300,
@@ -119,4 +110,4 @@ const styles = StyleSheet.create({
     zIndex: 100,
 
   }
-});
+})
