@@ -264,13 +264,10 @@ export default class HomeScreen extends Component {
             </View>
           </ScrollView>
 
-
-
           {/* 第二页 */}
           <View style={{flex:1}}>
               <Heritage />
           </View>
-
 
           {/* 第三页 */}
           <ScrollView style={style}>
