@@ -47,8 +47,8 @@ export default function activityScreen() {
                       backgroundColor: 'rgba(198,164,108,0.7)', 
                       height: '50%', 
                       width: '100%', 
-                      resizeMode: 'stretch', 
-                      alignItems: 'center', 
+                      resizeMode: 'stretch',
+                      alignItems: 'center',
                       justifyContent: 'center' }}>
                       <Text style={styles.demol}>{item.key}</Text>
                     </View>
