@@ -3,9 +3,12 @@ import { ScrollView, Text, View, TouchableOpacity, Image, StyleSheet, ImageBackg
 import { Tabs } from '@ant-design/react-native';
 import Swiper from 'react-native-swiper';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Heritage from '../../Heritage'
 
 export default class HomeScreen extends Component {
+
   render() {
+    const state = this.state;
     const { navigation } = this.props;
     const tabs = [
       { title: '推荐' },
@@ -261,13 +264,10 @@ export default class HomeScreen extends Component {
             </View>
           </ScrollView>
 
-
-
           {/* 第二页 */}
           <View style={{flex:1}}>
-                
+              <Heritage />
           </View>
-
 
           {/* 第三页 */}
           <ScrollView style={style}>
