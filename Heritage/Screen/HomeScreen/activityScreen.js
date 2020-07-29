@@ -5,7 +5,7 @@ import {
   ImageBackground
 } from 'react-native';
 
-export default function activityScreen() {
+export default function activityScreen({navigation}) {
   return (
     <View style={styles.container}>
         <View style={styles.contant}>
@@ -26,7 +26,7 @@ export default function activityScreen() {
           <View style={{ width: '80%', top: -50, alignItems: "center" }}>
             <FlatList
               data={[
-                { key: '非遗+扶贫' },
+                { key: '非遗+扶贫',text:'让非遗传承人走进千家万户' },
                 { key: '非遗+文创' },
                 { key: '' },
                 { key: '' },
@@ -35,7 +35,7 @@ export default function activityScreen() {
 
               ]}
               renderItem={({ item }) =>
-                <TouchableOpacity style={styles.one}>
+                <View style={styles.one}>
                   <ImageBackground style={{ 
                     width: '100%',
                    height: '100%', 
@@ -43,17 +43,19 @@ export default function activityScreen() {
                    alignItems: 'center',
                     justifyContent: 'center' }}
                     source={require('../../Image/activityScreen/mark.jpg')}>
-                    <View style={{ 
+                    <TouchableOpacity 
+                    onPress={() => navigation.navigate('详情')}
+                      style={{ 
                       backgroundColor: 'rgba(198,164,108,0.7)', 
                       height: '50%', 
                       width: '100%', 
                       resizeMode: 'stretch',
-                      alignItems: 'center',
                       justifyContent: 'center' }}>
                       <Text style={styles.demol}>{item.key}</Text>
-                    </View>
+                      <Text style={styles.demo2}>{item.text}</Text>
+                    </TouchableOpacity>
                   </ImageBackground>
-                </TouchableOpacity>
+                </View>
               }
             />
           </View>
@@ -115,10 +117,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   demol: {
-    fontSize: 18,
-    color: '#fff',
-    opacity: 1.0,
-    zIndex: 100,
-
-  }
+    fontSize: 17,
+  },
 })

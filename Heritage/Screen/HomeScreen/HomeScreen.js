@@ -20,12 +20,20 @@ export default class HomeScreen extends Component {
       height: '100%',
       width: '100%',
     };
+    
 
     return (
       <View style={{ flex: 1 }}>
-        <Tabs tabs={tabs}>
-
-
+        <Tabs tabs={tabs}
+        tabBarTextStyle={{
+          color:"#945357",
+        }}
+        tabBarUnderlineStyle={{
+          width:50,
+          marginLeft:45,
+          backgroundColor:'#945357'
+        }}
+        >
           {/* 第一页 */}
           <ScrollView style={styles.main}>
             <View style={{ width: '100%', alignItems: "center", }}>
