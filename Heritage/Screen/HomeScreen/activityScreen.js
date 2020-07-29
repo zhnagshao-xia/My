@@ -36,9 +36,20 @@ export default function activityScreen() {
               ]}
               renderItem={({ item }) =>
                 <TouchableOpacity style={styles.one}>
-                  <ImageBackground style={{ width: '100%', height: '100%', resizeMode: 'stretch', alignItems: 'center', justifyContent: 'center' }}
+                  <ImageBackground style={{ 
+                    width: '100%',
+                   height: '100%', 
+                   resizeMode: 'stretch', 
+                   alignItems: 'center',
+                    justifyContent: 'center' }}
                     source={require('../../Image/activityScreen/mark.jpg')}>
-                    <View style={{ backgroundColor: 'rgba(100,100,100,0.5)', height: '100%', width: '100%', resizeMode: 'stretch', alignItems: 'center', justifyContent: 'center' }}>
+                    <View style={{ 
+                      backgroundColor: 'rgba(198,164,108,0.7)', 
+                      height: '50%', 
+                      width: '100%', 
+                      resizeMode: 'stretch', 
+                      alignItems: 'center', 
+                      justifyContent: 'center' }}>
                       <Text style={styles.demol}>{item.key}</Text>
                     </View>
                   </ImageBackground>
@@ -104,7 +115,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   demol: {
-    fontSize: 40,
+    fontSize: 18,
     color: '#fff',
     opacity: 1.0,
     zIndex: 100,
