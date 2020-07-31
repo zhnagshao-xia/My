@@ -14,6 +14,8 @@ import activityScreen from './HomeScreen/activityScreen'
 import SignUp from './HomeScreen/VolunteerComponents/SignUp'
 import ActivityDetails from './HomeScreen/ActivityDetails'
 import signScreen from './HomeScreen/signScreen'
+import Activityhistory from './HomeScreen/Activityhistory'
+import Volunteerhistory from './HomeScreen/Volunteerhistory'
 
 
 
@@ -44,7 +46,10 @@ export default function bottom_nav() {
               <HomeStack.Screen name="志愿者" component={volunteerScreen} />
               <HomeStack.Screen name="活动" component={activityScreen} />
               <HomeStack.Screen name="详情" component={ActivityDetails} />
-              <HomeStack.Screen name="sign" component={signScreen} />
+              <HomeStack.Screen name="报名表" component={signScreen} />
+              <HomeStack.Screen name="记录" component={Activityhistory} />
+              <HomeStack.Screen name="记" component={Volunteerhistory} />
+
               <HomeStack.Screen
                 name="signUp"
                  options={{

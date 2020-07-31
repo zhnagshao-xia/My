@@ -40,17 +40,17 @@ export default function ActivityDetails({navigation}) {
                             <Text style={{ textAlign: 'auto', lineHeight: 25, fontSize: 16 }}>&#12288;&#12288;{item.text2}</Text>
                         </View>
                         <TouchableHighlight 
-                        onPress={() => navigation.navigate('sign')}
+                        onPress={() => navigation.navigate('报名表')}
                         underlayColor="rgba(86,132,145,0.6)"
                         style={{
                             marginTop:30,
-                            width:90,
-                            height:35,
+                            width:100,
+                            height:40,
                             backgroundColor:'#6092a0',
                             justifyContent:"center",
                             alignItems:"center",
                             borderRadius:10,}}>
-                            <Text style={{color:'#fff',fontSize:16}}>去参加</Text>
+                            <Text style={{color:'#fff',fontSize:17}}>去参加</Text>
                         </TouchableHighlight>
                     </View>
                 }
