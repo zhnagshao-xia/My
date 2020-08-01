@@ -3,7 +3,7 @@ import { View, Text, Image, ScrollView, TouchableOpacity, StyleSheet, FlatList, 
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
 
-export default function CraftsmanshipScreen() {
+export default function CraftsmanshipScreen( { navigation } ) {
     return (
         <ScrollView>
             <ScrollView style={styles.main_body}>
@@ -41,7 +41,7 @@ export default function CraftsmanshipScreen() {
                                 </View>
                             </ImageBackground>
                             <TouchableOpacity style={styles.introduce}
-                            onPress={() => navigation.navigate('')}>
+                            onPress={() => navigation.navigate('故事')}>
                                 <View style={styles.introduce_up}>
                                     <View style={{borderRightWidth: 1,justifyContent:"center" }}><Text style={{ fontSize: 17,marginRight:7}}>匠心逐梦</Text></View>
                                     <View style={{paddingLeft: 7 ,justifyContent:"center"}}><Text style={styles.demol}>{item.demo1}</Text></View>

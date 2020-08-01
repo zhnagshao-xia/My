@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, Text, View, TouchableOpacity, Image, StyleSheet, ImageBackground } from 'react-native';
+import { ScrollView, Text, View, TouchableOpacity, Image,TouchableHighlight, StyleSheet, ImageBackground } from 'react-native';
 import { Tabs } from '@ant-design/react-native';
 import Swiper from 'react-native-swiper';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
@@ -242,7 +242,9 @@ export default class HomeScreen extends Component {
                     王星记扇
                   </Text>
                 </View>
-                <TouchableOpacity style={{
+                <TouchableOpacity 
+                onPress={() => navigation.navigate('匠心力作')}
+                style={{
                   width: '100%',
                   height: 40,
                   backgroundColor: '#bfbfbf',

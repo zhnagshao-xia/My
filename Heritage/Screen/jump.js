@@ -16,7 +16,8 @@ import ActivityDetails from './HomeScreen/ActivityDetails'
 import signScreen from './HomeScreen/signScreen'
 import Activityhistory from './HomeScreen/Activityhistory'
 import Volunteerhistory from './HomeScreen/Volunteerhistory'
-
+import storyScreen from './HomeScreen/storyScreen'
+import masterpieceScreen from './HomeScreen/masterpieceScreen'
 
 
 const Tab = createMaterialBottomTabNavigator();
@@ -49,7 +50,8 @@ export default function bottom_nav() {
               <HomeStack.Screen name="报名表" component={signScreen} />
               <HomeStack.Screen name="记录" component={Activityhistory} />
               <HomeStack.Screen name="记" component={Volunteerhistory} />
-
+              <HomeStack.Screen name="故事" component={storyScreen} />
+              <HomeStack.Screen name="匠心力作" component={masterpieceScreen} />
               <HomeStack.Screen
                 name="signUp"
                  options={{
