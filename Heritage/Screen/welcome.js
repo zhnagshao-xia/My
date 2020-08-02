@@ -45,28 +45,25 @@ export default class WelcomeScreen extends Component {
             }}/>}>
         <View style={styles.slide1}>
           <ImageBackground 
-          style={{width: '100%', height: '100%'}} 
+          style={{width: '100%', height: '100%',resizeMode: 'stretch'}} 
           source={require('../Image/welcome/wp-1.jpg')}>
-            {/* <Text style={styles.text}>Hello Swiper</Text> */}
           </ImageBackground>
         </View>
-        <View style={styles.slide2}>
+        {/* <View style={styles.slide2}>
         <ImageBackground 
-          style={{width: '100%', height: '100%'}} 
-          source={require('../Image/welcome/wp-2.jpg')}>
-            {/* <Text style={styles.text}>Beautiful</Text> */}
-          </ImageBackground>
-        </View>
-        <View style={styles.slide3}>
-        <ImageBackground 
-          style={{width: '100%', height: '100%'}} 
+          style={{width: '100%', height: '100%',resizeMode: 'stretch'}} 
           source={require('../Image/welcome/wp-3.jpg')}>
-            {/* <Text style={styles.text}>And simple</Text> */}
+          </ImageBackground>
+        </View> */}
+        <View style={styles.slide3}>
+        <ImageBackground 
+          style={{width: '100%', height: '100%',resizeMode: 'stretch'}} 
+          source={require('../Image/welcome/wp-3.jpg')}>
           </ImageBackground>
         </View>
         <View style={styles.slide3}>
         <ImageBackground 
-          style={{width: '100%', height: '100%'}} 
+          style={{width: '100%', height: '100%',resizeMode: 'stretch'}} 
           source={require('../Image/welcome/wp-4.jpg')}>
             <TouchableOpacity style={{
               height: 120,
@@ -81,6 +78,7 @@ export default class WelcomeScreen extends Component {
             style={{
               width: '100%',
               height: '100%',
+              resizeMode: 'stretch' 
             }}
             source={require('../Image/welcome/enter.png')}>
           </Image>
