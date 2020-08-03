@@ -3,11 +3,12 @@ import { View ,StyleSheet,Text,Button,TouchableOpacity,TextInput,Image,Scroll
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
 
-export default class App extends Component {
+export default class MyScreen extends Component {
     constructor(props) {
       super(props);
     }
     render() {
+        const { navigation } = this.props;
   return ( 
         <View style={styles.container}>
             <View style={styles.header}>
@@ -29,19 +30,27 @@ export default class App extends Component {
                 </View>
             </View>
             <View style={styles.contant}>
-                <TouchableOpacity style={{flex:1,backgroundColor:'#fff',alignItems:'center',justifyContent:'center'}}>
+                <TouchableOpacity 
+                    onPress={() => navigation.navigate('收藏')}
+                    style={{flex:1,backgroundColor:'#fff',alignItems:'center',justifyContent:'center'}}>
                     <Text style={{fontSize:15}}>收藏</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={{flex:1,backgroundColor:'#fff',alignItems:'center',justifyContent:'center'}}>
+                <TouchableOpacity 
+                onPress={() => navigation.navigate('关注')}
+                style={{flex:1,backgroundColor:'#fff',alignItems:'center',justifyContent:'center'}}>
                     <Text style={{fontSize:15}}>关注</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={{flex:1,backgroundColor:'#fff',alignItems:'center',justifyContent:'center'}}>
+                <TouchableOpacity 
+                onPress={() => navigation.navigate('粉丝')}
+                style={{flex:1,backgroundColor:'#fff',alignItems:'center',justifyContent:'center'}}>
                     <Text style={{fontSize:15}}>粉丝</Text>
                 </TouchableOpacity>
             </View>
             <View style={styles.footer}>
                 <View style={{flex:2,marginBottom:20,backgroundColor:'#fff',alignItems:'center'}}>
-                    <TouchableOpacity style={{width:'90%',height:'49%',flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
+                    <TouchableOpacity 
+                    onPress={() => navigation.navigate('订单')}
+                    style={{width:'90%',height:'49%',flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
                         <View style={{flexDirection:'row'}}>
                         <View style={{width:20,justifyContent:"center",alignItems:"center"}}>
                         <FontAwesome name={'file-text-o'} size={23} color={'#000'} />
@@ -51,7 +60,9 @@ export default class App extends Component {
                         <FontAwesome name={'angle-right'} size={23} color={'#000'} />
                     </TouchableOpacity>
                     <View style={{width:'90%',height:0.5,backgroundColor:'grey'}}></View>
-                    <TouchableOpacity style={{width:'90%',height:'49%',flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
+                    <TouchableOpacity 
+                    onPress={() => navigation.navigate('地址')}
+                    style={{width:'90%',height:'49%',flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
                         <View style={{flexDirection:'row'}}>
                         <View style={{width:20,justifyContent:"center",alignItems:"center"}}>
                         <FontAwesome name={'map-marker'} size={23} color={'#000'} />
@@ -62,7 +73,9 @@ export default class App extends Component {
                     </TouchableOpacity>
                 </View>
                 <View style={{flex:3,backgroundColor:'#fff',alignItems:'center'}}>
-                <TouchableOpacity style={{width:'90%',height:'30%',flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
+                <TouchableOpacity 
+                onPress={() => navigation.navigate('认证')}
+                style={{width:'90%',height:'30%',flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
                         <View style={{flexDirection:'row'}}>
                         <View style={{width:20,justifyContent:"center",alignItems:"center"}}>
                         <FontAwesome name={'check-square-o'} size={23} color={'#000'} />
@@ -72,7 +85,9 @@ export default class App extends Component {
                         <FontAwesome name={'angle-right'} size={23} color={'#000'} />
                     </TouchableOpacity>
                     <View style={{width:'90%',height:0.5,backgroundColor:'grey'}}></View>
-                    <TouchableOpacity style={{width:'90%',height:'30%',flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
+                    <TouchableOpacity 
+                    onPress={() => navigation.navigate('客服')}
+                    style={{width:'90%',height:'30%',flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
                         <View style={{flexDirection:'row'}}>
                         <View style={{width:20,justifyContent:"center",alignItems:"center"}}>
                         <FontAwesome name={'phone'} size={23} color={'#000'} /></View>
@@ -81,7 +96,9 @@ export default class App extends Component {
                         <FontAwesome name={'angle-right'} size={23} color={'#000'} />
                     </TouchableOpacity>
                     <View style={{width:'90%',height:0.5,backgroundColor:'grey'}}></View>
-                    <TouchableOpacity style={{width:'90%',height:'30%',flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
+                    <TouchableOpacity 
+                    onPress={() => navigation.navigate('设置')}
+                    style={{width:'90%',height:'30%',flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
                         <View style={{flexDirection:'row'}}>
                         <View style={{width:20,justifyContent:"center",alignItems:"center"}}>
                         <FontAwesome name={'gear'} size={23} color={'#000'} /></View>

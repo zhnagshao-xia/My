@@ -200,7 +200,9 @@ export default class HomeScreen extends Component {
                     <Text style={{ marginLeft: 30 }}>被评为“中国工美行业艺术大师”</Text>
                   </View>
                 </View>
-                <TouchableOpacity style={{
+                <TouchableOpacity 
+                onPress={() => navigation.navigate('手艺人')}
+                  style={{
                   width: '95%',
                   height: 40,
                   backgroundColor: '#bfbfbf',

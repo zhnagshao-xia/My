@@ -18,6 +18,16 @@ import Activityhistory from './HomeScreen/Activityhistory'
 import Volunteerhistory from './HomeScreen/Volunteerhistory'
 import storyScreen from './HomeScreen/storyScreen'
 import masterpieceScreen from './HomeScreen/masterpieceScreen'
+import CraftsmanScreen from './HomeScreen/CraftsmanScreen'
+
+import CollectionScreen from './MyScreen/CollectionScreen'
+import followScreen from './MyScreen/followScreen'
+import fansScreen from './MyScreen/fansScreen'
+import orderScreen from './MyScreen/orderScreen'
+import addressScreen from './MyScreen/addressScreen'
+import authenticationScreen from './MyScreen/authenticationScreen'
+import serviceScreen from './MyScreen/serviceScreen'
+import outScreen from './MyScreen/outScreen'
 
 
 const Tab = createMaterialBottomTabNavigator();
@@ -52,12 +62,8 @@ export default function bottom_nav() {
               <HomeStack.Screen name="记" component={Volunteerhistory} />
               <HomeStack.Screen name="故事" component={storyScreen} />
               <HomeStack.Screen name="匠心力作" component={masterpieceScreen} />
-              <HomeStack.Screen
-                name="signUp"
-                 options={{
-                   title: '填报信息'
-                 }}
-               component={SignUp} />
+              <HomeStack.Screen name="signUp" options={{title: '填报信息'}} component={SignUp} />
+              <HomeStack.Screen name="手艺人" component={CraftsmanScreen} />
             </SettingsStack.Navigator>
           )}
         </Tab.Screen>
@@ -69,7 +75,9 @@ export default function bottom_nav() {
               size={23}
               color={color} />
           ),
-        }} ></Tab.Screen>
+        }} >
+
+        </Tab.Screen>
       <Tab.Screen name="讨论" component={TribuneScreen}
         options={{
           tabBarIcon: ({ color }) => (
@@ -79,7 +87,7 @@ export default function bottom_nav() {
               color={color} />
           ),
         }} ></Tab.Screen>
-      <Tab.Screen name="我的" component={MyScreen}
+      <Tab.Screen name="我的" 
         options={{
           tabBarIcon: ({ color }) => (
             <FontAwesome
@@ -87,7 +95,21 @@ export default function bottom_nav() {
               size={25}
               color={color} />
           ),
-        }} ></Tab.Screen>
+        }} >
+          {() => (
+            <SettingsStack.Navigator >
+              <HomeStack.Screen name="我的" component={MyScreen} options={{headerShown:false}} />
+              <HomeStack.Screen name="收藏" component={CollectionScreen} />
+              <HomeStack.Screen name="关注" component={followScreen} />
+              <HomeStack.Screen name="粉丝" component={fansScreen} />
+              <HomeStack.Screen name="订单" component={orderScreen} />
+              <HomeStack.Screen name="地址" component={addressScreen} />
+              <HomeStack.Screen name="认证" component={authenticationScreen} />
+              <HomeStack.Screen name="客服" component={serviceScreen} />
+              <HomeStack.Screen name="设置" component={outScreen} />
+            </SettingsStack.Navigator>
+          )}
+        </Tab.Screen>
     </Tab.Navigator>
   </NavigationContainer>
   );

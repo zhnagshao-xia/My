@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import { AppRegistry, 
-  StyleSheet, 
+import { AppRegistry,
+  StyleSheet,
   ImageBackground,
-  View, 
+  View,
   Image,
-  Text, 
+  Text,
   TouchableOpacity } from 'react-native';
 import Swiper from 'react-native-swiper'
  
@@ -35,8 +35,8 @@ export default class WelcomeScreen extends Component {
             }}/>}
                 activeDot={<View style={{    //选中的圆点样式
                 backgroundColor: '#000',
-                width: 8,
-                height: 8,
+                width: 10,
+                height: 10,
                 borderRadius: 20,
                 marginLeft: 10,
                 marginRight: 9,
@@ -49,12 +49,12 @@ export default class WelcomeScreen extends Component {
           source={require('../Image/welcome/wp-1.jpg')}>
           </ImageBackground>
         </View>
-        {/* <View style={styles.slide2}>
+        <View style={styles.slide2}>
         <ImageBackground 
           style={{width: '100%', height: '100%',resizeMode: 'stretch'}} 
-          source={require('../Image/welcome/wp-3.jpg')}>
+          source={require('../Image/welcome/wp-2.jpg')}>
           </ImageBackground>
-        </View> */}
+        </View>
         <View style={styles.slide3}>
         <ImageBackground 
           style={{width: '100%', height: '100%',resizeMode: 'stretch'}} 
