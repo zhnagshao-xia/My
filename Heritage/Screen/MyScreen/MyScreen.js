@@ -19,14 +19,19 @@ export default class MyScreen extends Component {
                   </ImageBackground>
                 </View>  
                 <View style={{flex:2}}>
-                  <View style={{width:90,height:90,borderRadius:50,position:'absolute',left:35,bottom:10,borderColor:'#fff',borderWidth:4,}}>
+                  <View style={{width:90,height:90,borderRadius:50,position:'absolute',left:25,bottom:10,borderColor:'#fff',borderWidth:4,}}>
                 <Image
                     style={{ width: '100%', height: '100%', resizeMode: 'stretch'}}
                     source={require('../../Image/MyScreen/pic17.png')}>
                   </Image>
                   </View>
-                    <Text style={{fontSize:20,marginLeft:150,marginTop:5}}>高血堂</Text>
-                    <Text style={{fontSize:15,marginLeft:150,color:'#c9a974'}}>非遗手艺人</Text>
+                  <View style={{flexDirection:'row',alignItems:'center',marginTop:5,}}>
+                    <Text style={{fontSize:20,marginLeft:125,marginRight:5}}>高血堂</Text>
+                    <TouchableOpacity>
+                    <FontAwesome name={'pencil'} size={18} color={'#000'}/>
+                    </TouchableOpacity>
+                    </View>
+                    <Text style={{fontSize:12,marginLeft:125,marginTop:3,color:'#c9a974'}}>非遗手艺人</Text>
                 </View>
             </View>
             <View style={styles.contant}>
