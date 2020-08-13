@@ -27,10 +27,11 @@ export default class HomeScreen extends Component {
         <Tabs tabs={tabs}
         tabBarTextStyle={{
           color:"#945357",
+          fontSize:15
         }}
         tabBarUnderlineStyle={{
           width:50,
-          marginLeft:45,
+          marginLeft:36,
           backgroundColor:'#945357'
         }}
         >
@@ -66,6 +67,7 @@ export default class HomeScreen extends Component {
                 </Swiper>
               </View>
             </View>
+            <View style={styles.Headlinesmain}>
             <View style={styles.Headlines}>
               <View style={styles.Headlines_left}>
                 <Image
@@ -90,6 +92,7 @@ export default class HomeScreen extends Component {
                 </Swiper>
               </View>
             </View>
+            </View>
             <View style={{ width: '100%', alignItems: "center", }}>
               <View style={styles.partthree}>
                 <TouchableOpacity style={styles.threeleft}
@@ -98,9 +101,9 @@ export default class HomeScreen extends Component {
                     style={{ width: '100%', height: '100%', resizeMode: 'stretch' }}
                     source={require('../../Image/HomeScreen/Craftsmanship.png')}>
                       <View style={{flexDirection:'column',marginLeft:35,marginTop:20}}>
-                        <Text style={{color:'#fff',fontSize: 16}}>传</Text>
-                        <Text style={{color:'#fff',fontSize: 16}}>承</Text>
-                        <Text style={{color:'#fff',fontSize: 16}}>志</Text>
+                        <Text style={{color:'#fff',fontSize: 14}}>传</Text>
+                        <Text style={{color:'#fff',fontSize: 14}}>承</Text>
+                        <Text style={{color:'#fff',fontSize: 14}}>志</Text>
                       </View>
                   </ImageBackground>
                 </TouchableOpacity>
@@ -110,7 +113,7 @@ export default class HomeScreen extends Component {
                     <ImageBackground
                       style={styles.tu}
                       source={require('../../Image/HomeScreen/volunteer.png')}>
-                      <Text style={{ color: '#fff', fontSize: 16 }}>志愿者</Text>
+                      <Text style={{ color: '#fff', fontSize: 14 }}>志愿者</Text>
                     </ImageBackground>
                   </TouchableOpacity>
                   <TouchableOpacity style={styles.rightbottom}
@@ -118,7 +121,7 @@ export default class HomeScreen extends Component {
                     <ImageBackground
                       style={styles.tu}
                       source={require('../../Image/HomeScreen/activity.png')}>
-                      <Text style={{ color: '#fff', fontSize: 16 }}>活动</Text>
+                      <Text style={{ color: '#fff', fontSize: 14}}>活动</Text>
                     </ImageBackground>
                   </TouchableOpacity>
                 </View>
@@ -130,7 +133,7 @@ export default class HomeScreen extends Component {
                 alignItems: "center"
               }}>
                 <View style={styles.fourtitle}>
-                  <Text style={{ fontSize: 17, color: '#c6a46c' }}>
+                  <Text style={{ fontSize: 15, color: '#c6a46c' }}>
                     推荐手艺人
                   </Text>
                 </View>
@@ -149,12 +152,12 @@ export default class HomeScreen extends Component {
                       justifyContent: 'space-between'
                     }}>
                       <View style={{ marginLeft: 110, marginVertical: 10 }}>
-                        <Text style={{ fontSize: 16 }}>叶良康</Text>
-                        <Text style={{ color: '#c6a46c', }}>鄞州竹编非遗传承人</Text>
+                        <Text style={{ fontSize: 14 }}>叶良康</Text>
+                        <Text style={{ color: '#c6a46c', fontSize: 12}}>鄞州竹编非遗传承人</Text>
                       </View>
                       <TouchableOpacity style={styles.guanzhu}>
-                        <Text style={{ color: '#945357' }}>+</Text>
-                        <Text>关注</Text>
+                        <Text style={{ color: '#945357' ,fontSize: 12,marginRight:3}}>+</Text>
+                        <Text style={{ fontSize: 12 }}>关注</Text>
                       </TouchableOpacity>
                       <TouchableOpacity style={styles.touxiang}>
                         <Image
@@ -163,7 +166,7 @@ export default class HomeScreen extends Component {
                         </Image>
                       </TouchableOpacity>
                     </View>
-                    <Text style={{ marginLeft: 30 }}>潜心研究工艺竹编，成为代表性传承人</Text>
+                    <Text style={{ marginLeft: 30,fontSize: 14 }}>潜心研究工艺竹编，成为代表性传承人</Text>
                   </View>
                 </View>
                 <View style={{ width: '95%' }}>
@@ -183,12 +186,12 @@ export default class HomeScreen extends Component {
                       justifyContent: 'space-between'
                     }}>
                       <View style={{ marginLeft: 110, marginVertical: 10 }}>
-                        <Text style={{ fontSize: 16 }}>夏雨缀</Text>
-                        <Text style={{ color: '#c6a46c', }}>舟山贝雕非遗传承人</Text>
+                        <Text style={{ fontSize: 14 }}>夏雨缀</Text>
+                        <Text style={{ color: '#c6a46c',fontSize: 12 }}>舟山贝雕非遗传承人</Text>
                       </View>
                       <TouchableOpacity style={styles.guanzhu}>
-                        <Text style={{ color: '#945357' }}>+</Text>
-                        <Text>关注</Text>
+                        <Text style={{ color: '#945357',fontSize: 12,marginRight:3 }}>+</Text>
+                        <Text style={{ fontSize: 12 }}>关注</Text>
                       </TouchableOpacity>
                       <TouchableOpacity style={styles.touxiang}>
                         <Image
@@ -197,7 +200,7 @@ export default class HomeScreen extends Component {
                         </Image>
                       </TouchableOpacity>
                     </View>
-                    <Text style={{ marginLeft: 30 }}>被评为“中国工美行业艺术大师”</Text>
+                    <Text style={{ marginLeft: 30,fontSize: 14 }}>被评为“中国工美行业艺术大师”</Text>
                   </View>
                 </View>
                 <TouchableOpacity 
@@ -205,31 +208,24 @@ export default class HomeScreen extends Component {
                   style={{
                   width: '95%',
                   height: 40,
-                  backgroundColor: '#bfbfbf',
+                  backgroundColor: '#dcdad2',
                   justifyContent: "center",
-                  alignItems: "center",
+                  alignItems:'center',
                   flexDirection: 'row',
                   borderRadius: 8
                 }}>
-                  <Text >查看更多</Text>
-                  <View style={{
-                    width: 20, height: 20, borderRadius: 50, justifyContent: "center",
-                    alignItems: "center",
-                    borderWidth: 1,
-                    borderColor: '#000',
-                    marginLeft: 5
-                  }}>
+                  <Text style={{ fontSize: 14,marginRight:10 }}>查看更多</Text>
                     <FontAwesome
-                      name={'angle-right'}
-                      size={20}
-                      color={'#000'} /></View>
+                      name={'angle-double-right'}
+                      size={15}
+                      color={'#000'} />
                 </TouchableOpacity>
               </View>
             </View>
             <View style={styles.partfive}>
               <View style={{ width: '95%' }}>
                 <View style={styles.fivetitle}>
-                  <Text style={{ fontSize: 17, color: '#c6a46c' }}>
+                  <Text style={{ fontSize: 15, color: '#c6a46c' }}>
                     匠心力作
                   </Text>
                 </View>
@@ -240,7 +236,7 @@ export default class HomeScreen extends Component {
                   </Image>
                 </View>
                 <View style={{ width: '100%', height: 50, justifyContent: "center", alignItems: "center" }}>
-                  <Text style={{ fontSize: 15 }}>
+                  <Text style={{ fontSize: 14 }}>
                     王星记扇
                   </Text>
                 </View>
@@ -249,28 +245,18 @@ export default class HomeScreen extends Component {
                 style={{
                   width: '100%',
                   height: 40,
-                  backgroundColor: '#bfbfbf',
+                  backgroundColor: '#dcdad2',
                   justifyContent: "center",
                   alignItems: "center",
                   flexDirection: 'row',
                   borderRadius: 8,
                   marginBottom: 30
                 }}>
-                  <Text >查看更多</Text>
-                  <View style={{
-                    width: 20,
-                    height: 20,
-                    borderRadius: 50,
-                    justifyContent: "center",
-                    alignItems: "center",
-                    borderWidth: 1,
-                    borderColor: '#000',
-                    marginLeft: 5
-                  }}>
+                  <Text style={{ fontSize: 14,marginRight:10 }}>查看更多</Text>
                     <FontAwesome
-                      name={'angle-right'}
+                      name={'angle-double-right'}
                       size={20}
-                      color={'#000'} /></View>
+                      color={'#000'} />
                 </TouchableOpacity>
               </View>
             </View>
@@ -287,11 +273,11 @@ export default class HomeScreen extends Component {
             <ImageBackground source={require('../../Image/HomeScreen/pic_1.png')} style={{ height: 280 }}>
               <View style={styles.place}>
                 <View style={styles.letter_up}>
-                  <View style={styles.letter_left}><Text style={{ color: '#fff', fontSize: 25 }} >杭州</Text></View>
-                  <View style={styles.letter_right}><Text style={{ color: '#fff', fontSize: 15 }}>178项非遗</Text></View>
+                  <View style={styles.letter_left}><Text style={{ color: '#fff', fontSize: 18 }} >杭州</Text></View>
+                  <View style={styles.letter_right}><Text style={{ color: '#fff', fontSize: 14 }}>178项非遗</Text></View>
                 </View>
                 <View style={styles.letter_bottom}>
-                  <Text style={{ color: '#fff', fontSize: 16 }} >欲把西湖比西子，淡妆浓墨总相宜</Text>
+                  <Text style={{ color: '#fff', fontSize: 15 }} >欲把西湖比西子，淡妆浓墨总相宜</Text>
                 </View>
               </View>
             </ImageBackground>
@@ -300,11 +286,11 @@ export default class HomeScreen extends Component {
             <ImageBackground source={require('../../Image/HomeScreen/pic_2.png')} style={{ height: 280 }}>
               <View style={styles.place}>
                 <View style={styles.letter_up}>
-                  <View style={styles.letter_left}><Text style={{ color: '#fff', fontSize: 25 }} >湖州</Text></View>
-                  <View style={styles.letter_right}><Text style={{ color: '#fff', fontSize: 15 }}>178项非遗</Text></View>
+                  <View style={styles.letter_left}><Text style={{ color: '#fff', fontSize: 18 }} >湖州</Text></View>
+                  <View style={styles.letter_right}><Text style={{ color: '#fff', fontSize: 14 }}>178项非遗</Text></View>
                 </View>
                 <View style={styles.letter_bottom}>
-                  <Text style={{ color: '#fff', fontSize: 16 }} >北望燕云不尽头，大江东去水悠悠</Text>
+                  <Text style={{ color: '#fff', fontSize: 15 }} >北望燕云不尽头，大江东去水悠悠</Text>
                 </View>
               </View>
             </ImageBackground>
@@ -313,11 +299,11 @@ export default class HomeScreen extends Component {
             <ImageBackground source={require('../../Image/HomeScreen/pic_3.png')} style={{ height: 280 }}>
               <View style={styles.place}>
                 <View style={styles.letter_up}>
-                  <View style={styles.letter_left}><Text style={{ color: '#fff', fontSize: 25 }} >嘉兴</Text></View>
-                  <View style={styles.letter_right}><Text style={{ color: '#fff', fontSize: 15 }}>178项非遗</Text></View>
+                  <View style={styles.letter_left}><Text style={{ color: '#fff', fontSize: 18 }} >嘉兴</Text></View>
+                  <View style={styles.letter_right}><Text style={{ color: '#fff', fontSize: 14}}>178项非遗</Text></View>
                 </View>
                 <View style={styles.letter_bottom}>
-                  <Text style={{ color: '#fff', fontSize: 16 }} >吴中过客莫思家，江南画船如屋里</Text>
+                  <Text style={{ color: '#fff', fontSize: 15 }} >吴中过客莫思家，江南画船如屋里</Text>
                 </View>
               </View>
             </ImageBackground>
@@ -326,11 +312,11 @@ export default class HomeScreen extends Component {
             <ImageBackground source={require('../../Image/HomeScreen/pic_4.png')} style={{ height: 280 }}>
               <View style={styles.place}>
                 <View style={styles.letter_up}>
-                  <View style={styles.letter_left}><Text style={{ color: '#fff', fontSize: 25 }} >金华</Text></View>
-                  <View style={styles.letter_right}><Text style={{ color: '#fff', fontSize: 15 }}>178项非遗</Text></View>
+                  <View style={styles.letter_left}><Text style={{ color: '#fff', fontSize: 18 }} >金华</Text></View>
+                  <View style={styles.letter_right}><Text style={{ color: '#fff', fontSize: 14 }}>178项非遗</Text></View>
                 </View>
                 <View style={styles.letter_bottom}>
-                  <Text style={{ color: '#fff', fontSize: 16 }} >岩室嵌空古洞天，初平曾此学升仙</Text>
+                  <Text style={{ color: '#fff', fontSize: 15 }} >岩室嵌空古洞天，初平曾此学升仙</Text>
                 </View>
               </View>
             </ImageBackground>
@@ -339,11 +325,11 @@ export default class HomeScreen extends Component {
             <ImageBackground source={require('../../Image/HomeScreen/pic_5.png')} style={{ height: 280 }}>
               <View style={styles.place}>
                 <View style={styles.letter_up}>
-                  <View style={styles.letter_left}><Text style={{ color: '#fff', fontSize: 25 }} >丽水</Text></View>
-                  <View style={styles.letter_right}><Text style={{ color: '#fff', fontSize: 15 }}>178项非遗</Text></View>
+                  <View style={styles.letter_left}><Text style={{ color: '#fff', fontSize: 18 }} >丽水</Text></View>
+                  <View style={styles.letter_right}><Text style={{ color: '#fff', fontSize: 14 }}>178项非遗</Text></View>
                 </View>
                 <View style={styles.letter_bottom}>
-                  <Text style={{ color: '#fff', fontSize: 16 }} >只恐压枝星欲落，最怜和叶露初晞</Text>
+                  <Text style={{ color: '#fff', fontSize: 15 }} >只恐压枝星欲落，最怜和叶露初晞</Text>
                 </View>
               </View>
             </ImageBackground>
@@ -352,11 +338,11 @@ export default class HomeScreen extends Component {
             <ImageBackground source={require('../../Image/HomeScreen/pic_6.png')} style={{ height: 280 }}>
               <View style={styles.place}>
                 <View style={styles.letter_up}>
-                  <View style={styles.letter_left}><Text style={{ color: '#fff', fontSize: 25 }} >宁波</Text></View>
-                  <View style={styles.letter_right}><Text style={{ color: '#fff', fontSize: 15 }}>178项非遗</Text></View>
+                  <View style={styles.letter_left}><Text style={{ color: '#fff', fontSize: 18 }} >宁波</Text></View>
+                  <View style={styles.letter_right}><Text style={{ color: '#fff', fontSize: 14 }}>178项非遗</Text></View>
                 </View>
                 <View style={styles.letter_bottom}>
-                  <Text style={{ color: '#fff', fontSize: 16 }} >我亦逃祥云水客，便应萧散共松扁</Text>
+                  <Text style={{ color: '#fff', fontSize: 15 }} >我亦逃祥云水客，便应萧散共松扁</Text>
                 </View>
               </View>
             </ImageBackground>
@@ -365,11 +351,11 @@ export default class HomeScreen extends Component {
             <ImageBackground source={require('../../Image/HomeScreen/pic_7.png')} style={{ height: 280 }}>
               <View style={styles.place}>
                 <View style={styles.letter_up}>
-                  <View style={styles.letter_left}><Text style={{ color: '#fff', fontSize: 25 }} >衢州</Text></View>
-                  <View style={styles.letter_right}><Text style={{ color: '#fff', fontSize: 15 }}>178项非遗</Text></View>
+                  <View style={styles.letter_left}><Text style={{ color: '#fff', fontSize: 18 }} >衢州</Text></View>
+                  <View style={styles.letter_right}><Text style={{ color: '#fff', fontSize: 14 }}>178项非遗</Text></View>
                 </View>
                 <View style={styles.letter_bottom}>
-                  <Text style={{ color: '#fff', fontSize: 16 }} >水朝沧海何时去,兰在幽林亦自芳</Text>
+                  <Text style={{ color: '#fff', fontSize: 15 }} >水朝沧海何时去,兰在幽林亦自芳</Text>
                 </View>
               </View>
             </ImageBackground>
@@ -378,11 +364,11 @@ export default class HomeScreen extends Component {
             <ImageBackground source={require('../../Image/HomeScreen/pic_8.png')} style={{ height: 280 }}>
               <View style={styles.place}>
                 <View style={styles.letter_up}>
-                  <View style={styles.letter_left}><Text style={{ color: '#fff', fontSize: 25 }} >绍兴</Text></View>
-                  <View style={styles.letter_right}><Text style={{ color: '#fff', fontSize: 15 }}>178项非遗</Text></View>
+                  <View style={styles.letter_left}><Text style={{ color: '#fff', fontSize: 18 }} >绍兴</Text></View>
+                  <View style={styles.letter_right}><Text style={{ color: '#fff', fontSize: 14 }}>178项非遗</Text></View>
                 </View>
                 <View style={styles.letter_bottom}>
-                  <Text style={{ color: '#fff', fontSize: 16 }} >正是吾庐秋好夜，上桥浑不要人扶</Text>
+                  <Text style={{ color: '#fff', fontSize: 15 }} >正是吾庐秋好夜，上桥浑不要人扶</Text>
                 </View>
               </View>
             </ImageBackground>
@@ -391,11 +377,11 @@ export default class HomeScreen extends Component {
             <ImageBackground source={require('../../Image/HomeScreen/pic_9.png')} style={{ height: 280 }}>
               <View style={styles.place}>
                 <View style={styles.letter_up}>
-                  <View style={styles.letter_left}><Text style={{ color: '#fff', fontSize: 25 }} >台州</Text></View>
-                  <View style={styles.letter_right}><Text style={{ color: '#fff', fontSize: 15 }}>178项非遗</Text></View>
+                  <View style={styles.letter_left}><Text style={{ color: '#fff', fontSize: 18 }} >台州</Text></View>
+                  <View style={styles.letter_right}><Text style={{ color: '#fff', fontSize: 14 }}>178项非遗</Text></View>
                 </View>
                 <View style={styles.letter_bottom}>
-                  <Text style={{ color: '#fff', fontSize: 16 }} >向夜双栖惊玉漏，临轩对舞拂朱袍</Text>
+                  <Text style={{ color: '#fff', fontSize: 15 }} >向夜双栖惊玉漏，临轩对舞拂朱袍</Text>
                 </View>
               </View>
             </ImageBackground>
@@ -404,11 +390,11 @@ export default class HomeScreen extends Component {
             <ImageBackground source={require('../../Image/HomeScreen/pic_10.png')} style={{ height: 280 }}>
               <View style={styles.place}>
                 <View style={styles.letter_up}>
-                  <View style={styles.letter_left}><Text style={{ color: '#fff', fontSize: 25 }} >温州</Text></View>
-                  <View style={styles.letter_right}><Text style={{ color: '#fff', fontSize: 15 }}>178项非遗</Text></View>
+                  <View style={styles.letter_left}><Text style={{ color: '#fff', fontSize: 18 }} >温州</Text></View>
+                  <View style={styles.letter_right}><Text style={{ color: '#fff', fontSize: 14 }}>178项非遗</Text></View>
                 </View>
                 <View style={styles.letter_bottom}>
-                  <Text style={{ color: '#fff', fontSize: 16 }} >水如棋局连街陌，山似屏帷绕画楼</Text>
+                  <Text style={{ color: '#fff', fontSize: 15 }} >水如棋局连街陌，山似屏帷绕画楼</Text>
                 </View>
               </View>
             </ImageBackground>
@@ -417,11 +403,11 @@ export default class HomeScreen extends Component {
             <ImageBackground source={require('../../Image/HomeScreen/pic_11.png')} style={{ height: 280 }}>
               <View style={styles.place}>
                 <View style={styles.letter_up}>
-                  <View style={styles.letter_left}><Text style={{ color: '#fff', fontSize: 25 }} >舟山</Text></View>
-                  <View style={styles.letter_right}><Text style={{ color: '#fff', fontSize: 15 }}>178项非遗</Text></View>
+                  <View style={styles.letter_left}><Text style={{ color: '#fff', fontSize: 18 }} >舟山</Text></View>
+                  <View style={styles.letter_right}><Text style={{ color: '#fff', fontSize: 14 }}>178项非遗</Text></View>
                 </View>
                 <View style={styles.letter_bottom}>
-                  <Text style={{ color: '#fff', fontSize: 16 }} >桂花香里芙蓉好，岂许狂鹰敢入罗</Text>
+                  <Text style={{ color: '#fff', fontSize: 15 }} >桂花香里芙蓉好，岂许狂鹰敢入罗</Text>
                 </View>
               </View>
             </ImageBackground>
@@ -445,31 +431,24 @@ left:{
 right:{
     width:'70%'
 },
-font:{
-    fontSize:36,
-    color:'#696969',
-},
   place: {
-    top:165,
-    left:15,
-    height:80,
+    top:185,
+    left:20,
 },
 letter_up:{
-    height:45,
     flexDirection:'row',
 },
 letter_left:{
     alignItems:'center',
     flexDirection:'column-reverse',
-    width:80,
+    marginRight:7
 },
 letter_right:{
     flexDirection:'column-reverse'        
 },
 letter_bottom:{
-    height:35,
+    marginTop:10,
     justifyContent:'center',
-    left:'4%'
 },
   fivetitle: {
     height: 50,
@@ -499,12 +478,13 @@ letter_bottom:{
   guanzhu: {
     flexDirection: 'row',
     borderWidth: 1,
-    borderColor: '#000',
+    borderColor: '#c9c5c5',
     width: 50,
-    height: 20,
+    height: 23,
     justifyContent: 'center',
     alignItems: 'center',
-    margin: 10
+    margin: 10,
+    borderRadius:5
   },
   fourword: {
     width: '100%',
@@ -562,18 +542,23 @@ letter_bottom:{
   },
   Headlines_right: {
     marginLeft: 15,
-    height: 25,
-    width: '65%',
+    width:300,
+    justifyContent:'center'
   },
   Headlines_left: {
-    width: 60,
-    height: 25,
+    width: 45,
+    height: 20,
   },
   Headlines: {
-    height: 40,
-    justifyContent: "center",
+    width:'90%',
     alignItems: "center",
     flexDirection: 'row',
+  },
+  Headlinesmain:{
+    width:'100%',
+    height: 40,
+    alignItems:'center',
+    justifyContent:'center'
   },
   main: {
     backgroundColor: '#f2f2f2',
@@ -589,9 +574,10 @@ letter_bottom:{
     flex: 1,
   },
   slide: {
+    
   },
   text: {
-    marginTop: 2.5
+    fontSize:13,
   },
   paginationStyle: {
     bottom: 6,

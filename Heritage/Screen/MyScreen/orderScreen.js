@@ -27,26 +27,26 @@ export default class orderScreen extends Component {
             renderItem = {({item})=>
             <View style = {styles.one}>
               <View style={{flexDirection:'row',width:'100%',}}>
-                <View style={{width:'22%',height:100,margin:10,backgroundColor:'#000'}}>
+                <View style={{width:85,height:100,margin:10,backgroundColor:'#000'}}>
                     {/* <Image style={{width:85,height:85}} source={require('./picture/umbrella2.png')}></Image> */}
                 </View>
-                <View style={{ width:'70%',height:85,marginTop:10}}>
-                    <Text style={{width:'100%',fontSize:16}}>{item.key}</Text>
+                <View style={{ width:200,height:85,marginTop:10}}>
+                    <Text style={{width:'100%',fontSize:13}}>{item.key}</Text>
                     <View style={{width:'100%',flexDirection:'row',justifyContent:'space-between',marginTop:15}}>
-                        <Text style={{fontSize:16,color:'#f76220'}}>{item.price}</Text>
-                        <Text style={{}}>已签收</Text>
+                        <Text style={{fontSize:14,color:'#f76220'}}>{item.price}</Text>
+                        <Text style={{fontSize:14}}>已签收</Text>
                     </View>
                   
                 <TouchableOpacity 
-                style={{width:65,
-                height:25,
-                borderRadius:15,
-                alignItems:'center',
-                justifyContent:'center',
-                borderColor:'black',
-                borderWidth:0.7,
-                position:'absolute'}}>
-                  <Text style={{fontSize:15}}>评 价</Text>
+                style={{
+                  width:60,
+                  borderRadius:15,
+                  alignItems:'center',
+                  justifyContent:'center',
+                  borderColor:'black',
+                  borderWidth:0.7,
+                  marginTop:10}}>
+                  <Text style={{fontSize:14}}>评 价</Text>
                 </TouchableOpacity>
               </View>
               </View> 
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     backgroundColor:'#f2f2f2',
   },
  one: {
-    height: 140,
+    height: 130,
     width:'90%',
     backgroundColor:'#fff',
     marginLeft:18,

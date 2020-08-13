@@ -58,13 +58,13 @@ export default function signScreen({navigation}) {
           style={{
             marginTop: 30,
             width: 90,
-            height: 40,
+            height: 35,
             backgroundColor: '#6092a0',
             justifyContent: "center",
             alignItems: "center",
             borderRadius: 10,
           }}>
-          <Text style={{ color: '#fff', fontSize: 17 }}>提交</Text>
+          <Text style={{ color: '#fff', fontSize: 14 }}>提交</Text>
         </TouchableHighlight>
       </ScrollView>
     </View>

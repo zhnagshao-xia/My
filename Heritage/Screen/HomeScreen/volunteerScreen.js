@@ -69,12 +69,14 @@ class VolunteerScreen extends React.Component {
 
       onPanResponderRelease: () => {
         const positionY = this.state.pan.y.__getValue();
+        const positionX = this.state.pan.x.__getValue();
+        // console.log(positionY+","+positionX)
         Animated.timing(this.state.opacity, {toValue: 0}).start();
 
         // console.log(positionY);
-        if (positionY > 200) {
+        if (positionY > -400) {
           Animated.timing(this.state.pan, {
-            toValue: {x: 0, y: 1000},
+            toValue: {x: positionX*10, y: positionY*10},
             useNativeDriver: false
           }).start(() => {
             this.state.pan.setValue({x: 0, y: 0});
@@ -256,7 +258,7 @@ const Projects = [
     title: 'Price Tag8',
     image: require('../../Image/HomeScreen/1.jpg'),
     author: 'Liu Yi',
-    text:
+    text:  
       'Thanks to Design+Code.......21412156........' +
       'Thanks to Design+Code.......21412156........' +
       'Thanks to Design+Code.......21412156........',

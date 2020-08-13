@@ -48,19 +48,17 @@ export default class Left extends Component {
 };
 const styles = StyleSheet.create({
     country:{
-        justifyContent:"center"
     },
     noChange:{
-        marginTop:30,
-        marginLeft:25
-
+        marginTop:35,
+        marginLeft:15,
     },
     circle:{
-        width:15,
-        height:15,
+        width:13,
+        height:13,
         borderWidth:1,
         borderRadius:50,
-        borderColor:'#FF8247',
+        borderColor:'#945357',
         backgroundColor:"#F5F5F5"
     },
     change:{
@@ -68,7 +66,7 @@ const styles = StyleSheet.create({
         marginLeft:10,
         flexDirection:'row',
         alignItems:'center',
-        left:-17.5
+        left:-17,
     },
 
     div:{
@@ -77,18 +75,18 @@ const styles = StyleSheet.create({
         backgroundColor:"#F5F5F5"
     },
     line:{
-        borderWidth:1,
+        borderWidth:0.6,
         borderColor:"#8B4513",
         marginLeft:20
     },
     changeFont:{
-        fontSize:20,
-        color:'#FF8247',
+        fontSize:15,
+        color:'#945357',
         marginLeft:15
 
     },
     noChangeFont:{
-        fontSize:16,
+        fontSize:13,
         color:'#696969',
     },
 

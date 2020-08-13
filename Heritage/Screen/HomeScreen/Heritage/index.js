@@ -429,7 +429,7 @@ const styles = StyleSheet.create({
         width:'70%'
     },
     font:{
-        fontSize:36,
+        fontSize:10,
         color:'#696969',
     },
 

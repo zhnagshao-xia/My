@@ -21,11 +21,11 @@ export default function ActivityDetails({navigation}) {
                      paddingBottom:40,
                      alignItems:"center" }}>
                         <View style={{ alignItems: "center" }}>
-                            <Text style={{ fontSize: 18 }}>{item.title}</Text>
-                            <Text style={{ lineHeight: 30 }}>{item.time}</Text>
+                            <Text style={{ fontSize: 16 }}>{item.title}</Text>
+                            <Text style={{ lineHeight: 30,fontSize: 15 }}>{item.time}</Text>
                         </View>
                         <View>
-                            <Text style={{ textAlign: 'auto', lineHeight: 25, fontSize: 16 }}>&#12288;&#12288;{item.text1}</Text>
+                            <Text style={{ textAlign: 'auto', lineHeight: 25, fontSize: 15 }}>&#12288;&#12288;{item.text1}</Text>
                             <View style={{ alignItems: "center" }}>
                                 <Image style={{
                                     width: 200,
@@ -36,7 +36,7 @@ export default function ActivityDetails({navigation}) {
                                     source={require('../../Image/activityScreen/mark.jpg')}>
                                 </Image>
                             </View>
-                            <Text style={{ textAlign: 'auto', lineHeight: 25, fontSize: 16 }}>&#12288;&#12288;{item.text2}</Text>
+                            <Text style={{ textAlign: 'auto', lineHeight: 25, fontSize: 15 }}>&#12288;&#12288;{item.text2}</Text>
                         </View>
                     </View>
                 }

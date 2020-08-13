@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Button, Text, View, TouchableOpacity, Image, StyleSheet, ImageBackground } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator} from '@react-navigation/stack';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import HomeScreen from './HomeScreen/HomeScreen'
@@ -30,7 +31,9 @@ import serviceScreen from './MyScreen/serviceScreen'
 import outScreen from './MyScreen/outScreen'
 
 
-const Tab = createMaterialBottomTabNavigator();
+
+const Tab = createBottomTabNavigator();
+// const Tab = createMaterialBottomTabNavigator();
 const SettingsStack = createStackNavigator();
 const HomeStack = createStackNavigator();
 
@@ -39,7 +42,7 @@ export default function bottom_nav() {
   return (<NavigationContainer independent="true">
     <Tab.Navigator
       activeColor='#945357'
-      labelStyle={{ fontSize: 12 }}
+      labelStyle={{ fontSize: 2 }}
       barStyle={{ backgroundColor: "#fff" }}>
       <Tab.Screen name="首页"
         options={{
@@ -97,7 +100,7 @@ export default function bottom_nav() {
           ),
         }} >
           {() => (
-            <SettingsStack.Navigator >
+            <SettingsStack.Navigator>
               <HomeStack.Screen name="我的" component={MyScreen} options={{headerShown:false}} />
               <HomeStack.Screen name="收藏" component={CollectionScreen} />
               <HomeStack.Screen name="关注" component={followScreen} />

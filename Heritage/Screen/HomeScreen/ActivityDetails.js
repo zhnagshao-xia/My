@@ -22,11 +22,11 @@ export default function ActivityDetails({navigation}) {
                      paddingBottom:40,
                      alignItems:"center" }}>
                         <View style={{ alignItems: "center" }}>
-                            <Text style={{ fontSize: 18 }}>{item.title}</Text>
-                            <Text style={{ lineHeight: 30 }}>{item.time}</Text>
+                            <Text style={{ fontSize: 17 }}>{item.title}</Text>
+                            <Text style={{ lineHeight: 30,fontSize: 17 }}>{item.time}</Text>
                         </View>
                         <View>
-                            <Text style={{ textAlign: 'auto', lineHeight: 25, fontSize: 16 }}>&#12288;&#12288;{item.text1}</Text>
+                            <Text style={{ textAlign: 'auto', lineHeight: 25, fontSize: 15 }}>&#12288;&#12288;{item.text1}</Text>
                             <View style={{ alignItems: "center" }}>
                                 <Image style={{
                                     width: 200,
@@ -37,20 +37,20 @@ export default function ActivityDetails({navigation}) {
                                     source={require('../../Image/activityScreen/mark.jpg')}>
                                 </Image>
                             </View>
-                            <Text style={{ textAlign: 'auto', lineHeight: 25, fontSize: 16 }}>&#12288;&#12288;{item.text2}</Text>
+                            <Text style={{ textAlign: 'auto', lineHeight: 25, fontSize: 15 }}>&#12288;&#12288;{item.text2}</Text>
                         </View>
                         <TouchableHighlight 
                         onPress={() => navigation.navigate('报名表')}
                         underlayColor="rgba(86,132,145,0.6)"
                         style={{
                             marginTop:30,
-                            width:100,
-                            height:40,
+                            width:80,
+                            height:35,
                             backgroundColor:'#6092a0',
                             justifyContent:"center",
                             alignItems:"center",
                             borderRadius:10,}}>
-                            <Text style={{color:'#fff',fontSize:17}}>去参加</Text>
+                            <Text style={{color:'#fff',fontSize:14}}>去参加</Text>
                         </TouchableHighlight>
                     </View>
                 }

@@ -26,29 +26,29 @@ export default class MyScreen extends Component {
                   </Image>
                   </View>
                   <View style={{flexDirection:'row',alignItems:'center',marginTop:5,}}>
-                    <Text style={{fontSize:20,marginLeft:125,marginRight:5}}>高血堂</Text>
+                    <Text style={{fontSize:16,marginLeft:125,marginRight:5}}>高血堂</Text>
                     <TouchableOpacity>
-                    <FontAwesome name={'pencil'} size={18} color={'#000'}/>
+                    <FontAwesome name={'pencil'} size={16} color={'#000'}/>
                     </TouchableOpacity>
                     </View>
-                    <Text style={{fontSize:12,marginLeft:125,marginTop:3,color:'#c9a974'}}>非遗手艺人</Text>
+                    <Text style={{fontSize:13,marginLeft:125,marginTop:3,color:'#c9a974'}}>非遗手艺人</Text>
                 </View>
             </View>
             <View style={styles.contant}>
                 <TouchableOpacity 
                     onPress={() => navigation.navigate('收藏')}
                     style={{flex:1,backgroundColor:'#fff',alignItems:'center',justifyContent:'center'}}>
-                    <Text style={{fontSize:15}}>收藏</Text>
+                    <Text style={{fontSize:14}}>收藏</Text>
                 </TouchableOpacity>
                 <TouchableOpacity 
                 onPress={() => navigation.navigate('关注')}
                 style={{flex:1,backgroundColor:'#fff',alignItems:'center',justifyContent:'center'}}>
-                    <Text style={{fontSize:15}}>关注</Text>
+                    <Text style={{fontSize:14}}>关注</Text>
                 </TouchableOpacity>
                 <TouchableOpacity 
                 onPress={() => navigation.navigate('粉丝')}
                 style={{flex:1,backgroundColor:'#fff',alignItems:'center',justifyContent:'center'}}>
-                    <Text style={{fontSize:15}}>粉丝</Text>
+                    <Text style={{fontSize:14}}>粉丝</Text>
                 </TouchableOpacity>
             </View>
             <View style={styles.footer}>
@@ -58,11 +58,11 @@ export default class MyScreen extends Component {
                     style={{width:'90%',height:'49%',flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
                         <View style={{flexDirection:'row'}}>
                         <View style={{width:20,justifyContent:"center",alignItems:"center"}}>
-                        <FontAwesome name={'file-text-o'} size={23} color={'#000'} />
+                        <FontAwesome name={'file-text-o'} size={20} color={'#000'} />
                         </View>
-                        <Text style={{fontSize:15,marginLeft:10}}>我的订单</Text>
+                        <Text style={{fontSize:14,marginLeft:10}}>我的订单</Text>
                         </View>
-                        <FontAwesome name={'angle-right'} size={23} color={'#000'} />
+                        <FontAwesome name={'angle-right'} size={20} color={'#000'} />
                     </TouchableOpacity>
                     <View style={{width:'90%',height:0.5,backgroundColor:'grey'}}></View>
                     <TouchableOpacity 
@@ -70,11 +70,11 @@ export default class MyScreen extends Component {
                     style={{width:'90%',height:'49%',flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
                         <View style={{flexDirection:'row'}}>
                         <View style={{width:20,justifyContent:"center",alignItems:"center"}}>
-                        <FontAwesome name={'map-marker'} size={23} color={'#000'} />
+                        <FontAwesome name={'map-marker'} size={20} color={'#000'} />
                         </View>
-                        <Text style={{fontSize:15,marginLeft:10}}>地址管理</Text>
+                        <Text style={{fontSize:14,marginLeft:10}}>地址管理</Text>
                         </View>
-                        <FontAwesome name={'angle-right'} size={23} color={'#000'} />
+                        <FontAwesome name={'angle-right'} size={20} color={'#000'} />
                     </TouchableOpacity>
                 </View>
                 <View style={{flex:3,backgroundColor:'#fff',alignItems:'center'}}>
@@ -83,11 +83,11 @@ export default class MyScreen extends Component {
                 style={{width:'90%',height:'30%',flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
                         <View style={{flexDirection:'row'}}>
                         <View style={{width:20,justifyContent:"center",alignItems:"center"}}>
-                        <FontAwesome name={'check-square-o'} size={23} color={'#000'} />
+                        <FontAwesome name={'check-square-o'} size={20} color={'#000'} />
                         </View>
-                        <Text style={{fontSize:15,marginLeft:10}}>认证</Text>
+                        <Text style={{fontSize:14,marginLeft:10}}>认证</Text>
                         </View>
-                        <FontAwesome name={'angle-right'} size={23} color={'#000'} />
+                        <FontAwesome name={'angle-right'} size={20} color={'#000'} />
                     </TouchableOpacity>
                     <View style={{width:'90%',height:0.5,backgroundColor:'grey'}}></View>
                     <TouchableOpacity 
@@ -95,10 +95,10 @@ export default class MyScreen extends Component {
                     style={{width:'90%',height:'30%',flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
                         <View style={{flexDirection:'row'}}>
                         <View style={{width:20,justifyContent:"center",alignItems:"center"}}>
-                        <FontAwesome name={'phone'} size={23} color={'#000'} /></View>
-                        <Text style={{fontSize:15,marginLeft:10}}>客服</Text>
+                        <FontAwesome name={'phone'} size={20} color={'#000'} /></View>
+                        <Text style={{fontSize:14,marginLeft:10}}>客服</Text>
                         </View>
-                        <FontAwesome name={'angle-right'} size={23} color={'#000'} />
+                        <FontAwesome name={'angle-right'} size={20} color={'#000'} />
                     </TouchableOpacity>
                     <View style={{width:'90%',height:0.5,backgroundColor:'grey'}}></View>
                     <TouchableOpacity 
@@ -106,10 +106,10 @@ export default class MyScreen extends Component {
                     style={{width:'90%',height:'30%',flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
                         <View style={{flexDirection:'row'}}>
                         <View style={{width:20,justifyContent:"center",alignItems:"center"}}>
-                        <FontAwesome name={'gear'} size={23} color={'#000'} /></View>
-                        <Text style={{fontSize:15,marginLeft:10}}>设置</Text>
+                        <FontAwesome name={'gear'} size={20} color={'#000'} /></View>
+                        <Text style={{fontSize:14,marginLeft:10}}>设置</Text>
                         </View>
-                        <FontAwesome name={'angle-right'} size={23} color={'#000'} />
+                        <FontAwesome name={'angle-right'} size={20} color={'#000'} />
                     </TouchableOpacity>
                 </View>
 

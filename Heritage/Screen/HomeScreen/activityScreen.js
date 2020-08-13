@@ -13,12 +13,12 @@ export default function activityScreen({navigation}) {
             <Image style={styles.biaozhi}
               source={require('../../Image/activityScreen/sigh.png')}></Image>
           </View>
-          <View style={{ flexDirection: 'row' }}>
+          <View style={{ flexDirection: 'row',}}>
             <Image style={styles.left}
               source={require('../../Image/activityScreen/left.png')}></Image>
             <ImageBackground style={styles.middle}
               source={require('../../Image/activityScreen/box.png')}>
-              <Text style={{ color: 'red', fontSize: 19 }}>热门活动</Text>
+              <Text style={{ color: 'red', fontSize: 15 }}>热门活动</Text>
             </ImageBackground>
             <Image style={styles.right}
               source={require('../../Image/activityScreen/right.png')}></Image>
@@ -66,7 +66,7 @@ export default function activityScreen({navigation}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#f2f2f2',
   },
   header: {
     height: 60,
@@ -81,30 +81,25 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   biaozhi: {
-    width: 150,
-    height: 150,
+    width: 125,
+    height: 125,
     resizeMode: 'stretch',
   },
-  box: {
-    width: 50,
-    height: 50,
-    margin: 20,
-  },
   left: {
-    width: 90,
+    width: 110,
     height: 90,
     resizeMode: 'stretch',
     marginTop: 20
   },
   right: {
-    width: 90,
+    width: 110,
     height: 90,
     resizeMode: 'stretch',
     marginTop: 20
   },
   middle: {
     resizeMode: 'stretch',
-    width: 180,
+    width: 120,
     height: 45,
     justifyContent: "center",
     alignItems: "center"
@@ -117,6 +112,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   demol: {
-    fontSize: 17,
+    fontSize: 15,
+  },
+  demo2: {
+    fontSize: 13,
+    lineHeight:20
   },
 })

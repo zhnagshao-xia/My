@@ -119,9 +119,6 @@ const styles = StyleSheet.create({
         width:'100%',
         height:'100%',
     },
-
-
-
     font:{
         fontSize:36,
         color:'#696969',
@@ -141,48 +138,48 @@ const styles = StyleSheet.create({
     //5 10 15 10 5
 
     0:{
-        width:'45%',
+        width:'60%',
         height:'5%',
         borderTopLeftRadius:10
     },
     1:{
-        width:'55%',
+        width:'70%',
         height:'5%',
         borderTopLeftRadius:10
     },
     2:{
-        width:'65%',
+        width:'80%',
         height:'5%',
         borderTopLeftRadius:10
     },
     3:{
-        width:'75%',
+        width:'90%',
         height:'5%',
         borderTopLeftRadius:10
     },
     4:{//最中间一个
-        width:'85%',
-        height:'40%',
+        width:'100%',
+        height:'55%',
         borderTopLeftRadius:10,
         borderBottomLeftRadius:10
     },
     5:{
-        width:'75%',
+        width:'90%',
         height:'5%',
         borderBottomLeftRadius:10
     },
     6:{
-        width:'65%',
+        width:'80%',
         height:'5%',
         borderBottomLeftRadius:10
     },
     7:{
-        width:'55%',
+        width:'70%',
         height:'5%',
         borderBottomLeftRadius:10
     },
     8:{
-        width:'45%',
+        width:'60%',
         height:'5%',
         borderBottomLeftRadius:10
     },

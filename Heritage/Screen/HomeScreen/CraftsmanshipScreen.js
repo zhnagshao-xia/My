@@ -36,14 +36,14 @@ export default function CraftsmanshipScreen( { navigation } ) {
                             <ImageBackground style={styles.pic}>
                                 {item.pic}
                                 <View style={styles.eye}>
-                                    <FontAwesome name={'eye'} size={20} color={'#fff'} />
-                                    <Text style={{marginLeft:8,color:'#fff'}}>{item.demo}</Text>
+                                    <FontAwesome name={'eye'} size={15} color={'#fff'} />
+                                    <Text style={{marginLeft:8,color:'#fff',fontSize:11}}>{item.demo}</Text>
                                 </View>
                             </ImageBackground>
                             <TouchableOpacity style={styles.introduce}
                             onPress={() => navigation.navigate('故事')}>
                                 <View style={styles.introduce_up}>
-                                    <View style={{borderRightWidth: 1,justifyContent:"center" }}><Text style={{ fontSize: 17,marginRight:7}}>匠心逐梦</Text></View>
+                                    <View style={{borderRightWidth: 1,justifyContent:"center" }}><Text style={{ fontSize: 15,marginRight:7}}>匠心逐梦</Text></View>
                                     <View style={{paddingLeft: 7 ,justifyContent:"center"}}><Text style={styles.demol}>{item.demo1}</Text></View>
                                 </View>
                                 <View style={styles.introduce_down}>
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     },
     pic: {
         width: '90%',
-        height: 230,
+        height: 200,
         marginVertical: 16,
         backgroundColor: '#000'
     },
@@ -95,7 +95,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     demol: {
-        fontSize: 16,
+        fontSize: 14,
+    },
+    demo2: {
+        fontSize: 13,
     }
 
 });
