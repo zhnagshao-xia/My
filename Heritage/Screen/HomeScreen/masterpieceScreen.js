@@ -1,7 +1,10 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { View } from 'react-native';
+import Turn from '../../turn'
 export default function masterpieceScreen() {
   return (
-    <Text>Hello, I am your cat!</Text>
+    <View style={{flex:1}}>
+        <Turn />
+    </View>
   );
 }
