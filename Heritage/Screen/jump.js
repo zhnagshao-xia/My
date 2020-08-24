@@ -29,6 +29,8 @@ import addressScreen from './MyScreen/addressScreen'
 import authenticationScreen from './MyScreen/authenticationScreen'
 import serviceScreen from './MyScreen/serviceScreen'
 import outScreen from './MyScreen/outScreen'
+import editScreen from './MyScreen/editScreen'
+
 
 
 
@@ -41,15 +43,19 @@ const HomeStack = createStackNavigator();
 export default function bottom_nav() {
   return (<NavigationContainer independent="true">
     <Tab.Navigator
-      activeColor='#945357'
-      labelStyle={{ fontSize: 2 }}
-      barStyle={{ backgroundColor: "#fff" }}>
+    tabBarOptions={{
+      activeTintColor: '#945357',
+      inactiveTintColor: 'gray',
+    }}>
+      {/* // activeColor='#945357'
+      // labelStyle={{ fontSize: 2 }}
+      // barStyle={{ backgroundColor: "#000" }}> */}
       <Tab.Screen name="首页"
         options={{
           tabBarIcon: ({ color }) => (
             <FontAwesome
               name={'home'}
-              size={28}
+              size={31}
               color={color} />
           ),
         }} >
@@ -75,7 +81,7 @@ export default function bottom_nav() {
           tabBarIcon: ({ color }) => (
             <FontAwesome
               name={'credit-card'}
-              size={23}
+              size={25}
               color={color} />
           ),
         }} >
@@ -86,7 +92,7 @@ export default function bottom_nav() {
           tabBarIcon: ({ color }) => (
             <FontAwesome
               name={'cloud'}
-              size={22}
+              size={26}
               color={color} />
           ),
         }} ></Tab.Screen>
@@ -110,6 +116,7 @@ export default function bottom_nav() {
               <HomeStack.Screen name="认证" component={authenticationScreen} />
               <HomeStack.Screen name="客服" component={serviceScreen} />
               <HomeStack.Screen name="设置" component={outScreen} />
+              <HomeStack.Screen name="编辑" component={editScreen} />
             </SettingsStack.Navigator>
           )}
         </Tab.Screen>

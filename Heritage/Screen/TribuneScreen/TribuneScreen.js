@@ -29,7 +29,7 @@ export default class BasicTabsExample extends React.Component {
         <Tabs tabs={tabs}
         tabBarTextStyle={{
           color:"#945357",
-          fontSize:12
+          fontSize:15
         }}
         tabBarUnderlineStyle={{
           width:50,

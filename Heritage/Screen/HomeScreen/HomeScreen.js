@@ -19,12 +19,12 @@ export default class HomeScreen extends Component {
     const style = {
       height: '100%',
       width: '100%',
-    };
+    }; 
     
-
     return (
-      <View style={{ flex: 1 }}>
-        <Tabs tabs={tabs}
+       <View style={{ flex: 1 }}> 
+        <Tabs
+         tabs={tabs}
         tabBarTextStyle={{
           color:"#945357",
           fontSize:15
