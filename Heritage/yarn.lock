@@ -5347,6 +5347,11 @@ react-native-collapsible@^1.5.2:
   dependencies:
     prop-types "^15.6.2"
 
+react-native-ezswiper@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.npm.taobao.org/react-native-ezswiper/download/react-native-ezswiper-1.3.0.tgz#706865e3caf67bdc190e4127583a4d4bec372f05"
+  integrity sha1-cGhl48r2e9wZDkEnWDpNS+w3LwU=
+
 react-native-gesture-handler@^1.6.1:
   version "1.7.0"
   resolved "https://registry.npm.taobao.org/react-native-gesture-handler/download/react-native-gesture-handler-1.7.0.tgz#0ef74a5ba836832e497dc49eb1ce58baa6c617e5"

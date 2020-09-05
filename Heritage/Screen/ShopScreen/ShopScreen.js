@@ -1,7 +1,31 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Text, View, Image, ImageBackground, TextInput, TouchableOpacity } from 'react-native';
+import { ScrollView, 
+  StyleSheet, 
+  Text, 
+  View, 
+  Image, 
+  ImageBackground, 
+  TextInput, 
+  TouchableOpacity,
+  Platform,
+  Dimensions, } from 'react-native';
 import { Drawer, List, } from '@ant-design/react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
+
+const { height, width } = Dimensions.get('window');
+import EZSwiper from 'react-native-ezswiper';
+
+const images = [
+require('../../Image/ShopScreen/pic26.png'),
+require('../../Image/ShopScreen/pic27.png'),
+require('../../Image/ShopScreen/pic28.png'),
+require('../../Image/ShopScreen/pic26.png'),
+require('../../Image/ShopScreen/pic27.png'),
+require('../../Image/ShopScreen/pic28.png'),
+require('../../Image/ShopScreen/pic27.png'),
+require('../../Image/ShopScreen/pic28.png'),
+require('../../Image/ShopScreen/pic26.png'),]
+
 const styles = StyleSheet.create({
   scrow_container: {
     backgroundColor: '#f2f2f2',

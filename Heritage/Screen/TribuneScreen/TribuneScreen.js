@@ -5,9 +5,6 @@ import { TextInput } from 'react-native-gesture-handler';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
 export default class BasicTabsExample extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     const tabs = [
       { title: '关注' },
