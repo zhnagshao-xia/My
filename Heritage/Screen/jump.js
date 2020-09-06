@@ -4,12 +4,14 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator} from '@react-navigation/stack';
-
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
+
 import HomeScreen from './HomeScreen/HomeScreen'
 import MyScreen from './MyScreen/MyScreen'
 import ShopScreen from './ShopScreen/ShopScreen'
 import TribuneScreen from './TribuneScreen/TribuneScreen'
+import WelcomeScreen from '../Screen/welcome'
+
 import CraftsmanshipScreen from './HomeScreen/CraftsmanshipScreen'
 import volunteerScreen from './HomeScreen/volunteerScreen'
 import activityScreen from './HomeScreen/activityScreen'
@@ -21,6 +23,8 @@ import Volunteerhistory from './HomeScreen/Volunteerhistory'
 import storyScreen from './HomeScreen/storyScreen'
 import masterpieceScreen from './HomeScreen/masterpieceScreen'
 import CraftsmanScreen from './HomeScreen/CraftsmanScreen'
+import Craftsmandetails from './HomeScreen/Craftsmandetails'
+
 import CollectionScreen from './MyScreen/CollectionScreen'
 import followScreen from './MyScreen/followScreen'
 import fansScreen from './MyScreen/fansScreen'
@@ -30,10 +34,16 @@ import authenticationScreen from './MyScreen/authenticationScreen'
 import serviceScreen from './MyScreen/serviceScreen'
 import outScreen from './MyScreen/outScreen'
 import editScreen from './MyScreen/editScreen'
-import WelcomeScreen from '../Screen/welcome'
+import loginScreen from './MyScreen/loginScreen'
+
+
+
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
+
+
+//底部导航栏
  function bottom_nav() {
   return (
     <Tab.Navigator
@@ -72,7 +82,7 @@ const Stack = createStackNavigator();
           ),
         }} ></Tab.Screen>
       <Tab.Screen name="我的" 
-       component={HomeScreen}
+       component={MyScreen}
         options={{
           tabBarIcon: ({ color }) => (
             <FontAwesome
@@ -89,7 +99,7 @@ const Stack = createStackNavigator();
 // 堆栈导航
 function MyStack() {
     return (
-      <Stack.Navigator  >
+      <Stack.Navigator>
         <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} options={{headerShown:false}} />
         <Stack.Screen name="bottom_nav" component={bottom_nav}  options={{headerShown:false}}/>
         <Stack.Screen name="我的" component={MyScreen}  />
@@ -106,6 +116,8 @@ function MyStack() {
         <Stack.Screen name="匠心力作" component={masterpieceScreen} />
         <Stack.Screen name="signUp" options={{title: '填报信息'}} component={SignUp} />
         <Stack.Screen name="手艺人" component={CraftsmanScreen} />
+        <Stack.Screen name="手艺人详细页面" component={Craftsmandetails} />
+
         <Stack.Screen name="收藏" component={CollectionScreen} />
         <Stack.Screen name="关注" component={followScreen} />
         <Stack.Screen name="粉丝" component={fansScreen} />
@@ -115,6 +127,7 @@ function MyStack() {
         <Stack.Screen name="客服" component={serviceScreen} />
         <Stack.Screen name="设置" component={outScreen} />
         <Stack.Screen name="编辑" component={editScreen} />
+        <Stack.Screen name="登录" component={loginScreen} options={{headerShown:false}}/>
       </Stack.Navigator>
     );
   }

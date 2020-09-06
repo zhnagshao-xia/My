@@ -193,7 +193,8 @@ export default class HomeScreen extends Component {
                         <Text style={{ color: '#945357',fontSize: 12,marginRight:3 }}>+</Text>
                         <Text style={{ fontSize: 12 }}>关注</Text>
                       </TouchableOpacity>
-                      <TouchableOpacity style={styles.touxiang}>
+                      <TouchableOpacity style={styles.touxiang}
+                      onPress={() => navigation.navigate('手艺人详细页面')}>
                         <Image
                           style={{ width: '100%', height: '100%', resizeMode: 'stretch', }}
                           source={require('../../Image/HomeScreen/yi2.png')}>

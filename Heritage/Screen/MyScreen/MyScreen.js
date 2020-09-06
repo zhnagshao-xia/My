@@ -4,9 +4,6 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
 
 export default class MyScreen extends Component {
-    constructor(props) {
-      super(props);
-    }
     render() {
         const { navigation } = this.props;
   return ( 
@@ -26,7 +23,9 @@ export default class MyScreen extends Component {
                   </Image>
                   </View>
                   <View style={{flexDirection:'row',alignItems:'center',marginTop:5,}}>
-                    <Text style={{fontSize:16,marginLeft:125,marginRight:5}}>高血堂</Text>
+                  <TouchableOpacity
+                  onPress={() => navigation.navigate('登录')}>
+                    <Text style={{fontSize:16,marginLeft:125,marginRight:5}}>高血堂</Text></TouchableOpacity>
                     <TouchableOpacity>
                     <FontAwesome name={'pencil'} size={16} color={'#000'}/>
                     </TouchableOpacity>
