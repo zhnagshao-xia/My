@@ -1139,6 +1139,13 @@
   resolved "https://registry.npm.taobao.org/@react-navigation/material-bottom-tabs/download/@react-navigation/material-bottom-tabs-5.2.14.tgz#4ee565fda4200dbefee497b558dbd2e5442ab4bc"
   integrity sha1-TuVl/aQgDb7+5Je1WNvS5UQqtLw=
 
+"@react-navigation/material-top-tabs@^5.2.16":
+  version "5.2.16"
+  resolved "https://registry.npm.taobao.org/@react-navigation/material-top-tabs/download/@react-navigation/material-top-tabs-5.2.16.tgz#96a366f9b2c257c9b46f889b95e4fcb2a9ff0a56"
+  integrity sha1-lqNm+bLCV8m0b4ibleT8sqn/ClY=
+  dependencies:
+    color "^3.1.2"
+
 "@react-navigation/native@^3.8.0":
   version "3.8.0"
   resolved "https://registry.npm.taobao.org/@react-navigation/native/download/@react-navigation/native-3.8.0.tgz#35882c3fc2f997ea1a43c12a15088cf4c818fd92"

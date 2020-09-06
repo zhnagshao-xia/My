@@ -73,7 +73,7 @@ export default class WelcomeScreen extends Component {
               top:'50%',
               left:'65%'
             }}
-          onPress={() => navigation.navigate('jump')}>
+          onPress={() => navigation.navigate('bottom_nav')}>
           <Image
             style={{
               width: '100%',
