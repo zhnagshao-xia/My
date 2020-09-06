@@ -43,7 +43,7 @@ export default class Right extends Component {
                     this.props.onDown('slow')
                 }
             }else{//上滑事件
-                if(isQuick < 2){//快速滑动，可调节
+                if(isQuick < 8){//快速滑动，可调节
                     // console.info("快速滑动",isQuick);
                     this.props.onUp('quick')
                 }else{//慢速滑动

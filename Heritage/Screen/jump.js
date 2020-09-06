@@ -72,7 +72,7 @@ const Stack = createStackNavigator();
           ),
         }} ></Tab.Screen>
       <Tab.Screen name="我的" 
-       component={HomeScreen}
+       component={MyScreen}
         options={{
           tabBarIcon: ({ color }) => (
             <FontAwesome
