@@ -21,6 +21,8 @@ import Volunteerhistory from './HomeScreen/Volunteerhistory'
 import storyScreen from './HomeScreen/storyScreen'
 import masterpieceScreen from './HomeScreen/masterpieceScreen'
 import CraftsmanScreen from './HomeScreen/CraftsmanScreen'
+import Craftsmandetail from './HomeScreen/Craftsmandetail'
+
 import CollectionScreen from './MyScreen/CollectionScreen'
 import followScreen from './MyScreen/followScreen'
 import fansScreen from './MyScreen/fansScreen'
@@ -106,6 +108,8 @@ function MyStack() {
         <Stack.Screen name="匠心力作" component={masterpieceScreen} />
         <Stack.Screen name="signUp" options={{title: '填报信息'}} component={SignUp} />
         <Stack.Screen name="手艺人" component={CraftsmanScreen} />
+        <Stack.Screen name="手艺人详细页面" component={Craftsmandetail} />
+
         <Stack.Screen name="收藏" component={CollectionScreen} />
         <Stack.Screen name="关注" component={followScreen} />
         <Stack.Screen name="粉丝" component={fansScreen} />
