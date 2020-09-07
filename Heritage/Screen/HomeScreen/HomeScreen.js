@@ -188,7 +188,9 @@ export default class HomeScreen extends Component {
                               <Text style={{ color: '#945357', fontSize: 12, marginRight: 3 }}>+</Text>
                               <Text style={{ fontSize: 12 }}>关注</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity style={styles.touxiang}>
+                            <TouchableOpacity
+                              onPress={() => navigation.navigate('手艺人详细页面')}
+                              style={styles.touxiang}>
                               <Image
                                 style={{ width: '100%', height: '100%', resizeMode: 'stretch', }}
                                 source={require('../../Image/HomeScreen/yi1.png')}>
@@ -201,72 +203,6 @@ export default class HomeScreen extends Component {
                     }
                   />
                 </ScrollView>
-                {/* <View style={{ width: '95%' }}>
-                  <View style={{ width: '100%', height: 190, }}>
-                    <Image
-                      style={{ width: '100%', height: '100%', resizeMode: 'stretch', }}
-                      source={require('../../Image/HomeScreen/Large.jpg')}>
-                    </Image>
-                  </View>
-                  <View style={styles.fourword}>
-
-                    <View style={{
-                      width: '100%',
-                      flexDirection: 'row',
-                      justifyContent: 'space-between'
-                    }}>
-                      <View style={{ marginLeft: 110, marginVertical: 10 }}>
-                        <Text style={{ fontSize: 14 }}>叶良康</Text>
-                        <Text style={{ color: '#c6a46c', fontSize: 12}}>鄞州竹编非遗传承人</Text>
-                      </View>
-                      <TouchableOpacity style={styles.guanzhu}>
-                        <Text style={{ color: '#945357' ,fontSize: 12,marginRight:3}}>+</Text>
-                        <Text style={{ fontSize: 12 }}>关注</Text>
-                      </TouchableOpacity>
-                      <TouchableOpacity style={styles.touxiang}>
-                        <Image
-                          style={{ width: '100%', height: '100%', resizeMode: 'stretch', }}
-                          source={require('../../Image/HomeScreen/yi1.png')}>
-                        </Image>
-                      </TouchableOpacity>
-                    </View>
-                    <Text style={{ marginLeft: 30,fontSize: 14 }}>潜心研究工艺竹编，成为代表性传承人</Text>
-                  </View>
-                </View>
-                <View style={{ width: '95%' }}>
-                  <View style={{ width: '100%', height: 190, }}>
-                    <Image
-                      style={{ width: '100%', height: '100%', resizeMode: 'stretch', }}
-                      source={require('../../Image/HomeScreen/bei.png')}>
-                    </Image>
-                  </View>
-                  <View style={{
-                    width: '100%',
-                    marginBottom: 20,
-                  }}>
-                    <View style={{
-                      width: '100%',
-                      flexDirection: 'row',
-                      justifyContent: 'space-between'
-                    }}>
-                      <View style={{ marginLeft: 110, marginVertical: 10 }}>
-                        <Text style={{ fontSize: 14 }}>夏雨缀</Text>
-                        <Text style={{ color: '#c6a46c',fontSize: 12 }}>舟山贝雕非遗传承人</Text>
-                      </View>
-                      <TouchableOpacity style={styles.guanzhu}>
-                        <Text style={{ color: '#945357',fontSize: 12,marginRight:3 }}>+</Text>
-                        <Text style={{ fontSize: 12 }}>关注</Text>
-                      </TouchableOpacity>
-                      <TouchableOpacity style={styles.touxiang}>
-                        <Image
-                          style={{ width: '100%', height: '100%', resizeMode: 'stretch', }}
-                          source={require('../../Image/HomeScreen/yi2.png')}>
-                        </Image>
-                      </TouchableOpacity>
-                    </View>
-                    <Text style={{ marginLeft: 30,fontSize: 14 }}>被评为“中国工美行业艺术大师”</Text>
-                  </View>
-                </View> */}
                 <TouchableOpacity
                   onPress={() => navigation.navigate('手艺人')}
                   style={{

@@ -6,10 +6,12 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator} from '@react-navigation/stack';
 
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
+
 import HomeScreen from './HomeScreen/HomeScreen'
 import MyScreen from './MyScreen/MyScreen'
 import ShopScreen from './ShopScreen/ShopScreen'
 import TribuneScreen from './TribuneScreen/TribuneScreen'
+
 import CraftsmanshipScreen from './HomeScreen/CraftsmanshipScreen'
 import volunteerScreen from './HomeScreen/volunteerScreen'
 import activityScreen from './HomeScreen/activityScreen'
@@ -23,6 +25,15 @@ import masterpieceScreen from './HomeScreen/masterpieceScreen'
 import CraftsmanScreen from './HomeScreen/CraftsmanScreen'
 import Craftsmandetail from './HomeScreen/Craftsmandetail'
 
+import Shopcart from './ShopScreen/Shopcart'
+import Shopclassify from './ShopScreen/Shopclassify'
+import Shopproductdetail from './ShopScreen/Shopproductdetail'
+import Wood_carving from './ShopScreen/Wood_carving'
+import Tree_root_carving from './ShopScreen/Tree_root_carving'
+import Bronze_carving from './ShopScreen/Bronze_carving'
+import Stone_carving from './ShopScreen/Stone_carving'
+import Other_carving from './ShopScreen/Other_carving'
+
 import CollectionScreen from './MyScreen/CollectionScreen'
 import followScreen from './MyScreen/followScreen'
 import fansScreen from './MyScreen/fansScreen'
@@ -33,6 +44,8 @@ import serviceScreen from './MyScreen/serviceScreen'
 import outScreen from './MyScreen/outScreen'
 import editScreen from './MyScreen/editScreen'
 import WelcomeScreen from '../Screen/welcome'
+import Productdetail from './ShopScreen/Shopproductdetail';
+
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
@@ -109,6 +122,15 @@ function MyStack() {
         <Stack.Screen name="signUp" options={{title: '填报信息'}} component={SignUp} />
         <Stack.Screen name="手艺人" component={CraftsmanScreen} />
         <Stack.Screen name="手艺人详细页面" component={Craftsmandetail} />
+
+        <Stack.Screen name="商城购物车" component={Shopcart} />
+        <Stack.Screen name="商城分类页面" component={Shopclassify} />
+        <Stack.Screen name="商品详情页面" component={Shopproductdetail} />
+        <Stack.Screen name="木雕详情页面" component={Wood_carving} />
+        <Stack.Screen name="根雕详情页面" component={Tree_root_carving} />
+        <Stack.Screen name="铜雕详情页面" component={Bronze_carving} />
+        <Stack.Screen name="石雕详情页面" component={Stone_carving} />
+        <Stack.Screen name="其他雕刻详情页面" component={Other_carving} />
 
         <Stack.Screen name="收藏" component={CollectionScreen} />
         <Stack.Screen name="关注" component={followScreen} />
