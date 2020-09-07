@@ -10,7 +10,6 @@ import HomeScreen from './HomeScreen/HomeScreen'
 import MyScreen from './MyScreen/MyScreen'
 import ShopScreen from './ShopScreen/ShopScreen'
 import TribuneScreen from './TribuneScreen/TribuneScreen'
-import WelcomeScreen from '../Screen/welcome'
 
 import CraftsmanshipScreen from './HomeScreen/CraftsmanshipScreen'
 import volunteerScreen from './HomeScreen/volunteerScreen'
@@ -23,7 +22,16 @@ import Volunteerhistory from './HomeScreen/Volunteerhistory'
 import storyScreen from './HomeScreen/storyScreen'
 import masterpieceScreen from './HomeScreen/masterpieceScreen'
 import CraftsmanScreen from './HomeScreen/CraftsmanScreen'
-import Craftsmandetails from './HomeScreen/Craftsmandetails'
+import Craftsmandetail from './HomeScreen/Craftsmandetail'
+
+import Shopcart from './ShopScreen/Shopcart'
+import Shopclassify from './ShopScreen/Shopclassify'
+import Shopproductdetail from './ShopScreen/Shopproductdetail'
+import Wood_carving from './ShopScreen/Wood_carving'
+import Tree_root_carving from './ShopScreen/Tree_root_carving'
+import Bronze_carving from './ShopScreen/Bronze_carving'
+import Stone_carving from './ShopScreen/Stone_carving'
+import Other_carving from './ShopScreen/Other_carving'
 
 import CollectionScreen from './MyScreen/CollectionScreen'
 import followScreen from './MyScreen/followScreen'
@@ -34,9 +42,8 @@ import authenticationScreen from './MyScreen/authenticationScreen'
 import serviceScreen from './MyScreen/serviceScreen'
 import outScreen from './MyScreen/outScreen'
 import editScreen from './MyScreen/editScreen'
-import loginScreen from './MyScreen/loginScreen'
-import registerScreen from './MyScreen/registerScreen'
-
+import WelcomeScreen from '../Screen/welcome'
+import Productdetail from './ShopScreen/Shopproductdetail';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -116,7 +123,20 @@ function MyStack() {
         <Stack.Screen name="匠心力作" component={masterpieceScreen} />
         <Stack.Screen name="signUp" options={{title: '填报信息'}} component={SignUp} />
         <Stack.Screen name="手艺人" component={CraftsmanScreen} />
+<<<<<<< HEAD
         <Stack.Screen name="手艺人详细页面" component={Craftsmandetails} />
+=======
+        <Stack.Screen name="手艺人详细页面" component={Craftsmandetail} />
+
+        <Stack.Screen name="商城购物车" component={Shopcart} />
+        <Stack.Screen name="商城分类页面" component={Shopclassify} />
+        <Stack.Screen name="商品详情页面" component={Shopproductdetail} />
+        <Stack.Screen name="木雕详情页面" component={Wood_carving} />
+        <Stack.Screen name="根雕详情页面" component={Tree_root_carving} />
+        <Stack.Screen name="铜雕详情页面" component={Bronze_carving} />
+        <Stack.Screen name="石雕详情页面" component={Stone_carving} />
+        <Stack.Screen name="其他雕刻详情页面" component={Other_carving} />
+>>>>>>> 7a0b7fa986097eb4db5f3f670aee5d658bde5a4d
 
         <Stack.Screen name="收藏" component={CollectionScreen} />
         <Stack.Screen name="关注" component={followScreen} />

@@ -1,0 +1,79 @@
+{
+    "data": [
+      {
+        "shopName" : "店铺名称1",
+        "shopId" : "0001",
+        "shopItems": [
+          {
+            "itemName": "商品一",
+            "itemId": "10001",
+            "itemimg": "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=261032692,3001886076&fm=26&gp=0.jpg",
+            "itemPrice": 100.00,
+            "minQuantity": 1,
+            "maxQuantity": 10,
+            "itemDes": "这个测试商品"
+          },
+          {
+            "itemName": "传统纯手工打造油纸伞",
+            "itemId": "10001",
+            "itemimg": "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=261032692,3001886076&fm=26&gp=0.jpg",
+            "itemPrice": 110.00,
+            "minQuantity": 1,
+            "maxQuantity": 20,
+            "itemDes": "这个测试商品"
+          },
+          {
+            "itemName": "商品一",
+            "itemId": "10001",
+            "itemimg": "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2384726839,1710281497&fm=26&gp=0.jpg",
+            "itemPrice": 120.00,
+            "minQuantity": 1,
+            "maxQuantity": 30,
+            "itemDes": "这个测试商品"
+          },
+          {
+            "itemName": "商品一",
+            "itemId": "10001",
+            "itemimg": "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=261032692,3001886076&fm=26&gp=0.jpg",
+            "itemPrice": 130.00,
+            "minQuantity": 1,
+            "maxQuantity": 40,
+            "itemDes": "这个测试商品"
+          }
+        ]
+      },
+      {
+        "shopName" : "店铺名称2",
+        "shopId" : "0001",
+        "shopItems": [
+          {
+            "itemName": "商品一",
+            "itemId": "10001",
+            "itemimg": "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2384726839,1710281497&fm=26&gp=0.jpg",
+            "itemPrice": 140.00,
+            "minQuantity": 1,
+            "maxQuantity": 5,
+            "itemDes": "这个测试商品"
+          },
+          {
+            "itemName": "商品一",
+            "itemId": "10001",
+            "itemimg": "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=992132438,3095789428&fm=26&gp=0.jpg",
+            "itemPrice": 150.00,
+            "minQuantity": 1,
+            "maxQuantity": 15,
+            "itemDes": "这个测试商品"
+          },
+          {
+            "itemName": "商品一",
+            "itemId": "10001",
+            "itemimg": "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2384726839,1710281497&fm=26&gp=0.jpg",
+            "itemPrice": 160.00,
+            "minQuantity": 1,
+            "maxQuantity": 22,
+            "itemDes": "这个测试商品"
+          }
+        ]
+      }
+    ]
+  }

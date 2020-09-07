@@ -17,7 +17,7 @@ export default function ActivityDetails({navigation}) {
                 ]}
                 renderItem={({ item }) =>
                     <View style={{ 
-                        paddingHorizontal: 30,
+                     paddingHorizontal: 30,
                      paddingTop: 20,
                      paddingBottom:40,
                      alignItems:"center" }}>
@@ -49,7 +49,8 @@ export default function ActivityDetails({navigation}) {
                             backgroundColor:'#6092a0',
                             justifyContent:"center",
                             alignItems:"center",
-                            borderRadius:10,}}>
+                            borderRadius:10
+                            }}>
                             <Text style={{color:'#fff',fontSize:14}}>去参加</Text>
                         </TouchableHighlight>
                     </View>
