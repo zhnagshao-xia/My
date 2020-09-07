@@ -7,9 +7,10 @@ import {
     FlatList, 
     ImageBackground, 
     Image, 
+    TouchableHighlight,
     TouchableOpacity } from 'react-native';
-import FontAwesome from 'react-native-vector-icons/FontAwesome'
-export default function loginScreen({navigation}) {
+    import FontAwesome from 'react-native-vector-icons/FontAwesome'
+export default function registerScreen({navigation}) {
     return (
         <View style={styles.container}>
           <ImageBackground source={require('../../Image/loginScreen/background.png')} style={styles.Image}>
@@ -19,11 +20,11 @@ export default function loginScreen({navigation}) {
               </View>
             </View>
             <View style={styles.container_down}>
-              <View style={styles.log}>
-                <Text style={{ fontSize: 16, letterSpacing: 12, color: '#6092a0' }}>登录</Text>
+              <View style={styles.register}>
+                <Text style={{ fontSize: 16, letterSpacing: 12, color: '#6092a0' }}>注册</Text>
               </View>
               <View style={styles.textinput}>
-                <View style={{marginLeft:10,marginRight:5}}>
+              <View style={{marginLeft:10,marginRight:5}}>
                 <FontAwesome name={'user'} size={28} color={'#6092a0'}/></View>
                 <TextInput placeholderTextColor="#6092a0" style={{ height: 50, width: 250 }} placeholder='请输入用户名...'></TextInput>
               </View>
@@ -32,18 +33,27 @@ export default function loginScreen({navigation}) {
                 <FontAwesome name={'lock'} size={29} color={'#6092a0'}/></View>
                 <TextInput placeholderTextColor="#6092a0" style={{ height: 50, width: 250 }} placeholder='请输入密码...'></TextInput>
               </View>
-              <TouchableOpacity
-               onPress={() => navigation.navigate('bottom_nav')}
-              style={styles.logbutton}>
-                <Text style={{color:'#fdfdfd'}}>立即登录</Text>
+              <View style={styles.textinput}>
+              <View style={{marginLeft:10,marginRight:5}}>
+                <FontAwesome name={'lock'} size={29} color={'#6092a0'}/></View>
+                <TextInput placeholderTextColor="#6092a0" style={{ height: 50, width: 250 }} placeholder='请确认密码...'></TextInput>
+              </View>
+              <View style={{flexDirection:'row'}}>
+                <Text>注册即代表您已同意《</Text>
+                <TouchableOpacity><Text style={{color:"#6092a0"}}>注册与使用协议</Text></TouchableOpacity>
+                <Text>》</Text>
+              </View>
+              <TouchableOpacity 
+              onPress={() => navigation.navigate('登录')}
+              style={styles.registerbutton}>
+                <Text style={{color:'#fdfdfd'}}>立即注册</Text>
               </TouchableOpacity>
             </View>
-            <View style={styles.container_bottom}>       
-              <TouchableOpacity 
-              onPress={() => navigation.navigate('注册')}
-              style={{width:'32%'}}><Text style={{color:'#fff'}}>注册账号</Text></TouchableOpacity>
-              <TouchableOpacity style={{width:'32%',alignItems:'flex-end'}}><Text style={{color:'#fff'}}>忘记密码</Text></TouchableOpacity>         
-            </View>
+            <View style={styles.container_bottom}>
+              <View style={styles.line}></View>          
+              <TouchableOpacity><Text style={{color:'#fff'}}>联系我们</Text></TouchableOpacity>
+              <View style={styles.line}></View>
+            </View> 
             <TouchableOpacity
             onPress={() => navigation.goBack()}
             activeOpacity={0.7}
@@ -53,7 +63,7 @@ export default function loginScreen({navigation}) {
           </ImageBackground>
         </View>
       );
-    }
+}
 
 const styles = StyleSheet.create({
     container: {
@@ -61,7 +71,7 @@ const styles = StyleSheet.create({
     },
     Image: {
       flex: 1,
-      resizeMode: "cover",
+      resizeMode: "cover"
     },
     container_up: {
       height: '35%',
@@ -79,18 +89,18 @@ const styles = StyleSheet.create({
       height: '95%'
     },
     container_down: {
-      height: 270,
+      height: 350,
       borderRadius: 10,
       alignItems: 'center',
-      marginTop: 60,
+      marginVertical:22,
       marginHorizontal: 35,
       backgroundColor:'#fff'
     },
-    log: {
+    register: {
       height: 50,
       width: '100%',
       alignItems: 'center',
-      flexDirection: 'column-reverse'
+      flexDirection: 'column-reverse',
     },
     textinput: {
       width: '85%',
@@ -103,11 +113,11 @@ const styles = StyleSheet.create({
       borderWidth:1,
       borderColor:'#6092a0'
     },
-    logbutton:{
+    registerbutton:{
       marginTop:15,
       backgroundColor:'#6092a0',
       width:'85%',
-      height:'15%',
+      height:'10%',
       justifyContent:'center',
       alignItems:'center',
       borderRadius:20
@@ -115,7 +125,13 @@ const styles = StyleSheet.create({
     container_bottom:{
       flexDirection:'row',
       alignItems:'center',
-      justifyContent:'space-around',
-      marginTop:40
+      marginTop:1
     },
+    line:{
+      borderWidth:1, 
+      width:'35%', 
+      height:1, 
+      borderColor:'#fff',
+      marginHorizontal: 15
+    }
   }); 
