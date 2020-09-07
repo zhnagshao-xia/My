@@ -6,6 +6,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator} from '@react-navigation/stack';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
+import WelcomeScreen from '../Screen/welcome'
 import HomeScreen from './HomeScreen/HomeScreen'
 import MyScreen from './MyScreen/MyScreen'
 import ShopScreen from './ShopScreen/ShopScreen'
@@ -42,8 +43,11 @@ import authenticationScreen from './MyScreen/authenticationScreen'
 import serviceScreen from './MyScreen/serviceScreen'
 import outScreen from './MyScreen/outScreen'
 import editScreen from './MyScreen/editScreen'
-import WelcomeScreen from '../Screen/welcome'
-import Productdetail from './ShopScreen/Shopproductdetail';
+import loginScreen from './MyScreen/loginScreen'
+import registerScreen from './MyScreen/registerScreen'
+
+
+
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -123,9 +127,6 @@ function MyStack() {
         <Stack.Screen name="匠心力作" component={masterpieceScreen} />
         <Stack.Screen name="signUp" options={{title: '填报信息'}} component={SignUp} />
         <Stack.Screen name="手艺人" component={CraftsmanScreen} />
-<<<<<<< HEAD
-        <Stack.Screen name="手艺人详细页面" component={Craftsmandetails} />
-=======
         <Stack.Screen name="手艺人详细页面" component={Craftsmandetail} />
 
         <Stack.Screen name="商城购物车" component={Shopcart} />
@@ -136,7 +137,6 @@ function MyStack() {
         <Stack.Screen name="铜雕详情页面" component={Bronze_carving} />
         <Stack.Screen name="石雕详情页面" component={Stone_carving} />
         <Stack.Screen name="其他雕刻详情页面" component={Other_carving} />
->>>>>>> 7a0b7fa986097eb4db5f3f670aee5d658bde5a4d
 
         <Stack.Screen name="收藏" component={CollectionScreen} />
         <Stack.Screen name="关注" component={followScreen} />

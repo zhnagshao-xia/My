@@ -200,31 +200,11 @@ export default class HomeScreen extends Component {
                           <Text style={{ marginLeft: 30, fontSize: 14 }}>{item.title3}</Text>
                         </View>
                       </View>
-<<<<<<< HEAD
-                      <TouchableOpacity style={styles.guanzhu}>
-                        <Text style={{ color: '#945357',fontSize: 12,marginRight:3 }}>+</Text>
-                        <Text style={{ fontSize: 12 }}>关注</Text>
-                      </TouchableOpacity>
-                      <TouchableOpacity style={styles.touxiang}
-                      onPress={() => navigation.navigate('手艺人详细页面')}>
-                        <Image
-                          style={{ width: '100%', height: '100%', resizeMode: 'stretch', }}
-                          source={require('../../Image/HomeScreen/yi2.png')}>
-                        </Image>
-                      </TouchableOpacity>
-                    </View>
-                    <Text style={{ marginLeft: 30,fontSize: 14 }}>被评为“中国工美行业艺术大师”</Text>
-                  </View>
-                </View>
-                <TouchableOpacity 
-                onPress={() => navigation.navigate('手艺人')}
-=======
                     }
                   />
                 </ScrollView>
                 <TouchableOpacity
                   onPress={() => navigation.navigate('手艺人')}
->>>>>>> 7a0b7fa986097eb4db5f3f670aee5d658bde5a4d
                   style={{
                     width: '95%',
                     height: 40,
