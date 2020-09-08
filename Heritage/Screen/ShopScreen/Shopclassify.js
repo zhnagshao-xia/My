@@ -89,7 +89,7 @@ export default class BasicTabsExample extends React.Component {
                                                 </ImageBackground>
                                             </TouchableOpacity>
                                             <TouchableOpacity style={{ width: '90%', height: 250, backgroundColor: 'red', marginTop: 15 }}>
-                                                <ImageBackground
+                                                <ImageBackground 
                                                     style={{ width: '100%', height: '100%', flexDirection: 'row-reverse' }}
                                                     source={require('../../Image/ShopScreen/pic37.png')}>
                                                     <View style={{ width: '100%', height: 50, backgroundColor: 'rgba(50,50,50,0.7)', marginTop: 180 }}>
@@ -192,27 +192,37 @@ export default class BasicTabsExample extends React.Component {
                                 <View style={{ width: '100%', height: '100%', backgroundColor: '#f2f2f2', alignItems: 'center' }}>
                                     <View style={{ width: '100%', height: 165, backgroundColor: '#fff', flexDirection: 'row', justifyContent: 'space-around' }}>
                                         <ImageBackground style={{ width: 25, height: 150, resizeMode: 'stretch' }} source={require('../../Image/ShopScreen/pic40.png')}>
-                                            <TouchableOpacity style={{ width: 28, height: 70, marginTop: 40, justifyContent: 'center' }} >
+                                            <TouchableOpacity 
+                                             onPress={() => navigation.navigate('德化陶瓷详情页面')}
+                                             style={{ width: 28, height: 70, marginTop: 40, justifyContent: 'center' }} >
                                                 <Text style={{ fontSize: 15, textAlign: 'center' }}>德化陶瓷</Text>
                                             </TouchableOpacity>
                                         </ImageBackground>
                                         <ImageBackground style={{ width: 25, height: 150, resizeMode: 'stretch' }} source={require('../../Image/ShopScreen/pic40.png')}>
-                                            <TouchableOpacity style={{ width: 28, height: 70, marginTop: 40, justifyContent: 'center' }}>
+                                            <TouchableOpacity 
+                                             onPress={() => navigation.navigate('建盏详情页面')}
+                                             style={{ width: 28, height: 70, marginTop: 40, justifyContent: 'center' }}>
                                                 <Text style={{ fontSize: 15, textAlign: 'center' }}>建盏</Text>
                                             </TouchableOpacity>
                                         </ImageBackground>
                                         <ImageBackground style={{ width: 25, height: 150, resizeMode: 'stretch' }} source={require('../../Image/ShopScreen/pic40.png')}>
-                                            <TouchableOpacity style={{ width: 28, height: 70, marginTop: 40, justifyContent: 'center' }} >
+                                            <TouchableOpacity 
+                                             onPress={() => navigation.navigate('陶瓷详情页面')}
+                                             style={{ width: 28, height: 70, marginTop: 40, justifyContent: 'center' }} >
                                                 <Text style={{ fontSize: 15, textAlign: 'center' }}>陶瓷</Text>
                                             </TouchableOpacity>
                                         </ImageBackground>
                                         <ImageBackground style={{ width: 25, height: 150, resizeMode: 'stretch' }} source={require('../../Image/ShopScreen/pic40.png')}>
-                                            <TouchableOpacity style={{ width: 28, height: 70, marginTop: 40, justifyContent: 'center' }}>
+                                            <TouchableOpacity 
+                                             onPress={() => navigation.navigate('瓷板画详情页面')}
+                                             style={{ width: 28, height: 70, marginTop: 40, justifyContent: 'center' }}>
                                                 <Text style={{ fontSize: 15, textAlign: 'center' }}>瓷板画</Text>
                                             </TouchableOpacity>
                                         </ImageBackground>
                                         <ImageBackground style={{ width: 25, height: 150, resizeMode: 'stretch' }} source={require('../../Image/ShopScreen/pic40.png')}>
-                                            <TouchableOpacity style={{ width: 28, height: 70, marginTop: 40, justifyContent: 'center' }}>
+                                            <TouchableOpacity 
+                                             onPress={() => navigation.navigate('紫砂详情页面')}
+                                             style={{ width: 28, height: 70, marginTop: 40, justifyContent: 'center' }}>
                                                 <Text style={{ fontSize: 15, textAlign: 'center' }}>紫砂</Text>
                                             </TouchableOpacity>
                                         </ImageBackground>
@@ -353,22 +363,30 @@ export default class BasicTabsExample extends React.Component {
                                 <View style={{ width: '100%', height: '100%', backgroundColor: '#f2f2f2', alignItems: 'center' }}>
                                     <View style={{ width: '100%', height: 165, backgroundColor: '#fff', flexDirection: 'row', justifyContent: 'space-around' }}>
                                         <ImageBackground style={{ width: 25, height: 150, resizeMode: 'stretch' }} source={require('../../Image/ShopScreen/pic40.png')}>
-                                            <TouchableOpacity style={{ width: 28, height: 70, marginTop: 40, justifyContent: 'center' }} >
+                                            <TouchableOpacity 
+                                             onPress={() => navigation.navigate('香制品详情页面')}
+                                             style={{ width: 28, height: 70, marginTop: 40, justifyContent: 'center' }} >
                                                 <Text style={{ fontSize: 15, textAlign: 'center' }}>香制品</Text>
                                             </TouchableOpacity>
                                         </ImageBackground>
                                         <ImageBackground style={{ width: 25, height: 150, resizeMode: 'stretch' }} source={require('../../Image/ShopScreen/pic40.png')}>
-                                            <TouchableOpacity style={{ width: 28, height: 70, marginTop: 40, justifyContent: 'center' }}>
+                                            <TouchableOpacity 
+                                            onPress={() => navigation.navigate('木偶头详情页面')}
+                                            style={{ width: 28, height: 70, marginTop: 40, justifyContent: 'center' }}>
                                                 <Text style={{ fontSize: 15, textAlign: 'center' }}>木偶头</Text>
                                             </TouchableOpacity>
                                         </ImageBackground>
                                         <ImageBackground style={{ width: 25, height: 150, resizeMode: 'stretch' }} source={require('../../Image/ShopScreen/pic40.png')}>
-                                            <TouchableOpacity style={{ width: 28, height: 70, marginTop: 40, justifyContent: 'center' }} >
+                                            <TouchableOpacity 
+                                             onPress={() => navigation.navigate('装饰画详情页面')}
+                                             style={{ width: 28, height: 70, marginTop: 40, justifyContent: 'center' }} >
                                                 <Text style={{ fontSize: 15, textAlign: 'center' }}>装饰画</Text>
                                             </TouchableOpacity>
                                         </ImageBackground>
                                         <ImageBackground style={{ width: 25, height: 150, resizeMode: 'stretch' }} source={require('../../Image/ShopScreen/pic40.png')}>
-                                            <TouchableOpacity style={{ width: 28, height: 70, marginTop: 40, justifyContent: 'center' }}>
+                                            <TouchableOpacity 
+                                            onPress={() => navigation.navigate('其他工艺特色')}
+                                            style={{ width: 28, height: 70, marginTop: 40, justifyContent: 'center' }}>
                                                 <Text style={{ fontSize: 15, textAlign: 'center' }}>其他</Text>
                                             </TouchableOpacity>
                                         </ImageBackground>
