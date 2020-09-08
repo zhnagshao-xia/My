@@ -52,15 +52,11 @@ import authenticationScreen from './MyScreen/authenticationScreen'
 import serviceScreen from './MyScreen/serviceScreen'
 import outScreen from './MyScreen/outScreen'
 import editScreen from './MyScreen/editScreen'
-<<<<<<< HEAD
 import loginScreen from './MyScreen/loginScreen'
 import registerScreen from './MyScreen/registerScreen'
 
 
 
-=======
-import WelcomeScreen from '../Screen/welcome'
->>>>>>> 69348b6... shopping整合
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
