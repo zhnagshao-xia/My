@@ -2,9 +2,26 @@ import React from 'react';
 import {View, StyleSheet, Text, Button,
   TouchableOpacity, TextInput, Image, ScrollView, FlatList,
   ImageBackground} from 'react-native';
-export default function CollectionScreen() {
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+
+export default function CollectionScreen({navigation}) {
   return (
     <View style={styles.container}>
+      <View style={{height:45,
+        backgroundColor:"pink",
+        alignItems:"center",
+        justifyContent:"center"}}>
+        <View style={{flexDirection:'row',justifyContent:"space-between",width:"90%"}}>
+        <TouchableOpacity
+        onPress={() => navigation.goBack()}>
+          <FontAwesome name={'angle-left'} size={25} color={'#000'} /></TouchableOpacity>
+          <Text style={{fontSize:18,
+            textAlign: 'center',
+            textAlignVertical: 'center',}}>活动</Text>
+          <TouchableOpacity>
+          <FontAwesome name={'clock-o'} size={25} color={'#000'} /></TouchableOpacity>
+      </View>
+      </View>
         <ScrollView>
           <View style={styles.contant}>
               <View style={{width:'100%',height:150,alignItems:'center',backgroundColor:'#fff',flexDirection:'column-reverse'}}>

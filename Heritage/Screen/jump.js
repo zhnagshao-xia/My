@@ -46,6 +46,10 @@ import Puppet_head from './ShopScreen/Puppet_head'
 import Decorative_painting from './ShopScreen/Decorative_painting'
 import Other_process_features from './ShopScreen/Other_process_features'
 
+import Tribunefollow from './TribuneScreen/Tribunefollow'
+import Tribunerecommend from './TribuneScreen/Tribunerecommend'
+import Tribunenewest from './TribuneScreen/Tribunenewest'
+
 import CollectionScreen from './MyScreen/CollectionScreen'
 import followScreen from './MyScreen/followScreen'
 import fansScreen from './MyScreen/fansScreen'
@@ -62,14 +66,48 @@ import registerScreen from './MyScreen/registerScreen'
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 const PersonalTabNavigation = createMaterialTopTabNavigator();
+const TribuneTabNavigation = createMaterialTopTabNavigator();
 
-export function PersonalTab() {
+export function TribuneTab() {
   return (
-    <PersonalTabNavigation.Navigator
+    <TribuneTabNavigation.Navigator
+    initialRouteName="Tribunerecommend"
       tabBarOptions={{
         //底部横线样式
         activeTintColor: '#945357', //标签栏激活时的染色
         pressColor: '#945357',//android按下时涟漪效果的颜色
+        indicatorStyle: {
+          height: 2,
+          backgroundColor: "#945357",
+          width: 40,
+          marginLeft: 40,
+          marginBottom: 5,
+        },
+        tabStyle: {
+          height: 45,
+        },
+        labelStyle: {
+              fontSize: 16, 
+          },
+      }}>
+      <TribuneTabNavigation.Screen name="Tribunefollow" component={Tribunefollow} options={{ title: '关注' }} />
+      <TribuneTabNavigation.Screen name="Tribunerecommend" component={Tribunerecommend} options={{ title: '推荐', }} />
+      <TribuneTabNavigation.Screen name="Tribunenewest" component={Tribunenewest} options={{ title: '最新' }} />
+    </TribuneTabNavigation.Navigator>
+  );
+}
+
+export function PersonalTab() {
+  return (
+    <PersonalTabNavigation.Navigator
+      initialRouteName="homerecommend"
+      
+    swipeEnabled={false}
+      tabBarOptions={{
+        //底部横线样式
+        activeTintColor: '#945357', //标签栏激活时的染色
+        pressColor: '#945357',//android按下时涟漪效果的颜色
+        
         indicatorStyle: {
           height: 2,
           backgroundColor: "#945357",
@@ -147,7 +185,7 @@ export function PersonalTab() {
 // 堆栈导航
 function MyStack() {
     return (
-      <Stack.Navigator>
+      <Stack.Navigator headerMode="none">
         <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} options={{headerShown:false}} />
         <Stack.Screen name="bottom_nav" component={bottom_nav}  options={{headerShown:false}}/>
         <Stack.Screen name="homerecommend" component={homerecommend} />
@@ -180,16 +218,15 @@ function MyStack() {
         <Stack.Screen name="陶瓷详情页面" component={Ceramics} />
         <Stack.Screen name="瓷板画详情页面" component={Porcelain_painting} />
         <Stack.Screen name="紫砂详情页面" component={Purple_sand} />
-
         <Stack.Screen name="香制品详情页面" component={Fragrance_products} />
         <Stack.Screen name="木偶头详情页面" component={Puppet_head} />
         <Stack.Screen name="装饰画详情页面" component={Decorative_painting} />
         <Stack.Screen name="其他工艺特色" component={Other_process_features} />
 
-
-
-
         <Stack.Screen name="讨论" component={TribuneScreen}  />
+        <Stack.Screen name="Tribunefollow" component={Tribunefollow} />
+        <Stack.Screen name="Tribunerecommend" component={Tribunerecommend} />
+        <Stack.Screen name="Tribunenewest" component={Tribunenewest} />
 
         <Stack.Screen name="我的" component={MyScreen}  />
         <Stack.Screen name="收藏" component={CollectionScreen} />

@@ -7,13 +7,30 @@ import {
   Image,
 } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import FontAwesome from 'react-native-vector-icons/FontAwesome'
 export default class orderScreen extends Component {
   constructor(props) {
     super(props);
   }
   render() {
+    const { navigation } = this.props;
     return (
       <View style = {styles.container}>
+        <View style={{height:45,
+        backgroundColor:"pink",
+        alignItems:"center",
+        justifyContent:"center"}}>
+        <View style={{flexDirection:'row',justifyContent:"space-between",width:"90%"}}>
+        <TouchableOpacity
+        onPress={() => navigation.goBack()}>
+          <FontAwesome name={'angle-left'} size={25} color={'#000'} /></TouchableOpacity>
+          <Text style={{fontSize:18,
+            textAlign: 'center',
+            textAlignVertical: 'center',}}>活动</Text>
+          <TouchableOpacity>
+          <FontAwesome name={'clock-o'} size={25} color={'#000'} /></TouchableOpacity>
+      </View>
+      </View>
           <FlatList
             data = {[
               {key:'传统纯手工打造油纸伞来自西子湖畔的美意...',

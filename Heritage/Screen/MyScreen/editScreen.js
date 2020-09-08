@@ -9,14 +9,30 @@ import {
   TextInput,
   FlatList,
 } from "react-native";
-
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 export default class App extends Component {
     constructor(props) {
       super(props);
     }
     render() {
+      const { navigation } = this.props;
       return (
           <View style={styles.container}>
+            <View style={{height:45,
+        backgroundColor:"pink",
+        alignItems:"center",
+        justifyContent:"center"}}>
+        <View style={{flexDirection:'row',justifyContent:"space-between",width:"90%"}}>
+        <TouchableOpacity
+        onPress={() => navigation.goBack()}>
+          <FontAwesome name={'angle-left'} size={25} color={'#000'} /></TouchableOpacity>
+          <Text style={{fontSize:18,
+            textAlign: 'center',
+            textAlignVertical: 'center',}}>活动</Text>
+          <TouchableOpacity>
+          <FontAwesome name={'clock-o'} size={25} color={'#000'} /></TouchableOpacity>
+      </View>
+      </View>
             <View style={styles.contant}>
                 <View style={styles.box}>
                     <TextInput placeholder="请输入名字..." style={styles.first}></TextInput>

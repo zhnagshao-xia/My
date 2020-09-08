@@ -1,10 +1,25 @@
 import React from 'react';
 import { Text, View, FlatList, ScrollView, StyleSheet, Image, Button,TouchableHighlight } from 'react-native';
-
+import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
 export default function ActivityDetails({navigation}) {
     return (
         <ScrollView >
+            <View style={{height:45,
+        backgroundColor:"pink",
+        alignItems:"center",
+        justifyContent:"center"}}>
+        <View style={{flexDirection:'row',justifyContent:"space-between",width:"90%"}}>
+        <TouchableOpacity
+        onPress={() => navigation.goBack()}>
+          <FontAwesome name={'angle-left'} size={25} color={'#000'} /></TouchableOpacity>
+          <Text style={{fontSize:18,
+            textAlign: 'center',
+            textAlignVertical: 'center',}}>活动</Text>
+          <TouchableOpacity>
+          <FontAwesome name={'clock-o'} size={25} color={'#000'} /></TouchableOpacity>
+      </View>
+      </View>
             <FlatList
                 data={[
                     {
