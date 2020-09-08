@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Card from './Card';
-import {PanResponder, Animated} from 'react-native';
+import {PanResponder, Animated,View} from 'react-native';
 
 function getNextIndex(index) {
   var nextIndex = index + 1;
@@ -66,7 +66,6 @@ class VolunteerScreen extends React.Component {
         null,
         {dx: this.state.pan.x, dy: this.state.pan.y},
       ]),
-
       onPanResponderRelease: () => {
         const positionY = this.state.pan.y.__getValue();
         const positionX = this.state.pan.x.__getValue();

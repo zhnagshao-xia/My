@@ -80,13 +80,13 @@ const styles = StyleSheet.create({
         marginLeft:20
     },
     changeFont:{
-        fontSize:15,
+        fontSize:17,
         color:'#945357',
         marginLeft:15
 
     },
     noChangeFont:{
-        fontSize:13,
+        fontSize:12,
         color:'#696969',
     },
 

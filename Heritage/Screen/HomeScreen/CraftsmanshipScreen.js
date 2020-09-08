@@ -5,6 +5,24 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
 export default function CraftsmanshipScreen( { navigation } ) {
     return (
+        <View>
+        <View style={{
+            backgroundColor:"#fff",
+            height:45,
+            alignItems:"center",
+            justifyContent:"center",
+            flexDirection:'row',
+            borderBottomWidth:0.5,
+            borderBottomColor:"#000",}}>
+            <TouchableOpacity
+            activeOpacity={0.8}
+            onPress={() => navigation.goBack()}
+            style={{right:130}}>
+              <FontAwesome name={'angle-left'} size={25} color={'#000'} /></TouchableOpacity>
+              <Text style={{fontSize:18,
+                textAlign: 'center',
+                textAlignVertical: 'center',}}>传承志</Text>
+          </View>
         <ScrollView>
             <ScrollView style={styles.main_body}>
                 <FlatList
@@ -29,7 +47,6 @@ export default function CraftsmanshipScreen( { navigation } ) {
                             demo1: '孙亚青：工匠精神传续百年活字',
                             demo2: '孙亚青·王星记扇国家级非遗传承人',
                         },
-
                     ]}
                     renderItem={({ item }) =>
                         <View style={styles.part}>
@@ -40,7 +57,7 @@ export default function CraftsmanshipScreen( { navigation } ) {
                                     <Text style={{marginLeft:8,color:'#fff',fontSize:11}}>{item.demo}</Text>
                                 </View>
                             </ImageBackground>
-                            <TouchableOpacity style={styles.introduce}
+                            <TouchableOpacity activeOpacity={0.8} style={styles.introduce}
                             onPress={() => navigation.navigate('故事')}>
                                 <View style={styles.introduce_up}>
                                     <View style={{borderRightWidth: 1,justifyContent:"center" }}><Text style={{ fontSize: 15,marginRight:7}}>匠心逐梦</Text></View>
@@ -55,6 +72,7 @@ export default function CraftsmanshipScreen( { navigation } ) {
                 />
             </ScrollView>
         </ScrollView>
+        </View>
     );
 }
 

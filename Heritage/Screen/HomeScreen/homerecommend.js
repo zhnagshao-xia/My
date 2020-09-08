@@ -73,7 +73,7 @@ export default function homerecommend({navigation}) {
             </View>
             <View style={{ width: '100%', alignItems: "center", }}>
               <View style={styles.partthree}>
-                <TouchableOpacity style={styles.threeleft}
+                <TouchableOpacity activeOpacity={0.8} style={styles.threeleft}
                   onPress={() => navigation.navigate('传承志')}>
                   <ImageBackground
                     style={{ width: '100%', height: '100%', resizeMode: 'stretch' }}
@@ -124,14 +124,9 @@ export default function homerecommend({navigation}) {
                         title3: '潜心研究工艺竹编，成为代表性传承人'
                       },
                       {
-                        title1: '夏雨',
-                        title2: '鄞州竹编非遗传承人',
-                        title3: '潜心研究工艺竹编，成为代表性传承人'
-                      },
-                      {
-                        title1: '叶良康',
-                        title2: '鄞州竹编非遗传承人',
-                        title3: '潜心研究工艺竹编，成为代表性传承人'
+                        title1: '夏雨缀',
+                        title2: '舟山贝雕非遗传承人',
+                        title3: '被评为中国工美行业艺术大师'
                       },
                     ]}
                     renderItem={({ item }) =>

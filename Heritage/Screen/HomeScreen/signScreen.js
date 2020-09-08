@@ -1,10 +1,29 @@
 import React from 'react';
-import { StyleSheet, ScrollView, View, TouchableHighlight } from 'react-native';
+import { StyleSheet, ScrollView, View, TouchableHighlight,TouchableOpacity } from 'react-native';
 import { Text, TextInput, Button, } from 'react-native-paper';
+import FontAwesome from 'react-native-vector-icons/FontAwesome'
+
 
 
 export default function signScreen({navigation}) {
   return (
+    <View style={{flex:1}}>
+      <View style={{
+            height:45,
+            alignItems:"center",
+            justifyContent:"center",
+            flexDirection:'row',
+            borderBottomWidth:0.5,
+            borderBottomColor:"#000",}}>
+            <TouchableOpacity
+            activeOpacity={0.8}
+            onPress={() => navigation.goBack()}
+            style={{right:130}}>
+              <FontAwesome name={'angle-left'} size={25} color={'#000'} /></TouchableOpacity>
+              <Text style={{fontSize:18,
+                textAlign: 'center',
+                textAlignVertical: 'center',}}>传承志</Text>
+          </View>
     <View
       style={{
         padding: 20,
@@ -67,6 +86,7 @@ export default function signScreen({navigation}) {
           <Text style={{ color: '#fff', fontSize: 14 }}>提交</Text>
         </TouchableHighlight>
       </ScrollView>
+    </View>
     </View>
   );
 };

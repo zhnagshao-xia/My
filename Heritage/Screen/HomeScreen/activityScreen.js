@@ -5,14 +5,19 @@ import {
   ImageBackground
 } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
+import Entypo from 'react-native-vector-icons/Entypo'
+
+
 
 export default function activityScreen({navigation}) {
   return (
     <View style={styles.container}>
       <View style={{height:45,
-        backgroundColor:"pink",
+        backgroundColor:"#fff",
         alignItems:"center",
-        justifyContent:"center"}}>
+        justifyContent:"center",
+        borderBottomWidth:0.5,
+            borderBottomColor:"#000",}}>
         <View style={{flexDirection:'row',justifyContent:"space-between",width:"90%"}}>
         <TouchableOpacity
         onPress={() => navigation.goBack()}>
@@ -21,7 +26,7 @@ export default function activityScreen({navigation}) {
             textAlign: 'center',
             textAlignVertical: 'center',}}>活动</Text>
           <TouchableOpacity>
-          <FontAwesome name={'clock-o'} size={25} color={'#000'} /></TouchableOpacity>
+          <Entypo name={'back-in-time'} size={25} color={'#000'} /></TouchableOpacity>
       </View>
       </View>
         <View style={styles.contant}>

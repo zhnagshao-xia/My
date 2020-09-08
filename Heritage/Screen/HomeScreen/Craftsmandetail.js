@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Text, StyleSheet, View, ImageBackground,Image,ScrollView,FlatList,Dimensions} from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Feather from 'react-native-vector-icons/Feather';
 import { Tabs, Flex } from '@ant-design/react-native';
  export default class Craftsmandetail extends Component {
   constructor(props) {
@@ -43,7 +44,22 @@ import { Tabs, Flex } from '@ant-design/react-native';
       width: '100%',
     };
   return (
-  <View style={{width:'100%',height:'100%'}}>
+  <View style={{height:"100%",width:"100%"}}>
+     <View style={{height:45,
+     backgroundColor:'#ded7c9',
+        alignItems:"center",
+        justifyContent:"center",}}>
+        <View style={{flexDirection:'row',justifyContent:"space-between",width:"90%"}}>
+        <TouchableOpacity
+        activeOpacity={0.8}
+        onPress={() => navigation.goBack()}>
+          <FontAwesome name={'angle-left'} size={25} color={'#000'} />
+          </TouchableOpacity>
+          <TouchableOpacity
+        activeOpacity={0.6}>
+          <Feather name={'more-horizontal'} size={20} color={'#000'} /></TouchableOpacity>
+      </View>
+      </View>
     <View style={styles.mationUp}>
       <ImageBackground style={{width:'100%',height:'100%',flexDirection:'row'}} 
       source={require('../../Image/HomeScreen/Personalbg.png')}
@@ -103,7 +119,7 @@ import { Tabs, Flex } from '@ant-design/react-native';
           tabBarUnderlineStyle={{
             width: 65,
             height:3,
-            marginLeft: 70,
+            marginLeft: 58,
             backgroundColor: '#945357'
           }}
         >
@@ -115,7 +131,7 @@ import { Tabs, Flex } from '@ant-design/react-native';
                       },
                     ]}
                     renderItem={({ item }) =>
-                    <View style={{width:'100%',height:'100%'}}>
+                    <View style={{width:'80%',height:'100%'}}>
                       <View style={{width:350,height:120}}>
                         <View style={{width:'100%',height:40,flexDirection:'row',alignItems:'center'}}>
                           <View style={{width:4,height:25,backgroundColor:'#c9aa74',marginRight:10}}></View>

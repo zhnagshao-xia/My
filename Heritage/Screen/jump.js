@@ -78,13 +78,13 @@ export function TribuneTab() {
       tabBarOptions={{
         //底部横线样式
         activeTintColor: '#945357', //标签栏激活时的染色
-        pressColor: '#945357',//android按下时涟漪效果的颜色
+        inactiveTintColor: '#434343', //标签非栏激活时的染色
+        pressColor:" rgba(148,83,87,0.5)",//android按下时涟漪效果的颜色
         indicatorStyle: {
           height: 2,
           backgroundColor: "#945357",
           width: 40,
           marginLeft: 40,
-          marginBottom: 5,
         },
         tabStyle: {
           height: 45,
@@ -93,7 +93,7 @@ export function TribuneTab() {
               fontSize: 16, 
           },
       }}>
-      <TribuneTabNavigation.Screen name="Tribunefollow" component={Tribunefollow} options={{ title: '关注' }} />
+      <TribuneTabNavigation.Screen name="Tribunefollow" component={Tribunefollow} options={{ title: '关注',}} />
       <TribuneTabNavigation.Screen name="Tribunerecommend" component={Tribunerecommend} options={{ title: '推荐', }} />
       <TribuneTabNavigation.Screen name="Tribunenewest" component={Tribunenewest} options={{ title: '最新' }} />
     </TribuneTabNavigation.Navigator>
@@ -108,14 +108,13 @@ export function PersonalTab() {
       tabBarOptions={{
         //底部横线样式
         activeTintColor: '#945357', //标签栏激活时的染色
-        pressColor: '#945357',//android按下时涟漪效果的颜色
-        
+        inactiveTintColor: '#434343', //标签非栏激活时的染色
+        pressColor:" rgba(148,83,87,0.5)",//android按下时涟漪效果的颜色
         indicatorStyle: {
           height: 2,
           backgroundColor: "#945357",
           width: 40,
           marginLeft: 40,
-          marginBottom: 5,
         },
         tabStyle: {
           height: 45,

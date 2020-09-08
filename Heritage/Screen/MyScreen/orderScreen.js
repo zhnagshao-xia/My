@@ -45,7 +45,6 @@ export default class orderScreen extends Component {
             <View style = {styles.one}>
               <View style={{flexDirection:'row',width:'100%',}}>
                 <View style={{width:85,height:100,margin:10,backgroundColor:'#000'}}>
-                    {/* <Image style={{width:85,height:85}} source={require('./picture/umbrella2.png')}></Image> */}
                 </View>
                 <View style={{ width:200,height:85,marginTop:10}}>
                     <Text style={{width:'100%',fontSize:13}}>{item.key}</Text>
