@@ -14,6 +14,7 @@ export default class App extends Component {
     super(props);
   }
   render() {
+    const { navigation } = this.props;
     return (
         <View style={styles.container}>
              <ScrollView>
@@ -47,7 +48,9 @@ export default class App extends Component {
                         <View style={{flexDirection:'row',alignItems:'center'}}>
                             <Image style={{width:30,height:30,marginLeft:130}} 
                             source={require('../../Image/ShopScreen/pic27.png')}></Image>
-                            <TouchableOpacity style={{width:80,height:35,marginLeft:15,backgroundColor:'orange',borderRadius:20,alignItems:'center',justifyContent:'center'}}>
+                            <TouchableOpacity 
+                            onPress={() => navigation.navigate('确认订单')}               
+                            style={{width:80,height:35,marginLeft:15,backgroundColor:'orange',borderRadius:20,alignItems:'center',justifyContent:'center'}}>
                                 <Text style={{fontSize:20}}>购买</Text>
                             </TouchableOpacity>
                         </View>

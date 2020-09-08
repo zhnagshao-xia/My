@@ -42,6 +42,9 @@ import Fragrance_products from './ShopScreen/Fragrance_products'
 import Puppet_head from './ShopScreen/Puppet_head'
 import Decorative_painting from './ShopScreen/Decorative_painting'
 import Other_process_features from './ShopScreen/Other_process_features'
+import Confirm_order from './ShopScreen/Confirm_order'
+import My_order from './ShopScreen/My_order'
+import Reviewscreen from './ShopScreen/Reviewscreen'
 
 import CollectionScreen from './MyScreen/CollectionScreen'
 import followScreen from './MyScreen/followScreen'
@@ -151,14 +154,13 @@ function MyStack() {
         <Stack.Screen name="陶瓷详情页面" component={Ceramics} />
         <Stack.Screen name="瓷板画详情页面" component={Porcelain_painting} />
         <Stack.Screen name="紫砂详情页面" component={Purple_sand} />
-
         <Stack.Screen name="香制品详情页面" component={Fragrance_products} />
         <Stack.Screen name="木偶头详情页面" component={Puppet_head} />
         <Stack.Screen name="装饰画详情页面" component={Decorative_painting} />
         <Stack.Screen name="其他工艺特色" component={Other_process_features} />
-
-
-
+        <Stack.Screen name="确认订单" component={Confirm_order} />
+        <Stack.Screen name="我的订单" component={My_order} />
+        <Stack.Screen name="评价商品页面" component={Reviewscreen} />
 
         <Stack.Screen name="收藏" component={CollectionScreen} />
         <Stack.Screen name="关注" component={followScreen} />

@@ -221,14 +221,9 @@ export default class Shopcart extends Component {
       tempData.data = item.shopItems
       return tempData
     })
+    const { navigation } = this.props;
     return (
       <View style={styles.container}>
-        {/* <View style={styles.navBar}>
-          <TouchableOpacity style={{width:30,height:30}} >
-            <Image style={{width:'100%',height:'100%'}} source={require('./picture/pic29.png')}></Image>
-          </TouchableOpacity>
-          <Text style={{ fontSize: 17,marginLeft:140}}>购物车</Text>
-        </View> */}
         <SectionList
           renderSectionHeader={this.renderSectionHeader}
           renderItem={this.renderItem}
@@ -247,7 +242,9 @@ export default class Shopcart extends Component {
           <Text style={{marginHorizontal: 10}}>合计:
             <Text style={{color:'#f76220'}}>￥{parseFloat(this.state.totalPrice).toFixed(2)}</Text>
           </Text>
-          <TouchableOpacity style={{width: 100, backgroundColor:'#f76220', alignItems: 'center',marginRight:5, justifyContent: 'center', height:35,borderRadius:20}}>
+          <TouchableOpacity 
+          onPress={() => navigation.navigate('确认订单')}
+          style={{width: 100, backgroundColor:'#f76220', alignItems: 'center',marginRight:5, justifyContent: 'center', height:35,borderRadius:20}}>
             <Text style={{color: '#fff'}}>下单({this.state.totalNum})</Text>
           </TouchableOpacity>
         </View>
