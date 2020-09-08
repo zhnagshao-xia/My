@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Button, Text, View, TouchableOpacity, Image, StyleSheet, ImageBackground } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator} from '@react-navigation/stack';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
@@ -12,6 +12,9 @@ import MyScreen from './MyScreen/MyScreen'
 import ShopScreen from './ShopScreen/ShopScreen'
 import TribuneScreen from './TribuneScreen/TribuneScreen'
 
+import homerecommend from './HomeScreen/homerecommend'
+import homeinherit from './HomeScreen/homeinherit'
+import homeheritage from './HomeScreen/homeheritage'
 import CraftsmanshipScreen from './HomeScreen/CraftsmanshipScreen'
 import volunteerScreen from './HomeScreen/volunteerScreen'
 import activityScreen from './HomeScreen/activityScreen'
@@ -47,12 +50,37 @@ import loginScreen from './MyScreen/loginScreen'
 import registerScreen from './MyScreen/registerScreen'
 
 
-
-
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
+const PersonalTabNavigation = createMaterialTopTabNavigator();
 
-
+export function PersonalTab() {
+  return (
+    <PersonalTabNavigation.Navigator
+      tabBarOptions={{
+        //底部横线样式
+        activeTintColor: '#945357', //标签栏激活时的染色
+        pressColor: '#945357',//android按下时涟漪效果的颜色
+        indicatorStyle: {
+          height: 2,
+          backgroundColor: "#945357",
+          width: 40,
+          marginLeft: 40,
+          marginBottom: 5,
+        },
+        tabStyle: {
+          height: 45,
+        },
+        labelStyle: {
+              fontSize: 16, 
+          },
+      }}>
+      <PersonalTabNavigation.Screen name="homerecommend" component={homerecommend} options={{ title: '推荐' }} />
+      <PersonalTabNavigation.Screen name="homeinherit" component={homeinherit} options={{ title: '传承', }} />
+      <PersonalTabNavigation.Screen name="homeheritage" component={homeheritage} options={{ title: '非遗' }} />
+    </PersonalTabNavigation.Navigator>
+  );
+}
 
 //底部导航栏
  function bottom_nav() {
@@ -113,9 +141,9 @@ function MyStack() {
       <Stack.Navigator>
         <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} options={{headerShown:false}} />
         <Stack.Screen name="bottom_nav" component={bottom_nav}  options={{headerShown:false}}/>
-        <Stack.Screen name="我的" component={MyScreen}  />
-        <Stack.Screen name="集市" component={ShopScreen}  />
-        <Stack.Screen name="讨论" component={TribuneScreen}  />
+        <Stack.Screen name="homerecommend" component={homerecommend} />
+        <Stack.Screen name="homeinherit" component={homeinherit} />
+        <Stack.Screen name="homeheritage" component={homeheritage} />
         <Stack.Screen name="传承志" component={CraftsmanshipScreen} />
         <Stack.Screen name="志愿者" component={volunteerScreen} />
         <Stack.Screen name="活动" component={activityScreen} />
@@ -129,6 +157,7 @@ function MyStack() {
         <Stack.Screen name="手艺人" component={CraftsmanScreen} />
         <Stack.Screen name="手艺人详细页面" component={Craftsmandetail} />
 
+        <Stack.Screen name="集市" component={ShopScreen}  />
         <Stack.Screen name="商城购物车" component={Shopcart} />
         <Stack.Screen name="商城分类页面" component={Shopclassify} />
         <Stack.Screen name="商品详情页面" component={Shopproductdetail} />
@@ -138,6 +167,9 @@ function MyStack() {
         <Stack.Screen name="石雕详情页面" component={Stone_carving} />
         <Stack.Screen name="其他雕刻详情页面" component={Other_carving} />
 
+        <Stack.Screen name="讨论" component={TribuneScreen}  />
+
+        <Stack.Screen name="我的" component={MyScreen}  />
         <Stack.Screen name="收藏" component={CollectionScreen} />
         <Stack.Screen name="关注" component={followScreen} />
         <Stack.Screen name="粉丝" component={fansScreen} />

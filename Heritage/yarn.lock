@@ -5440,6 +5440,11 @@ react-native-tab-navigator@^0.3.4:
     immutable "^3.8.1"
     prop-types "^15.5.10"
 
+react-native-tab-view@^2.15.1:
+  version "2.15.1"
+  resolved "https://registry.npm.taobao.org/react-native-tab-view/download/react-native-tab-view-2.15.1.tgz#cf4df4ffdec504263a2e06a6becd8831b9a19ad9"
+  integrity sha1-z030/97FBCY6Lgamvs2IMbmhmtk=
+
 react-native-vector-icons@^7.0.0:
   version "7.0.0"
   resolved "https://registry.npm.taobao.org/react-native-vector-icons/download/react-native-vector-icons-7.0.0.tgz#5b92ed363c867645daad48c559e1f99efcfbb813"
