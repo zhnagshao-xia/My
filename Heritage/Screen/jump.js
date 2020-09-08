@@ -45,6 +45,9 @@ import Fragrance_products from './ShopScreen/Fragrance_products'
 import Puppet_head from './ShopScreen/Puppet_head'
 import Decorative_painting from './ShopScreen/Decorative_painting'
 import Other_process_features from './ShopScreen/Other_process_features'
+import Confirm_order from './ShopScreen/Confirm_order'
+import My_order from './ShopScreen/My_order'
+import Reviewscreen from './ShopScreen/Reviewscreen'
 
 import Tribunefollow from './TribuneScreen/Tribunefollow'
 import Tribunerecommend from './TribuneScreen/Tribunerecommend'
@@ -101,8 +104,7 @@ export function PersonalTab() {
   return (
     <PersonalTabNavigation.Navigator
       initialRouteName="homerecommend"
-      
-    swipeEnabled={false}
+      swipeEnabled={false}
       tabBarOptions={{
         //底部横线样式
         activeTintColor: '#945357', //标签栏激活时的染色
@@ -222,6 +224,9 @@ function MyStack() {
         <Stack.Screen name="木偶头详情页面" component={Puppet_head} />
         <Stack.Screen name="装饰画详情页面" component={Decorative_painting} />
         <Stack.Screen name="其他工艺特色" component={Other_process_features} />
+        <Stack.Screen name="确认订单" component={Confirm_order} />
+        <Stack.Screen name="我的订单" component={My_order} />
+        <Stack.Screen name="评价商品页面" component={Reviewscreen} />
 
         <Stack.Screen name="讨论" component={TribuneScreen}  />
         <Stack.Screen name="Tribunefollow" component={Tribunefollow} />
