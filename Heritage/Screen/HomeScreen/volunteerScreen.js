@@ -114,6 +114,7 @@ class VolunteerScreen extends React.Component {
 
   render() {
     return (
+      <>
       <Container>
         <AnimatedMask style={{opacity: this.state.opacity}} />
         <Animated.View
@@ -179,6 +180,7 @@ class VolunteerScreen extends React.Component {
           />
         </Animated.View>
       </Container>
+      </>
     );
   }
 }

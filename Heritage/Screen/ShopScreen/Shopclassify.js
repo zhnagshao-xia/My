@@ -60,7 +60,7 @@ export default class BasicTabsExample extends React.Component {
                                         <View style={{ width: '50%', alignItems: 'center' }}>
                                             <TouchableOpacity 
                                             onPress={() => navigation.navigate('商品详情页面')}
-                                            style={{ width: '90%', height: 300, backgroundColor: 'red', marginTop: 15 }}>
+                                            style={{ width: '90%', height: 300, marginTop: 15 }}>
                                                 <ImageBackground style={{ width: '100%', height: '100%' }} source={require('../../Image/ShopScreen/pic36.jpg')}>
                                                     <View style={{ width: '100%', height: 50, backgroundColor: 'rgba(50,50,50,0.7)', marginTop: 230 }}>
                                                         <View style={{ width: '100%', height: '50%', flexDirection: 'row' }}>
@@ -73,7 +73,7 @@ export default class BasicTabsExample extends React.Component {
                                                     </View>
                                                 </ImageBackground>
                                             </TouchableOpacity>
-                                            <TouchableOpacity style={{ width: '90%', height: 250, backgroundColor: 'red', marginTop: 15 }}>
+                                            <TouchableOpacity style={{ width: '90%', height: 250, marginTop: 15 }}>
                                                 <ImageBackground
                                                     style={{ width: '100%', height: '100%', flexDirection: 'row-reverse' }}
                                                     source={require('../../Image/ShopScreen/pic37.png')}>
@@ -88,7 +88,7 @@ export default class BasicTabsExample extends React.Component {
                                                     </View>
                                                 </ImageBackground>
                                             </TouchableOpacity>
-                                            <TouchableOpacity style={{ width: '90%', height: 250, backgroundColor: 'red', marginTop: 15 }}>
+                                            <TouchableOpacity style={{ width: '90%', height: 250,marginTop: 15 }}>
                                                 <ImageBackground 
                                                     style={{ width: '100%', height: '100%', flexDirection: 'row-reverse' }}
                                                     source={require('../../Image/ShopScreen/pic37.png')}>
@@ -103,7 +103,7 @@ export default class BasicTabsExample extends React.Component {
                                                     </View>
                                                 </ImageBackground>
                                             </TouchableOpacity>
-                                            <TouchableOpacity style={{ width: '90%', height: 300, backgroundColor: 'red', marginTop: 15 }}>
+                                            <TouchableOpacity style={{ width: '90%', height: 300, marginTop: 15 }}>
                                                 <ImageBackground
                                                     style={{ width: '100%', height: '100%', flexDirection: 'row-reverse' }}
                                                     source={require('../../Image/ShopScreen/pic38.png')}>
@@ -120,7 +120,7 @@ export default class BasicTabsExample extends React.Component {
                                             </TouchableOpacity>
                                         </View>
                                         <View style={{ width: '50%', alignItems: 'center' }}>
-                                            <TouchableOpacity style={{ width: '90%', height: 230, backgroundColor: 'red', marginTop: 15 }}>
+                                            <TouchableOpacity style={{ width: '90%', height: 230,marginTop: 15 }}>
                                                 <ImageBackground
                                                     style={{ width: '100%', height: '100%', flexDirection: 'row-reverse' }}
                                                     source={require('../../Image/ShopScreen/pic38.png')}>
@@ -135,7 +135,7 @@ export default class BasicTabsExample extends React.Component {
                                                     </View>
                                                 </ImageBackground>
                                             </TouchableOpacity>
-                                            <TouchableOpacity style={{ width: '90%', height: 280, backgroundColor: 'red', marginTop: 15 }}>
+                                            <TouchableOpacity style={{ width: '90%', height: 280, marginTop: 15 }}>
                                                 <ImageBackground
                                                     style={{ width: '100%', height: '100%', flexDirection: 'row-reverse' }}
                                                     source={require('../../Image/ShopScreen/pic37.png')}>
@@ -150,7 +150,7 @@ export default class BasicTabsExample extends React.Component {
                                                     </View>
                                                 </ImageBackground>
                                             </TouchableOpacity>
-                                            <TouchableOpacity style={{ width: '90%', height: 350, backgroundColor: 'red', marginTop: 15 }}>
+                                            <TouchableOpacity style={{ width: '90%', height: 350, marginTop: 15 }}>
                                                 <ImageBackground
                                                     style={{ width: '100%', height: '100%', flexDirection: 'row-reverse' }}
                                                     source={require('../../Image/ShopScreen/pic36.jpg')}>
@@ -165,7 +165,7 @@ export default class BasicTabsExample extends React.Component {
                                                     </View>
                                                 </ImageBackground>
                                             </TouchableOpacity>
-                                            <TouchableOpacity style={{ width: '90%', height: 300, backgroundColor: 'red', marginTop: 15 }}>
+                                            <TouchableOpacity style={{ width: '90%', height: 300, marginTop: 15 }}>
                                                 <ImageBackground
                                                     style={{ width: '100%', height: '100%', flexDirection: 'row-reverse' }}
                                                     source={require('../../Image/ShopScreen/pic38.png')}>
@@ -230,7 +230,7 @@ export default class BasicTabsExample extends React.Component {
                                     <View style={{ width: '100%', backgroundColor: '#fff', marginTop: 20 }}>
                                         <View style={styles.key}>
                                             <View style={{ width: '50%', alignItems: 'center' }}>
-                                                <TouchableOpacity style={{ width: '90%', height: 300, backgroundColor: 'red', marginTop: 15 }}>
+                                                <TouchableOpacity style={{ width: '90%', height: 300, marginTop: 15 }}>
                                                     <ImageBackground style={{ width: '100%', height: '100%' }} source={require('../../Image/ShopScreen/pic41.jpg')}>
                                                         <View style={{ width: '100%', height: 50, backgroundColor: 'rgba(50,50,50,0.7)', marginTop: 230 }}>
                                                             <View style={{ width: '100%', height: '50%', flexDirection: 'row' }}>
@@ -243,7 +243,7 @@ export default class BasicTabsExample extends React.Component {
                                                         </View>
                                                     </ImageBackground>
                                                 </TouchableOpacity>
-                                                <TouchableOpacity style={{ width: '90%', height: 250, backgroundColor: 'red', marginTop: 15 }}>
+                                                <TouchableOpacity style={{ width: '90%', height: 250,marginTop: 15 }}>
                                                     <ImageBackground
                                                         style={{ width: '100%', height: '100%', flexDirection: 'row-reverse' }}
                                                         source={require('../../Image/ShopScreen/pic42.jpg')}>
@@ -258,7 +258,7 @@ export default class BasicTabsExample extends React.Component {
                                                         </View>
                                                     </ImageBackground>
                                                 </TouchableOpacity>
-                                                <TouchableOpacity style={{ width: '90%', height: 250, backgroundColor: 'red', marginTop: 15 }}>
+                                                <TouchableOpacity style={{ width: '90%', height: 250, marginTop: 15 }}>
                                                     <ImageBackground
                                                         style={{ width: '100%', height: '100%', flexDirection: 'row-reverse' }}
                                                         source={require('../../Image/ShopScreen/pic43.jpg')}>
@@ -273,7 +273,7 @@ export default class BasicTabsExample extends React.Component {
                                                         </View>
                                                     </ImageBackground>
                                                 </TouchableOpacity>
-                                                <TouchableOpacity style={{ width: '90%', height: 300, backgroundColor: 'red', marginTop: 15 }}>
+                                                <TouchableOpacity style={{ width: '90%', height: 300, marginTop: 15 }}>
                                                     <ImageBackground
                                                         style={{ width: '100%', height: '100%', flexDirection: 'row-reverse' }}
                                                         source={require('../../Image/ShopScreen/pic41.jpg')}>
@@ -290,7 +290,7 @@ export default class BasicTabsExample extends React.Component {
                                                 </TouchableOpacity>
                                             </View>
                                             <View style={{ width: '50%', alignItems: 'center' }}>
-                                                <TouchableOpacity style={{ width: '90%', height: 230, backgroundColor: 'red', marginTop: 15 }}>
+                                                <TouchableOpacity style={{ width: '90%', height: 230,marginTop: 15 }}>
                                                     <ImageBackground
                                                         style={{ width: '100%', height: '100%', flexDirection: 'row-reverse' }}
                                                         source={require('../../Image/ShopScreen/pic43.jpg')}>
@@ -305,7 +305,7 @@ export default class BasicTabsExample extends React.Component {
                                                         </View>
                                                     </ImageBackground>
                                                 </TouchableOpacity>
-                                                <TouchableOpacity style={{ width: '90%', height: 280, backgroundColor: 'red', marginTop: 15 }}>
+                                                <TouchableOpacity style={{ width: '90%', height: 280, marginTop: 15 }}>
                                                     <ImageBackground
                                                         style={{ width: '100%', height: '100%', flexDirection: 'row-reverse' }}
                                                         source={require('../../Image/ShopScreen/pic42.jpg')}>
@@ -320,7 +320,7 @@ export default class BasicTabsExample extends React.Component {
                                                         </View>
                                                     </ImageBackground>
                                                 </TouchableOpacity>
-                                                <TouchableOpacity style={{ width: '90%', height: 350, backgroundColor: 'red', marginTop: 15 }}>
+                                                <TouchableOpacity style={{ width: '90%', height: 350, marginTop: 15 }}>
                                                     <ImageBackground
                                                         style={{ width: '100%', height: '100%', flexDirection: 'row-reverse' }}
                                                         source={require('../../Image/ShopScreen/pic41.jpg')}>
@@ -335,7 +335,7 @@ export default class BasicTabsExample extends React.Component {
                                                         </View>
                                                     </ImageBackground>
                                                 </TouchableOpacity>
-                                                <TouchableOpacity style={{ width: '90%', height: 300, backgroundColor: 'red', marginTop: 15 }}>
+                                                <TouchableOpacity style={{ width: '90%', height: 300,marginTop: 15 }}>
                                                     <ImageBackground
                                                         style={{ width: '100%', height: '100%', flexDirection: 'row-reverse' }}
                                                         source={require('../../Image/ShopScreen/pic41.jpg')}>
@@ -394,7 +394,7 @@ export default class BasicTabsExample extends React.Component {
                                     <View style={{ width: '100%', backgroundColor: '#fff', marginTop: 20 }}>
                                         <View style={styles.key}>
                                             <View style={{ width: '50%', alignItems: 'center' }}>
-                                                <TouchableOpacity style={{ width: '90%', height: 300, backgroundColor: 'red', marginTop: 15 }}>
+                                                <TouchableOpacity style={{ width: '90%', height: 300,marginTop: 15 }}>
                                                     <ImageBackground style={{ width: '100%', height: '100%' }} source={require('../../Image/ShopScreen/pic44.jpg')}>
                                                         <View style={{ width: '100%', height: 50, backgroundColor: 'rgba(50,50,50,0.7)', marginTop: 230 }}>
                                                             <View style={{ width: '100%', height: '50%', flexDirection: 'row' }}>
@@ -407,7 +407,7 @@ export default class BasicTabsExample extends React.Component {
                                                         </View>
                                                     </ImageBackground>
                                                 </TouchableOpacity>
-                                                <TouchableOpacity style={{ width: '90%', height: 250, backgroundColor: 'red', marginTop: 15 }}>
+                                                <TouchableOpacity style={{ width: '90%', height: 250,marginTop: 15 }}>
                                                     <ImageBackground
                                                         style={{ width: '100%', height: '100%', flexDirection: 'row-reverse' }}
                                                         source={require('../../Image/ShopScreen/pic45.jpg')}>
@@ -422,7 +422,7 @@ export default class BasicTabsExample extends React.Component {
                                                         </View>
                                                     </ImageBackground>
                                                 </TouchableOpacity>
-                                                <TouchableOpacity style={{ width: '90%', height: 250, backgroundColor: 'red', marginTop: 15 }}>
+                                                <TouchableOpacity style={{ width: '90%', height: 250,marginTop: 15 }}>
                                                     <ImageBackground
                                                         style={{ width: '100%', height: '100%', flexDirection: 'row-reverse' }}
                                                         source={require('../../Image/ShopScreen/pic46.jpg')}>
@@ -437,7 +437,7 @@ export default class BasicTabsExample extends React.Component {
                                                         </View>
                                                     </ImageBackground>
                                                 </TouchableOpacity>
-                                                <TouchableOpacity style={{ width: '90%', height: 300, backgroundColor: 'red', marginTop: 15 }}>
+                                                <TouchableOpacity style={{ width: '90%', height: 300,marginTop: 15 }}>
                                                     <ImageBackground
                                                         style={{ width: '100%', height: '100%', flexDirection: 'row-reverse' }}
                                                         source={require('../../Image/ShopScreen/pic44.jpg')}>
@@ -454,7 +454,7 @@ export default class BasicTabsExample extends React.Component {
                                                 </TouchableOpacity>
                                             </View>
                                             <View style={{ width: '50%', alignItems: 'center' }}>
-                                                <TouchableOpacity style={{ width: '90%', height: 230, backgroundColor: 'red', marginTop: 15 }}>
+                                                <TouchableOpacity style={{ width: '90%', height: 230,marginTop: 15 }}>
                                                     <ImageBackground
                                                         style={{ width: '100%', height: '100%', flexDirection: 'row-reverse' }}
                                                         source={require('../../Image/ShopScreen/pic46.jpg')}>
@@ -469,7 +469,7 @@ export default class BasicTabsExample extends React.Component {
                                                         </View>
                                                     </ImageBackground>
                                                 </TouchableOpacity>
-                                                <TouchableOpacity style={{ width: '90%', height: 280, backgroundColor: 'red', marginTop: 15 }}>
+                                                <TouchableOpacity style={{ width: '90%', height: 280, marginTop: 15 }}>
                                                     <ImageBackground
                                                         style={{ width: '100%', height: '100%', flexDirection: 'row-reverse' }}
                                                         source={require('../../Image/ShopScreen/pic44.jpg')}>
@@ -484,7 +484,7 @@ export default class BasicTabsExample extends React.Component {
                                                         </View>
                                                     </ImageBackground>
                                                 </TouchableOpacity>
-                                                <TouchableOpacity style={{ width: '90%', height: 350, backgroundColor: 'red', marginTop: 15 }}>
+                                                <TouchableOpacity style={{ width: '90%', height: 350, marginTop: 15 }}>
                                                     <ImageBackground
                                                         style={{ width: '100%', height: '100%', flexDirection: 'row-reverse' }}
                                                         source={require('../../Image/ShopScreen/pic44.jpg')}>
@@ -499,7 +499,7 @@ export default class BasicTabsExample extends React.Component {
                                                         </View>
                                                     </ImageBackground>
                                                 </TouchableOpacity>
-                                                <TouchableOpacity style={{ width: '90%', height: 300, backgroundColor: 'red', marginTop: 15 }}>
+                                                <TouchableOpacity style={{ width: '90%', height: 300, marginTop: 15 }}>
                                                     <ImageBackground
                                                         style={{ width: '100%', height: '100%', flexDirection: 'row-reverse' }}
                                                         source={require('../../Image/ShopScreen/pic45.jpg')}>

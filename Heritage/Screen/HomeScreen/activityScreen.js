@@ -25,7 +25,8 @@ export default function activityScreen({navigation}) {
           <Text style={{fontSize:18,
             textAlign: 'center',
             textAlignVertical: 'center',}}>活动</Text>
-          <TouchableOpacity>
+          <TouchableOpacity
+          onPress={() => navigation.navigate('记录')}>
           <Entypo name={'back-in-time'} size={25} color={'#000'} /></TouchableOpacity>
       </View>
       </View>

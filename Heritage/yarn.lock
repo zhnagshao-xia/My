@@ -5383,6 +5383,13 @@ react-native-modal-popover@^0.0.12:
     lodash.debounce "^4.0.8"
     prop-types "^15.6.2"
 
+react-native-modalbox@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.npm.taobao.org/react-native-modalbox/download/react-native-modalbox-2.0.0.tgz#ff3cddfb73a740e7669c2d2cc80d03cbd4890731"
+  integrity sha1-/zzd+3OnQOdmnC0syA0Dy9SJBzE=
+  dependencies:
+    prop-types "^15.5.10"
+
 react-native-paper@^4.0.1:
   version "4.0.1"
   resolved "https://registry.npm.taobao.org/react-native-paper/download/react-native-paper-4.0.1.tgz#13d2272757fb738113582e900787f365cfa77c74"

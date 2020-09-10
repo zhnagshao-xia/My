@@ -27,6 +27,8 @@ import storyScreen from './HomeScreen/storyScreen'
 import masterpieceScreen from './HomeScreen/masterpieceScreen'
 import CraftsmanScreen from './HomeScreen/CraftsmanScreen'
 import Craftsmandetail from './HomeScreen/Craftsmandetail'
+import personalinformation from './HomeScreen/personalinformation'
+import representativework from './HomeScreen/representativework'
 
 import Shopcart from './ShopScreen/Shopcart'
 import Shopclassify from './ShopScreen/Shopclassify'
@@ -70,6 +72,34 @@ const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 const PersonalTabNavigation = createMaterialTopTabNavigator();
 const TribuneTabNavigation = createMaterialTopTabNavigator();
+const InformationTabNavigation = createMaterialTopTabNavigator();
+
+export function InformationTab() {
+  return (
+    <InformationTabNavigation.Navigator
+      tabBarOptions={{
+        //底部横线样式
+        activeTintColor: '#945357', //标签栏激活时的染色
+        inactiveTintColor: '#434343', //标签非栏激活时的染色
+        pressColor:" rgba(148,83,87,0.5)",//android按下时涟漪效果的颜色
+        indicatorStyle: {
+          height: 2,
+          backgroundColor: "#945357",
+          width: 67,
+          marginLeft: 70,
+        },
+        tabStyle: {
+          height: 55,
+        },
+        labelStyle: {
+              fontSize: 16, 
+          },
+      }}>
+      <InformationTabNavigation.Screen name="personalinformation" component={personalinformation} options={{ title: '个人信息',}} />
+      <InformationTabNavigation.Screen name="representativework" component={representativework} options={{ title: '代表作', }} />
+    </InformationTabNavigation.Navigator>
+  );
+}
 
 export function TribuneTab() {
   return (
@@ -204,6 +234,8 @@ function MyStack() {
         <Stack.Screen name="signUp" options={{title: '填报信息'}} component={SignUp} />
         <Stack.Screen name="手艺人" component={CraftsmanScreen} />
         <Stack.Screen name="手艺人详细页面" component={Craftsmandetail} />
+        <Stack.Screen name="personalinformation" component={personalinformation} />
+        <Stack.Screen name="representativework" component={representativework} />
 
         <Stack.Screen name="集市" component={ShopScreen}  />
         <Stack.Screen name="商城购物车" component={Shopcart} />

@@ -1,75 +1,56 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, View, ImageBackground,Image,ScrollView,FlatList,Dimensions} from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Text, StyleSheet, View, ImageBackground,Image,ScrollView,FlatList,Dimensions,TouchableOpacity} from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
-import { Tabs, Flex } from '@ant-design/react-native';
- export default class Craftsmandetail extends Component {
+import Modal from 'react-native-modalbox';
+import {InformationTab} from '../jump';
+
+export default class Craftsmandetail extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      isOpen: false,
+      isDisabled: false,
+      swipeToClose: true,
+      sliderValue: 0.3
+    };
   }
   render() {
-    let invoice = [
-      {content: '1963拜钱阿兴师傅为师，学习笺匠技艺。'},
-      {content: '1967去宁波市工艺竹编厂进修三个月，拜竹编大师李生友为师，回来后被聘为东山工艺竹编厂技术员。'},
-      {content: '1977开始担任鄞县管江公社工艺竹编厂副厂长。'},
-      {content: '1985承包了鄞县东山工艺竹编厂，开始潜心研究工艺竹编。'},
-      {content: '2008年被命名为代表性传承人后，承担起四所学校竹编技艺传承指导工作，并积极参与各级组织的非遗展示活动，和各种新作品创作参展活动，带徒授艺，小批量生产工艺竹编作品。'},
-    ];
-  let items = [];
-  invoice.map((el, index) => {
-      let colorValue = index === 0 ? 'black' : 'black';
-      let backgroundColor = index === 0 ? 'black' : 'black';
-      items.push(
-          <View style={styles.expressItem} key={index}>
-              <View style={styles.expressRightFirst}>
-                  <View style={styles.process}>
-                      <Text style={{color:colorValue,fontSize:14}}>{el.content}</Text>
-                     
-                  </View>
-              </View>
-              <View style={[styles.expressLeft,{backgroundColor:backgroundColor}]}/>
-          </View>
-      );
-  });
-
-    const state = this.state;
     const { navigation } = this.props;
-    const tabs = [
-      { title: '个人信息' },
-      { title: '代表作' },
-    ];
-    const style = {
-      height: '100%',
-      width: '100%',
-    };
   return (
-  <View style={{height:"100%",width:"100%"}}>
-     <View style={{height:45,
-     backgroundColor:'#ded7c9',
+    <View style={{flex:1}}>
+      <View style={{height:45,
         alignItems:"center",
-        justifyContent:"center",}}>
+        justifyContent:"center",
+        backgroundColor:"#ded7c9"}}>
         <View style={{flexDirection:'row',justifyContent:"space-between",width:"90%"}}>
         <TouchableOpacity
         activeOpacity={0.8}
         onPress={() => navigation.goBack()}>
           <FontAwesome name={'angle-left'} size={25} color={'#000'} />
           </TouchableOpacity>
+          <Text style={{fontSize:18,
+            textAlign: 'center',
+            textAlignVertical: 'center',}}>活动</Text>
           <TouchableOpacity
-        activeOpacity={0.6}>
+        activeOpacity={0.6}
+        onPress={() => this.refs.modal6.open()} >
           <Feather name={'more-horizontal'} size={20} color={'#000'} /></TouchableOpacity>
       </View>
       </View>
-    <View style={styles.mationUp}>
+      <View style={styles.mationUp}>
       <ImageBackground style={{width:'100%',height:'100%',flexDirection:'row'}} 
       source={require('../../Image/HomeScreen/Personalbg.png')}
       resizeMode='stretch'>
         <View style={{width:'40%',height:'100%'}}>
           <Image style={styles.headpic}
-          source={require('../../Image/HomeScreen/yi1.png')}>
-          </Image>
+          source={require('../../Image/HomeScreen/yi1.png')}/>
          <View style={styles.namerow}>
-           <Text style={{fontSize:15,color:'black'}}>叶良康</Text>
+           <Text style={{fontSize:15,color:'black'}}
+            onPress={()=>{
+              Alert.alert("111");
+            }}
+           >叶良康</Text>
            <TouchableOpacity style={styles.like}>
              <FontAwesome
                     name={'plus'}
@@ -107,102 +88,43 @@ import { Tabs, Flex } from '@ant-design/react-native';
           </View>
         </View>
       </ImageBackground>
-     
     </View>
-    <View style={{width:'100%',height:'75%'}}>
-          <Tabs
-          tabs={tabs}
-          tabBarTextStyle={{
-            color: "#945357",
-            fontSize: 15
-          }}
-          tabBarUnderlineStyle={{
-            width: 65,
-            height:3,
-            marginLeft: 58,
-            backgroundColor: '#945357'
-          }}
-        >
-          <View style={{width:'100%',height:'100%',alignItems:'center'}}>
-                  <FlatList
-                    data={[
-                      {
-                        title1: '叶良康，鄞州塘溪镇东山人，1947年出生。从16岁开始,他跟村里76岁的老茂匠学手艺，编织实用竹器。叶良康是鄞州竹编省级非物质文化遗产传承人，无师自通编竹笼，醉心竹编五十载。',
-                      },
-                    ]}
-                    renderItem={({ item }) =>
-                    <View style={{width:'80%',height:'100%'}}>
-                      <View style={{width:350,height:120}}>
-                        <View style={{width:'100%',height:40,flexDirection:'row',alignItems:'center'}}>
-                          <View style={{width:4,height:25,backgroundColor:'#c9aa74',marginRight:10}}></View>
-                          <Text style={{fontSize:15}}>简介</Text>
-                        </View>
-                        <View style={{width:'100%',height:70,}}>
-                          <Text style={{fontSize:13}}>{item.title1}</Text>
-                        </View>
-                      </View>
-                      <View style={{width:350,height:350}}>
-                        <View style={{width:'100%',height:40,flexDirection:'row',alignItems:'center'}}>
-                          <View style={{width:4,height:25,backgroundColor:'#c9aa74',marginRight:10}}></View>
-                          <Text style={{fontSize:15}}>传承之路</Text>
-                        </View>
-                        <View style={{width:'100%',height:300,}}>
-                        {items}
-                        </View>
-                      </View>
-                      <View style={{width:350,height:170}}>
-                        <View style={{width:'100%',height:40,flexDirection:'row',alignItems:'center'}}>
-                          <View style={{width:4,height:25,backgroundColor:'#c9aa74',marginRight:10}}></View>
-                          <Text style={{fontSize:15}}>非遗技艺</Text>
-                        </View>
-                        <ImageBackground style={styles.works}
-                        source={require('../../Image/HomeScreen/Large.jpg')}>
-                          <View style={styles.workname}>
-                            <Text style={{fontSize:12,color:'#fff'}}>鄞州竹编</Text>
-                          </View>
-                        </ImageBackground>
-                      </View>
-                    </View>    
-                    }
-                  />
-                </View>
-          <View style={{width:'100%',height:'100%',alignItems:'center'}}>
-            <View style={styles.works1}>
-              <ImageBackground style={styles.works1pic}
-              source={require('../../Image/HomeScreen/pin.png')}>
-                <View style={{width:'100%',height:35,backgroundColor:'rgba(0,0,0,0.5)'}}>
-                  <View style={{width:'100%',height:'50%',justifyContent:'center'}}>
-                    <Text style={{fontSize:13,color:'#c9aa74'}}>鄞州竹编</Text>
-                  </View>
-                  <View style={{width:'100%',height:'50%',flexDirection:'row-reverse'}}>
-                    <Text style={{fontSize:13,color:'#c9aa74'}}>------锦绣竹编瓶</Text>
-                  </View>
-                </View>
-              </ImageBackground>
-              <ImageBackground style={styles.works2pic}
-              source={require('../../Image/HomeScreen/mao.png')}>
-                <View style={{width:'100%',height:35,backgroundColor:'rgba(0,0,0,0.5)'}}>
-                  <View style={{width:'100%',height:'50%',justifyContent:'center'}}>
-                    <Text style={{fontSize:13,color:'#c9aa74'}}>鄞州竹编</Text>
-                  </View>
-                  <View style={{width:'100%',height:'50%',flexDirection:'row-reverse'}}>
-                    <Text style={{fontSize:13,color:'#c9aa74'}}>------猫头鹰</Text>
-                  </View>
-                </View>
-              </ImageBackground>
-            </View>
-            <View style={{width:370,height:40,marginTop:20,alignItems:'center',justifyContent:'center',flexDirection:'row'}}>
-              <View style={{width:100,height:2,backgroundColor:'grey'}}></View>
-              <Text style={{fontSize:13,color:'black'}}>没有更多作品了</Text>
-              <View style={{width:100,height:2,backgroundColor:'grey'}}></View>
-            </View>
+    <View style={{flex:1}}>
+          <InformationTab/>
+    </View>
+    <Modal style={styles.modal4} position={"bottom"} ref={"modal6"} >
+          <View style={{width:'100%',height:'75%',flexDirection:'row'}}>
+            <TouchableOpacity style={{width:'25%',height:'100%',alignItems:'center',justifyContent:'center'}}>
+              <Image style={{width:60,height:60}}
+              source={require('../../Image/HomeScreen/wechat.png')}></Image>
+              <Text style={{fontSize:15}}>微信好友</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={{width:'25%',height:'100%',alignItems:'center',justifyContent:'center'}}>
+              <Image style={{width:60,height:60}}
+              source={require('../../Image/HomeScreen/friend.png')}></Image>
+              <Text style={{fontSize:15}}>朋友圈</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={{width:'25%',height:'100%',alignItems:'center',justifyContent:'center'}}>
+              <Image style={{width:60,height:60}}
+              source={require('../../Image/HomeScreen/qq.png')}></Image>
+              <Text style={{fontSize:15}}>QQ好友</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={{width:'25%',height:'100%',alignItems:'center',justifyContent:'center'}}>
+              <Image style={{width:60,height:60}}
+              source={require('../../Image/HomeScreen/share.png')}></Image>
+              <Text style={{fontSize:15}}>复制链接</Text>
+            </TouchableOpacity>
           </View>
-        </Tabs>
-        </View>
-  </View>
+          <TouchableOpacity style={{width:'100%',height:'25%',backgroundColor:'#f2f2f2',alignItems:'center',justifyContent:'center'}}
+           onPress={() => this.refs.modal6.close()} >
+            <Text style={{fontSize:15}}>取消</Text>
+          </TouchableOpacity>        
+        </Modal>
+    </View>
   );
+  }
 }
-}
+  
 
 const styles = StyleSheet.create({
   mationUp:{
@@ -322,4 +244,13 @@ expressLeft: {
     top: 15,
     backgroundColor:'red'
 },
+modal4: {
+  height: 150,
+
+},
+btn:{
+  width:40,
+  height:40,
+  backgroundColor:'red'
+}
 });
