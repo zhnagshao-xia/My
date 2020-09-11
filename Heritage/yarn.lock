@@ -5390,10 +5390,10 @@ react-native-modalbox@^2.0.0:
   dependencies:
     prop-types "^15.5.10"
 
-react-native-paper@^4.0.1:
-  version "4.0.1"
-  resolved "https://registry.npm.taobao.org/react-native-paper/download/react-native-paper-4.0.1.tgz#13d2272757fb738113582e900787f365cfa77c74"
-  integrity sha1-E9InJ1f7c4ETWC6QB4fzZc+nfHQ=
+react-native-paper@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.npm.taobao.org/react-native-paper/download/react-native-paper-4.1.0.tgz#26500fbfbb6af62aa9381eee22e508b8f2258c47"
+  integrity sha1-JlAPv7tq9iqpOB7uIuUIuPIljEc=
   dependencies:
     "@callstack/react-theme-provider" "^3.0.5"
     color "^3.1.2"

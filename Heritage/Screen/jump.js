@@ -64,6 +64,7 @@ import authenticationScreen from './MyScreen/authenticationScreen'
 import serviceScreen from './MyScreen/serviceScreen'
 import outScreen from './MyScreen/outScreen'
 import editScreen from './MyScreen/editScreen'
+import edittwoScreen from './MyScreen/edittwoScreen'
 import loginScreen from './MyScreen/loginScreen'
 import registerScreen from './MyScreen/registerScreen'
 
@@ -86,7 +87,7 @@ export function InformationTab() {
           height: 2,
           backgroundColor: "#945357",
           width: 67,
-          marginLeft: 70,
+          marginLeft: 57,
         },
         tabStyle: {
           height: 55,
@@ -221,6 +222,8 @@ function MyStack() {
         <Stack.Screen name="bottom_nav" component={bottom_nav}  options={{headerShown:false}}/>
         <Stack.Screen name="homerecommend" component={homerecommend} />
         <Stack.Screen name="homeinherit" component={homeinherit} />
+        <Stack.Screen name="HomeScreen" component={HomeScreen} />
+        
         <Stack.Screen name="homeheritage" component={homeheritage} />
         <Stack.Screen name="传承志" component={CraftsmanshipScreen} />
         <Stack.Screen name="志愿者" component={volunteerScreen} />
@@ -274,6 +277,7 @@ function MyStack() {
         <Stack.Screen name="客服" component={serviceScreen} />
         <Stack.Screen name="设置" component={outScreen} />
         <Stack.Screen name="编辑" component={editScreen} />
+        <Stack.Screen name="修改" component={edittwoScreen} />
         <Stack.Screen name="登录" component={loginScreen} options={{headerShown:false}}/>
         <Stack.Screen name="注册" component={registerScreen} options={{headerShown:false}}/>
       </Stack.Navigator>

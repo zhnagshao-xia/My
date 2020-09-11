@@ -29,9 +29,6 @@ export default class Craftsmandetail extends Component {
         onPress={() => navigation.goBack()}>
           <FontAwesome name={'angle-left'} size={25} color={'#000'} />
           </TouchableOpacity>
-          <Text style={{fontSize:18,
-            textAlign: 'center',
-            textAlignVertical: 'center',}}>活动</Text>
           <TouchableOpacity
         activeOpacity={0.6}
         onPress={() => this.refs.modal6.open()} >

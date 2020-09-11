@@ -10,6 +10,8 @@ import {
   FlatList,
 } from "react-native";
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+
 export default class App extends Component {
     constructor(props) {
       super(props);
@@ -28,9 +30,9 @@ export default class App extends Component {
           <FontAwesome name={'angle-left'} size={25} color={'#000'} /></TouchableOpacity>
           <Text style={{fontSize:18,
             textAlign: 'center',
-            textAlignVertical: 'center',}}>活动</Text>
+            textAlignVertical: 'center',}}>编辑</Text>
           <TouchableOpacity>
-          <FontAwesome name={'clock-o'} size={25} color={'#000'} /></TouchableOpacity>
+          <AntDesign name={'check'} size={25} color={'#000'} /></TouchableOpacity>
       </View>
       </View>
             <View style={styles.contant}>
@@ -41,15 +43,6 @@ export default class App extends Component {
                 </View>
             </View>
             <View style={{alignItems:'center'}}>
-            <View style={{width:80,
-                height:40,
-                borderRadius:20,
-                backgroundColor:'#945357',
-                marginTop:40,
-                justifyContent:'center',
-                alignItems:'center'}}>
-                <Text>保存</Text>
-            </View>
             </View>
           </View>
          );

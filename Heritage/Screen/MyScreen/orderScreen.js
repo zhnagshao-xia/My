@@ -15,22 +15,26 @@ export default class orderScreen extends Component {
   render() {
     const { navigation } = this.props;
     return (
+      <View>
+        
       <View style = {styles.container}>
-        <View style={{height:45,
-        backgroundColor:"pink",
-        alignItems:"center",
-        justifyContent:"center"}}>
-        <View style={{flexDirection:'row',justifyContent:"space-between",width:"90%"}}>
-        <TouchableOpacity
-        onPress={() => navigation.goBack()}>
-          <FontAwesome name={'angle-left'} size={25} color={'#000'} /></TouchableOpacity>
-          <Text style={{fontSize:18,
-            textAlign: 'center',
-            textAlignVertical: 'center',}}>活动</Text>
-          <TouchableOpacity>
-          <FontAwesome name={'clock-o'} size={25} color={'#000'} /></TouchableOpacity>
-      </View>
-      </View>
+      <View style={{
+            backgroundColor:"#fff",
+            height:45,
+            alignItems:"center",
+            justifyContent:"center",
+            flexDirection:'row',
+            borderBottomWidth:0.5,
+            borderBottomColor:"#000",}}>
+            <TouchableOpacity
+            activeOpacity={0.8}
+            onPress={() => navigation.goBack()}
+            style={{right:130}}>
+              <FontAwesome name={'angle-left'} size={25} color={'#000'} /></TouchableOpacity>
+              <Text style={{fontSize:18,
+                textAlign: 'center',
+                textAlignVertical: 'center',}}>我的订单</Text>
+          </View>
           <FlatList
             data = {[
               {key:'传统纯手工打造油纸伞来自西子湖畔的美意...',
@@ -70,13 +74,13 @@ export default class orderScreen extends Component {
             }
           />
       </View> 
+      </View>
     );
   }
 }
 const styles = StyleSheet.create({
   container: {
     width:'100%',
-    height:'100%',
     backgroundColor:'#f2f2f2',
   },
  one: {

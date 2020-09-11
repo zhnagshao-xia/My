@@ -10,25 +10,31 @@ import {
   FlatList,
 } from "react-native"; 
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+
 
 export default class addressScreen extends Component {
     render() {
       const { navigation } = this.props;
       return (
           <View style={styles.container}>
-            <View style={{height:45,
-        backgroundColor:"pink",
-        alignItems:"center",
-        justifyContent:"center"}}>
+            <View style={{backgroundColor:"#fff",
+            height:45,
+            alignItems:"center",
+            justifyContent:"center",
+            flexDirection:'row',
+            borderBottomWidth:0.5,
+            borderBottomColor:"#000",}}>
         <View style={{flexDirection:'row',justifyContent:"space-between",width:"90%"}}>
         <TouchableOpacity
         onPress={() => navigation.goBack()}>
           <FontAwesome name={'angle-left'} size={25} color={'#000'} /></TouchableOpacity>
           <Text style={{fontSize:18,
             textAlign: 'center',
-            textAlignVertical: 'center',}}>活动</Text>
-          <TouchableOpacity>
-          <FontAwesome name={'clock-o'} size={25} color={'#000'} /></TouchableOpacity>
+            textAlignVertical: 'center',}}>地址管理</Text>
+          <TouchableOpacity
+          onPress={() => navigation.navigate('编辑')}>
+          <AntDesign name={'plus'} size={25} color={'#000'} /></TouchableOpacity>
       </View>
       </View>
             <View > 
@@ -37,7 +43,7 @@ export default class addressScreen extends Component {
               {key:'张三',number:'188888888',area:'浙江省杭州市拱墅区上塘街道舟山东路36号'},
               {key:'李四',number:'199999999',area:'浙江省杭州市拱墅区上塘街道舟山东路36号'},
               {key:'王二',number:'177777777',area:'浙江省杭州市拱墅区上塘街道舟山东路36号'},
-              {},
+              {key:'王二',number:'177777777',area:'浙江省杭州市拱墅区上塘街道舟山东路36号'},
             ]}
             renderItem = {({item})=>
           <View style = {styles.one}>
@@ -52,7 +58,9 @@ export default class addressScreen extends Component {
                 <Text style={styles.number}>{item.area}</Text>
               </View>
               <View style={styles.edit}>
-                <TouchableOpacity style={{width:50,height:50,justifyContent:'center'}}>
+                <TouchableOpacity 
+                onPress={() => navigation.navigate('修改')}
+                style={{width:50,height:50,justifyContent:'center'}}>
                   <Text style={{fontSize:15}}>编辑</Text>
                 </TouchableOpacity>
               </View>
@@ -60,18 +68,6 @@ export default class addressScreen extends Component {
             }
           />
             </View>
-            <TouchableOpacity 
-            onPress={() => navigation.navigate('编辑')}
-          style={{width:'100%',
-        height:50,
-        backgroundColor:'#fff',
-        justifyContent:'center',
-        alignItems:'center'}}>
-          <FontAwesome
-              name={'plus'}
-              size={30}
-              color={'#945357'} />
-        </TouchableOpacity>
           </View>
          );
     }

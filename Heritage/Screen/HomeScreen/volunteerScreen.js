@@ -2,6 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import Card from './Card';
 import {PanResponder, Animated,View} from 'react-native';
+import {Appbar} from "react-native-paper";
+import FontAwesome from 'react-native-vector-icons/FontAwesome'
+import Entypo from 'react-native-vector-icons/Entypo'
+import { TouchableNativeFeedback } from 'react-native-gesture-handler';
 
 function getNextIndex(index) {
   var nextIndex = index + 1;
@@ -113,8 +117,29 @@ class VolunteerScreen extends React.Component {
   }
 
   render() {
+    const { navigation } = this.props;
     return (
       <>
+      <Appbar.Header style={{width:"100%",height:40,backgroundColor:"#fff"}}>
+         <Appbar.Action icon={()=>(
+           <>
+             <TouchableNativeFeedback onPress={() => navigation.goBack()}>
+                 <FontAwesome name="angle-left" color="#000" size={30} />
+             </TouchableNativeFeedback>
+           </>
+         )}>
+         </Appbar.Action>
+          <Appbar.Content title='志愿者' style={{marginLeft:100}}></Appbar.Content>
+          <Appbar.Action icon={()=>(
+           <>
+             <TouchableNativeFeedback onPress={() => navigation.navigate("记")}>
+                  <Entypo name={'back-in-time'} size={25} color={'#000'} /> 
+             </TouchableNativeFeedback>
+           </>
+         )}>
+         </Appbar.Action>
+         
+      </Appbar.Header>
       <Container>
         <AnimatedMask style={{opacity: this.state.opacity}} />
         <Animated.View
