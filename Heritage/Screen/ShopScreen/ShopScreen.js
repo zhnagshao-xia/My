@@ -13,20 +13,12 @@ import {
 } from 'react-native';
 import { Drawer, List, } from '@ant-design/react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
-
-const { height, width } = Dimensions.get('window');
+  
 import EZSwiper from 'react-native-ezswiper';
+const { height, width } = Dimensions.get('window');
 
-const images = [
-  require('../../Image/ShopScreen/pic26.png'),
-  require('../../Image/ShopScreen/pic27.png'),
-  require('../../Image/ShopScreen/pic28.png'),
-  require('../../Image/ShopScreen/pic26.png'),
-  require('../../Image/ShopScreen/pic27.png'),
-  require('../../Image/ShopScreen/pic28.png'),
-  require('../../Image/ShopScreen/pic27.png'),
-  require('../../Image/ShopScreen/pic28.png'),
-  require('../../Image/ShopScreen/pic26.png'),]
+const images = [require('../../Image/ShopScreen/pic4.jpg'),require('../../Image/ShopScreen/pic4.jpg'),require('../../Image/ShopScreen/pic4.jpg')]
+
 
 const styles = StyleSheet.create({
   scrow_container: {
@@ -38,7 +30,6 @@ const styles = StyleSheet.create({
     height: 800,
   },
   header: {
-    flex: 1.0,
     justifyContent: 'center',
     backgroundColor: '#fff',
     borderBottomWidth: 1,
@@ -52,47 +43,51 @@ const styles = StyleSheet.create({
   key: {
     flexDirection: 'row',
   },
+  container: {
+    backgroundColor: 'white',   
+    marginVertical:10 ,
+    paddingVertical:10
+  },
+  swiper: {
+    backgroundColor: 'white',
+  },
+  cell: {
+    backgroundColor: 'red',
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius:15
+  },
 });
 
 export default class DrawerExample extends React.Component {
-  constructor() {
-    super(...arguments);
-    this.onOpenChange = isOpen => {
-      console.log('是否打开了 Drawer', isOpen.toString());
+  
+  constructor(props) {
+    super(props)
+    this.state = {
+      currentPage: 0,
     };
   }
+  renderImageRow(obj, index) {    
+    return (
+      <View style={[styles.cell,{backgroundColor: 'gray',overflow:'hidden'}]}>
+       <Image
+       style={{position:'absolute',top:0,right:0,bottom:0,left:0,width: undefined, height: undefined}}
+        resizeMode={'stretch'}
+        source={obj}/>
+      </View>
+    )
+  }
+
   render() {
     const { navigation } = this.props;
-    const itemArr = Array.apply(null, Array(9))
-      .map((_i, index) => {
-        if (index === 0) {
-          return (
-            <View style={styles.liststyle}>
-              {/* 侧边栏 */}
-            </View>
-          );
-        }
-      });
-    const sidebar = (
-      <ScrollView >
-        <List >{itemArr}</List>
-      </ScrollView>
-    );
+
     return (
-      <Drawer
-        sidebar={sidebar}
-        position="left"
-        open={false}
-        drawerRef={el => (this.drawer = el)}
-        onOpenChange={this.onOpenChange}
-        drawerBackgroundColor="#000"
-        drawerWidth={320}
-      >
-        <ScrollView style={styles.scrow_container}>
-          <View style={styles.header}>
+      <View>
+      <View style={styles.header}>
             <View style={{ flexDirection: 'row', alignItems: 'center', marginVertical: 10, }}>
               <TouchableOpacity
-                onPress={() => this.drawer && this.drawer.openDrawer()}
+                
                 style={{ width: 25, height: 25, marginLeft: 10, alignItems: 'center' }}>
                 <Image style={{ width: '100%', height: '100%' }} source={require('../../Image/ShopScreen/pic26.png')}></Image>
               </TouchableOpacity>
@@ -108,13 +103,27 @@ export default class DrawerExample extends React.Component {
                   marginLeft: 10,
                   alignItems: 'center'
                 }}>
-                <Image style={{ width: '100%', height: '100%' }} source={require('../../Image/ShopScreen/pic27.png')}></Image>
+                <FontAwesome name={'shopping-cart'} size={25} color={'#000'} />
               </TouchableOpacity>
             </View>
           </View>
-
-
-
+        <ScrollView style={styles.scrow_container}>
+          <ScrollView style={[styles.container]} contentInsetAdjustmentBehavior="automatic">
+          <EZSwiper style={[styles.swiper,{width: width,height: 150 }]}
+                    dataSource={images}
+                    width={ width }
+                    height={150 }
+                    renderRow={this.renderImageRow}
+                    onPress={this.onPressRow}      
+                    onWillChange={this.onWillChange}     
+                    onDidChange={this.onDidChange}                                                                                
+                    ratio={0.6}
+                    index={2}   
+                    horizontal={true}  
+                    loop={true}  
+                    autoplayTimeout={2}                                      
+                    />
+          </ScrollView>
           <View style={{
             flexDirection: 'row',
             width: '100%',
@@ -158,10 +167,21 @@ export default class DrawerExample extends React.Component {
             </TouchableOpacity>
           </View>
           <View style={styles.last}>
-            <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-              <Text style={{ fontSize: 15, marginTop: 10, color: '#c9ab77' }}>新品推荐</Text>
+            <View style={{ height:50,justifyContent: 'center', alignItems: 'center' }}>
+              <Text style={{ fontSize: 15, color: '#c9ab77' }}>新品推荐</Text>
             </View>
-            <View style={styles.key}>
+            <View  style={{flexDirection:'row',width:"100%"}}>
+                <View style={{width:70,height:30,backgroundColor:"#000",marginHorizontal:20}}></View>
+                <View style={{width:70,height:30,backgroundColor:"#000",marginHorizontal:20}}></View>
+                <View style={{width:70,height:30,backgroundColor:"#000",marginHorizontal:20}}></View>
+                <View style={{width:70,height:30,backgroundColor:"#000",marginHorizontal:20}}></View>
+                <View style={{width:70,height:30,backgroundColor:"#000",marginHorizontal:20}}></View>
+                <View style={{width:70,height:30,backgroundColor:"#000",marginHorizontal:20}}></View>
+                <View style={{width:70,height:30,backgroundColor:"#000",marginHorizontal:20}}></View>
+                <View style={{width:70,height:30,backgroundColor:"#000",marginHorizontal:20}}></View>
+            </View>
+            
+            {/* <View style={styles.key}>
               <View style={{ width: '50%', alignItems: 'center' }}>
                 <TouchableOpacity 
                 onPress={() => navigation.navigate('商品详情页面')}
@@ -228,10 +248,10 @@ export default class DrawerExample extends React.Component {
                   </ImageBackground>
                 </TouchableOpacity>
               </View>
-            </View>
+            </View> */}
           </View>
         </ScrollView>
-      </Drawer>
+        </View>
     );
   }
 }

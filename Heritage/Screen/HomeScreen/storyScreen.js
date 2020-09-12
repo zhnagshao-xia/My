@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Text, View, FlatList, ScrollView, StyleSheet, Image, Button,TouchableOpacity } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
+import Modal from 'react-native-modalbox';
 
 
-export default function ActivityDetails({navigation}) {
+export default class ActivityDetails extends Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+          isOpen: false,
+          isDisabled: false,
+          swipeToClose: true,
+          sliderValue: 0.3
+        };
+      }
+      render() {
+        const { navigation } = this.props;
     return (
         <View>
             <View style={{height:45,
@@ -20,9 +32,10 @@ export default function ActivityDetails({navigation}) {
           </TouchableOpacity>
           <Text style={{fontSize:18,
             textAlign: 'center',
-            textAlignVertical: 'center',}}>活动</Text>
+            textAlignVertical: 'center',}}>故事</Text>
           <TouchableOpacity
-        activeOpacity={0.6}>
+        activeOpacity={0.6}
+        onPress={() => this.refs.modal6.open()} >
           <Feather name={'more-horizontal'} size={20} color={'#000'} /></TouchableOpacity>
       </View>
       </View>
@@ -52,7 +65,7 @@ export default function ActivityDetails({navigation}) {
                     <View style={{ 
                         paddingHorizontal: 30,
                      paddingTop: 20,
-                     paddingBottom:40,
+                     marginBottom:90,
                      alignItems:"center",}}>
                         <View style={{ alignItems: "center" }}>
                             <Text style={{ fontSize: 16 }}>{item.title}</Text>
@@ -76,9 +89,44 @@ export default function ActivityDetails({navigation}) {
                 }
             />
         </ScrollView>
+        <Modal style={styles.modal4} position={"bottom"} ref={"modal6"} >
+          <View style={{width:'100%',height:'60%',flexDirection:'row'}}>
+            <TouchableOpacity style={{width:'25%',height:'100%',alignItems:'center',justifyContent:'center'}}>
+              <Image style={{width:60,height:60}}
+              source={require('../../Image/HomeScreen/wechat.png')}></Image>
+              <Text style={{fontSize:15}}>微信好友</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={{width:'25%',height:'100%',alignItems:'center',justifyContent:'center'}}>
+              <Image style={{width:60,height:60}}
+              source={require('../../Image/HomeScreen/friend.png')}></Image>
+              <Text style={{fontSize:15}}>朋友圈</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={{width:'25%',height:'100%',alignItems:'center',justifyContent:'center'}}>
+              <Image style={{width:60,height:60}}
+              source={require('../../Image/HomeScreen/qq.png')}></Image>
+              <Text style={{fontSize:15}}>QQ好友</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={{width:'25%',height:'100%',alignItems:'center',justifyContent:'center'}}>
+              <Image style={{width:60,height:60}}
+              source={require('../../Image/HomeScreen/share.png')}></Image>
+              <Text style={{fontSize:15}}>复制链接</Text>
+            </TouchableOpacity>
+          </View>
+          <TouchableOpacity style={{width:'100%',height:'40%',backgroundColor:'#f2f2f2',alignItems:'center'}}
+           onPress={() => this.refs.modal6.close()} >
+            <Text style={{fontSize:15,marginTop:3}}>取消</Text>
+          </TouchableOpacity>        
+        </Modal>
         </View>
     );
 }
+}
 const styles = StyleSheet.create({
+    modal4: {
+        height: 200,
+        width:'100%',
+        alignItems:'center',
+        justifyContent:'center',    
+      },
     
 });

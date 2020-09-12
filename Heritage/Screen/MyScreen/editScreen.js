@@ -21,9 +21,11 @@ export default class App extends Component {
       return (
           <View style={styles.container}>
             <View style={{height:45,
-        backgroundColor:"pink",
+            backgroundColor:"#fff",
         alignItems:"center",
-        justifyContent:"center"}}>
+        justifyContent:"center",
+        borderBottomWidth:0.5,
+            borderBottomColor:"#000",}}>
         <View style={{flexDirection:'row',justifyContent:"space-between",width:"90%"}}>
         <TouchableOpacity
         onPress={() => navigation.goBack()}>

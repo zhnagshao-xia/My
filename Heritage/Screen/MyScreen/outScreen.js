@@ -6,20 +6,23 @@ export default function outScreen ({navigation}){
   return (
     <View style={styles.container}>
         <View style={{height:45,
-        backgroundColor:"pink",
-        alignItems:"center",
-        justifyContent:"center"}}>
-        <View style={{flexDirection:'row',justifyContent:"space-between",width:"90%"}}>
-        <TouchableOpacity
-        onPress={() => navigation.goBack()}>
-          <FontAwesome name={'angle-left'} size={25} color={'#000'} /></TouchableOpacity>
-          <Text style={{fontSize:18,
-            textAlign: 'center',
-            textAlignVertical: 'center',}}>活动</Text>
-          <TouchableOpacity>
-          <FontAwesome name={'clock-o'} size={25} color={'#000'} /></TouchableOpacity>
-      </View>
-      </View>
+                backgroundColor:"#fff",
+                alignItems:"center",
+                justifyContent:"center",
+                borderBottomWidth:0.5,
+                borderBottomColor:"#000",}}>
+                <View style={{flexDirection:'row',justifyContent:"space-between",width:"90%"}}>
+                    <TouchableOpacity
+                    onPress={() => navigation.goBack()}>
+                        <FontAwesome name={'angle-left'} size={25} color={'#000'} />
+                    </TouchableOpacity>
+                    <Text style={{fontSize:18,
+                    textAlign: 'center',
+                    textAlignVertical: 'center'}}>设置</Text>
+                    <View>
+                    </View>
+                </View>
+            </View>
       <View style={styles.container_body}>
          <View style={styles.container_bug1}>
              <View style={styles.word}><Text style={{fontSize: 14}}>帮助</Text></View>
@@ -46,13 +49,12 @@ const styles = StyleSheet.create({
     container: {
      flex: 1,
      backgroundColor:'#f2f2f2',
-     marginTop:20
     },
     container_body:{
         width:'100%',
         height:'20%',
         flexDirection:'column',
-        backgroundColor:'green'
+        marginTop:10
     },
     container_bug1:{
         width:'100%',

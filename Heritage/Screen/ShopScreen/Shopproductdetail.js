@@ -9,6 +9,8 @@ import {
   ImageBackground,
   ScrollView,
 } from 'react-native';
+import FontAwesome from 'react-native-vector-icons/FontAwesome'
+
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -22,11 +24,13 @@ export default class App extends Component {
                 <View style={styles.part1}>
                     <ImageBackground style={{width:'100%',height:'100%',}} source={require('../../Image/ShopScreen/umbrella1.png')}>
                     <View style={styles.sigh}>
-                        <TouchableOpacity style={{width:30,height:30}}>
-                            <Image style={{width:'100%',height:'100%'}} source={require('../../Image/ShopScreen/pic29.png')}></Image>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={{width:30,height:30,marginLeft:330}}>
-                            <Image style={{width:'100%',height:'100%'}} source={require('../../Image/ShopScreen/pic27.png')}></Image>
+                    <TouchableOpacity
+                    onPress={() => navigation.goBack()}>
+                        <FontAwesome name={'angle-left'} size={25} color={'#fff'} />
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                    onPress={() => navigation.navigate('商城购物车')}>
+                        <FontAwesome name={'shopping-cart'} size={25} color={'#fff'} />
                         </TouchableOpacity>
                     </View>
                     </ImageBackground>
@@ -134,9 +138,11 @@ const styles = StyleSheet.create({
     },
     sigh:{
         width:'100%',
-        height:'20%',
+        height:45,
         flexDirection:'row',
-        alignItems:'center'
+        justifyContent:'space-between',
+        alignItems:'center',
+        paddingHorizontal:20
     },
     box:{
         width:'100%',

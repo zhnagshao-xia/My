@@ -8,6 +8,8 @@ import {
     TouchableOpacity
 } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
+import FontAwesome from 'react-native-vector-icons/FontAwesome'
+
 export default class App extends Component {
     constructor(props) {
         super(props);
@@ -16,7 +18,25 @@ export default class App extends Component {
         const { navigation } = this.props;
         return (
             <View style={styles.container}>
-                <View style={styles.contant}>
+                <View style={{
+            height:45,
+            alignItems:"center",
+            justifyContent:"center",
+            flexDirection:'row',
+            borderBottomWidth:0.5,
+            borderBottomColor:"#000",
+            backgroundColor:"#fff"}}>
+            <TouchableOpacity
+            activeOpacity={0.8}
+            onPress={() => navigation.goBack()}
+            style={{right:150}}>
+              <FontAwesome name={'angle-left'} size={25} color={'#000'} /></TouchableOpacity>
+              <Text style={{fontSize:18,
+                textAlign: 'center',
+                textAlignVertical: 'center',}}>购物车</Text>
+              
+          </View>
+                <ScrollView style={styles.contant}>
                     <ScrollView>
                         <View style={{ height: 150, width: '90%', backgroundColor: '#fff', marginTop: 20, borderRadius: 15, marginLeft: 18, flexDirection: 'row', alignItems: 'center' }}>
                             <View style={{ width: 60, height: 60, marginLeft: 15, alignItems: 'center', justifyContent: 'center' }}>
@@ -38,10 +58,27 @@ export default class App extends Component {
                                     key: '传统纯手工打造油纸伞来自西子湖畔的美意...',
                                     price: '￥288',
                                     total: '小计:'
+                                },
+                                {
+                                    key: '传统纯手工打造油纸伞来自西子湖畔的美意...',
+                                    price: '￥288',
+                                    total: '小计:'
+                                },
+                                {
+                                    key: '传统纯手工打造油纸伞来自西子湖畔的美意...',
+                                    price: '￥288',
+                                    total: '小计:'
+                                },
+                                {
+                                    key: '传统纯手工打造油纸伞来自西子湖畔的美意...',
+                                    price: '￥288',
+                                    total: '小计:'
                                 }
                             ]}
                             renderItem={({ item }) =>
-                                <TouchableOpacity style={styles.one}>
+                                <TouchableOpacity 
+                                onPress={() => navigation.navigate('商品详情页面')}
+                                style={styles.one}>
                                     <View style={{ width: '100%', height: '70%', flexDirection: 'row', alignItems: 'center' }}>
                                         <View style={{ width: 110, height: '100%' }}>
                                             <Image style={{ width: 100, height: 100, marginLeft: 15 }} source={require('../../Image/ShopScreen/umbrella2.png')}></Image>
@@ -59,7 +96,7 @@ export default class App extends Component {
                             }
                         />
                     </ScrollView>
-                </View>
+                </ScrollView>
                 <View style={styles.footer}>
                     <Text style={{ fontSize: 15, marginLeft: 200 }}>合计：</Text>
                     <Text style={{ fontSize: 20, color: '#f76220' }}>￥576</Text>
@@ -76,8 +113,6 @@ export default class App extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
     },
     contant: {
         width: '100%',

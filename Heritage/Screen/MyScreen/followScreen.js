@@ -13,24 +13,38 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 export default function followScreen({navigation}) {
   return (
     <View style={styles.container}>
-      <View style={{height:45,
-        backgroundColor:"pink",
-        alignItems:"center",
-        justifyContent:"center"}}>
-        <View style={{flexDirection:'row',justifyContent:"space-between",width:"90%"}}>
-        <TouchableOpacity
-        onPress={() => navigation.goBack()}>
-          <FontAwesome name={'angle-left'} size={25} color={'#000'} /></TouchableOpacity>
-          <Text style={{fontSize:18,
-            textAlign: 'center',
-            textAlignVertical: 'center',}}>活动</Text>
-          <TouchableOpacity>
-          <FontAwesome name={'clock-o'} size={25} color={'#000'} /></TouchableOpacity>
-      </View>
-      </View>
+      <View style={{
+            backgroundColor:"#fff",
+            height:45,
+            alignItems:"center",
+            justifyContent:"center",
+            flexDirection:'row',
+            borderBottomWidth:0.5,
+            borderBottomColor:"#000",}}>
+            <TouchableOpacity
+            activeOpacity={0.8}
+            onPress={() => navigation.goBack()}
+            style={{right:155}}>
+              <FontAwesome name={'angle-left'} size={25} color={'#000'} /></TouchableOpacity>
+              <Text style={{fontSize:18,
+                textAlign: 'center',
+                textAlignVertical: 'center',}}>关注</Text>
+          </View>
       <View style={styles.contant}>
           <FlatList
           data = {[
+          {key:'张三'},
+          {key:'李四'},
+          {key:'王二'},
+          
+          {key:'张三'},
+          {key:'李四'},
+          {key:'王二'},
+          
+          {key:'张三'},
+          {key:'李四'},
+          {key:'王二'},
+          
           {key:'张三'},
           {key:'李四'},
           {key:'王二'},

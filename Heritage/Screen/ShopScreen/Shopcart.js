@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
-import {View, Text, TouchableOpacity, Image, StyleSheet, SectionList} from 'react-native'
+import {View, Text, TouchableOpacity, Image, StyleSheet, SectionList} from 'react-native';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+
 // import {commonStyle} from './commonStyle'
 const shoppingCartData = require('../ShopScreen/ShoppingCartDate.json')
 
@@ -224,6 +226,24 @@ export default class Shopcart extends Component {
     const { navigation } = this.props;
     return (
       <View style={styles.container}>
+        <View style={{
+            height:45,
+            alignItems:"center",
+            justifyContent:"center",
+            flexDirection:'row',
+            borderBottomWidth:0.5,
+            borderBottomColor:"#000",
+            backgroundColor:"#fff"}}>
+            <TouchableOpacity
+            activeOpacity={0.8}
+            onPress={() => navigation.goBack()}
+            style={{right:150}}>
+              <FontAwesome name={'angle-left'} size={25} color={'#000'} /></TouchableOpacity>
+              <Text style={{fontSize:18,
+                textAlign: 'center',
+                textAlignVertical: 'center',}}>购物车</Text>
+              
+          </View>
         <SectionList
           renderSectionHeader={this.renderSectionHeader}
           renderItem={this.renderItem}

@@ -51,10 +51,10 @@ export default class MyScreen extends Component {
                 </TouchableOpacity>
             </View>
             <View style={styles.footer}>
-                <View style={{flex:2,marginBottom:20,backgroundColor:'#fff',alignItems:'center'}}>
+                <View style={{height:115,marginBottom:20,backgroundColor:'#fff',alignItems:'center'}}>
                     <TouchableOpacity 
                     onPress={() => navigation.navigate('订单')}
-                    style={{width:'90%',height:'49%',flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
+                    style={{width:'90%',height:'50%',flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
                         <View style={{flexDirection:'row'}}>
                         <View style={{width:20,justifyContent:"center",alignItems:"center"}}>
                         <FontAwesome name={'file-text-o'} size={20} color={'#000'} />
@@ -66,7 +66,7 @@ export default class MyScreen extends Component {
                     <View style={{width:'90%',height:0.5,backgroundColor:'grey'}}></View>
                     <TouchableOpacity 
                     onPress={() => navigation.navigate('地址')}
-                    style={{width:'90%',height:'49%',flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
+                    style={{width:'90%',height:'50%',flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
                         <View style={{flexDirection:'row'}}>
                         <View style={{width:20,justifyContent:"center",alignItems:"center"}}>
                         <FontAwesome name={'map-marker'} size={20} color={'#000'} />
@@ -76,10 +76,10 @@ export default class MyScreen extends Component {
                         <FontAwesome name={'angle-right'} size={20} color={'#000'} />
                     </TouchableOpacity>
                 </View>
-                <View style={{flex:3,backgroundColor:'#fff',alignItems:'center'}}>
+                <View style={{height:170,alignItems:'center',backgroundColor:'#fff'}}>
                 <TouchableOpacity 
                 onPress={() => navigation.navigate('认证')}
-                style={{width:'90%',height:'30%',flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
+                style={{width:'90%',height:'33%',flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
                         <View style={{flexDirection:'row'}}>
                         <View style={{width:20,justifyContent:"center",alignItems:"center"}}>
                         <FontAwesome name={'check-square-o'} size={20} color={'#000'} />
@@ -91,7 +91,7 @@ export default class MyScreen extends Component {
                     <View style={{width:'90%',height:0.5,backgroundColor:'grey'}}></View>
                     <TouchableOpacity 
                     onPress={() => navigation.navigate('客服')}
-                    style={{width:'90%',height:'30%',flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
+                    style={{width:'90%',height:'33%',flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
                         <View style={{flexDirection:'row'}}>
                         <View style={{width:20,justifyContent:"center",alignItems:"center"}}>
                         <FontAwesome name={'phone'} size={20} color={'#000'} /></View>
@@ -102,7 +102,7 @@ export default class MyScreen extends Component {
                     <View style={{width:'90%',height:0.5,backgroundColor:'grey'}}></View>
                     <TouchableOpacity 
                     onPress={() => navigation.navigate('设置')}
-                    style={{width:'90%',height:'30%',flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
+                    style={{width:'90%',height:'33%',flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
                         <View style={{flexDirection:'row'}}>
                         <View style={{width:20,justifyContent:"center",alignItems:"center"}}>
                         <FontAwesome name={'gear'} size={20} color={'#000'} /></View>
@@ -111,7 +111,6 @@ export default class MyScreen extends Component {
                         <FontAwesome name={'angle-right'} size={20} color={'#000'} />
                     </TouchableOpacity>
                 </View>
-
             </View>
         </View>
 )}}
@@ -126,7 +125,7 @@ const styles=StyleSheet.create({
         backgroundColor:'#f2f2f2'
     },
     contant:{
-        flex:1.2,
+        height:80,
         marginBottom:20,
         flexDirection:'row'
     },

@@ -21,7 +21,7 @@ export default class Barrage extends Component {
             '从哪里摔倒就从哪里爬起来',
             '吼吼',
             '常用链接',
-            '6666',
+            '非遗真美',
             '走你',
             'iPhone真香',
             '这波操作我给666',

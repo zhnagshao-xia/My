@@ -16,25 +16,23 @@ export default class orderScreen extends Component {
     const { navigation } = this.props;
     return (
       <View>
-        
-      <View style = {styles.container}>
-      <View style={{
+        <View style={{
             backgroundColor:"#fff",
             height:45,
             alignItems:"center",
-            justifyContent:"center",
             flexDirection:'row',
             borderBottomWidth:0.5,
             borderBottomColor:"#000",}}>
             <TouchableOpacity
             activeOpacity={0.8}
             onPress={() => navigation.goBack()}
-            style={{right:130}}>
+            style={{marginRight:145,marginLeft:20}}>
               <FontAwesome name={'angle-left'} size={25} color={'#000'} /></TouchableOpacity>
               <Text style={{fontSize:18,
                 textAlign: 'center',
                 textAlignVertical: 'center',}}>我的订单</Text>
           </View>
+      <View style = {styles.container}>
           <FlatList
             data = {[
               {key:'传统纯手工打造油纸伞来自西子湖畔的美意...',

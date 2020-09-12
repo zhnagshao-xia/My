@@ -1,43 +1,31 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, FlatList, TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, View, TextInput, ScrollView,FlatList, TouchableOpacity} from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
 export default function Servicescreen ({navigation}){
   return (
     <View style={styles.container}>
       <View style={{height:45,
-        backgroundColor:"pink",
-        alignItems:"center",
-        justifyContent:"center"}}>
-        <View style={{flexDirection:'row',justifyContent:"space-between",width:"90%"}}>
-        <TouchableOpacity
-        onPress={() => navigation.goBack()}>
-          <FontAwesome name={'angle-left'} size={25} color={'#000'} /></TouchableOpacity>
-          <Text style={{fontSize:18,
-            textAlign: 'center',
-            textAlignVertical: 'center',}}>活动</Text>
-          <TouchableOpacity>
-          <FontAwesome name={'clock-o'} size={25} color={'#000'} /></TouchableOpacity>
-      </View>
-      </View>
-      <View style={styles.body}>
-        <FlatList
-                    data={[
-                        {
-                          word: 'Hi，我是你的私人客服小菲同学，有什么问题都可以找我哦，亲',
-                        },
-                  
-
-                    ]}
-                    renderItem={({ item }) =>
-                        <View style={styles.letter_up_1}>
-                            <Text style={styles.word}>{item.word}</Text>
-                        </View>  
-                        
-                        
-                    }
-        />
-      </View>
+                backgroundColor:"#fff",
+                alignItems:"center",
+                justifyContent:"center",
+                borderBottomWidth:0.5,
+                borderBottomColor:"#000",}}>
+                <View style={{flexDirection:'row',justifyContent:"space-between",width:"90%"}}>
+                    <TouchableOpacity
+                    onPress={() => navigation.goBack()}>
+                        <FontAwesome name={'angle-left'} size={25} color={'#000'} />
+                    </TouchableOpacity>
+                    <Text style={{fontSize:18,
+                    textAlign: 'center',
+                    textAlignVertical: 'center'}}>客服</Text>
+                    <View>
+                    </View>
+                </View>
+            </View>
+      <ScrollView style={styles.body}>
+        
+      </ScrollView>
       <View style={styles.bottom}>
           <TouchableOpacity style={styles.icon}>
                <FontAwesome name={'plus'} size={20} color={'#666666'}/>
@@ -62,11 +50,10 @@ const styles = StyleSheet.create({
     body:{
         width:'100%',
         height:'90%',
-        backgroundColor:'pink'
+        backgroundColor:'#f2f2f2'
     },
     letter_up_1:{
       width:'80%',
-      height:55, 
       backgroundColor:'#fff',
       top:10,
       left:25
@@ -79,6 +66,7 @@ const styles = StyleSheet.create({
       left:4
     },
     bottom:{
+      backgroundColor:"#fff",
         width:'100%',
         height:'10%',
         flexDirection:'row',
