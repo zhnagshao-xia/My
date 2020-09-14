@@ -1,11 +1,43 @@
-import React, {Component} from 'react';
-import { View ,StyleSheet,Text,Button,TouchableOpacity,TextInput,Image,ScrollView,FlatList, ImageBackground} from 'react-native';
+import React, { Component } from 'react';
+import {
+    View,
+    StyleSheet,
+    Text,
+    Button,
+    TouchableOpacity,
+    TextInput,
+    Image,
+    ScrollView,
+    FlatList,
+    ImageBackground,
+    AsyncStorage
+} from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
 
 export default class MyScreen extends Component {
+    state = {
+        username: '立即登录'
+    }
+
+    async componentDidMount() {
+        
+    }
+
+    checkUserAction = async () => {
+        const res = await AsyncStorage.getItem('userInfo') || '{}'//AsyncStorage.getItem通过key字段来进行查询存储的数据，把该结果值作为参数传入第二个callback方法
+        const { username = '' } = JSON.parse(res)
+        username && this.setState({
+            username
+        })
+    }
     render() {
         const { navigation } = this.props;
+        const { username } = this.state
+        navigation.isFocused = () => {
+            console.log("监测用户状态")
+            this.checkUserAction();
+        }
   return ( 
         <View style={styles.container}>
             <View style={styles.header}>
@@ -25,7 +57,7 @@ export default class MyScreen extends Component {
                   <View style={{flexDirection:'row',alignItems:'center',marginTop:5,}}>
                   <TouchableOpacity
                   onPress={() => navigation.navigate('登录')}>
-                    <Text style={{fontSize:16,marginLeft:125,marginRight:5}}>高血堂</Text></TouchableOpacity>
+                    <Text style={{fontSize:16,marginLeft:125,marginRight:5}}>{username}</Text></TouchableOpacity>
                     <TouchableOpacity>
                     <FontAwesome name={'pencil'} size={16} color={'#000'}/>
                     </TouchableOpacity>
@@ -40,7 +72,7 @@ export default class MyScreen extends Component {
                     <Text style={{fontSize:14}}>收藏</Text>
                 </TouchableOpacity>
                 <TouchableOpacity 
-                onPress={() => navigation.navigate('关注')}
+                onPress={() => navigation.navigate('关注',{username:{username}})}
                 style={{flex:1,backgroundColor:'#fff',alignItems:'center',justifyContent:'center'}}>
                     <Text style={{fontSize:14}}>关注</Text>
                 </TouchableOpacity>

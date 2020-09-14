@@ -1,8 +1,20 @@
-import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import React ,{Component}from 'react';
+import {StyleSheet, Text, View, TouchableOpacity,AsyncStorage, Alert} from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
-export default function outScreen ({navigation}){
+export default class outScreen extends Component{
+
+    Out = async() =>{
+        const { navigation } = this.props;
+        AsyncStorage.removeItem('userInfo',(error) => {
+            if (!error) {
+                Alert.alert("退出成功");
+                navigation.goBack("我的");
+            }
+        });
+    }
+render(){
+    const { navigation } = this.props;
   return (
     <View style={styles.container}>
         <View style={{height:45,
@@ -38,10 +50,13 @@ export default function outScreen ({navigation}){
          </View>
       </View>
       <View style={{alignItems:'center', marginTop:25}}>
-          <TouchableOpacity style={styles.button}><Text style={{fontSize:13, color:'#955357'}}>退出登录</Text></TouchableOpacity>
+          <TouchableOpacity 
+          onPress={() =>{this.Out()}
+        }
+          style={styles.button}><Text style={{fontSize:13, color:'#955357'}}>退出登录</Text></TouchableOpacity>
       </View>
     </View>
-  );
+  );}
 }
 
 

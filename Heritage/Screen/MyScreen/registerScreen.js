@@ -1,16 +1,58 @@
-import React from 'react';
+import React, { Component }  from 'react';
 import { 
     StyleSheet, 
     Text, 
     View, 
+    Alert,
     TextInput, 
     FlatList, 
     ImageBackground, 
     Image, 
     TouchableHighlight,
     TouchableOpacity } from 'react-native';
-    import FontAwesome from 'react-native-vector-icons/FontAwesome'
-export default function registerScreen({navigation}) {
+import FontAwesome from 'react-native-vector-icons/FontAwesome'
+export default class registerScreen extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+        username: "",
+        password: "",
+        password2: "",
+    }
+};
+_onClickRegist = () => {
+  var navigation = this.props.navigation;
+  fetch('http://192.168.1.144:3000/regist', {
+      method: 'POST',
+      headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+          username:this.state.username,
+          password:this.state.password,
+          password2:this.state.password2
+      })
+  }).then(function (res) {
+      return res.json();
+  }).then(function (json) {
+      if (json.code == 200) {
+          Alert.alert("注册成功")
+          navigation.navigate("登录");
+      } else if (json.code == 400) {
+          Alert.alert("用户名已被注册")
+      } else if (json.code == 401){
+          Alert.alert("用户名不能为空")
+      } else if (json.code == 402){
+          Alert.alert("密码不能为空")
+      } else if (json.code == 403){
+          Alert.alert("两次输入的密码不一样")
+      } else if (json.code == 404){
+          Alert.alert("密码应在6~12位之间")
+      }
+  })
+};
+render(){
     return (
         <View style={styles.container}>
           <ImageBackground source={require('../../Image/loginScreen/background.png')} style={styles.Image}>
@@ -26,17 +68,36 @@ export default function registerScreen({navigation}) {
               <View style={styles.textinput}>
               <View style={{marginLeft:10,marginRight:5}}>
                 <FontAwesome name={'user'} size={28} color={'#6092a0'}/></View>
-                <TextInput placeholderTextColor="#6092a0" style={{ height: 50, width: 250 }} placeholder='请输入用户名...'></TextInput>
+                <TextInput 
+                    placeholderTextColor="#6092a0" 
+                    style={{ height: 50, width: 250 }} 
+                    placeholder='请输入用户名...' 
+                    onChangeText={(text)=>{this.setState({username:text});}}></TextInput>
               </View>
               <View style={styles.textinput}>
               <View style={{marginLeft:10,marginRight:5}}>
                 <FontAwesome name={'lock'} size={29} color={'#6092a0'}/></View>
-                <TextInput placeholderTextColor="#6092a0" style={{ height: 50, width: 250 }} placeholder='请输入密码...'></TextInput>
+                <TextInput 
+                    password={true}
+                    keyboardType='numeric'
+                    secureTextEntry={true}
+                    placeholderTextColor="#6092a0" 
+                    style={{ height: 50, width: 250 }} 
+                    placeholder='请输入密码...'
+                    secureTextEntry={true}
+                    onChangeText={(text)=>{this.setState({password:text});}}></TextInput>
               </View>
               <View style={styles.textinput}>
               <View style={{marginLeft:10,marginRight:5}}>
                 <FontAwesome name={'lock'} size={29} color={'#6092a0'}/></View>
-                <TextInput placeholderTextColor="#6092a0" style={{ height: 50, width: 250 }} placeholder='请确认密码...'></TextInput>
+                <TextInput 
+                    password={true}
+                    keyboardType='numeric'
+                    secureTextEntry={true}
+                    placeholderTextColor="#6092a0" 
+                    style={{ height: 50, width: 250 }} 
+                    placeholder='请确认密码...'
+                    onChangeText={(text)=>{this.setState({password2:text});}}></TextInput>
               </View>
               <View style={{flexDirection:'row'}}>
                 <Text>注册即代表您已同意《</Text>
@@ -44,8 +105,10 @@ export default function registerScreen({navigation}) {
                 <Text>》</Text>
               </View>
               <TouchableOpacity 
-              onPress={() => navigation.navigate('登录')}
-              style={styles.registerbutton}>
+              style={styles.registerbutton}
+              onPress={() =>
+              {this._onClickRegist();}}
+              >
                 <Text style={{color:'#fdfdfd'}}>立即注册</Text>
               </TouchableOpacity>
             </View>
@@ -55,14 +118,14 @@ export default function registerScreen({navigation}) {
               <View style={styles.line}></View>
             </View> 
             <TouchableOpacity
-            onPress={() => navigation.goBack()}
+            onPress={() => {this.props.navigation.navigate("登录");}}
             activeOpacity={0.7}
              style={{position:"absolute",margin:10}}>
             <FontAwesome name={'angle-left'} size={36} color={'#6092a0'}/>
             </TouchableOpacity>
           </ImageBackground>
         </View>
-      );
+      );}
 }
 
 const styles = StyleSheet.create({
