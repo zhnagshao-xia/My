@@ -1,8 +1,8 @@
 import React from 'react';
 import { ScrollView, Text, View, TouchableOpacity, StyleSheet, ImageBackground, Image, FlatList } from 'react-native';
-import { Tabs } from '@ant-design/react-native';
-import { TextInput } from 'react-native-gesture-handler';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
+import EvilIcons from 'react-native-vector-icons/EvilIcons'
+import Feather from 'react-native-vector-icons/Feather'
 export default function CollectionScreen() {
     return (
         <View style={{ width: '100%', backgroundColor: '#f2f2f2' }}>
@@ -50,9 +50,9 @@ export default function CollectionScreen() {
                       flexDirection: 'row', 
                       marginBottom: 10, 
                       justifyContent: 'space-between', }}>
-                    <FontAwesome name={'share'} size={20} color={'#000'} />
+                    <EvilIcons name={'share-google'} size={30} color={'#000'} />
                     <FontAwesome name={'heart-o'} size={20} color={'#000'} />
-                    <FontAwesome name={'comment'} size={20} color={'#000'} />
+                    <Feather name={'message-square'} size={22} color={'#000'} />
                     </View>
                   </View>
                 </View>

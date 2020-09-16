@@ -117,12 +117,37 @@ export function TribuneTab() {
           width: 40,
           marginLeft: 40,
         },
-        tabStyle: {
-          height: 45,
-        },
+        // tabStyle: {
+        //   height: 45,
+        // },
+        // labelStyle: {
+        //       fontSize: 16, 
+        //   },
         labelStyle: {
-              fontSize: 16, 
-          },
+          fontSize: 20,
+          padding: 0,
+          height: '100%',
+        },
+        tabStyle: {
+          width: 80,
+          padding: 0,
+          borderBottomColor: "#000000",
+          height: 30,
+
+        },
+        style: {
+          backgroundColor: '#EFEFEF',
+          height: 30,
+          padding: 0,
+          elevation: 0,
+        },
+        // indicatorStyle: {
+        //   backgroundColor: "#FFB16C",
+        //   height: 3,
+        //   width: 30,
+        //   borderRadius: 111,
+        //   marginLeft: 25,
+        // },
       }}>
       <TribuneTabNavigation.Screen name="Tribunefollow" component={Tribunefollow} options={{ title: '关注',}} />
       <TribuneTabNavigation.Screen name="Tribunerecommend" component={Tribunerecommend} options={{ title: '推荐', }} />
