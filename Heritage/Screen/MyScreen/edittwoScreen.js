@@ -10,21 +10,78 @@ import {
   TouchableOpacity,
   Modal,
   Button,
-  TextInput
+  TextInput,
+  Alert
   
 } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
+var URL1 = "http://192.168.50.91:3000/users/address/list/change/update";
+var URL2 = "http://192.168.50.91:3000/users/address/list/change/delete"
 
-class ModalComp extends React.Component{
+export default class ModalComp extends Component{
     constructor(props) {
         super(props);
-        
-        this.state1 = { text1: '霞扯淡',modalVisible: false, };
-        this.state2 = { text2: '1888888888',modalVisible: false, };
-        this.state3 = { text3: '浙江省杭州市拱墅区上塘街道舟山东路36号浙江暑热大学',modalVisible: false, };
+        const {navigation,route} = this.props;
+        let shopname = route.params.shopname; 
+        let telephone = route.params.telephone;
+        let dizhi = route.params.dizhi;
+        this.state = { 
+            shopname:shopname,modalVisible: false,
+            telephone:telephone,modalVisible: false,
+            dizhi:dizhi,modalVisible: false
+         };
       }
+
+      _onClickUpdate=()=> {
+        var navigation = this.props.navigation;
+        fetch(URL1, {
+          method: 'POST',
+          credentials: "include",
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            shopname: this.state.shopname,
+            shopnamenew:this.state.shopnamenew,
+            telephonenew: this.state.telephonenew,
+            dizhinew: this.state.dizhinew
+          })
+        })
+        .then(function (res) {
+          return res.json();
+      }).then(function (json) {
+          if (json.code == 200) {
+              Alert.alert("修改成功")
+              navigation.navigate("地址");
+          } 
+      })
+      } 
+      
+      _onClickDelete=()=> {
+        var navigation = this.props.navigation;
+        fetch(URL2, {
+          method: 'POST',
+          credentials: "include",
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            shopname: this.state.shopname
+          })
+        })
+        .then(function (res) {
+          return res.json();
+      }).then(function (json) {
+          if (json.code == 200) {
+              Alert.alert("删除成功")
+              navigation.navigate("地址");
+          } 
+      })
+      } 
  
     state = {
             modalVisible: false,
@@ -60,22 +117,30 @@ class ModalComp extends React.Component{
                     textAlignVertical: 'center',}}>编辑</Text>
                     <TouchableOpacity
                     activeOpacity={0.6}
-                    onPress={() => this.refs.modal6.open()} >
+                    onPress={() => {this._onClickUpdate()}} >
                         <AntDesign name={'check'} size={23} color={'#000'} />
                     </TouchableOpacity>
               </View>
             </View>
             <View style={{width:'100%',height:700,backgroundColor:'#f2f2f2'}}>
                 <View style={{width:'100%',height:230,marginTop:20,alignItems:'center',justifyContent:'center',backgroundColor:'#fff'}}>
-                    <TextInput style={{width:'90%',height:'25%',borderColor:'grey',borderBottomWidth:0.5}}
-                     onChangeText={(text1) => this.setState({text1})}
-                     value={this.state1.text1}></TextInput>
-                    <TextInput style={{width:'90%',height:'25%',borderColor:'grey',borderBottomWidth:0.5}}
-                     onChangeText={(text2) => this.setState({text2})}
-                     value={this.state2.text2}></TextInput>
-                    <TextInput style={{width:'90%',height: '50%',color : "black"}}
-                    onChangeText={(text3) => this.setState({text3})}
-                    value={this.state3.text3}
+                    <TextInput 
+                    style={{width:'90%',height:'25%',borderColor:'grey',borderBottomWidth:0.5}}
+                    placeholder={this.state.shopname} 
+                    placeholderTextColor="#000"
+                    onChangeText={(text) => this.setState({shopnamenew:text})}
+                    ></TextInput>
+                    <TextInput 
+                    style={{width:'90%',height:'25%',borderColor:'grey',borderBottomWidth:0.5}}
+                    placeholder={this.state.telephone}
+                    placeholderTextColor="#000"
+                    onChangeText={(text) => this.setState({telephonenew:text})}
+                    ></TextInput>
+                    <TextInput 
+                    style={{width:'90%',height: '50%',color : "black"}}
+                    placeholder={this.state.dizhi}
+                    placeholderTextColor="#000"
+                    onChangeText={(text) => this.setState({dizhinew:text})}
                     />
                 </View>
                 <TouchableOpacity style={{width:'100%',height:40,backgroundColor:'#fff',marginTop:20,alignItems:'center',justifyContent:'center'}}
@@ -124,7 +189,7 @@ class ModalComp extends React.Component{
                                 </TouchableOpacity>
                                 <TouchableOpacity 
                                 style={{width:'50%',height:'100%',alignItems:'center',justifyContent:'center'}}
-                                    onPress={this._closeModalWin}
+                                    onPress={this._onClickDelete}
                                 >
                                     <Text style={{fontSize:13}}>确认</Text>
                                 </TouchableOpacity>
@@ -175,4 +240,3 @@ class ModalComp extends React.Component{
             }
 
         })
-        export default ModalComp;

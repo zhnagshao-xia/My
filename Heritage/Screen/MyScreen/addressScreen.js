@@ -12,10 +12,51 @@ import {
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
+var http="http://192.168.50.91:3000";
+var URL = http+"/users/address/list";
 
 export default class addressScreen extends Component {
-    render() {
-      const { navigation } = this.props;
+  constructor(props) {
+    super(props);
+    const {navigation,route} = this.props;
+    let username = route.params.username;
+    this.state = {
+      username,
+      docs: [],
+    };
+    this.fetchData = this.fetchData.bind(this);
+  }
+
+  componentDidMount() {//componentDidMount:生命周期
+    this.fetchData();
+  }
+
+  fetchData() {
+    fetch(URL, {
+      method: 'POST',
+      credentials: "include",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: this.state.username
+      })
+    })
+      .then((response) => response.json())
+      .then((json)=>{  
+        this.setState({
+          docs:json.docs[0].address,
+        })
+      })
+      .catch((error)=>console.error(error))
+      .finally(()=>{
+        this.setState({isLonding:false});
+      })
+  }  
+  render() {
+    const { navigation } = this.props;
+    const data = this.state.docs;
       return (
           <View style={styles.container}>
             <View style={{backgroundColor:"#fff",
@@ -33,33 +74,28 @@ export default class addressScreen extends Component {
             textAlign: 'center',
             textAlignVertical: 'center',}}>地址管理</Text>
           <TouchableOpacity
-          onPress={() => navigation.navigate('编辑')}>
+          onPress={() => navigation.navigate('编辑',{username:this.state.username})}>
           <AntDesign name={'plus'} size={25} color={'#000'} /></TouchableOpacity>
       </View>
       </View>
             <View > 
             <FlatList
-            data = {[
-              {key:'张三',number:'188888888',area:'浙江省杭州市拱墅区上塘街道舟山东路36号'},
-              {key:'李四',number:'199999999',area:'浙江省杭州市拱墅区上塘街道舟山东路36号'},
-              {key:'王二',number:'177777777',area:'浙江省杭州市拱墅区上塘街道舟山东路36号'},
-              {key:'王二',number:'177777777',area:'浙江省杭州市拱墅区上塘街道舟山东路36号'},
-            ]}
+            data = {data}
             renderItem = {({item})=>
           <View style = {styles.one}>
               <View style={styles.headphoto}>
-                <Image style={{width:'100%',height:'100%',borderRadius:50}} source={require('../../Image/HomeScreen/2.jpg')}></Image>
+                <Image style={{width:'100%',height:'100%',borderRadius:50}} source={{uri:item.shopicon}}></Image>
               </View>
               <View style={styles.massage}>
-                <View style={{flexDirection:'row'}}>
-                  <Text style={styles.key}>{item.key}</Text>
-                  <Text style={styles.number}>{item.number}</Text>
+                <View style={{flexDirection:'row',justifyContent:"space-between"}}>
+                  <Text style={styles.key}>{item.shopname}</Text>
+                  <Text style={styles.number}>{item.telephone}</Text>
                 </View>
-                <Text style={styles.number}>{item.area}</Text>
+                <Text style={{marginTop:8}}>{item.dizhi}</Text>
               </View>
               <View style={styles.edit}>
                 <TouchableOpacity 
-                onPress={() => navigation.navigate('修改')}
+                onPress={() => navigation.navigate('修改',{shopname:item.shopname,telephone:item.telephone,dizhi:item.dizhi})}
                 style={{width:50,height:50,justifyContent:'center'}}>
                   <Text style={{fontSize:15}}>编辑</Text>
                 </TouchableOpacity>
@@ -112,6 +148,10 @@ export default class addressScreen extends Component {
       alignItems:'center',
       justifyContent:'center',
       marginLeft:10
+    },
+    key:{
+      fontSize:15,
+      marginRight:5
     }
   
   })

@@ -8,12 +8,52 @@ import {
 } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
+
+var URL = "http://192.168.50.91:3000/users/dindan/list";
+
 export default class orderScreen extends Component {
   constructor(props) {
     super(props);
+    const {navigation,route} = this.props;
+    let username = route.params.username;
+    this.state = {
+      username,
+      docs: [],
+    };
+    this.fetchData = this.fetchData.bind(this);
   }
+
+  componentDidMount() {//componentDidMount:生命周期
+    this.fetchData();
+  }
+
+  fetchData() {
+    fetch(URL, {
+      method: 'POST',
+      credentials: "include",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: this.state.username
+      })
+    })
+      .then((response) => response.json())
+      .then((json)=>{  
+        this.setState({
+          docs:json.docs[0].dindan,
+        })
+      })
+      .catch((error)=>console.error(error))
+      .finally(()=>{
+        this.setState({isLonding:false});
+      })
+  }
+
   render() {
     const { navigation } = this.props;
+    const data = this.state.docs;
     return (
       <View>
         <View style={{
@@ -34,25 +74,18 @@ export default class orderScreen extends Component {
           </View>
       <View style = {styles.container}>
           <FlatList
-            data = {[
-              {key:'传统纯手工打造油纸伞来自西子湖畔的美意...',
-              price:'￥288'},
-              {key:''},
-              {key:''},
-              {key:''},
-              {key:''},
-    
-            ]}
+            data = {data}
             renderItem = {({item})=>
             <View style = {styles.one}>
               <View style={{flexDirection:'row',width:'100%',}}>
-                <View style={{width:85,height:100,margin:10,backgroundColor:'#000'}}>
-                </View>
+                <Image source={{uri:item.fengmian}}
+                 style={{width:85,height:100,margin:10,backgroundColor:'red'}}>
+                </Image>
                 <View style={{ width:200,height:85,marginTop:10}}>
-                    <Text style={{width:'100%',fontSize:13}}>{item.key}</Text>
+                    <Text style={{width:'100%',fontSize:13}}>{item.goods}</Text>
                     <View style={{width:'100%',flexDirection:'row',justifyContent:'space-between',marginTop:15}}>
-                        <Text style={{fontSize:14,color:'#f76220'}}>{item.price}</Text>
-                        <Text style={{fontSize:14}}>已签收</Text>
+                        <Text style={{fontSize:14,color:'#f76220'}}>￥{item.price}</Text>
+                        <Text style={{fontSize:14}}>{item.state}</Text>
                     </View>
                   
                 <TouchableOpacity 

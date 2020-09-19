@@ -9,7 +9,7 @@ export default class outScreen extends Component{
         AsyncStorage.removeItem('userInfo',(error) => {
             if (!error) {
                 Alert.alert("退出成功");
-                navigation.goBack("我的");
+                navigation.navigate("登录");
             }
         });
     }

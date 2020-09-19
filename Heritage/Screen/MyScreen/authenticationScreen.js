@@ -9,18 +9,59 @@ import {
   Image,
   TouchableOpacity,
   Modal,
-  Button
+  Button,
+  Alert
   
 } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import { TextInput } from 'react-native-paper';
-class ModalComp extends React.Component{
- 
+
+var URL="http://192.168.50.91:3000/users/renzheng";
+
+export default class ModalComp extends Component{
+    constructor(props){
+        super(props);
+        const {navigation,route} = this.props;
+        let username = route.params.username;
+        this.state = {
+          username,
+          realname:"",modalVisible: false,
+          idcard:"",modalVisible: false,
+          evidence:"",modalVisible: false,
+        }
+      };
+
+      _onClickrenzheng=()=> {
+        var navigation = this.props.navigation;
+        fetch(URL, {
+          method: 'POST',
+          credentials: "include",
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            username: this.state.username,
+            realname: this.state.realname,
+            idcard: this.state.idcard,
+            evidence: this.state.evidence
+          })
+        })
+        .then(function (res) {
+          return res.json();
+      }).then(function (json) {
+          if (json.code == 200) {
+            //   Alert.alert("提交成功")
+              navigation.goBack("我的");
+          } 
+      })
+      }
+
     state = {
             modalVisible: false,
-    };
-    
+    }; 
+     
     _openModalWin = () => {
         this.setState({modalVisible: true});
     }
@@ -61,7 +102,9 @@ class ModalComp extends React.Component{
                         justifyContent:'space-between',
                         flexDirection:'row'}}>
                             <Text style={{fontSize:15,marginLeft:10}}>真实姓名</Text>
-                            <TextInput style={{width:200,height:40,backgroundColor:'#fff'}}
+                            <TextInput 
+                            style={{width:200,height:40,backgroundColor:'#fff'}}
+                            onChangeText={(text)=> this.setState({realname:text})}
                             //  underlineColorAndroid='transparent'
                              selectionColor='black'></TextInput>
                     </View>
@@ -75,11 +118,13 @@ class ModalComp extends React.Component{
                         flexDirection:'row'
                         }}>
                             <Text style={{fontSize:15,marginLeft:10}}>身份证号</Text>
-                            <TextInput style={{width:200,height:40,backgroundColor:'#fff'}}
-                             keyboardType='numeric' 
+                            <TextInput 
+                            style={{width:200,height:40,backgroundColor:'#fff'}}
+                            onChangeText={(text)=>this.setState({idcard:text})} 
+                            keyboardType='numeric' 
                             //  underlineColorAndroid='transparent'
                              selectionColor='black'
-                             ></TextInput>
+                            ></TextInput>
                         </View>
                     <View style={{width:'100%',height:170,}}>
                         <View style={{width:'100%',height:50,justifyContent:'center'}}>
@@ -128,10 +173,10 @@ class ModalComp extends React.Component{
                             >
                         <View style={styles.modalContainer}>
                             <View style={{width:'100%',height:'75%',alignItems:'center',justifyContent:'center'}}>
-                                <Text style={styles.modalTitleStyle}>已成功提交！</Text>
+                                <Text style={styles.modalTitleStyle}>成功提交！</Text>
                             </View>
                             <TouchableOpacity style={styles.modalButtonStyle}
-                            onPress={this._closeModalWin}>      
+                            onPress={this._onClickrenzheng}>      
                             <Text style={{fontSize:15}}>确认</Text> 
                             </TouchableOpacity>
                             
@@ -181,4 +226,4 @@ class ModalComp extends React.Component{
                 borderColor:'grey'
             }
         })
-        export default ModalComp;
+        
