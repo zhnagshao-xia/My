@@ -11,6 +11,9 @@ import {
     TouchableHighlight,
     TouchableOpacity } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
+
+var URL='http://192.168.50.91:3000/regist';
+
 export default class registerScreen extends Component {
   constructor(props) {
     super(props);
@@ -22,7 +25,7 @@ export default class registerScreen extends Component {
 };
 _onClickRegist = () => {
   var navigation = this.props.navigation;
-  fetch('http://192.168.1.144:3000/regist', {
+  fetch(URL, {
       method: 'POST',
       headers: {
           'Accept': 'application/json',

@@ -14,14 +14,12 @@ import {
 } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
+var URL= "http://192.168.50.91:3000/users/honor";
 
 export default class MyScreen extends Component {
     state = {
-        username: '立即登录'
-    }
-
-    async componentDidMount() {
-        
+        username: '立即登录',
+        honor:"暂无",
     }
 
     checkUserAction = async () => {
@@ -30,14 +28,49 @@ export default class MyScreen extends Component {
         username && this.setState({
             username
         })
+        console.log(username),
+        this.fetchData();
     }
+
+    componentDidMount() {//componentDidMount:生命周期
+        this.fetchData();
+      }
+    
+      fetchData() {
+        fetch(URL, {
+          method: 'POST',
+          credentials: "include",
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            username: this.state.username
+          })
+        })
+          .then((response) => response.json()) 
+          .then((json)=>{ 
+            //   if(json.code==200) 
+            this.setState({
+              honor:json.docs[0].honor,
+            })
+            console.log(json.docs)
+          })
+          .catch((error)=>console.error(error))
+          .finally(()=>{
+            this.setState({isLonding:false});
+          })
+      }
+
     render() {
         const { navigation } = this.props;
-        const { username } = this.state
+        const { username } = this.state;
+        const honor = this.state.honor;
         navigation.isFocused = () => {
             console.log("监测用户状态")
             this.checkUserAction();
         }
+        // console.log(username);
   return ( 
         <View style={styles.container}>
             <View style={styles.header}>
@@ -62,22 +95,22 @@ export default class MyScreen extends Component {
                     <FontAwesome name={'pencil'} size={16} color={'#000'}/>
                     </TouchableOpacity>
                     </View>
-                    <Text style={{fontSize:13,marginLeft:125,marginTop:3,color:'#c9a974'}}>非遗手艺人</Text>
+                    <Text style={{fontSize:13,marginLeft:125,marginTop:3,color:'#c9a974'}}>{honor}</Text>
                 </View>
             </View>
             <View style={styles.contant}>
                 <TouchableOpacity 
-                    onPress={() => navigation.navigate('收藏')}
+                    onPress={() => navigation.navigate('收藏',{username:username})}
                     style={{flex:1,backgroundColor:'#fff',alignItems:'center',justifyContent:'center'}}>
                     <Text style={{fontSize:14}}>收藏</Text>
                 </TouchableOpacity>
                 <TouchableOpacity 
-                onPress={() => navigation.navigate('关注',{username:{username}})}
+                onPress={() => navigation.navigate('关注',{username:username})}
                 style={{flex:1,backgroundColor:'#fff',alignItems:'center',justifyContent:'center'}}>
                     <Text style={{fontSize:14}}>关注</Text>
                 </TouchableOpacity>
                 <TouchableOpacity 
-                onPress={() => navigation.navigate('粉丝')}
+                onPress={() => navigation.navigate('粉丝',{username:username})}
                 style={{flex:1,backgroundColor:'#fff',alignItems:'center',justifyContent:'center'}}>
                     <Text style={{fontSize:14}}>粉丝</Text>
                 </TouchableOpacity>
@@ -85,7 +118,7 @@ export default class MyScreen extends Component {
             <View style={styles.footer}>
                 <View style={{height:115,marginBottom:20,backgroundColor:'#fff',alignItems:'center'}}>
                     <TouchableOpacity 
-                    onPress={() => navigation.navigate('订单')}
+                    onPress={() => navigation.navigate('订单',{username:username})}
                     style={{width:'90%',height:'50%',flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
                         <View style={{flexDirection:'row'}}>
                         <View style={{width:20,justifyContent:"center",alignItems:"center"}}>
@@ -97,7 +130,7 @@ export default class MyScreen extends Component {
                     </TouchableOpacity>
                     <View style={{width:'90%',height:0.5,backgroundColor:'grey'}}></View>
                     <TouchableOpacity 
-                    onPress={() => navigation.navigate('地址')}
+                    onPress={() => navigation.navigate('地址',{username:username})}
                     style={{width:'90%',height:'50%',flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
                         <View style={{flexDirection:'row'}}>
                         <View style={{width:20,justifyContent:"center",alignItems:"center"}}>
@@ -110,7 +143,7 @@ export default class MyScreen extends Component {
                 </View>
                 <View style={{height:170,alignItems:'center',backgroundColor:'#fff'}}>
                 <TouchableOpacity 
-                onPress={() => navigation.navigate('认证')}
+                onPress={() => navigation.navigate('认证',{username:username})}
                 style={{width:'90%',height:'33%',flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
                         <View style={{flexDirection:'row'}}>
                         <View style={{width:20,justifyContent:"center",alignItems:"center"}}>

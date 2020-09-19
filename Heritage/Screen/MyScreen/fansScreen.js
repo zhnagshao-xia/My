@@ -11,7 +11,52 @@ import {
 } from "react-native";
 import { ScrollView } from 'react-native-gesture-handler';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-export default function fansScreen({navigation}) {
+
+var URL = "http://192.168.50.91:3000/users/fensi/list";
+
+export default class fansScreen extends Component {
+  constructor(props) {
+    super(props);
+    const {navigation,route} = this.props;
+    let username = route.params.username;
+    this.state = {
+      username,
+      docs: [],
+    };
+    this.fetchData = this.fetchData.bind(this);
+  }
+
+  componentDidMount() {//componentDidMount:生命周期
+    this.fetchData();
+  }
+
+  fetchData() {
+    fetch(URL, {
+      method: 'POST',
+      credentials: "include",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: this.state.username
+      })
+    })
+      .then((response) => response.json())
+      .then((json)=>{  
+        this.setState({
+          docs:json.docs[0].fensi,
+        })
+      })
+      .catch((error)=>console.error(error))
+      .finally(()=>{
+        this.setState({isLonding:false});
+      })
+  }
+
+  render(){
+    const { navigation } = this.props;
+    const data = this.state.docs;
   return (
     <View style={styles.container}>
       <View style={{
@@ -33,29 +78,17 @@ export default function fansScreen({navigation}) {
           </View>
       <View style={styles.contant}>
           <FlatList
-          data = {[
-          {key:'张三'},
-          {key:'李四'},
-          {key:'王二'},
-          {key:'王二'},
-          {key:'王二'},
-          {key:'王二'},
-          {key:'王二'},
-          {key:'王二'},
-          {key:'王二'},
-          {key:'王二'},
-
-          ]}
+          data = {data}
           renderItem = {({item})=>
           <View style = {styles.one}>
               <View style={styles.headphoto}>
                   <Image style={{width:'100%',height:'100%',borderRadius:50}} 
-                          source={require('../../Image/MyScreen/background.png')}>
+                          source={{uri:item.touxiang}}>
                   </Image>
               </View>
               <View style={styles.massage}>
                   <View style={{flexDirection:'row'}}>
-                      <Text style={styles.key}>{item.key}</Text>
+                      <Text style={styles.key}>{item.yonghuming}</Text>
                   </View>
               </View>
               <View style={styles.like}>
@@ -67,7 +100,7 @@ export default function fansScreen({navigation}) {
           />
       </View>
     </View>
-   );
+   )};
 }
 const styles = StyleSheet.create({
 container:{
