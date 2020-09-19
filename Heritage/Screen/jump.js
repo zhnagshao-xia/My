@@ -54,6 +54,8 @@ import Reviewscreen from './ShopScreen/Reviewscreen'
 import Tribunefollow from './TribuneScreen/Tribunefollow'
 import Tribunerecommend from './TribuneScreen/Tribunerecommend'
 import Tribunenewest from './TribuneScreen/Tribunenewest'
+import message from './TribuneScreen/message'
+import publish from './TribuneScreen/publish'
 
 import CollectionScreen from './MyScreen/CollectionScreen'
 import followScreen from './MyScreen/followScreen'
@@ -115,14 +117,15 @@ export function TribuneTab() {
           height: 2,
           backgroundColor: "#945357",
           width: 40,
-          marginLeft: 40,
-        },
-        tabStyle: {
-          height: 45,
+          marginLeft: 15,
         },
         labelStyle: {
-              fontSize: 16, 
-          },
+          fontSize: 18,
+        },
+        tabStyle: {
+          width: 65,
+          height: 45,
+        },
       }}>
       <TribuneTabNavigation.Screen name="Tribunefollow" component={Tribunefollow} options={{ title: '关注',}} />
       <TribuneTabNavigation.Screen name="Tribunerecommend" component={Tribunerecommend} options={{ title: '推荐', }} />
@@ -151,7 +154,7 @@ export function PersonalTab() {
           height: 45,
         },
         labelStyle: {
-              fontSize: 16, 
+              fontSize: 18, 
           },
       }}>
       <PersonalTabNavigation.Screen name="homerecommend" component={homerecommend} options={{ title: '推荐' }} />
@@ -266,6 +269,8 @@ function MyStack() {
         <Stack.Screen name="Tribunefollow" component={Tribunefollow} />
         <Stack.Screen name="Tribunerecommend" component={Tribunerecommend} />
         <Stack.Screen name="Tribunenewest" component={Tribunenewest} />
+        <Stack.Screen name="message" component={message} />
+        <Stack.Screen name="publish" component={publish} />
 
         <Stack.Screen name="我的" component={MyScreen}  />
         <Stack.Screen name="收藏" component={CollectionScreen} />
