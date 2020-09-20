@@ -14,12 +14,21 @@ import {
 } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
-var URL= "http://192.168.50.91:3000/users/honor";
+var http = "http://192.168.50.91:3000";
+var URL = http+"/users/usericon";
+var URL1= http+"/users/honor";
+var URL2= http+"/users/shoucang/list/num";
+var URL3= http+"/users/guanzhu/list/num";
+var URL4= http+"/users/fensi/list/num";
 
 export default class MyScreen extends Component {
     state = {
         username: '立即登录',
         honor:"暂无",
+        // usericon:"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1426822276,3750139757&fm=26&gp=0.jpg",
+        sum1:"0",
+        sum2:"0",
+        sum3:"0",
     }
 
     checkUserAction = async () => {
@@ -37,7 +46,29 @@ export default class MyScreen extends Component {
       }
     
       fetchData() {
-        fetch(URL, {
+        // fetch(URL, {//头像
+        //     method: 'POST',
+        //     credentials: "include",
+        //     headers: {
+        //       'Accept': 'application/json',
+        //       'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify({
+        //       username: this.state.username
+        //     })
+        //   })
+        //     .then((response) => response.json()) 
+        //     .then((json)=>{ 
+        //       this.setState({
+        //         usericon:json.docs[0].usericon,
+        //       })
+        //       console.log(json.docs)
+        //     })
+        //     .catch((error)=>console.error(error))
+        //     .finally(()=>{
+        //       this.setState({isLonding:false});
+        //     });
+        fetch(URL1, {//称号
           method: 'POST',
           credentials: "include",
           headers: {
@@ -50,7 +81,6 @@ export default class MyScreen extends Component {
         })
           .then((response) => response.json()) 
           .then((json)=>{ 
-            //   if(json.code==200) 
             this.setState({
               honor:json.docs[0].honor,
             })
@@ -59,13 +89,71 @@ export default class MyScreen extends Component {
           .catch((error)=>console.error(error))
           .finally(()=>{
             this.setState({isLonding:false});
+          });
+          fetch(URL2, {//收藏数
+            method: 'POST',
+            credentials: "include",
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              username:this.state.username
+            })
           })
+          .then((response) => response.json()) 
+            .then((json)=>{
+              this.setState({
+                sum1:json.docs[0].sum,
+              })
+              console.log(json.docs)
+            });
+            fetch(URL3, {//关注数
+                method: 'POST',
+                credentials: "include",
+                headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                  username:this.state.username
+                })
+              })
+              .then((response) => response.json()) 
+                .then((json)=>{
+                  this.setState({
+                    sum2:json.docs[0].sum,
+                  })
+                  console.log(json.docs)
+                });
+                fetch(URL4, {
+                    method: 'POST',
+                    credentials: "include",
+                    headers: {
+                      'Accept': 'application/json',
+                      'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                      username:this.state.username
+                    })
+                  })
+                  .then((response) => response.json()) 
+                    .then((json)=>{
+                      this.setState({
+                        sum3:json.docs[0].sum,
+                      })
+                      console.log(json.docs)
+                    });
       }
-
+      
     render() {
         const { navigation } = this.props;
         const { username } = this.state;
+        // const usericon = this.state.usericon;
         const honor = this.state.honor;
+        const sum1 = this.state.sum1;
+        const sum2 = this.state.sum2;
+        const sum3 = this.state.sum3;
         navigation.isFocused = () => {
             console.log("监测用户状态")
             this.checkUserAction();
@@ -103,16 +191,19 @@ export default class MyScreen extends Component {
                     onPress={() => navigation.navigate('收藏',{username:username})}
                     style={{flex:1,backgroundColor:'#fff',alignItems:'center',justifyContent:'center'}}>
                     <Text style={{fontSize:14}}>收藏</Text>
+                    <Text>{sum1}</Text>
                 </TouchableOpacity>
                 <TouchableOpacity 
                 onPress={() => navigation.navigate('关注',{username:username})}
                 style={{flex:1,backgroundColor:'#fff',alignItems:'center',justifyContent:'center'}}>
                     <Text style={{fontSize:14}}>关注</Text>
+                    <Text>{sum2}</Text>
                 </TouchableOpacity>
                 <TouchableOpacity 
                 onPress={() => navigation.navigate('粉丝',{username:username})}
                 style={{flex:1,backgroundColor:'#fff',alignItems:'center',justifyContent:'center'}}>
                     <Text style={{fontSize:14}}>粉丝</Text>
+                    <Text>{sum3}</Text>
                 </TouchableOpacity>
             </View>
             <View style={styles.footer}>
