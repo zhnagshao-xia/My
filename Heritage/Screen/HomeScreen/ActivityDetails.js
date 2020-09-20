@@ -4,7 +4,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
 export default function ActivityDetails({navigation}) {
     return (
-        <ScrollView >
+        <View>
             <View style={{
             height:45,
             alignItems:"center",
@@ -16,12 +16,14 @@ export default function ActivityDetails({navigation}) {
             activeOpacity={0.8}
             onPress={() => navigation.goBack()}
             style={{right:130}}>
-              <FontAwesome name={'angle-left'} size={25} color={'#000'} /></TouchableOpacity>
+              <FontAwesome name={'angle-left'} size={25} color={'#000'} />
+              </TouchableOpacity>
               <Text style={{fontSize:18,
                 textAlign: 'center',
                 textAlignVertical: 'center',}}>详情</Text>
               
           </View>
+        <ScrollView  style={{marginBottom:50}}>
             <FlatList
                 data={[
                     {
@@ -74,6 +76,7 @@ export default function ActivityDetails({navigation}) {
                 }
             />
         </ScrollView>
+        </View>
     );
 }
 const styles = StyleSheet.create({
