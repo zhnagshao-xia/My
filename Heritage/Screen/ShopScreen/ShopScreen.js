@@ -70,9 +70,9 @@ const styles = StyleSheet.create({
     flex: 1,
 },
 item: {
-    backgroundColor: '#fff',
+    backgroundColor: '#000',
     width: width/numColumns,
-    height: 180,  
+    height: 190,  
     alignItems: 'center',
     justifyContent: 'center',
 },
@@ -226,7 +226,7 @@ export default class DrawerExample extends React.Component {
              alignItems: 'center',
              borderBottomWidth:0.5,
              borderColor:"#000",
-             marginBottom:25 }}>
+             marginBottom:20 }}>
               <Text style={{ fontSize: 15, color: '#c9ab77' }}>新品推荐</Text>
             </View>
             <View  style={{marginBottom:60}}>
