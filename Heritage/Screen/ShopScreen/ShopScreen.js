@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
 
 
 
-  container1: {
+container1: {
     flex: 1,
 },
 item: {
