@@ -63,8 +63,13 @@ export default class ActivityDetails extends Component {
       }
         const data = this.state.docs;
     return (
+<<<<<<< HEAD
         <View style={{marginBottom:40}}>
              <View style={{
+=======
+        <View>
+            <View style={{
+>>>>>>> fad88c863b89440e41f3eaa23b02fbc94ce7455e
             height:45,
             alignItems:"center",
             justifyContent:"center",
@@ -74,17 +79,28 @@ export default class ActivityDetails extends Component {
             }}>
             <TouchableOpacity
             activeOpacity={0.8}
+<<<<<<< HEAD
             onPress={() => navigation.navigate("活动")}
             style={{right:150}}>
               <FontAwesome name={'angle-left'} size={25} color={'#000'} /></TouchableOpacity>
+=======
+            onPress={() => navigation.goBack()}
+            style={{right:130}}>
+              <FontAwesome name={'angle-left'} size={25} color={'#000'} />
+              </TouchableOpacity>
+>>>>>>> fad88c863b89440e41f3eaa23b02fbc94ce7455e
               <Text style={{fontSize:18,
                 textAlign: 'center',
                 textAlignVertical: 'center',}}>详情</Text>
               
           </View>
+<<<<<<< HEAD
        
         <ScrollView >
            
+=======
+        <ScrollView  style={{marginBottom:50}}>
+>>>>>>> fad88c863b89440e41f3eaa23b02fbc94ce7455e
             <FlatList
                 data={data}
                 renderItem={({ item }) =>

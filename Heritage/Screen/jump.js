@@ -34,24 +34,11 @@ import FansScreen from './HomeScreen/FansScreen'
 
 import Shopcart from './ShopScreen/Shopcart'
 import Shopclassify from './ShopScreen/Shopclassify'
-import Shopproductdetail from './ShopScreen/Shopproductdetail'
-import Wood_carving from './ShopScreen/Wood_carving'
-import Tree_root_carving from './ShopScreen/Tree_root_carving'
-import Bronze_carving from './ShopScreen/Bronze_carving'
-import Stone_carving from './ShopScreen/Stone_carving'
-import Other_carving from './ShopScreen/Other_carving'
-import Dehua_ceramics from './ShopScreen/Dehua_ceramics'
-import Jianzhan from './ShopScreen/Jianzhan'
-import Ceramics from './ShopScreen/Ceramics'
-import Porcelain_painting from './ShopScreen/Porcelain_painting'
-import Purple_sand from './ShopScreen/Purple_sand'
-import Fragrance_products from './ShopScreen/Fragrance_products'
-import Puppet_head from './ShopScreen/Puppet_head'
-import Decorative_painting from './ShopScreen/Decorative_painting'
-import Other_process_features from './ShopScreen/Other_process_features'
+import Shopproductdetail from './ShopScreen/Shopproductdetail' 
 import Confirm_order from './ShopScreen/Confirm_order'
 import My_order from './ShopScreen/My_order'
 import Reviewscreen from './ShopScreen/Reviewscreen'
+import Typeone from './ShopScreen/Typeone'
 
 import Tribunefollow from './TribuneScreen/Tribunefollow'
 import Tribunerecommend from './TribuneScreen/Tribunerecommend'
@@ -251,23 +238,10 @@ function MyStack() {
         <Stack.Screen name="商城购物车" component={Shopcart} />
         <Stack.Screen name="商城分类页面" component={Shopclassify} />
         <Stack.Screen name="商品详情页面" component={Shopproductdetail} />
-        <Stack.Screen name="木雕详情页面" component={Wood_carving} />
-        <Stack.Screen name="根雕详情页面" component={Tree_root_carving} />
-        <Stack.Screen name="铜雕详情页面" component={Bronze_carving} />
-        <Stack.Screen name="石雕详情页面" component={Stone_carving} />
-        <Stack.Screen name="其他雕刻详情页面" component={Other_carving} />
-        <Stack.Screen name="德化陶瓷详情页面" component={Dehua_ceramics} />
-        <Stack.Screen name="建盏详情页面" component={Jianzhan} />
-        <Stack.Screen name="陶瓷详情页面" component={Ceramics} />
-        <Stack.Screen name="瓷板画详情页面" component={Porcelain_painting} />
-        <Stack.Screen name="紫砂详情页面" component={Purple_sand} />
-        <Stack.Screen name="香制品详情页面" component={Fragrance_products} />
-        <Stack.Screen name="木偶头详情页面" component={Puppet_head} />
-        <Stack.Screen name="装饰画详情页面" component={Decorative_painting} />
-        <Stack.Screen name="其他工艺特色" component={Other_process_features} />
         <Stack.Screen name="确认订单" component={Confirm_order} />
         <Stack.Screen name="我的订单" component={My_order} />
         <Stack.Screen name="评价商品页面" component={Reviewscreen} />
+        <Stack.Screen name="Typeone" component={Typeone}/>
 
         <Stack.Screen name="讨论" component={TribuneScreen}  />
         <Stack.Screen name="Tribunefollow" component={Tribunefollow} />

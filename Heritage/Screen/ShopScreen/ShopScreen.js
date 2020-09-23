@@ -66,13 +66,13 @@ const styles = StyleSheet.create({
 
 
 
-  container1: {
+container1: {
     flex: 1,
 },
 item: {
-    backgroundColor: '#fff',
+    backgroundColor: '#000',
     width: width/numColumns,
-    height: 180,  
+    height: 190,  
     alignItems: 'center',
     justifyContent: 'center',
 },
@@ -190,7 +190,7 @@ export default class DrawerExample extends React.Component {
           }}>
             <TouchableOpacity style={{}}>
               <Image
-                style={{ width: 50, height: 50, borderRadius: 50 }}
+                style={{ width: 60, height: 60, borderRadius: 50 }}
                 source={require('../../Image/ShopScreen/pic5.jpg')}
               >
               </Image>
@@ -198,7 +198,7 @@ export default class DrawerExample extends React.Component {
             </TouchableOpacity>
             <TouchableOpacity style={{}}>
               <Image
-                style={{ width: 50, height: 50, borderRadius: 50 }}
+                style={{ width: 60, height: 60, borderRadius: 50 }}
                 source={require('../../Image/ShopScreen/pic4.jpg')}
               >
               </Image>
@@ -206,7 +206,7 @@ export default class DrawerExample extends React.Component {
             </TouchableOpacity>
             <TouchableOpacity style={{}}>
               <Image
-                style={{ width: 50, height: 50, borderRadius: 50 }}
+                style={{ width: 60, height: 60, borderRadius: 50 }}
                 source={require('../../Image/ShopScreen/pic3.jpg')}
               >
               </Image>
@@ -217,13 +217,16 @@ export default class DrawerExample extends React.Component {
               style={{}}>
               <Image
                 style={{ width: 20, height: 20, }}
-                source={require('../../Image/ShopScreen/pic24.png')}
-              >
+                source={require('../../Image/ShopScreen/pic24.png')}>
               </Image>
             </TouchableOpacity>
           </View>
           <View style={styles.last}>
-            <View style={{ height:50,justifyContent: 'center', alignItems: 'center' }}>
+            <View style={{ height:50,justifyContent: 'center',
+             alignItems: 'center',
+             borderBottomWidth:0.5,
+             borderColor:"#000",
+             marginBottom:20 }}>
               <Text style={{ fontSize: 15, color: '#c9ab77' }}>新品推荐</Text>
             </View>
             <View  style={{marginBottom:60}}>
@@ -234,75 +237,6 @@ export default class DrawerExample extends React.Component {
                     />
             </SafeAreaView>
             </View>
-            
-            {/* <View style={styles.key}>
-              <View style={{ width: '50%', alignItems: 'center' }}>
-                <TouchableOpacity 
-                onPress={() => navigation.navigate('商品详情页面')}
-                style={{ width: '90%', height: 300, backgroundColor: 'red', marginTop: 15 }}>
-                  <ImageBackground
-                    style={{ width: '100%', height: '100%', flexDirection: 'row-reverse' }}
-                    source={require('../../Image/ShopScreen/umbrella2.png')}>
-                    <View style={{ width: '100%', height: 50, backgroundColor: 'rgba(50,50,50,0.7)', marginTop: 230 }}>
-                      <View style={{ width: '100%', height: '50%', flexDirection: 'row' }}>
-                        <Text style={{ fontSize: 15, marginLeft: 10, color: '#fff' }}>油纸伞</Text>
-                        <Text style={{ fontSize: 15, marginLeft: 60, color: '#fff' }}>￥288</Text>
-                      </View>
-                      <View style={{ width: '100%', height: '50%', flexDirection: 'row-reverse' }}>
-                        <Text style={{ fontSize: 15, color: '#fff' }}>已售1000件</Text>
-                      </View>
-                    </View>
-                  </ImageBackground>
-                </TouchableOpacity>
-                <TouchableOpacity style={{ width: '90%', height: 250, backgroundColor: 'red', marginTop: 15 }}>
-                  <ImageBackground
-                    style={{ width: '100%', height: '100%', flexDirection: 'row-reverse' }}
-                    source={require('../../Image/ShopScreen/umbrella1.png')}>
-                    <View style={{ width: '100%', height: 50, backgroundColor: 'rgba(50,50,50,0.7)', marginTop: 180 }}>
-                      <View style={{ width: '100%', height: '50%', flexDirection: 'row' }}>
-                        <Text style={{ fontSize: 15, marginLeft: 10, color: '#fff' }}>油纸伞</Text>
-                        <Text style={{ fontSize: 15, marginLeft: 60, color: '#fff' }}>￥288</Text>
-                      </View>
-                      <View style={{ width: '100%', height: '50%', flexDirection: 'row-reverse' }}>
-                        <Text style={{ fontSize: 15, color: '#fff' }}>已售1000件</Text>
-                      </View>
-                    </View>
-                  </ImageBackground>
-                </TouchableOpacity>
-              </View>
-              <View style={{ width: '50%', alignItems: 'center' }}>
-                <TouchableOpacity style={{ width: '90%', height: 230, backgroundColor: 'red', marginTop: 15 }}>
-                  <ImageBackground
-                    style={{ width: '100%', height: '100%', flexDirection: 'row-reverse' }}
-                    source={require('../../Image/ShopScreen/umbrella2.png')}>
-                    <View style={{ width: '100%', height: 50, backgroundColor: 'rgba(50,50,50,0.7)', marginTop: 160 }}>
-                      <View style={{ width: '100%', height: '50%', flexDirection: 'row' }}>
-                        <Text style={{ fontSize: 15, marginLeft: 10, color: '#fff' }}>油纸伞</Text>
-                        <Text style={{ fontSize: 15, marginLeft: 60, color: '#fff' }}>￥288</Text>
-                      </View>
-                      <View style={{ width: '100%', height: '50%', flexDirection: 'row-reverse' }}>
-                        <Text style={{ fontSize: 15, color: '#fff' }}>已售1000件</Text>
-                      </View>
-                    </View>
-                  </ImageBackground>
-                </TouchableOpacity>
-                <TouchableOpacity style={{ width: '90%', height: 280, backgroundColor: 'red', marginTop: 15 }}>
-                  <ImageBackground
-                    style={{ width: '100%', height: '100%', flexDirection: 'row-reverse' }}
-                    source={require('../../Image/ShopScreen/umbrella2.png')}>
-                    <View style={{ width: '100%', height: 50, backgroundColor: 'rgba(50,50,50,0.7)', marginTop: 210 }}>
-                      <View style={{ width: '100%', height: '50%', flexDirection: 'row' }}>
-                        <Text style={{ fontSize: 15, marginLeft: 10, color: '#fff' }}>油纸伞</Text>
-                        <Text style={{ fontSize: 15, marginLeft: 60, color: '#fff' }}>￥288</Text>
-                      </View>
-                      <View style={{ width: '100%', height: '50%', flexDirection: 'row-reverse' }}>
-                        <Text style={{ fontSize: 15, color: '#fff' }}>已售1000件</Text>
-                      </View>
-                    </View>
-                  </ImageBackground>
-                </TouchableOpacity>
-              </View>
-            </View> */}
           </View>
         </ScrollView>
         </View>
