@@ -8,11 +8,16 @@ import {
   TouchableOpacity,
   TextInput,
   FlatList,
+  Alert,
 } from "react-native";
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 var http = "http://192.168.50.91:3000";
 var URL = http+"/users/guanzhu/list";
+var URL1 = http + "/users/deleteguanzhu1";
+var URL2 = http + "/users/deleteguanzhu2";
+var URL3 = http + "/users/deleteguanzhu3";
+var copyyonghuming;
 
 export default class followScreen extends Component {
   constructor(props) {
@@ -51,6 +56,72 @@ export default class followScreen extends Component {
       .catch((error)=>console.error(error))
       .finally(()=>{
         this.setState({isLonding:false});
+      })
+  }
+
+  _onClickDeleteguanzhu1 = () => {
+    fetch(URL1, {
+      method: 'POST',
+      credentials: "include",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: this.state.username,
+        yonghuming:copyyonghuming,
+      })
+    })
+      .then(function (res) {
+        return res.json();
+      }).then(function (json) {
+        if (json.code == 200) {
+          Alert.alert("已取消关注")
+        }
+      })
+  }
+
+  _onClickDeleteguanzhu2 = () => {
+    fetch(URL2, {
+      method: 'POST',
+      credentials: "include",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: this.state.username,
+        yonghuming:copyyonghuming,
+      })
+    })
+      .then(function (res) {
+        return res.json();
+      }).then(function (json) {
+        if (json.code == 200) {
+          Alert.alert("已取消关注")
+        }
+      })
+  }
+
+  _onClickDeleteguanzhu3 = () => {
+    fetch(URL3, {
+      method: 'POST',
+      credentials: "include",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: this.state.username,
+        yonghuming:copyyonghuming,
+      })
+    })
+      .then(function (res) {
+        return res.json();
+      }).then(function (json) {
+        if (json.code == 200) {
+          Alert.alert("已取消关注")
+        }
       })
   }
 
@@ -95,9 +166,17 @@ export default class followScreen extends Component {
                     <Text style={styles.key}>{item.yonghuming}</Text>
                   </View>
                 </View> 
+                <TouchableOpacity
+                onPress={()=>{
+                  copyyonghuming=item.yonghuming,
+                  this._onClickDeleteguanzhu1(),
+                  this._onClickDeleteguanzhu2(),
+                  this._onClickDeleteguanzhu3(),
+                  this.fetchData()
+                }}>
                 <View style={styles.like}>
                   <Text style={{ fontSize: 13 }}>取消关注</Text>
-                </View>
+                </View></TouchableOpacity>
               </View>
             )}
           />

@@ -25,7 +25,7 @@ export default class MyScreen extends Component {
     state = {
         username: '立即登录',
         honor:"暂无",
-        // usericon:"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1426822276,3750139757&fm=26&gp=0.jpg",
+        usericon:"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1426822276,3750139757&fm=26&gp=0.jpg",
         sum1:"0",
         sum2:"0",
         sum3:"0",
@@ -46,28 +46,28 @@ export default class MyScreen extends Component {
       }
     
       fetchData() {
-        // fetch(URL, {//头像
-        //     method: 'POST',
-        //     credentials: "include",
-        //     headers: {
-        //       'Accept': 'application/json',
-        //       'Content-Type': 'application/json',
-        //     },
-        //     body: JSON.stringify({
-        //       username: this.state.username
-        //     })
-        //   })
-        //     .then((response) => response.json()) 
-        //     .then((json)=>{ 
-        //       this.setState({
-        //         usericon:json.docs[0].usericon,
-        //       })
-        //       console.log(json.docs)
-        //     })
-        //     .catch((error)=>console.error(error))
-        //     .finally(()=>{
-        //       this.setState({isLonding:false});
-        //     });
+        fetch(URL, {//头像
+            method: 'POST',
+            credentials: "include",
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              username: this.state.username
+            })
+          })
+            .then((response) => response.json()) 
+            .then((json)=>{ 
+              this.setState({
+                usericon:json.docs[0].usericon,
+              })
+              console.log(json.docs)
+            })
+            .catch((error)=>console.error(error))
+            .finally(()=>{
+              this.setState({isLonding:false});
+            });
         fetch(URL1, {//称号
           method: 'POST',
           credentials: "include",
@@ -146,10 +146,10 @@ export default class MyScreen extends Component {
                     });
       }
       
-    render() {
+    render() {  
         const { navigation } = this.props;
         const { username } = this.state;
-        // const usericon = this.state.usericon;
+        const usericon = this.state.usericon;
         const honor = this.state.honor;
         const sum1 = this.state.sum1;
         const sum2 = this.state.sum2;
@@ -169,10 +169,10 @@ export default class MyScreen extends Component {
                   </ImageBackground>
                 </View>  
                 <View style={{flex:2}}>
-                  <View style={{width:90,height:90,borderRadius:50,position:'absolute',left:25,bottom:10,borderColor:'#fff',borderWidth:4,}}>
+                  <View style={{width:90,height:90,borderRadius:50,position:'absolute',left:25,bottom:10,borderColor:'#fff',borderWidth:4,overflow:"hidden",}}>
                 <Image
                     style={{ width: '100%', height: '100%', resizeMode: 'stretch'}}
-                    source={require('../../Image/MyScreen/pic17.png')}>
+                    source={{uri:usericon}}>
                   </Image>
                   </View>
                   <View style={{flexDirection:'row',alignItems:'center',marginTop:5,}}>
@@ -194,13 +194,13 @@ export default class MyScreen extends Component {
                     <Text>{sum1}</Text>
                 </TouchableOpacity>
                 <TouchableOpacity 
-                onPress={() => navigation.navigate('关注',{username:username})}
+                onPress={() => navigation.navigate('关注',{username:username,usericon:usericon})}
                 style={{flex:1,backgroundColor:'#fff',alignItems:'center',justifyContent:'center'}}>
                     <Text style={{fontSize:14}}>关注</Text>
                     <Text>{sum2}</Text>
                 </TouchableOpacity>
                 <TouchableOpacity 
-                onPress={() => navigation.navigate('粉丝',{username:username})}
+                onPress={() => navigation.navigate('粉丝',{username:username,usericon:usericon})}
                 style={{flex:1,backgroundColor:'#fff',alignItems:'center',justifyContent:'center'}}>
                     <Text style={{fontSize:14}}>粉丝</Text>
                     <Text>{sum3}</Text>

@@ -8,18 +8,27 @@ import {
   TouchableOpacity,
   TextInput,
   FlatList,
+  Alert,
 } from "react-native";
 import { ScrollView } from 'react-native-gesture-handler';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
-var URL = "http://192.168.50.91:3000/users/fensi/list";
+var http = "http://192.168.50.91:3000";
+var URL = http+"/users/fensi/list";
+var URL1 = http + "/shouyiren/addguanzhu1";//增加用户关注数
+var URL2 = http + "/shouyiren/addguanzhu2";//增加手艺人关注数
+var URL3 = http + "/shouyiren/addguanzhu3";//增加用户粉丝数
+var copytouxiang;
+var copyyonghuming;
 
 export default class fansScreen extends Component {
   constructor(props) {
     super(props);
     const {navigation,route} = this.props;
     let username = route.params.username;
+    let usericon = route.params.usericon;
     this.state = {
+      usericon,
       username,
       docs: [],
     };
@@ -51,6 +60,75 @@ export default class fansScreen extends Component {
       .catch((error)=>console.error(error))
       .finally(()=>{
         this.setState({isLonding:false});
+      })
+  }
+
+  _onClickAddguanzhu1 = () => {
+    fetch(URL1, {
+      method: 'POST',
+      credentials: "include",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: this.state.username,
+        name: copyname,
+        touxiang: copytouxiang,
+      })
+    })
+      .then(function (res) {
+        return res.json();
+      }).then(function (json) {
+        if (json.code == 200) {
+          Alert.alert("关注成功")
+        }
+      })
+  }
+
+  _onClickAddguanzhu2 = () => {
+    fetch(URL2, {
+      method: 'POST',
+      credentials: "include",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: this.state.username,
+        usericon: this.state.usericon,
+        name: copyname,
+      })
+    })
+      .then(function (res) {
+        return res.json();
+      }).then(function (json) {
+        if (json.code == 200) {
+          Alert.alert("关注成功")
+        }
+      })
+  }
+
+  _onClickAddguanzhu3 = () => {
+    fetch(URL3, {
+      method: 'POST',
+      credentials: "include",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: this.state.username,
+        usericon: this.state.usericon,
+        username2: copyyonghuming,
+      })
+    })
+      .then(function (res) {
+        return res.json();
+      }).then(function (json) {
+        if (json.code == 200) {
+          Alert.alert("关注成功")
+        }
       })
   }
 
@@ -91,15 +169,25 @@ export default class fansScreen extends Component {
                       <Text style={styles.key}>{item.yonghuming}</Text>
                   </View>
               </View>
+              <TouchableOpacity
+                onPress={()=>{
+                  copyyonghuming=item.yonghuming,
+                  copyname=item.yonghuming,
+                  copytouxiang=item.touxiang,
+                  this._onClickAddguanzhu1(),
+                  this._onClickAddguanzhu2(),
+                  this._onClickAddguanzhu3()
+                }}>
               <View style={styles.like}>
               <Text style={{fontSize:17}}>+</Text>
                   <Text style={{fontSize:15}}>关注</Text>
-              </View>
+              </View></TouchableOpacity>
           </View>
           }
           />
       </View>
     </View>
+    
    )};
 }
 const styles = StyleSheet.create({

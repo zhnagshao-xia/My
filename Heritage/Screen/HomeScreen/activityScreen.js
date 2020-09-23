@@ -1,15 +1,66 @@
 import React, { Component } from 'react';
 import {
   View, StyleSheet, Text, Button,
-  TouchableOpacity, TextInput, Image, ScrollView, FlatList,
+  TouchableOpacity, TextInput, Image, ScrollView, FlatList,AsyncStorage,
   ImageBackground
 } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import Entypo from 'react-native-vector-icons/Entypo'
 
+var http = "http://192.168.50.91:3000";
+var URL1 = http+"/activity";
 
+export default class activityScreen extends Component {
+  constructor(props){
+    super(props);
+    this.state={
+        docs:[],
+        username:"",
+    }
+}
 
-export default function activityScreen({navigation}) {
+checkUserAction = async () => {
+  const res = await AsyncStorage.getItem('userInfo') || '{}'//AsyncStorage.getItem通过key字段来进行查询存储的数据，把该结果值作为参数传入第二个callback方法
+  const { username = '' } = JSON.parse(res)
+  username && this.setState({
+      username
+  })
+  console.log(username)
+}
+
+componentDidMount(){
+  this.fetchData();
+}
+
+fetchData() {
+  fetch(URL1, {
+    method: 'POST',
+    credentials: "include",
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    }
+  })
+    .then((response) => response.json())
+    .then((json)=>{  
+      this.setState({
+        docs:json.docs,
+      })
+    })
+    .catch((error)=>console.error(error))
+    .finally(()=>{
+      this.setState({isLonding:false});
+    })
+}
+
+  render(){
+    const { navigation } = this.props; 
+    const username  = this.state.username;
+        navigation.isFocused = () => {
+          console.log("监测用户状态")
+          this.checkUserAction();
+      }
+    const data = this.state.docs;
   return (
     <View style={styles.container}>
       <View style={{height:45,
@@ -26,7 +77,7 @@ export default function activityScreen({navigation}) {
             textAlign: 'center',
             textAlignVertical: 'center',}}>活动</Text>
           <TouchableOpacity
-          onPress={() => navigation.navigate('记录')}>
+          onPress={() => navigation.navigate('记录',{username:username})}>
           <Entypo name={'back-in-time'} size={25} color={'#000'} /></TouchableOpacity>
       </View>
       </View>
@@ -47,15 +98,7 @@ export default function activityScreen({navigation}) {
           </View>
           <View style={{ width: '80%', top: -50, alignItems: "center" }}>
             <FlatList
-              data={[
-                { key: '非遗+扶贫',text:'让非遗传承人走进千家万户' },
-                { key: '非遗+文创' },
-                { key: '' },
-                { key: '' },
-                { key: '' },
-                { key: '' },
-
-              ]}
+              data={data}
               renderItem={({ item }) =>
                 <View style={styles.one}>
                   <ImageBackground style={{ 
@@ -64,17 +107,17 @@ export default function activityScreen({navigation}) {
                    resizeMode: 'stretch', 
                    alignItems: 'center',
                     justifyContent: 'center' }}
-                    source={require('../../Image/activityScreen/mark.jpg')}>
+                    source={{uri:item.picture}}>
                     <TouchableOpacity 
-                    onPress={() => navigation.navigate('详情')}
+                    onPress={() => navigation.navigate('详情',{title:item.title})}
                       style={{ 
                       backgroundColor: 'rgba(198,164,108,0.7)', 
                       height: '50%', 
                       width: '100%', 
                       resizeMode: 'stretch',
                       justifyContent: 'center' }}>
-                      <Text style={styles.demol}>{item.key}</Text>
-                      <Text style={styles.demo2}>{item.text}</Text>
+                      <Text style={styles.demol}>{item.title}</Text>
+                      <Text style={styles.demo2}>{item.address}</Text>
                     </TouchableOpacity>
                   </ImageBackground>
                 </View>
@@ -84,7 +127,7 @@ export default function activityScreen({navigation}) {
         </View>
       </View>
     )
-  }
+  }}
 const styles = StyleSheet.create({
   container: {
     flex: 1,

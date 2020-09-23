@@ -9,20 +9,34 @@ import {
   TextInput,
   FlatList,
   Modal,
-  Button
+  Button,
+  Alert,
 } from "react-native";
 import Entypo from 'react-native-vector-icons/Entypo';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
+var http = "http://192.168.50.91:3000";
+var URL1 = http+"/activity/history";
+var URL2 = http+"/activity/delete";
+var URL3 = http+"/activity/deleteall";
+var copytitle;
 
 export default class App extends Component {
-  state = {
+  constructor(props){
+    super(props);
+    const {navigation,route} = this.props;
+    let username = route.params.username;
+    this.state = {   
+    username,
     modalVisible: false,
     modalVisibleTwo: false,
     modalVisibleThird: false,
     modalVisibleFour: false,
+    docs:[],
 };
+}
+
 _openModalWin = () => {
 this.setState({modalVisible: true});
 }
@@ -48,7 +62,85 @@ _closeModalFour = () => {
       this.setState({modalVisibleFour: false});
       
       }
+
+      componentDidMount() {//componentDidMount:生命周期
+        this.fetchData();
+      }
+    
+      fetchData=()=> {
+        fetch(URL1, {
+          method: 'POST',
+          credentials: "include",
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            username: this.state.username
+          })
+        })
+          .then((response) => response.json())
+          .then((json)=>{  
+            this.setState({
+              docs:json.docs,
+            })
+          })
+          .catch((error)=>console.error(error))
+          .finally(()=>{
+            this.setState({isLonding:false});
+          })
+      }
+
+      _onClickDelete=()=> {
+        var navigation = this.props.navigation;
+        fetch(URL2, {
+          method: 'POST',
+          credentials: "include",
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            username:this.state.username,
+            title:copytitle,
+          })
+        })
+        .then(function (res) {
+          return res.json();
+      }).then(function (json) {
+          if (json.code == 200) {
+              // Alert.alert("删除成功")
+              navigation.navigate('记录');
+          } 
+      })
+      }  
+
+      _onClickDeleteAll=()=> {
+        var navigation = this.props.navigation;
+        fetch(URL3, {
+          method: 'POST',
+          credentials: "include",
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            username:this.state.username,
+          })
+        })
+        .then(function (res) {
+          return res.json();
+      }).then(function (json) {
+          if (json.code == 200) {
+              // Alert.alert("删除成功")
+              navigation.navigate('记录');
+          } 
+      })
+      }  
+
     render() {
+      const { navigation } = this.props;
+      const data = this.state.docs;
       return (
         <View>
            <View style={{height:45,
@@ -59,7 +151,7 @@ _closeModalFour = () => {
             borderBottomColor:"#000",}}>
         <View style={{flexDirection:'row',justifyContent:"space-between",width:"90%"}}>
         <TouchableOpacity
-        onPress={() => navigation.goBack()}>
+        onPress={() => navigation.navigate('活动')}>
           <FontAwesome name={'angle-left'} size={25} color={'#000'} /></TouchableOpacity>
           <Text style={{fontSize:18,
             textAlign: 'center',
@@ -90,7 +182,7 @@ _closeModalFour = () => {
                                 <Text style={{fontSize:15}}>取 消</Text>
                               </TouchableOpacity>
                               <TouchableOpacity style={{width:'50%',height:'100%',alignItems:'center',justifyContent:'center',borderColor:'black',borderLeftWidth:0.5}}
-                                onPress={this._closeModalFour}>
+                                onPress={()=>{this._onClickDeleteAll(),this._closeModalFour(),this.fetchData()}}>
                                 <Text style={{fontSize:15,color:'#935558'}}>确 认</Text>
                               </TouchableOpacity> 
                             </View>
@@ -104,21 +196,19 @@ _closeModalFour = () => {
       </View>
           <View style={styles.container}>
             <FlatList
-                data = {[
-                {key:'主题：浙江·非遗博览会举行',place:'地点：杭州市西湖区',time:'时间：2020.08.01-2020.09.01'},
-                {key:'主题：浙江·非遗博览会举行',place:'地点：杭州市西湖区',time:'时间：2020.08.01-2020.09.01'},
-                {key:'主题：浙江·非遗博览会举行',place:'地点：杭州市西湖区',time:'时间：2020.08.01-2020.09.01'},
-                ]}
+                data = {data}
                 renderItem = {({item})=>
                 <View style = {styles.one}>
                      <View style={{width:'100%',height:20,flexDirection:'row-reverse'}}>
                          <TouchableOpacity style={styles.mark}
-                          onPress={this._openModalWin}
+                          onPress={()=>{this._openModalWin(),copytitle=item.title,
+                            console.log(copytitle)}}
                           >
                          <AntDesign
                             name={'close'}
                             size={20}
-                            color={'#000'} />
+                            color={'#000'}
+                          />
                          </TouchableOpacity>
                          <Modal
                     animationType='fade' // 指定了 modal 的动画类型。类型：slide 从底部滑入滑出|fade 淡入淡出|none 没有动画
@@ -142,7 +232,7 @@ _closeModalFour = () => {
                                 <Text style={{fontSize:15}}>取 消</Text>
                               </TouchableOpacity>
                               <TouchableOpacity style={{width:'50%',height:'100%',alignItems:'center',justifyContent:'center',borderColor:'black',borderLeftWidth:0.5}}
-                                onPress={this._closeModalWin}>
+                                onPress={()=>{this._onClickDelete(),this._closeModalWin(),this.fetchData()}}>
                                 <Text style={{fontSize:15,color:'#935558'}}>确 认</Text>
                               </TouchableOpacity> 
                             </View>
@@ -154,13 +244,15 @@ _closeModalFour = () => {
                 </Modal>
                      </View>
                     <View style={styles.first}>
-                      <Text style={styles.key}>{item.key}</Text>  
-                      <TouchableOpacity style={styles.message}>
+                      <Text style={styles.key}>{item.title}</Text>  
+                      <TouchableOpacity 
+                      style={styles.message}
+                      onPress={() => navigation.navigate('详情',{title:item.title})}>
                         <Text style={{fontSize:12, textAlign:'center'}}>原 文</Text>
                       </TouchableOpacity>
                     </View>
                     <View style={styles.second}>
-                      <Text style={styles.key}>{item.place}</Text>
+                      <Text style={styles.key}>{item.address}</Text>
                       <TouchableOpacity style={{width:15,height:15,marginLeft:10,alignItems:'center',justifyContent:'center'}}
                       onPress={this._openModalTwo}>
                         <Entypo
@@ -196,7 +288,7 @@ _closeModalFour = () => {
                                 color={'#000'} />
                               </TouchableOpacity>
                             </View>
-                            <Text style={{fontSize:12}}>浙江省杭州市西湖区</Text>
+                          <Text style={{fontSize:12}}>{item.author}</Text>
                           </View>
                         </View>
                       </TouchableOpacity>
@@ -208,10 +300,13 @@ _closeModalFour = () => {
                       <Text style={styles.key}>{item.time}</Text>
                       <TouchableOpacity style={{width:40,height:40,marginLeft:135,alignItems:'center',justifyContent:'center'}}
                      onPress={this._openModalThird}>
-                        <FontAwesome
+                        {/* <FontAwesome
                           name={'th'}
                           size={40}
-                          color={'grey'} />
+                          color={'grey'} /> */}
+                          <Image style={{width:40,height:40}}
+                                    source={require('../../Image/Activityhistory/xiaoma.png')}
+                                    ></Image>
                       </TouchableOpacity>
                       <Modal
                       animationType='fade' // 指定了 modal 的动画类型。类型：slide 从底部滑入滑出|fade 淡入淡出|none 没有动画
@@ -228,7 +323,7 @@ _closeModalFour = () => {
                                 <View style={{width:'100%',height:'85%',borderColor:'grey',borderBottomWidth:1,alignItems:'center'}}>
                                   <View style={{width:'100%',height:'85%',alignItems:'center',justifyContent:'center'}}>
                                     <Image style={{width:200,height:200}}
-                                    source={require('../../Image/Activityhistory/ma.jpg')}
+                                    source={{uri:item.QRcode}}
                                     ></Image>
                                   </View>
                                   <View style={{width:'100%',height:'15%',alignItems:'center'}}>
@@ -278,15 +373,16 @@ _closeModalFour = () => {
     first:{
       width:'100%',
       height:20,
-      flexDirection:'row'
+      flexDirection:'row',
+      justifyContent:"space-between"
     },
     message:{
       width:45,
       height:18,
       backgroundColor:'#b7c4b3',
       borderRadius:5,
-      marginLeft:150,
       borderWidth:0.5,
+      marginRight:50,
       borderColor:'black'
     },
     second:{

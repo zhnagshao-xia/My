@@ -1,22 +1,181 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, View, ImageBackground,Image,ScrollView,FlatList,Dimensions,TouchableOpacity} from 'react-native';
+import { Text, StyleSheet, View, ImageBackground,Image,ScrollView,FlatList,Dimensions,TouchableOpacity,Alert} from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
 import Modal from 'react-native-modalbox';
 import {InformationTab} from '../jump';
 
+var http = "http://192.168.50.91:3000";
+var URL1 = http + "/shouyiren/personal";
+var URL2 = http + "/shouyiren/guanzhu/num";
+var URL3 = http + "/shouyiren/fensi/num";
+var URL4 = http + "/shouyiren/addguanzhu1";
+var URL5 = http + "/shouyiren/addguanzhu2";
+var URL6 = http + "/shouyiren/addguanzhu3";
+var copyname;
+var copytouxiang;
+
 export default class Craftsmandetail extends Component {
   constructor(props) {
     super(props);
+    const {navigation,route} = this.props;
+    let name = route.params.name;
+    let username = route.params.username;
+    let usericon = route.params.usericon;
     this.state = {
+      username,
+      usericon,
+      name,
+      sum1:"0",
+      sum2:"0",
+      docs:[],
       isOpen: false,
       isDisabled: false,
       swipeToClose: true,
       sliderValue: 0.3
     };
   }
+
+  componentDidMount() {
+    this.fetchData();
+  }
+
+  fetchData() {
+    fetch(URL1, {//手艺人详情
+      method: 'POST',
+      credentials: "include",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: this.state.name
+      })
+    })
+      .then((response) => response.json())
+      .then((json)=>{  
+        this.setState({
+          docs:json.docs[0],
+        })
+      })
+      .catch((error)=>console.error(error))
+      .finally(()=>{
+        this.setState({isLonding:false});
+      });
+      fetch(URL2, {//关注数
+        method: 'POST',
+        credentials: "include",
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name:this.state.name
+        })
+      })
+      .then((response) => response.json()) 
+        .then((json)=>{
+          this.setState({
+            sum1:json.docs[0].sum,
+          })
+          console.log(json.docs)
+        });
+        fetch(URL3, {//粉丝数
+          method: 'POST',
+          credentials: "include",
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name:this.state.name
+          })
+        })
+        .then((response) => response.json()) 
+          .then((json)=>{
+            this.setState({
+              sum2:json.docs[0].sum,
+            })
+            console.log(json.docs)
+          });
+  }
+
+  _onClickAddguanzhu1 = () => {
+    fetch(URL4, {
+      method: 'POST',
+      credentials: "include",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: this.state.username,
+        name: copyname,
+        touxiang: copytouxiang,
+      })
+    })
+      .then(function (res) {
+        return res.json();
+      }).then(function (json) {
+        if (json.code == 200) {
+          Alert.alert("关注成功")
+        }
+      })
+  }
+
+  _onClickAddguanzhu2 = () => {
+    fetch(URL5, {
+      method: 'POST',
+      credentials: "include",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: this.state.username,
+        usericon: this.state.usericon,
+        name: copyname,
+      })
+    })
+      .then(function (res) {
+        return res.json();
+      }).then(function (json) {
+        if (json.code == 200) {
+          Alert.alert("关注成功")
+        }
+      })
+  }
+
+  _onClickAddguanzhu3 = () => {
+    fetch(URL6, {
+      method: 'POST',
+      credentials: "include",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: this.state.username,
+        usericon: this.state.usericon,
+        name: copyname,
+      })
+    })
+      .then(function (res) {
+        return res.json();
+      }).then(function (json) {
+        if (json.code == 200) {
+          Alert.alert("关注成功")
+        }
+      })
+  }
+
   render() {
     const { navigation } = this.props;
+    const data = this.state.docs;
+    const sum1 = this.state.sum1;
+    const sum2 = this.state.sum2;
+    const username = this.state.username;
+    const usericon = this.state.usericon;
   return (
     <View style={{flex:1}}>
       <View style={{height:45,
@@ -41,14 +200,20 @@ export default class Craftsmandetail extends Component {
       resizeMode='stretch'>
         <View style={{width:'40%',height:'100%'}}>
           <Image style={styles.headpic}
-          source={require('../../Image/HomeScreen/yi1.png')}/>
+          source={{uri:data.touxiang}}/>
          <View style={styles.namerow}>
            <Text style={{fontSize:15,color:'black'}}
-            onPress={()=>{
-              Alert.alert("111");
-            }}
-           >叶良康</Text>
-           <TouchableOpacity style={styles.like}>
+          >{data.name}</Text>
+           <TouchableOpacity 
+           style={styles.like}
+           onPress={()=>{
+            copyname = data.name,
+            copytouxiang = data.touxiang,
+            this._onClickAddguanzhu1(),
+            this._onClickAddguanzhu2(),
+            this._onClickAddguanzhu3(),
+            this.fetchData()
+           }}>
              <FontAwesome
                     name={'plus'}
                     size={15}
@@ -58,29 +223,30 @@ export default class Craftsmandetail extends Component {
          </View>
         </View>
         <View style={styles.center}>
-          <View style={{width:30,height:130}}>
-            <Text style={{fontSize:12,textAlign:'center'}}>鄞</Text>
-            <Text style={{fontSize:12,textAlign:'center'}}>州</Text>
-            <Text style={{fontSize:12,textAlign:'center'}}>竹</Text>
-            <Text style={{fontSize:12,textAlign:'center'}}>编</Text>
+          <View style={{width:23,height:130,}}>
+            <Text style={{fontSize:12,textAlign:'center',textAlignVertical: 'center',}}>{data.xiangmu}</Text>
           </View>
           <View style={{width:1,height:130,backgroundColor:'black'}}></View>
-          <View style={{width:30,height:130,flexDirection:'column-reverse'}}>
-          <Text style={{fontSize:12,textAlign:'center'}}>人</Text>
-          <Text style={{fontSize:12,textAlign:'center'}}>承</Text>
-          <Text style={{fontSize:12,textAlign:'center'}}>传</Text>
-          <Text style={{fontSize:12,textAlign:'center'}}>遗</Text>
-          <Text style={{fontSize:12,textAlign:'center'}}>非</Text>
+          <View style={{width:23,height:130,flexDirection:'column-reverse'}}>
+          <Text style={{fontSize:12,textAlign:'center',textAlignVertical: 'center',}}>非遗传承人</Text>
           </View>
         </View>
         <View style={{width:'40%',height:'100%',flexDirection:'row-reverse'}}>
           <View style={styles.fans}>
-            <View style={{width:50,height:30,alignItems:'center',justifyContent:'center'}}>
-              <Text style={{fontSize:15,color:'#fff'}}>关注  0</Text>
+            <View style={{width:70,height:30,alignItems:'center',justifyContent:'center',flexDirection:"row"}}>
+          <Text style={{fontSize:15,color:'#fff'}}>关注   </Text>
+          <TouchableOpacity 
+          onPress={()=>navigation.navigate('手艺人关注',{name:data.name,username:username,usericon:usericon})}>
+          <Text style={{fontSize:15,color:'#fff'}}>{sum1}</Text>
+          </TouchableOpacity>
             </View>
             <View style={{width:1,height:20,backgroundColor:'#fff',marginLeft:5,marginRight:5}}></View>
-            <View style={{width:50,height:30,alignItems:'center',justifyContent:'center'}}>
-              <Text style={{fontSize:15,color:'#fff'}}>粉丝  0</Text>
+            <View style={{width:70,height:30,alignItems:'center',justifyContent:'center',flexDirection:"row"}}>
+          <Text style={{fontSize:15,color:'#fff'}}>粉丝   </Text>
+          <TouchableOpacity
+          onPress={()=>navigation.navigate('手艺人粉丝',{name:data.name,username:username,usericon:usericon})}>
+          <Text style={{fontSize:15,color:'#fff'}}>{sum2}</Text>
+          </TouchableOpacity>
             </View>
           </View>
         </View>
@@ -165,7 +331,7 @@ const styles = StyleSheet.create({
     justifyContent:'center',
   },
   fans:{
-    width:130,
+    width:150,
     height:35,
     backgroundColor:'rgba(0,0,0,0.5)',
     borderTopLeftRadius:5,

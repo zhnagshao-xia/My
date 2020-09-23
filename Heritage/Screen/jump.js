@@ -29,6 +29,8 @@ import CraftsmanScreen from './HomeScreen/CraftsmanScreen'
 import Craftsmandetail from './HomeScreen/Craftsmandetail'
 import personalinformation from './HomeScreen/personalinformation'
 import representativework from './HomeScreen/representativework'
+import FollowScreen from './HomeScreen/FollowScreen'
+import FansScreen from './HomeScreen/FansScreen'
 
 import Shopcart from './ShopScreen/Shopcart'
 import Shopclassify from './ShopScreen/Shopclassify'
@@ -242,6 +244,8 @@ function MyStack() {
         <Stack.Screen name="手艺人详细页面" component={Craftsmandetail} />
         <Stack.Screen name="personalinformation" component={personalinformation} />
         <Stack.Screen name="representativework" component={representativework} />
+        <Stack.Screen name="手艺人关注" component={FollowScreen}/>
+        <Stack.Screen name="手艺人粉丝" component={FansScreen}/>
 
         <Stack.Screen name="集市" component={ShopScreen}  />
         <Stack.Screen name="商城购物车" component={Shopcart} />

@@ -13,7 +13,8 @@ import {
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
-var URL = "http://192.168.50.91:3000/users/address/list/add";
+var http = "http://192.168.50.91:3000";
+var URL = http+"/users/address/list/add";
 
 export default class App extends Component {
   constructor(props) {

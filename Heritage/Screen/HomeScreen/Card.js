@@ -8,11 +8,41 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import {Button} from 'react-native-paper';
+import { Button } from 'react-native-paper';
+import { useFocusEffect } from "@react-navigation/native"
+
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 // const tabBarHeight=85;
+
+function Card({
+  canOpen,
+  changeDragAction,
+  image,
+  title,
+  author,
+  navigation,
+  text
+}) {
+  const [focused,setFocused] = React.useState(false)
+  useFocusEffect(
+    React.useCallback(() => {
+      console.log("整不了")
+    }, [])
+  )
+
+  return (<Project
+    canOpen={canOpen}
+    changeDragAction={changeDragAction}
+    image={image}
+    title={title}
+    author={author}
+    navigation={navigation}
+    text={text}
+    focused={focused}
+  />)
+}
 
 class Project extends React.Component {
   state = {
@@ -22,6 +52,7 @@ class Project extends React.Component {
     opacity: new Animated.Value(0),
     textHeight: new Animated.Value(100),
   };
+
 
   openCard = () => {
     if (!this.props.canOpen) return;
@@ -81,20 +112,21 @@ class Project extends React.Component {
     return (
       <TouchableWithoutFeedback onPress={this.openCard}>
         <AnimatedContainer
-          style={{width: this.state.cardWidth, height: this.state.cardHeight}}>
+          style={{ width: this.state.cardWidth, height: this.state.cardHeight }}>
           <Cover>
-            <Image source={this.props.image} />
-            <AnimatedTitle style={{top: this.state.titleTop}}>
+            <Image source={{ uri: this.props.image || undefined }} />
+            <AnimatedTitle style={{ top: this.state.titleTop }}>
               {this.props.title}
             </AnimatedTitle>
             <Author>by {this.props.author}</Author>
           </Cover>
-          <AnimatedText style={{height: this.state.textHeight}}>
+          
+          <AnimatedText style={{ height: this.state.textHeight }}>
             {this.props.text}
           </AnimatedText>
           <Button
             onPress={() => {
-              this.props.navigation.navigate('signUp');
+              this.props.navigation.navigate('signUp',{title:this.props.title});
             }}
             style={{
               position: 'absolute',
@@ -113,7 +145,7 @@ class Project extends React.Component {
               right: 20,
             }}
             onPress={this.closeCard}>
-            <AnimatedCloseView style={{opacity: this.state.opacity}}>
+            <AnimatedCloseView style={{ opacity: this.state.opacity }}>
               <AntDesign name="closecircleo" size={32} />
             </AnimatedCloseView>
           </TouchableOpacity>
@@ -123,7 +155,7 @@ class Project extends React.Component {
   }
 }
 
-export default Project;
+export default Card;
 
 const CloseView = styled.View`
   width: 32px;

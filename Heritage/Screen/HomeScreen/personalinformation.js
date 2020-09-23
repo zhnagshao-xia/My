@@ -13,6 +13,8 @@ import {
 import Swiper from 'react-native-swiper';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
  
+var http = "";
+
 export default class Craftsmandetail extends Component {
   render() {
     const { navigation } = this.props;

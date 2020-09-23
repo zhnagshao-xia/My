@@ -9,21 +9,69 @@ import {
   TextInput,
   FlatList,
   Modal,
-  Button
+  Button,
+  AsyncStorage,
+  Alert,
 } from "react-native";
 import Entypo from 'react-native-vector-icons/Entypo';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
+var http = "http://192.168.50.91:3000";
+var URL1 = http+"/volunteer/history";
+var copyusername;
 
 export default class App extends Component {
-  state = {
-    modalVisible: false,
-    modalVisibleTwo: false,
-    modalVisibleThird: false,
-    modalVisibleFour: false,
-    modalVisibleOK: false,
-};
+  constructor(props){
+    super(props);
+    this.state = {
+      username:"",
+      modalVisible: false,
+      modalVisibleTwo: false,
+      modalVisibleThird: false,
+      modalVisibleFour: false,
+      modalVisibleOK: false,
+      docs:[],
+};}
+
+checkUserAction = async () => {
+  const res = await AsyncStorage.getItem('userInfo') || '{}'//AsyncStorage.getItem通过key字段来进行查询存储的数据，把该结果值作为参数传入第二个callback方法
+  const { username = '' } = JSON.parse(res)
+  username && this.setState({
+    username
+  })
+  this.fetchData();
+}
+
+componentDidMount() {//componentDidMount:生命周期
+  this.checkUserAction();
+  this.fetchData();
+}
+
+  fetchData=()=> {
+    fetch(URL1, {
+      method: 'POST',
+      credentials: "include",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: this.state.username
+      })
+    })
+      .then((response) => response.json())
+      .then((json)=>{  
+        this.setState({
+          docs:json.docs,
+        })
+      })
+      .catch((error)=>console.error(error))
+      .finally(()=>{
+        this.setState({isLonding:false});
+      })
+  }
+
 _openModalWin = () => {
 this.setState({modalVisible: true});
 }
@@ -56,6 +104,14 @@ _closeModaLOk = () => {
       
     render() {
       const { navigation } = this.props;
+      const username = this.state.username;
+      copyusername=username;
+      console.log(copyusername);
+      const data = this.state.docs;
+      navigation.isFocused = () => {
+        console.log("监测用户状态")
+        this.checkUserAction();
+      }
       return (
         <View>
            <View style={{height:45,
@@ -149,11 +205,7 @@ _closeModaLOk = () => {
       </View>
           <View style={styles.container}>
             <FlatList
-                data = {[
-                {key:'主题：浙江·非遗博览会举行',place:'地点：杭州市西湖区',time:'时间：2020.08.01-2020.09.01',situation:'状态：未开始'},
-                {key:'主题：浙江·非遗博览会举行',place:'地点：杭州市西湖区',time:'时间：2020.08.01-2020.09.01',situation:'状态：进行中'},
-                {key:'主题：浙江·非遗博览会举行',place:'地点：杭州市西湖区',time:'时间：2020.08.01-2020.09.01',situation:'状态：已完成'},
-                ]}
+                data = {data}
                 renderItem = {({item})=>
                 <View style = {styles.one}>
                      <View style={{width:'100%',height:20,flexDirection:'row-reverse'}}>
@@ -199,13 +251,13 @@ _closeModaLOk = () => {
                 </Modal>
                      </View>
                     <View style={styles.first}>
-                      <Text style={styles.key}>{item.key}</Text>  
+                      <Text style={styles.key}>{item.title}</Text>  
                       <TouchableOpacity style={styles.message}>
                         <Text style={{fontSize:12, textAlign:'center'}}>原 文</Text>
                       </TouchableOpacity>
                     </View>
                     <View style={styles.second}>
-                      <Text style={styles.key}>{item.place}</Text>
+                      <Text style={styles.key}>{item.author}</Text>
                       <TouchableOpacity style={{width:15,height:15,marginLeft:10,alignItems:'center',justifyContent:'center'}}
                       onPress={this._openModalTwo}>
                         <Entypo
@@ -241,7 +293,7 @@ _closeModaLOk = () => {
                                 color={'#000'} />
                               </TouchableOpacity>
                             </View>
-                            <Text style={{fontSize:12}}>浙江省杭州市西湖区</Text>
+                            <Text style={{fontSize:12}}>{item.author}</Text>
                           </View>
                         </View>
                       </TouchableOpacity>
@@ -252,7 +304,7 @@ _closeModaLOk = () => {
                     <View style={styles.third}>
                       <View style={{width:'72%',height:40}}>
                       <Text style={styles.key}>{item.time}</Text>
-                      <Text style={styles.key}>{item.situation}</Text>
+                      <Text style={styles.key}>{item.state}</Text>
                       </View>
                       
                       <TouchableOpacity style={{width:'28%',height:40,alignItems:'center',justifyContent:'center'}}

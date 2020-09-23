@@ -8,223 +8,414 @@ import {
   TouchableHighlight,
   StyleSheet,
   ImageBackground,
-  FlatList
+  FlatList,
+  AsyncStorage,
+  Alert,
 } from 'react-native';
 import Swiper from 'react-native-swiper';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-export default function homerecommend({navigation}) {
-  return (
-    <ScrollView style={styles.main}>
-            <View style={{ width: '100%', alignItems: "center", }}>
-              <View style={styles.lunbokuang}>
-                <Swiper style={styles.wrapper}
-                  showsButtons={false}
-                  autoplay={true}
-                  paginationStyle={styles.paginationStyle}
-                  dotStyle={styles.dotStyle}
-                  activeDotStyle={styles.activeDotStyle}
-                >
-                  <View style={styles.slide1}>
-                    <ImageBackground
-                      style={{ width: '100%', height: '100%', }}
-                      source={require('../../Image/HomeScreen/1.jpg')}>
-                    </ImageBackground>
-                  </View>
-                  <View style={styles.slide2}>
-                    <ImageBackground
-                      style={{ width: '100%', height: '100%' }}
-                      source={require('../../Image/HomeScreen/2.jpg')}>
-                    </ImageBackground>
-                  </View>
-                  <View style={styles.slide3}>
-                    <ImageBackground
-                      style={{ width: '100%', height: '100%' }}
-                      source={require('../../Image/HomeScreen/3.jpg')}>
-                    </ImageBackground>
-                  </View>
-                </Swiper>
+
+var http = "http://192.168.50.91:3000";
+var URL = http + "/users/usericon";
+var URL1 = http + "/shouyiren";
+var URL2 = http + "/shouyiren/addguanzhu1";
+var URL3 = http + "/shouyiren/addguanzhu2";
+var URL4 = http + "/jiangxinlizuo";
+var URL5 = http + "/shouyiren/addguanzhu3";
+var copyname;
+var copytouxiang;
+var copyusername;
+var copyusericon;
+
+export default class homerecommend extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: "",
+      usericon: "",
+      docs: [],
+      docs1: [],
+    }
+  }
+
+  checkUserAction = async () => {
+    const res = await AsyncStorage.getItem('userInfo') || '{}'//AsyncStorage.getItem通过key字段来进行查询存储的数据，把该结果值作为参数传入第二个callback方法
+    const { username = '' } = JSON.parse(res)
+    username && this.setState({
+      username
+    })
+    fetch(URL, {//头像
+      method: 'POST',
+      credentials: "include",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: this.state.username
+      })
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        this.setState({
+          usericon: json.docs[0].usericon,
+        })
+        console.log(json.docs)
+      })
+      .catch((error) => console.error(error))
+      .finally(() => {
+        this.setState({ isLonding: false });
+      });
+    console.log("888" + username),
+      this.fetchData();
+  }
+
+  componentDidMount() {
+    this.checkUserAction();
+    this.fetchData();
+  }
+
+  fetchData() {
+    fetch(URL1, {//推荐手艺人
+      method: 'POST',
+      credentials: "include",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      }
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        this.setState({
+          docs: json.docs,
+        })
+      })
+      .catch((error) => console.error(error))
+      .finally(() => {
+        this.setState({ isLonding: false });
+      });
+    fetch(URL4, {//匠心力作
+      method: 'POST',
+      credentials: "include",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      }
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        this.setState({
+          docs1: json.docs,
+        })
+      })
+      .catch((error) => console.error(error))
+      .finally(() => {
+        this.setState({ isLonding: false });
+      });
+  }
+
+  _onClickAddguanzhu1 = () => {
+    fetch(URL2, {
+      method: 'POST',
+      credentials: "include",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: this.state.username,
+        name: copyname,
+        touxiang: copytouxiang,
+      })
+    })
+      .then(function (res) {
+        return res.json();
+      }).then(function (json) {
+        if (json.code == 200) {
+          Alert.alert("关注成功")
+        }
+      })
+  }
+
+  _onClickAddguanzhu2 = () => {
+    fetch(URL3, {
+      method: 'POST',
+      credentials: "include",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: this.state.username,
+        usericon: copyusericon,
+        name: copyname,
+      })
+    })
+      .then(function (res) {
+        return res.json();
+      }).then(function (json) {
+        if (json.code == 200) {
+          Alert.alert("关注成功")
+        }
+      })
+  }
+
+  _onClickAddguanzhu3 = () => {
+    fetch(URL5, {
+      method: 'POST',
+      credentials: "include",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: this.state.username,
+        usericon: copyusericon,
+        username2: copyname,
+      })
+    })
+      .then(function (res) {
+        return res.json();
+      }).then(function (json) {
+        if (json.code == 200) {
+          Alert.alert("关注成功")
+        }
+      })
+  }
+
+
+  render() {
+    const { navigation } = this.props;
+    const data = this.state.docs;
+    const data1 = this.state.docs1;
+    const username = this.state.username;
+    const usericon = this.state.usericon;
+    navigation.isFocused = () => {
+      console.log("监测用户状态")
+      this.checkUserAction();
+    }
+    return (
+      <ScrollView style={styles.main}>
+        <View style={{ width: '100%', alignItems: "center", }}>
+          <View style={styles.lunbokuang}>
+            <Swiper style={styles.wrapper}
+              showsButtons={false}
+              autoplay={true}
+              paginationStyle={styles.paginationStyle}
+              dotStyle={styles.dotStyle}
+              activeDotStyle={styles.activeDotStyle}
+            >
+              <View style={styles.slide1}>
+                <ImageBackground
+                  style={{ width: '100%', height: '100%', }}
+                  source={require('../../Image/HomeScreen/1.jpg')}>
+                </ImageBackground>
               </View>
-            </View>
-            <View style={styles.Headlinesmain}>
-              <View style={styles.Headlines}>
-                <View style={styles.Headlines_left}>
-                  <Image
-                    style={{ width: '100%', height: '100%', resizeMode: 'stretch' }}
-                    source={require('../../Image/HomeScreen/Headlines.png')}>
-                  </Image>
-                </View>
-                <View style={styles.Headlines_right}>
-                  <Swiper style={styles.wrapper}
-                    horizontal={false}
-                    autoplay autoplayTimeout={3}
-                    showsPagination={false} >
-                    <View style={styles.slide}>
-                      <Text style={styles.text}>官宣：非遗+形式在浙江火热展开</Text>
-                    </View>
-                    <View style={styles.slide}>
-                      <Text style={styles.text}>官宣：非遗+形式在浙江火热展开</Text>
-                    </View>
-                    <View style={styles.slide}>
-                      <Text style={styles.text}>官宣：非遗+形式在浙江火热展开</Text>
-                    </View>
-                  </Swiper>
-                </View>
+              <View style={styles.slide2}>
+                <ImageBackground
+                  style={{ width: '100%', height: '100%' }}
+                  source={require('../../Image/HomeScreen/2.jpg')}>
+                </ImageBackground>
               </View>
-            </View>
-            <View style={{ width: '100%', alignItems: "center", }}>
-              <View style={styles.partthree}>
-                <TouchableOpacity activeOpacity={0.8} style={styles.threeleft}
-                  onPress={() => navigation.navigate('传承志')}>
-                  <ImageBackground
-                    style={{ width: '100%', height: '100%', resizeMode: 'stretch' }}
-                    source={require('../../Image/HomeScreen/Craftsmanship.png')}>
-                    <View style={{ flexDirection: 'column', marginLeft: 35, marginTop: 20 }}>
-                      <Text style={{ color: '#fff', fontSize: 14 }}>传</Text>
-                      <Text style={{ color: '#fff', fontSize: 14 }}>承</Text>
-                      <Text style={{ color: '#fff', fontSize: 14 }}>志</Text>
-                    </View>
-                  </ImageBackground>
-                </TouchableOpacity>
-                <View style={styles.threeright}>
-                  <TouchableOpacity style={styles.righttop}
-                    onPress={() => navigation.navigate('志愿者')}>
-                    <ImageBackground
-                      style={styles.tu}
-                      source={require('../../Image/HomeScreen/volunteer.png')}>
-                      <Text style={{ color: '#fff', fontSize: 14 }}>志愿者</Text>
-                    </ImageBackground>
-                  </TouchableOpacity>
-                  <TouchableOpacity style={styles.rightbottom}
-                    onPress={() => navigation.navigate('活动')}>
-                    <ImageBackground
-                      style={styles.tu}
-                      source={require('../../Image/HomeScreen/activity.png')}>
-                      <Text style={{ color: '#fff', fontSize: 14 }}>活动</Text>
-                    </ImageBackground>
-                  </TouchableOpacity>
-                </View>
+              <View style={styles.slide3}>
+                <ImageBackground
+                  style={{ width: '100%', height: '100%' }}
+                  source={require('../../Image/HomeScreen/3.jpg')}>
+                </ImageBackground>
               </View>
+            </Swiper>
+          </View>
+        </View>
+        <View style={styles.Headlinesmain}>
+          <View style={styles.Headlines}>
+            <View style={styles.Headlines_left}>
+              <Image
+                style={{ width: '100%', height: '100%', resizeMode: 'stretch' }}
+                source={require('../../Image/HomeScreen/Headlines.png')}>
+              </Image>
             </View>
-            <View style={styles.partfour}>
-              <View style={{
-                width: '100%',
-                alignItems: "center"
-              }}>
-                <View style={styles.fourtitle}>
-                  <Text style={{ fontSize: 15, color: '#c6a46c' }}>
-                    推荐手艺人
+            <View style={styles.Headlines_right}>
+              <Swiper style={styles.wrapper}
+                horizontal={false}
+                autoplay autoplayTimeout={3}
+                showsPagination={false} >
+                <View style={styles.slide}>
+                  <Text style={styles.text}>第十二届浙江·中国非遗博览会9月在线上举办</Text>
+                </View>
+                <View style={styles.slide}>
+                  <Text style={styles.text}>浙江非遗生活馆亮相第14届中国（义乌）文交会</Text>
+                </View>
+                <View style={styles.slide}>
+                  <Text style={styles.text}>第五届“大匠至心”非遗传承发展杭州沙龙开幕</Text>
+                </View>
+              </Swiper>
+            </View>
+          </View>
+        </View>
+        <View style={{ width: '100%', alignItems: "center", }}>
+          <View style={styles.partthree}>
+            <TouchableOpacity activeOpacity={0.8} style={styles.threeleft}
+              onPress={() => navigation.navigate('传承志')}>
+              <ImageBackground
+                style={{ width: '100%', height: '100%', resizeMode: 'stretch' }}
+                source={require('../../Image/HomeScreen/Craftsmanship.png')}>
+                <View style={{ flexDirection: 'column', marginLeft: 35, marginTop: 20 }}>
+                  <Text style={{ color: '#fff', fontSize: 14 }}>传</Text>
+                  <Text style={{ color: '#fff', fontSize: 14 }}>承</Text>
+                  <Text style={{ color: '#fff', fontSize: 14 }}>志</Text>
+                </View>
+              </ImageBackground>
+            </TouchableOpacity>
+            <View style={styles.threeright}>
+              <TouchableOpacity style={styles.righttop}
+                onPress={() => navigation.navigate('志愿者')}>
+                <ImageBackground
+                  style={styles.tu}
+                  source={require('../../Image/HomeScreen/volunteer.png')}>
+                  <Text style={{ color: '#fff', fontSize: 14 }}>志愿者</Text>
+                </ImageBackground>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.rightbottom}
+                onPress={() => navigation.navigate('活动')}>
+                <ImageBackground
+                  style={styles.tu}
+                  source={require('../../Image/HomeScreen/activity.png')}>
+                  <Text style={{ color: '#fff', fontSize: 14 }}>活动</Text>
+                </ImageBackground>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+        <View style={styles.partfour}>
+          <View style={{
+            width: '100%',
+            alignItems: "center"
+          }}>
+            <View style={styles.fourtitle}>
+              <Text style={{ fontSize: 15, color: '#c6a46c' }}>
+                推荐手艺人
                   </Text>
-                </View>
-                <ScrollView >
-                  <FlatList
-                    data={[
-                      {
-                        title1: '叶良康',
-                        title2: '鄞州竹编非遗传承人',
-                        title3: '潜心研究工艺竹编，成为代表性传承人'
-                      },
-                      {
-                        title1: '夏雨缀',
-                        title2: '舟山贝雕非遗传承人',
-                        title3: '被评为中国工美行业艺术大师'
-                      },
-                    ]}
-                    renderItem={({ item }) =>
-                      <View style={styles.BigSize}>
-                        <View style={{ width: '100%', height: 190 }}>
-                          <Image
-                            style={{ width: '100%', height: '100%', resizeMode: 'stretch' }}
-                            source={require('../../Image/HomeScreen/Large.jpg')}>
-                          </Image>
+            </View>
+            <ScrollView >
+              <FlatList
+                data={data}
+                renderItem={({ item }) =>
+                  <View style={styles.BigSize}>
+                    <View style={{ width: '100%', height: 190 }}>
+                      <Image
+                        style={{ width: '100%', height: '100%', resizeMode: 'stretch', }}
+                        source={{ uri: item.xingxiangtu }}>
+                      </Image>
+                    </View>
+                    <View style={styles.fourword}>
+                      <View style={{
+                        width: '100%',
+                        flexDirection: 'row',
+                        justifyContent: 'space-between'
+                      }}>
+                        <View style={{ marginLeft: 110, marginVertical: 10 }}>
+                          <Text style={{ fontSize: 14 }}>{item.name}</Text>
+                          <Text style={{ color: '#c6a46c', fontSize: 12 }}>{item.chenghao}</Text>
                         </View>
-                        <View style={styles.fourword}>
-                          <View style={{
-                            width: '100%',
-                            flexDirection: 'row',
-                            justifyContent: 'space-between'
+                        <TouchableOpacity
+                          style={styles.guanzhu}
+                          onPress={() => {
+                            copyusername = username,
+                              copyusericon = usericon,
+                              copyname = item.name,
+                              copytouxiang = item.touxiang,
+                              this._onClickAddguanzhu1(),
+                              this._onClickAddguanzhu2(),
+                              this._onClickAddguanzhu3()
                           }}>
-                            <View style={{ marginLeft: 110, marginVertical: 10 }}>
-                              <Text style={{ fontSize: 14 }}>{item.title1}</Text>
-                              <Text style={{ color: '#c6a46c', fontSize: 12 }}>{item.title2}</Text>
-                            </View>
-                            <TouchableOpacity style={styles.guanzhu}>
-                              <Text style={{ color: '#945357', fontSize: 12, marginRight: 3 }}>+</Text>
-                              <Text style={{ fontSize: 12 }}>关注</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity
-                              onPress={() => navigation.navigate('手艺人详细页面')}
-                              style={styles.touxiang}>
-                              <Image
-                                style={{ width: '100%', height: '100%', resizeMode: 'stretch', }}
-                                source={require('../../Image/HomeScreen/yi1.png')}>
-                              </Image>
-                            </TouchableOpacity>
-                          </View>
-                          <Text style={{ marginLeft: 30, fontSize: 14 }}>{item.title3}</Text>
-                        </View>
+                          <Text style={{ color: '#945357', fontSize: 12, marginRight: 3 }}>+</Text>
+                          <Text style={{ fontSize: 12 }}>关注</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                          onPress={() => navigation.navigate('手艺人详细页面',{name:item.name,username:username,usericon:usericon})}
+                          style={styles.touxiang}>
+                          <Image
+                            style={{ width: '100%', height: '100%', resizeMode: 'stretch', }}
+                            source={{ uri: item.touxiang }}>
+                          </Image>
+                        </TouchableOpacity>
                       </View>
-                    }
-                  />
-                </ScrollView>
-                <TouchableOpacity
-                  onPress={() => navigation.navigate('手艺人')}
-                  style={{
-                    width: '95%',
-                    height: 40,
-                    backgroundColor: '#dcdad2',
-                    justifyContent: "center",
-                    alignItems: 'center',
-                    flexDirection: 'row',
-                    borderRadius: 8
-                  }}>
-                  <Text style={{ fontSize: 14, marginRight: 10 }}>查看更多</Text>
-                  <FontAwesome
-                    name={'angle-double-right'}
-                    size={15}
-                    color={'#000'} />
-                </TouchableOpacity>
-              </View>
-            </View>
-            <View style={styles.partfive}>
-              <View style={{ width: '95%' }}>
-                <View style={styles.fivetitle}>
-                  <Text style={{ fontSize: 15, color: '#c6a46c' }}>
-                    匠心力作
+                      <Text style={{ marginLeft: 30, fontSize: 14 }}>{item.xingrong}</Text>
+                    </View>
+                  </View>
+                }
+              />
+            </ScrollView>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('手艺人',{username:username,usericon:usericon})}
+              style={{
+                width: '95%',
+                height: 40,
+                backgroundColor: '#dcdad2',
+                justifyContent: "center",
+                alignItems: 'center',
+                flexDirection: 'row',
+                borderRadius: 8
+              }}>
+              <Text style={{ fontSize: 14, marginRight: 10 }}>查看更多</Text>
+              <FontAwesome
+                name={'angle-double-right'}
+                size={15}
+                color={'#000'} />
+            </TouchableOpacity>
+          </View>
+        </View>
+
+        <View style={styles.partfive}>
+          <View style={{ width: '95%' }}>
+            <View style={styles.fivetitle}>
+              <Text style={{ fontSize: 15, color: '#c6a46c' }}>
+                匠心力作
                   </Text>
-                </View>
-                <View style={{ width: '100%', height: 190, }}>
-                  <Image
-                    style={{ width: '100%', height: '100%', resizeMode: 'stretch', }}
-                    source={require('../../Image/HomeScreen/jishan.png')}>
-                  </Image>
-                </View>
-                <View style={{ width: '100%', height: 50, justifyContent: "center", alignItems: "center" }}>
-                  <Text style={{ fontSize: 14 }}>
-                    王星记扇
-                  </Text>
-                </View>
-                <TouchableOpacity
-                  onPress={() => navigation.navigate('匠心力作')}
-                  style={{
-                    width: '100%',
-                    height: 40,
-                    backgroundColor: '#dcdad2',
-                    justifyContent: "center",
-                    alignItems: "center",
-                    flexDirection: 'row',
-                    borderRadius: 8,
-                    marginBottom: 30
-                  }}>
-                  <Text style={{ fontSize: 14, marginRight: 10 }}>查看更多</Text>
-                  <FontAwesome
-                    name={'angle-double-right'}
-                    size={20}
-                    color={'#000'} />
-                </TouchableOpacity>
-              </View>
             </View>
-          </ScrollView>
-  );
+            <ScrollView >
+              <FlatList
+                data={data1}
+                renderItem={({ item }) =>
+                  <View>
+                    <View style={{ width: '100%', height: 190, }}>
+                      <Image
+                        style={{ width: '100%', height: '100%', resizeMode: 'stretch', }}
+                        source={{uri:item.picture}}>
+                      </Image>
+                    </View>
+                    <View style={{ width: '100%', height: 50, justifyContent: "center", alignItems: "center" }}>
+                      <Text style={{ fontSize: 14 }}>
+                        {item.jxlzproject}
+                  </Text>
+                    </View>
+                  </View>
+                }
+              />
+            </ScrollView>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('匠心力作')}
+              style={{
+                width: '100%',
+                height: 40,
+                backgroundColor: '#dcdad2',
+                justifyContent: "center",
+                alignItems: "center",
+                flexDirection: 'row',
+                borderRadius: 8,
+                marginBottom: 30
+              }}>
+              <Text style={{ fontSize: 14, marginRight: 10 }}>查看更多</Text>
+              <FontAwesome
+                name={'angle-double-right'}
+                size={20}
+                color={'#000'} />
+            </TouchableOpacity>
+          </View>
+        </View>
+      </ScrollView>
+    )
+  };
 }
 const styles = StyleSheet.create({
   fivetitle: {
@@ -254,7 +445,9 @@ const styles = StyleSheet.create({
     borderColor: '#fff',
     borderWidth: 2,
     top: -25,
-    left: 20
+    left: 20,
+    overflow: "hidden",
+    resizeMode: "center",
   },
   guanzhu: {
     flexDirection: 'row',

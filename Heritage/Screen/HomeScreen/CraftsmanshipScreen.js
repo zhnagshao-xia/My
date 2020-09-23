@@ -1,9 +1,47 @@
-import React from 'react';
+import React ,{Component}from 'react';
 import { View, Text, Image, ScrollView, TouchableOpacity, StyleSheet, FlatList, ImageBackground } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
+var http = "http://192.168.50.91:3000";
+var URL1 = http+"/chuanchengzhi";
 
-export default function CraftsmanshipScreen( { navigation } ) {
+export default class CraftsmanshipScreen extends Component {
+    constructor(props){
+        super(props);
+        this.state={
+            docs:[],
+        }
+    }
+
+    componentDidMount(){
+        this.fetchData();
+    }
+
+    fetchData() {
+        fetch(URL1, {
+          method: 'POST',
+          credentials: "include",
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          }
+        })
+          .then((response) => response.json())
+          .then((json)=>{  
+            this.setState({
+              docs:json.docs,
+            })
+          })
+          .catch((error)=>console.error(error))
+          .finally(()=>{
+            this.setState({isLonding:false});
+          })
+      }
+
+
+    render(){
+        const { navigation } = this.props;
+        const data = this.state.docs;
     return (
         <View>
         <View style={{
@@ -17,7 +55,7 @@ export default function CraftsmanshipScreen( { navigation } ) {
             <TouchableOpacity
             activeOpacity={0.8}
             onPress={() => navigation.goBack()}
-            style={{right:130}}>
+            style={{right:150}}>
               <FontAwesome name={'angle-left'} size={25} color={'#000'} /></TouchableOpacity>
               <Text style={{fontSize:18,
                 textAlign: 'center',
@@ -26,54 +64,34 @@ export default function CraftsmanshipScreen( { navigation } ) {
         <ScrollView>
             <ScrollView style={styles.main_body}>
                 <FlatList
-                    data={[
-                        {
-                            demo: '50',
-                            demo1: '王钏巧：工匠精神传续百年活字',
-                            demo2: '王钏巧·木活字印刷技术省级非遗传承人',
-                        },
-                        {
-                            demo: '95',
-                            demo1: '孙亚青：工匠精神传续百年活字',
-                            demo2: '孙亚青·王星记扇国家级非遗传承人',
-                        },
-                        {
-                            demo: '95',
-                            demo1: '孙亚青：工匠精神传续百年活字',
-                            demo2: '孙亚青·王星记扇国家级非遗传承人',
-                        },
-                        {
-                            demo: '95',
-                            demo1: '孙亚青：工匠精神传续百年活字',
-                            demo2: '孙亚青·王星记扇国家级非遗传承人',
-                        },
-                    ]}
+                    data={data}
                     renderItem={({ item }) =>
-                        <View style={styles.part}>
-                            <ImageBackground style={styles.pic}>
-                                {item.pic}
-                                <View style={styles.eye}>
-                                    <FontAwesome name={'eye'} size={15} color={'#fff'} />
-                                    <Text style={{marginLeft:8,color:'#fff',fontSize:11}}>{item.demo}</Text>
-                                </View>
-                            </ImageBackground>
-                            <TouchableOpacity activeOpacity={0.8} style={styles.introduce}
-                            onPress={() => navigation.navigate('故事')}>
-                                <View style={styles.introduce_up}>
-                                    <View style={{borderRightWidth: 1,justifyContent:"center" }}><Text style={{ fontSize: 15,marginRight:7}}>匠心逐梦</Text></View>
-                                    <View style={{paddingLeft: 7 ,justifyContent:"center"}}><Text style={styles.demol}>{item.demo1}</Text></View>
-                                </View>
-                                <View style={styles.introduce_down}>
-                                    <View style={{ width: '100%', justifyContent: 'center' }}><Text style={styles.demo2}>{item.demo2}</Text></View>
-                                </View>
-                            </TouchableOpacity>
-                        </View>
+                    <View style={styles.part}>
+                    <ImageBackground 
+                    style={styles.pic} 
+                    source={{uri:item.picture}}>
+                    <View style={styles.eye}>
+                    <FontAwesome name={'eye'} size={15} color={'#fff'} />
+                    <Text style={{marginLeft:8,color:'#fff',fontSize:11}}>{item.pageview}</Text>
+                    </View>
+                    </ImageBackground>
+                    <TouchableOpacity activeOpacity={0.8} style={styles.introduce}
+                    onPress={() => navigation.navigate("故事",{name:item.name})}>
+                    <View style={styles.introduce_up}>
+                    <View style={{borderRightWidth: 1,justifyContent:"center" }}><Text style={{ fontSize: 15,marginRight:7}}>匠心逐梦</Text></View>
+                    <View style={{paddingLeft: 7 ,justifyContent:"center"}}><Text style={styles.demol}>{item.describe}</Text></View>
+                    </View>
+                    <View style={styles.introduce_down}>
+                    <View style={{ width: '100%', justifyContent: 'center' }}><Text style={styles.demo2}>{item.project}</Text></View>
+                    </View>
+                    </TouchableOpacity>
+                    </View>
                     }
                 />
             </ScrollView>
         </ScrollView>
         </View>
-    );
+    )};
 }
 
 const styles = StyleSheet.create({
