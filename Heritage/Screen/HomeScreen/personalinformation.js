@@ -13,18 +13,55 @@ import {
 import Swiper from 'react-native-swiper';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
  
-var http = "";
+var http = "http://192.168.50.91:3000";
+var URL1 = http + "/shouyiren/personal";
+
 
 export default class Craftsmandetail extends Component {
+constructor(props){
+  super(props);
+  // const {navigation,route} = this.props;
+  // let name = route.params.name;
+  this.state={
+    // name,
+    name:"",
+    docs:[],
+    docs1:[],
+  }
+}
+
+  componentDidMount() {
+    this.fetchData();
+  }
+
+  fetchData() {
+    fetch(URL1, {//手艺人详情
+      method: 'POST',
+      credentials: "include",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: "叶良康"
+      })
+    })
+      .then((response) => response.json())
+      .then((json)=>{  
+        this.setState({
+          docs:json.docs,
+          docs1:json.docs[0].chuancheng
+        })
+      })
+      .catch((error)=>console.error(error))
+      .finally(()=>{
+        this.setState({isLonding:false});
+      });}
+
   render() {
     const { navigation } = this.props;
-    let invoice = [
-      {content: '1963拜钱阿兴师傅为师，学习笺匠技艺。'},
-      {content: '1967去宁波市工艺竹编厂进修三个月，拜竹编大师李生友为师，回来后被聘为东山工艺竹编厂技术员。'},
-      {content: '1977开始担任鄞县管江公社工艺竹编厂副厂长。'},
-      {content: '1985承包了鄞县东山工艺竹编厂，开始潜心研究工艺竹编。'},
-      {content: '2008年被命名为代表性传承人后，承担起四所学校竹编技艺传承指导工作，并积极参与各级组织的非遗展示活动，和各种新作品创作参展活动，带徒授艺，小批量生产工艺竹编作品。'},
-    ];
+    const data = this.state.docs;
+    let invoice = this.state.docs1;
   let items = [];
   invoice.map((el, index) => {
       let colorValue = index === 0 ? 'black' : 'black';
@@ -33,7 +70,7 @@ export default class Craftsmandetail extends Component {
           <View style={styles.expressItem} key={index}>
               <View style={styles.expressRightFirst}>
                   <View style={styles.process}>
-                      <Text style={{color:colorValue,fontSize:14}}>{el.content}</Text>
+                      <Text style={{color:colorValue,fontSize:14}}>{el.jingli}</Text>
                      
                   </View>
               </View>
@@ -44,11 +81,7 @@ export default class Craftsmandetail extends Component {
     return (
       <View style={{width:'100%',alignItems:'center',marginVertical:10}}>
               <FlatList
-                data={[
-                  {
-                    title1: '叶良康，鄞州塘溪镇东山人，1947年出生。从16岁开始,他跟村里76岁的老茂匠学手艺，编织实用竹器。叶良康是鄞州竹编省级非物质文化遗产传承人，无师自通编竹笼，醉心竹编五十载。',
-                  },
-                ]}
+                data={data}
                 renderItem={({ item }) =>
                 <View style={{width:'100%',height:'100%'}}>
                   <View style={{width:350,height:120}}>
@@ -57,7 +90,7 @@ export default class Craftsmandetail extends Component {
                       <Text style={{fontSize:15}}>简介</Text>
                     </View>
                     <View style={{width:'100%',height:70,}}>
-                      <Text style={{fontSize:13}}>{item.title1}</Text>
+                      <Text style={{fontSize:13}}>{item.jianjie}</Text>
                     </View>
                   </View>
                   <View style={{width:350,height:350}}>
@@ -75,9 +108,9 @@ export default class Craftsmandetail extends Component {
                       <Text style={{fontSize:15}}>非遗技艺</Text>
                     </View>
                     <ImageBackground style={styles.works}
-                    source={require('../../Image/HomeScreen/Large.jpg')}>
+                    source={{uri:item.zhanshitu}}>
                       <View style={styles.workname}>
-                        <Text style={{fontSize:12,color:'#fff'}}>鄞州竹编</Text>
+                        <Text style={{fontSize:12,color:'#fff'}}>{item.xiangmu}</Text>
                       </View>
                     </ImageBackground>
                   </View>

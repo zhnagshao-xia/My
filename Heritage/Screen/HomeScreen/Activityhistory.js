@@ -20,7 +20,11 @@ var http = "http://192.168.50.91:3000";
 var URL1 = http+"/activity/history";
 var URL2 = http+"/activity/delete";
 var URL3 = http+"/activity/deleteall";
+var URL4 = http+"/activity/address";
+var URL5 = http+"/activity/qrcode";
 var copytitle;
+var copytitle1;
+var copytitle2;
 
 export default class App extends Component {
   constructor(props){
@@ -34,6 +38,8 @@ export default class App extends Component {
     modalVisibleThird: false,
     modalVisibleFour: false,
     docs:[],
+    address:"",
+    QRcode:"",
 };
 }
 
@@ -138,9 +144,59 @@ _closeModalFour = () => {
       })
       }  
 
+      _onClickAddress=()=> {
+        fetch(URL4, {
+          method: 'POST',
+          credentials: "include",
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            title:copytitle1,
+          })
+        })
+        .then((response) => response.json())
+          .then((json)=>{  
+            this.setState({
+              address:json.docs[0].address,
+            })
+          })
+          .catch((error)=>console.error(error))
+          .finally(()=>{
+            this.setState({isLonding:false});
+          })
+      } 
+
+      _onClickQrcode=()=> {
+        fetch(URL5, {
+          method: 'POST',
+          credentials: "include",
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            title:copytitle2,
+          })
+        })
+        .then((response) => response.json())
+          .then((json)=>{  
+            this.setState({
+              QRcode:json.docs[0].QRcode,
+            })
+          })
+          .catch((error)=>console.error(error))
+          .finally(()=>{
+            this.setState({isLonding:false});
+          })
+      } 
+
     render() {
       const { navigation } = this.props;
       const data = this.state.docs;
+      const address = this.state.address;
+      const QRcode = this.state.QRcode;
       return (
         <View>
            <View style={{height:45,
@@ -244,7 +300,8 @@ _closeModalFour = () => {
                 </Modal>
                      </View>
                     <View style={styles.first}>
-                      <Text style={styles.key}>{item.title}</Text>  
+                      <Text
+                      style={styles.key}>主题：{item.title}</Text>  
                       <TouchableOpacity 
                       style={styles.message}
                       onPress={() => navigation.navigate('详情',{title:item.title})}>
@@ -252,9 +309,9 @@ _closeModalFour = () => {
                       </TouchableOpacity>
                     </View>
                     <View style={styles.second}>
-                      <Text style={styles.key}>{item.address}</Text>
+                      <Text style={styles.key}>地点：{item.address}</Text>
                       <TouchableOpacity style={{width:15,height:15,marginLeft:10,alignItems:'center',justifyContent:'center'}}
-                      onPress={this._openModalTwo}>
+                      onPress={()=>{copytitle1=item.title,console.log(copytitle1),this._onClickAddress(),this._openModalTwo()}}>
                         <Entypo
                           name={'location-pin'}
                           size={20}
@@ -269,7 +326,7 @@ _closeModalFour = () => {
                 >
             <TouchableOpacity
               style={{height:'100%',width:'100%',position:"absolute"}}
-              onPress={this._closeModalTwo}>
+              onPress={()=>{this._closeModalTwo()}}>
                     <View style={styles.modalLayer}>
                       <TouchableOpacity onPress={()=>{}}>
                         <View style={styles.daohang}>
@@ -288,7 +345,7 @@ _closeModalFour = () => {
                                 color={'#000'} />
                               </TouchableOpacity>
                             </View>
-                          <Text style={{fontSize:12}}>{item.author}</Text>
+                          <Text style={{fontSize:12}}>{address}</Text>
                           </View>
                         </View>
                       </TouchableOpacity>
@@ -297,9 +354,9 @@ _closeModalFour = () => {
                 </Modal>
                     </View>
                     <View style={styles.third}>
-                      <Text style={styles.key}>{item.time}</Text>
+                      <Text style={styles.key}>时间：{item.time}</Text>
                       <TouchableOpacity style={{width:40,height:40,marginLeft:135,alignItems:'center',justifyContent:'center'}}
-                     onPress={this._openModalThird}>
+                     onPress={()=>{copytitle2=item.title,console.log(copytitle2),this._onClickQrcode(),this._openModalThird()}}>
                         {/* <FontAwesome
                           name={'th'}
                           size={40}
@@ -323,7 +380,7 @@ _closeModalFour = () => {
                                 <View style={{width:'100%',height:'85%',borderColor:'grey',borderBottomWidth:1,alignItems:'center'}}>
                                   <View style={{width:'100%',height:'85%',alignItems:'center',justifyContent:'center'}}>
                                     <Image style={{width:200,height:200}}
-                                    source={{uri:item.QRcode}}
+                                    source={{uri:QRcode}}
                                     ></Image>
                                   </View>
                                   <View style={{width:'100%',height:'15%',alignItems:'center'}}>
@@ -362,7 +419,7 @@ _closeModalFour = () => {
       // marginTop:20
     },
     key:{
-      marginLeft:10
+      marginLeft:10,
     },
     mark:{
       width:20,

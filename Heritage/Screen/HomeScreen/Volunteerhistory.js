@@ -19,7 +19,15 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
 var http = "http://192.168.50.91:3000";
 var URL1 = http+"/volunteer/history";
+var URL2 = http+"/volunteer/state";
+var URL3 = http+"/volunteer/qrcode";
+var URL4 = http+"/volunteer/address";
+var URL5 = http+"/volunteer/delete";
+var URL6 = http+"/volunteer/deleteall";
 var copyusername;
+var copytitle;
+var copytitle1;
+var copytitle2;
 
 export default class App extends Component {
   constructor(props){
@@ -32,6 +40,8 @@ export default class App extends Component {
       modalVisibleFour: false,
       modalVisibleOK: false,
       docs:[],
+      author:"",
+      QRcode:"",
 };}
 
 checkUserAction = async () => {
@@ -72,6 +82,123 @@ componentDidMount() {//componentDidMount:生命周期
       })
   }
 
+  _onClickState=()=> {
+    fetch(URL2, {
+      method: 'POST',
+      credentials: "include",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        title:copytitle1,
+      })
+    })
+    .then(function (res) {
+      return res.json();
+  }).then(function (json) {
+      if (json.code == 200) {
+          // Alert.alert("删除成功")
+          // navigation.navigate('记录');
+      } 
+  })
+  } 
+
+  _onClickQrcode=()=> {
+    fetch(URL3, {
+      method: 'POST',
+      credentials: "include",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        title:copytitle1,
+      })
+    })
+    .then((response) => response.json())
+      .then((json)=>{  
+        this.setState({
+          QRcode:json.docs[0].QRcode,
+        })
+      })
+      .catch((error)=>console.error(error))
+      .finally(()=>{
+        this.setState({isLonding:false});
+      })
+  } 
+
+  _onClickAddress=()=> {
+    fetch(URL4, {
+      method: 'POST',
+      credentials: "include",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        title:copytitle,
+      })
+    })
+    .then((response) => response.json())
+      .then((json)=>{  
+        this.setState({
+          author:json.docs[0].author,
+        })
+      })
+      .catch((error)=>console.error(error))
+      .finally(()=>{
+        this.setState({isLonding:false});
+      })
+  } 
+
+  _onClickDelete=()=> {
+    var navigation = this.props.navigation;
+    fetch(URL5, {
+      method: 'POST',
+      credentials: "include",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username:this.state.username,
+        title:copytitle2,
+      })
+    })
+    .then(function (res) {
+      return res.json();
+  }).then(function (json) {
+      if (json.code == 200) {
+          Alert.alert("删除成功")
+          navigation.navigate('记');
+      } 
+  })
+  }  
+
+  _onClickDeleteAll=()=> {
+    var navigation = this.props.navigation;
+    fetch(URL6, {
+      method: 'POST',
+      credentials: "include",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username:this.state.username,
+      })
+    })
+    .then(function (res) {
+      return res.json();
+  }).then(function (json) {
+      if (json.code == 200) {
+          Alert.alert("清除成功")
+          navigation.navigate('记');
+      } 
+  })
+  } 
+
 _openModalWin = () => {
 this.setState({modalVisible: true});
 }
@@ -108,6 +235,8 @@ _closeModaLOk = () => {
       copyusername=username;
       console.log(copyusername);
       const data = this.state.docs;
+      const author = this.state.author;
+      const QRcode = this.state.QRcode;
       navigation.isFocused = () => {
         console.log("监测用户状态")
         this.checkUserAction();
@@ -153,7 +282,7 @@ _closeModaLOk = () => {
                                 <Text style={{fontSize:15}}>取 消</Text>
                               </TouchableOpacity>
                               <TouchableOpacity style={{width:'50%',height:'100%',alignItems:'center',justifyContent:'center',borderColor:'black',borderLeftWidth:0.5}}
-                                onPress={this._closeModalFour}>
+                                onPress={()=>{this._onClickDeleteAll(),this._closeModalFour(),this.fetchData()}}>
                                 <Text style={{fontSize:15,color:'#935558'}}>确 认</Text>
                               </TouchableOpacity> 
                             </View>
@@ -168,7 +297,9 @@ _closeModaLOk = () => {
       <View style={{width:'100%',height:50,marginBottom:15,alignItems:'center',justifyContent:'center',flexDirection:'row',backgroundColor:'#fff'}}>
           <View style={{width:350,height:50,alignItems:'center',justifyContent:'center',flexDirection:'row'}}>
               <Text style={{fontSize:15}}>志愿时长</Text>
-              <View style={{width:290,height:30,backgroundColor:'skyblue'}}></View>
+              <View style={{width:290,height:30,backgroundColor:'skyblue'}}>
+                <Text style={{fontSize:15,alignItems:"center",justifyContent:"center"}}>||||||||||||</Text>
+              </View>
           </View>
           <TouchableOpacity style={{width:30,height:30,alignItems:'center',justifyContent:'center'}} 
           onPress={this._openModalOk}>
@@ -210,7 +341,7 @@ _closeModaLOk = () => {
                 <View style = {styles.one}>
                      <View style={{width:'100%',height:20,flexDirection:'row-reverse'}}>
                          <TouchableOpacity style={styles.mark}
-                          onPress={this._openModalWin}
+                          onPress={()=>{this._openModalWin(),copytitle2=item.title}}
                           >
                          <AntDesign
                             name={'close'}
@@ -239,7 +370,7 @@ _closeModaLOk = () => {
                                 <Text style={{fontSize:15}}>取 消</Text>
                               </TouchableOpacity>
                               <TouchableOpacity style={{width:'50%',height:'100%',alignItems:'center',justifyContent:'center',borderColor:'black',borderLeftWidth:0.5}}
-                                onPress={this._closeModalWin}>
+                                onPress={()=>{this._onClickDelete(),this._closeModalWin(),this.fetchData()}}>
                                 <Text style={{fontSize:15,color:'#935558'}}>确 认</Text>
                               </TouchableOpacity> 
                             </View>
@@ -251,15 +382,17 @@ _closeModaLOk = () => {
                 </Modal>
                      </View>
                     <View style={styles.first}>
-                      <Text style={styles.key}>{item.title}</Text>  
-                      <TouchableOpacity style={styles.message}>
+                      <Text style={styles.key}>主题：{item.title}</Text>  
+                      <TouchableOpacity 
+                      style={styles.message}
+                      onPress={() => navigation.navigate('志愿者',{title:item.title})}>
                         <Text style={{fontSize:12, textAlign:'center'}}>原 文</Text>
                       </TouchableOpacity>
                     </View>
                     <View style={styles.second}>
-                      <Text style={styles.key}>{item.author}</Text>
+                      <Text style={styles.key}>地点：{item.author}</Text>
                       <TouchableOpacity style={{width:15,height:15,marginLeft:10,alignItems:'center',justifyContent:'center'}}
-                      onPress={this._openModalTwo}>
+                      onPress={()=>{copytitle=item.title,console.log(copytitle),this._onClickAddress(),this._openModalTwo()}}>
                         <Entypo
                           name={'location-pin'}
                           size={20}
@@ -293,7 +426,7 @@ _closeModaLOk = () => {
                                 color={'#000'} />
                               </TouchableOpacity>
                             </View>
-                            <Text style={{fontSize:12}}>{item.author}</Text>
+                            <Text style={{fontSize:12}}>{author}</Text>
                           </View>
                         </View>
                       </TouchableOpacity>
@@ -303,16 +436,19 @@ _closeModaLOk = () => {
                     </View>
                     <View style={styles.third}>
                       <View style={{width:'72%',height:40}}>
-                      <Text style={styles.key}>{item.time}</Text>
-                      <Text style={styles.key}>{item.state}</Text>
+                      <Text style={styles.key}>时间：{item.time}</Text>
+                      <Text style={styles.key}>状态：{item.state}</Text>
                       </View>
                       
                       <TouchableOpacity style={{width:'28%',height:40,alignItems:'center',justifyContent:'center'}}
-                      onPress={this._openModalThird}>
-                        <FontAwesome
+                      onPress={()=>{copytitle1=item.title,console.log(copytitle1),this._onClickQrcode(),this._openModalThird()}}>
+                        {/* <FontAwesome
                           name={'th'}
                           size={40}
-                          color={'grey'} />
+                          color={'grey'} /> */}
+                          <Image style={{width:40,height:40}}
+                                    source={require('../../Image/Activityhistory/xiaoma.png')}
+                                    ></Image>
                       </TouchableOpacity>
                       
                       <Modal
@@ -330,7 +466,7 @@ _closeModaLOk = () => {
                                 <View style={{width:'100%',height:'85%',borderColor:'grey',borderBottomWidth:1,alignItems:'center'}}>
                                   <View style={{width:'100%',height:'85%',alignItems:'center',justifyContent:'center'}}>
                                     <Image style={{width:200,height:200}}
-                                    source={require('../../Image/Activityhistory/ma.jpg')}
+                                    source={{uri:QRcode}}
                                     ></Image>
                                   </View>
                                   <View style={{width:'100%',height:'15%',alignItems:'center'}}>
@@ -338,7 +474,7 @@ _closeModaLOk = () => {
                                   </View>
                                 </View>
                                 <TouchableOpacity style={{width:'100%',height:'15%',alignItems:'center',justifyContent:'center'}}
-                                onPress={this._closeModalThird}>
+                                onPress={()=>{this._onClickState(),this.fetchData(),this._closeModalThird()}}>
                                   <Text style={{fontSize:15,color:'#935558'}}>关闭</Text>
                                 </TouchableOpacity>
                               </View>
@@ -380,15 +516,16 @@ _closeModaLOk = () => {
     first:{
       width:'100%',
       height:20,
-      flexDirection:'row'
+      flexDirection:'row',
+      justifyContent:"space-between"
     },
     message:{
       width:45,
       height:18,
       backgroundColor:'#b7c4b3',
       borderRadius:5,
-      marginLeft:150,
       borderWidth:0.5,
+      marginRight:50,
       borderColor:'black'
     },
     second:{
