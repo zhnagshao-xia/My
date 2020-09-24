@@ -24,7 +24,7 @@ var URL4= http+"/users/fensi/list/num";
 export default class MyScreen extends Component {
     state = {
         username: '立即登录',
-        honor:"暂无",
+        honor:"",
         usericon:"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1426822276,3750139757&fm=26&gp=0.jpg",
         sum1:"0",
         sum2:"0",
@@ -60,7 +60,7 @@ export default class MyScreen extends Component {
             .then((response) => response.json()) 
             .then((json)=>{ 
               this.setState({
-                usericon:json.docs[0].usericon,
+                usericon:json.docs.usericon,
               })
               console.log(json.docs)
             })

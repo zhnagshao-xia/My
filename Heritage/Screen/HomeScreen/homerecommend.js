@@ -58,7 +58,7 @@ export default class homerecommend extends Component {
       .then((response) => response.json())
       .then((json) => {
         this.setState({
-          usericon: json.docs[0].usericon,
+          usericon: json.docs.usericon,//usericon: json.docs[0].usericon,
         })
         console.log(json.docs)
       })
