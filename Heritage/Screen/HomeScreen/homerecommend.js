@@ -15,6 +15,7 @@ import {
 import Swiper from 'react-native-swiper';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
+var https = "http://121.196.191.45";
 var http = "http://192.168.50.91:3000";
 var URL = http + "/users/usericon";
 var URL1 = http + "/shouyiren";
@@ -52,13 +53,13 @@ export default class homerecommend extends Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        username: this.state.username
+        username: this.state.username,
       })
     })
       .then((response) => response.json())
       .then((json) => {
         this.setState({
-          usericon: json.docs[0].usericon,
+          usericon: json.docs[0].usericon,//usericon: json.docs[0].usericon,
         })
         console.log(json.docs)
       })
@@ -304,7 +305,7 @@ export default class homerecommend extends Component {
                     <View style={{ width: '100%', height: 190 }}>
                       <Image
                         style={{ width: '100%', height: '100%', resizeMode: 'stretch', }}
-                        source={{ uri: item.xingxiangtu }}>
+                        source={{ uri: https+item.xingxiangtu }}>
                       </Image>
                     </View>
                     <View style={styles.fourword}>
@@ -336,7 +337,7 @@ export default class homerecommend extends Component {
                           style={styles.touxiang}>
                           <Image
                             style={{ width: '100%', height: '100%', resizeMode: 'stretch', }}
-                            source={{ uri: item.touxiang }}>
+                            source={{ uri: https+item.touxiang }}>
                           </Image>
                         </TouchableOpacity>
                       </View>
@@ -378,10 +379,10 @@ export default class homerecommend extends Component {
                 data={data1}
                 renderItem={({ item }) =>
                   <View>
-                    <View style={{ width: '100%', height: 190, }}>
+                    <View style={{ width: '100%', height: 250, }}>
                       <Image
                         style={{ width: '100%', height: '100%', resizeMode: 'stretch', }}
-                        source={{uri:item.picture}}>
+                        source={{uri:https+item.picture}}>
                       </Image>
                     </View>
                     <View style={{ width: '100%', height: 50, justifyContent: "center", alignItems: "center" }}>

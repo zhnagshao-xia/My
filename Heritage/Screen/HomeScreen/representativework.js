@@ -12,8 +12,14 @@ import {
 } from 'react-native';
 import Swiper from 'react-native-swiper';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-export default function representativework({navigation}) {
-    return (
+
+
+
+export default class representativework extends Component {
+  
+  
+  render(){ 
+  return (
       <View style={{width:'100%',height:'100%',alignItems:'center'}}>
       <View style={styles.works1}>
         <ImageBackground style={styles.works1pic}
@@ -45,7 +51,7 @@ export default function representativework({navigation}) {
         <View style={{width:100,height:2,backgroundColor:'grey'}}></View>
       </View>
     </View>
-      );
+      )};
 }
 
 const styles = StyleSheet.create({

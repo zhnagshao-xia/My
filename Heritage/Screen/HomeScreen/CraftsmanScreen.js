@@ -10,6 +10,7 @@ import {
 import { ScrollView, FlatList } from 'react-native-gesture-handler';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
+var https = "http://121.196.191.45";
 var http = "http://192.168.50.91:3000";
 var URL1 = http+"/shouyiren/craftsman";
 var URL2 = http + "/shouyiren/addguanzhu1";
@@ -157,7 +158,7 @@ export default class CollectionScreen extends Component{
             <View style={{ width: '100%', height: 190 }}>
               <Image
                 style={{ width: '100%', height: '100%', resizeMode: 'stretch' }}
-                source={{uri:item.xingxiangtu}}>
+                source={{uri:https+item.xingxiangtu}}>
               </Image>
             </View>
             <View style={styles.fourword}>
@@ -186,7 +187,7 @@ export default class CollectionScreen extends Component{
                 style={styles.touxiang}>
                   <Image
                     style={{ width: '100%', height: '100%', resizeMode: 'stretch', }}
-                    source={{uri:item.touxiang}}>
+                    source={{uri:https+item.touxiang}}>
                   </Image>
                 </TouchableOpacity>
               </View>

@@ -8,31 +8,58 @@ import {
   TouchableHighlight,
   StyleSheet,
   ImageBackground,
-  FlatList
+  FlatList,
+  AsyncStorage
 } from 'react-native';
 import Swiper from 'react-native-swiper';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
- 
+
+var https = "http://121.196.191.45";
 var http = "http://192.168.50.91:3000";
 var URL1 = http + "/shouyiren/personal";
-
+var URL2 = http + "/shouyiren/namefind";
+var copyname;
 
 export default class Craftsmandetail extends Component {
 constructor(props){
   super(props);
-  // const {navigation,route} = this.props;
-  // let name = route.params.name;
   this.state={
-    // name,
     name:"",
     docs:[],
-    docs1:[],
+    chuancheng:[],
   }
 }
 
   componentDidMount() {
     this.fetchData();
+    // this._onClickNamefind();
   }
+
+
+
+  // _onClickNamefind (){
+  //   fetch(URL2, {//手艺人详情
+  //     method: 'POST',
+  //     credentials: "include",
+  //     headers: {
+  //       'Accept': 'application/json',
+  //       'Content-Type': 'application/json',
+  //     }
+  //   })
+  //     .then((response) => response.json())
+  //     .then((json)=>{  
+  //       this.setState({
+  //        name:json.docs[0].name
+  //       })
+  //       copyname=this.state.name
+  //       console.log("66"+copyname)
+  //     })
+  //     .catch((error)=>console.error(error))
+  //     .finally(()=>{
+  //       this.setState({isLonding:false});
+  //     });
+  // }
+
 
   fetchData() {
     fetch(URL1, {//手艺人详情
@@ -43,15 +70,16 @@ constructor(props){
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        name: "叶良康"
+        name: "陈守彬"
       })
     })
       .then((response) => response.json())
       .then((json)=>{  
         this.setState({
           docs:json.docs,
-          docs1:json.docs[0].chuancheng
+          chuancheng:json.docs[0].chuancheng
         })
+        console.log(json.docs)
       })
       .catch((error)=>console.error(error))
       .finally(()=>{
@@ -61,7 +89,11 @@ constructor(props){
   render() {
     const { navigation } = this.props;
     const data = this.state.docs;
-    let invoice = this.state.docs1;
+    let invoice = this.state.chuancheng;
+  //   navigation.isFocused = () => {
+  //     console.log("88监测用户状态")
+  //     this.fetchData();
+  // }
   let items = [];
   invoice.map((el, index) => {
       let colorValue = index === 0 ? 'black' : 'black';
@@ -108,7 +140,7 @@ constructor(props){
                       <Text style={{fontSize:15}}>非遗技艺</Text>
                     </View>
                     <ImageBackground style={styles.works}
-                    source={{uri:item.zhanshitu}}>
+                    source={{uri:https+item.zhanshitu}}>
                       <View style={styles.workname}>
                         <Text style={{fontSize:12,color:'#fff'}}>{item.xiangmu}</Text>
                       </View>

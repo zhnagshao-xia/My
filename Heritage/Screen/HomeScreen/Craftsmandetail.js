@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, View, ImageBackground,Image,ScrollView,FlatList,Dimensions,TouchableOpacity,Alert} from 'react-native';
+import { Text, StyleSheet, View, ImageBackground,Image,ScrollView,FlatList,Dimensions,TouchableOpacity,Alert,AsyncStorage} from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
 import Modal from 'react-native-modalbox';
 import {InformationTab} from '../jump';
 
+var https = "http://121.196.191.45";
 var http = "http://192.168.50.91:3000";
 var URL1 = http + "/shouyiren/personal";
 var URL2 = http + "/shouyiren/guanzhu/num";
@@ -12,6 +13,7 @@ var URL3 = http + "/shouyiren/fensi/num";
 var URL4 = http + "/shouyiren/addguanzhu1";
 var URL5 = http + "/shouyiren/addguanzhu2";
 var URL6 = http + "/shouyiren/addguanzhu3";
+var URL7 = http + "/shouyiren/nameupdate";
 var copyname;
 var copytouxiang;
 
@@ -38,7 +40,28 @@ export default class Craftsmandetail extends Component {
 
   componentDidMount() {
     this.fetchData();
+    // this._onClickNameupdate();
   }
+
+  // _onClickNameupdate = () => {
+  //   fetch(URL7, {
+  //     method: 'POST',
+  //     credentials: "include",
+  //     headers: {
+  //       'Accept': 'application/json',
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify({
+  //       name: this.state.name,
+  //     })
+  //   })
+  //     .then(function (res) {
+  //       return res.json();
+  //     }).then(function (json) {
+  //       if (json.code == 200) {
+  //       }
+  //     })
+  // }
 
   fetchData() {
     fetch(URL1, {//手艺人详情
@@ -53,7 +76,7 @@ export default class Craftsmandetail extends Component {
       })
     })
       .then((response) => response.json())
-      .then((json)=>{  
+      .then((json)=>{ 
         this.setState({
           docs:json.docs[0],
         })
@@ -200,7 +223,7 @@ export default class Craftsmandetail extends Component {
       resizeMode='stretch'>
         <View style={{width:'40%',height:'100%'}}>
           <Image style={styles.headpic}
-          source={{uri:data.touxiang}}/>
+          source={{uri:https+data.touxiang}}/>
          <View style={styles.namerow}>
            <Text style={{fontSize:15,color:'black'}}
           >{data.name}</Text>

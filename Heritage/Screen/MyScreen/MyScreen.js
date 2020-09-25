@@ -14,6 +14,7 @@ import {
 } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
+var https = "http://121.196.191.45";
 var http = "http://192.168.50.91:3000";
 var URL = http+"/users/usericon";
 var URL1= http+"/users/honor";
@@ -25,7 +26,7 @@ export default class MyScreen extends Component {
     state = {
         username: '立即登录',
         honor:"暂无",
-        usericon:"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1426822276,3750139757&fm=26&gp=0.jpg",
+        usericon:https+"/picture/touxiang/fans/b0.jpg",
         sum1:"0",
         sum2:"0",
         sum3:"0",
@@ -172,7 +173,7 @@ export default class MyScreen extends Component {
                   <View style={{width:90,height:90,borderRadius:50,position:'absolute',left:25,bottom:10,borderColor:'#fff',borderWidth:4,overflow:"hidden",}}>
                 <Image
                     style={{ width: '100%', height: '100%', resizeMode: 'stretch'}}
-                    source={{uri:usericon}}>
+                    source={{uri:https+usericon}}>
                   </Image>
                   </View>
                   <View style={{flexDirection:'row',alignItems:'center',marginTop:5,}}>

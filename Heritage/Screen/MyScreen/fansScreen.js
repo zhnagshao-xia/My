@@ -13,6 +13,7 @@ import {
 import { ScrollView } from 'react-native-gesture-handler';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
+var https = "http://121.196.191.45";
 var http = "http://192.168.50.91:3000";
 var URL = http+"/users/fensi/list";
 var URL1 = http + "/shouyiren/addguanzhu1";//增加用户关注数
@@ -161,7 +162,7 @@ export default class fansScreen extends Component {
           <View style = {styles.one}>
               <View style={styles.headphoto}>
                   <Image style={{width:'100%',height:'100%',borderRadius:50}} 
-                          source={{uri:item.touxiang}}>
+                          source={{uri:https+item.touxiang}}>
                   </Image>
               </View>
               <View style={styles.massage}>
@@ -220,7 +221,7 @@ marginLeft:10
 headphoto:{
 width:60,
 height:60,
-backgroundColor:'blue',
+backgroundColor:'#fff',
 marginLeft:15,
 borderRadius:50
 },
