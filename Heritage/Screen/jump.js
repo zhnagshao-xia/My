@@ -3,7 +3,7 @@ import { Button, Text, View, TouchableOpacity, Image, StyleSheet, ImageBackgroun
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createStackNavigator} from '@react-navigation/stack';
+import { createStackNavigator } from '@react-navigation/stack';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
 import WelcomeScreen from '../Screen/welcome'
@@ -27,14 +27,14 @@ import storyScreen from './HomeScreen/storyScreen'
 import masterpieceScreen from './HomeScreen/masterpieceScreen'
 import CraftsmanScreen from './HomeScreen/CraftsmanScreen'
 import Craftsmandetail from './HomeScreen/Craftsmandetail'
-import personalinformation from './HomeScreen/personalinformation'
-import representativework from './HomeScreen/representativework'
+import Personalinformation from './HomeScreen/personalinformation'
+import Representativework from './HomeScreen/representativework'
 import FollowScreen from './HomeScreen/FollowScreen'
 import FansScreen from './HomeScreen/FansScreen'
 
 import Shopcart from './ShopScreen/Shopcart'
 import Shopclassify from './ShopScreen/Shopclassify'
-import Shopproductdetail from './ShopScreen/Shopproductdetail' 
+import Shopproductdetail from './ShopScreen/Shopproductdetail'
 import Confirm_order from './ShopScreen/Confirm_order'
 import My_order from './ShopScreen/My_order'
 import Reviewscreen from './ShopScreen/Reviewscreen'
@@ -66,14 +66,14 @@ const PersonalTabNavigation = createMaterialTopTabNavigator();
 const TribuneTabNavigation = createMaterialTopTabNavigator();
 const InformationTabNavigation = createMaterialTopTabNavigator();
 
-export function InformationTab() {
+export function InformationTab({name}) {
   return (
     <InformationTabNavigation.Navigator
       tabBarOptions={{
         //底部横线样式
         activeTintColor: '#945357', //标签栏激活时的染色
         inactiveTintColor: '#434343', //标签非栏激活时的染色
-        pressColor:" rgba(148,83,87,0.5)",//android按下时涟漪效果的颜色
+        pressColor: " rgba(148,83,87,0.5)",//android按下时涟漪效果的颜色
         indicatorStyle: {
           height: 2,
           backgroundColor: "#945357",
@@ -84,11 +84,21 @@ export function InformationTab() {
           height: 55,
         },
         labelStyle: {
-              fontSize: 16, 
-          },
+          fontSize: 16,
+        },
       }}>
-      <InformationTabNavigation.Screen name="personalinformation" component={personalinformation} options={{ title: '个人信息',}} />
-      <InformationTabNavigation.Screen name="representativework" component={representativework} options={{ title: '代表作', }} />
+      <InformationTabNavigation.Screen 
+        name="personalinformation" 
+        options={{ title: '个人信息', }}  
+      > 
+        { () => <Personalinformation name={name} />}
+      </InformationTabNavigation.Screen>
+      <InformationTabNavigation.Screen 
+        name="representativework"
+        options={{ title: '代表作', }} 
+        >
+        { () => <Representativework name={name} />}  
+        </InformationTabNavigation.Screen>
     </InformationTabNavigation.Navigator>
   );
 }
@@ -96,12 +106,12 @@ export function InformationTab() {
 export function TribuneTab() {
   return (
     <TribuneTabNavigation.Navigator
-    initialRouteName="Tribunerecommend"
+      initialRouteName="Tribunerecommend"
       tabBarOptions={{
         //底部横线样式
         activeTintColor: '#945357', //标签栏激活时的染色
         inactiveTintColor: '#434343', //标签非栏激活时的染色
-        pressColor:" rgba(148,83,87,0.5)",//android按下时涟漪效果的颜色
+        pressColor: " rgba(148,83,87,0.5)",//android按下时涟漪效果的颜色
         indicatorStyle: {
           height: 2,
           backgroundColor: "#945357",
@@ -116,7 +126,7 @@ export function TribuneTab() {
           height: 45,
         },
       }}>
-      <TribuneTabNavigation.Screen name="Tribunefollow" component={Tribunefollow} options={{ title: '关注',}} />
+      <TribuneTabNavigation.Screen name="Tribunefollow" component={Tribunefollow} options={{ title: '关注', }} />
       <TribuneTabNavigation.Screen name="Tribunerecommend" component={Tribunerecommend} options={{ title: '推荐', }} />
       <TribuneTabNavigation.Screen name="Tribunenewest" component={Tribunenewest} options={{ title: '最新' }} />
     </TribuneTabNavigation.Navigator>
@@ -132,7 +142,7 @@ export function PersonalTab() {
         //底部横线样式
         activeTintColor: '#945357', //标签栏激活时的染色
         inactiveTintColor: '#434343', //标签非栏激活时的染色
-        pressColor:" rgba(148,83,87,0.5)",//android按下时涟漪效果的颜色
+        pressColor: " rgba(148,83,87,0.5)",//android按下时涟漪效果的颜色
         indicatorStyle: {
           height: 2,
           backgroundColor: "#945357",
@@ -143,8 +153,8 @@ export function PersonalTab() {
           height: 45,
         },
         labelStyle: {
-              fontSize: 18, 
-          },
+          fontSize: 18,
+        },
       }}>
       <PersonalTabNavigation.Screen name="homerecommend" component={homerecommend} options={{ title: '推荐' }} />
       <PersonalTabNavigation.Screen name="homeinherit" component={homeinherit} options={{ title: '传承', }} />
@@ -154,15 +164,15 @@ export function PersonalTab() {
 }
 
 //底部导航栏
- function bottom_nav() {
+function bottom_nav() {
   return (
     <Tab.Navigator
-    tabBarOptions={{
-      activeTintColor: '#945357',
-      inactiveTintColor: 'gray',
-    }}>
+      tabBarOptions={{
+        activeTintColor: '#945357',
+        inactiveTintColor: 'gray',
+      }}>
       <Tab.Screen name="首页"
-       component={HomeScreen}
+        component={HomeScreen}
         options={{
           tabBarIcon: ({ color }) => (
             <FontAwesome
@@ -171,7 +181,7 @@ export function PersonalTab() {
               color={color} />
           ),
         }} >
-        </Tab.Screen>
+      </Tab.Screen>
       <Tab.Screen name="集市" component={ShopScreen}
         options={{
           tabBarIcon: ({ color }) => (
@@ -181,7 +191,7 @@ export function PersonalTab() {
               color={color} />
           ),
         }} >
-        </Tab.Screen>
+      </Tab.Screen>
       <Tab.Screen name="讨论" component={TribuneScreen}
         options={{
           tabBarIcon: ({ color }) => (
@@ -191,8 +201,8 @@ export function PersonalTab() {
               color={color} />
           ),
         }} ></Tab.Screen>
-      <Tab.Screen name="我的" 
-       component={MyScreen}
+      <Tab.Screen name="我的"
+        component={MyScreen}
         options={{
           tabBarIcon: ({ color }) => (
             <FontAwesome
@@ -201,75 +211,75 @@ export function PersonalTab() {
               color={color} />
           ),
         }} >
-        </Tab.Screen>
+      </Tab.Screen>
     </Tab.Navigator>
   );
 }
 
 // 堆栈导航
 function MyStack() {
-    return (
-      <Stack.Navigator headerMode="none">
-        <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} options={{headerShown:false}} />
-        <Stack.Screen name="bottom_nav" component={bottom_nav}  options={{headerShown:false}}/>
-        <Stack.Screen name="homerecommend" component={homerecommend} />
-        <Stack.Screen name="homeinherit" component={homeinherit} />
-        <Stack.Screen name="HomeScreen" component={HomeScreen} />
-        
-        <Stack.Screen name="homeheritage" component={homeheritage} />
-        <Stack.Screen name="传承志" component={CraftsmanshipScreen} />
-        <Stack.Screen name="志愿者" component={volunteerScreen} />
-        <Stack.Screen name="活动" component={activityScreen} />
-        <Stack.Screen name="详情" component={ActivityDetails} />
-        <Stack.Screen name="报名表" component={signScreen} />
-        <Stack.Screen name="记录" component={Activityhistory} />
-        <Stack.Screen name="记" component={Volunteerhistory} />
-        <Stack.Screen name="故事" component={storyScreen} />
-        <Stack.Screen name="匠心力作" component={masterpieceScreen} />
-        <Stack.Screen name="signUp" options={{title: '填报信息'}} component={SignUp} />
-        <Stack.Screen name="手艺人" component={CraftsmanScreen} />
-        <Stack.Screen name="手艺人详细页面" component={Craftsmandetail} />
-        <Stack.Screen name="personalinformation" component={personalinformation} />
-        <Stack.Screen name="representativework" component={representativework} />
-        <Stack.Screen name="手艺人关注" component={FollowScreen}/>
-        <Stack.Screen name="手艺人粉丝" component={FansScreen}/>
+  return (
+    <Stack.Navigator headerMode="none">
+      <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="bottom_nav" component={bottom_nav} options={{ headerShown: false }} />
+      <Stack.Screen name="homerecommend" component={homerecommend} />
+      <Stack.Screen name="homeinherit" component={homeinherit} />
+      <Stack.Screen name="HomeScreen" component={HomeScreen} />
 
-        <Stack.Screen name="集市" component={ShopScreen}  />
-        <Stack.Screen name="商城购物车" component={Shopcart} />
-        <Stack.Screen name="商城分类页面" component={Shopclassify} />
-        <Stack.Screen name="商品详情页面" component={Shopproductdetail} />
-        <Stack.Screen name="确认订单" component={Confirm_order} />
-        <Stack.Screen name="我的订单" component={My_order} />
-        <Stack.Screen name="评价商品页面" component={Reviewscreen} />
-        <Stack.Screen name="Typeone" component={Typeone}/>
+      <Stack.Screen name="homeheritage" component={homeheritage} />
+      <Stack.Screen name="传承志" component={CraftsmanshipScreen} />
+      <Stack.Screen name="志愿者" component={volunteerScreen} />
+      <Stack.Screen name="活动" component={activityScreen} />
+      <Stack.Screen name="详情" component={ActivityDetails} />
+      <Stack.Screen name="报名表" component={signScreen} />
+      <Stack.Screen name="记录" component={Activityhistory} />
+      <Stack.Screen name="记" component={Volunteerhistory} />
+      <Stack.Screen name="故事" component={storyScreen} />
+      <Stack.Screen name="匠心力作" component={masterpieceScreen} />
+      <Stack.Screen name="signUp" options={{ title: '填报信息' }} component={SignUp} />
+      <Stack.Screen name="手艺人" component={CraftsmanScreen} />
+      <Stack.Screen name="手艺人详细页面" component={Craftsmandetail} />
+      <Stack.Screen name="personalinformation" component={Personalinformation} />
+      <Stack.Screen name="representativework" component={Representativework} />
+      <Stack.Screen name="手艺人关注" component={FollowScreen} />
+      <Stack.Screen name="手艺人粉丝" component={FansScreen} />
 
-        <Stack.Screen name="讨论" component={TribuneScreen}  />
-        <Stack.Screen name="Tribunefollow" component={Tribunefollow} />
-        <Stack.Screen name="Tribunerecommend" component={Tribunerecommend} />
-        <Stack.Screen name="Tribunenewest" component={Tribunenewest} />
-        <Stack.Screen name="message" component={message} />
-        <Stack.Screen name="publish" component={publish} />
+      <Stack.Screen name="集市" component={ShopScreen} />
+      <Stack.Screen name="商城购物车" component={Shopcart} />
+      <Stack.Screen name="商城分类页面" component={Shopclassify} />
+      <Stack.Screen name="商品详情页面" component={Shopproductdetail} />
+      <Stack.Screen name="确认订单" component={Confirm_order} />
+      <Stack.Screen name="我的订单" component={My_order} />
+      <Stack.Screen name="评价商品页面" component={Reviewscreen} />
+      <Stack.Screen name="Typeone" component={Typeone} />
 
-        <Stack.Screen name="我的" component={MyScreen}  />
-        <Stack.Screen name="收藏" component={CollectionScreen} />
-        <Stack.Screen name="关注" component={followScreen} />
-        <Stack.Screen name="粉丝" component={fansScreen} />
-        <Stack.Screen name="订单" component={orderScreen} />
-        <Stack.Screen name="地址" component={addressScreen} />
-        <Stack.Screen name="认证" component={authenticationScreen} />
-        <Stack.Screen name="客服" component={serviceScreen} />
-        <Stack.Screen name="设置" component={outScreen} />
-        <Stack.Screen name="编辑" component={editScreen} />
-        <Stack.Screen name="修改" component={edittwoScreen} />
-        <Stack.Screen name="登录" component={loginScreen} options={{headerShown:false}}/>
-        <Stack.Screen name="注册" component={registerScreen} options={{headerShown:false}}/>
-      </Stack.Navigator>
-    );
-  }
-  export default function App() {
-    return (
-      <NavigationContainer>
-        <MyStack />
-      </NavigationContainer>
-    );
-  }
+      <Stack.Screen name="讨论" component={TribuneScreen} />
+      <Stack.Screen name="Tribunefollow" component={Tribunefollow} />
+      <Stack.Screen name="Tribunerecommend" component={Tribunerecommend} />
+      <Stack.Screen name="Tribunenewest" component={Tribunenewest} />
+      <Stack.Screen name="message" component={message} />
+      <Stack.Screen name="publish" component={publish} />
+
+      <Stack.Screen name="我的" component={MyScreen} />
+      <Stack.Screen name="收藏" component={CollectionScreen} />
+      <Stack.Screen name="关注" component={followScreen} />
+      <Stack.Screen name="粉丝" component={fansScreen} />
+      <Stack.Screen name="订单" component={orderScreen} />
+      <Stack.Screen name="地址" component={addressScreen} />
+      <Stack.Screen name="认证" component={authenticationScreen} />
+      <Stack.Screen name="客服" component={serviceScreen} />
+      <Stack.Screen name="设置" component={outScreen} />
+      <Stack.Screen name="编辑" component={editScreen} />
+      <Stack.Screen name="修改" component={edittwoScreen} />
+      <Stack.Screen name="登录" component={loginScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="注册" component={registerScreen} options={{ headerShown: false }} />
+    </Stack.Navigator>
+  );
+}
+export default function App() {
+  return (
+    <NavigationContainer>
+      <MyStack />
+    </NavigationContainer>
+  );
+}

@@ -179,7 +179,7 @@ export default class FansScreen extends Component {
                   copyname=item.yonghuming,
                   copytouxiang=item.touxiang,
                   this._onClickAddguanzhu1(),
-                  this._onClickAddguanzhu3(),
+                  this._onClickAddguanzhu2(),
                   this._onClickAddguanzhu3()
                 }}>
                 <View style={styles.like}>

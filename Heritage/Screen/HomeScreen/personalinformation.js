@@ -17,8 +17,6 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 var https = "http://121.196.191.45";
 var http = "http://192.168.50.91:3000";
 var URL1 = http + "/shouyiren/personal";
-var URL2 = http + "/shouyiren/namefind";
-var copyname;
 
 export default class Craftsmandetail extends Component {
 constructor(props){
@@ -32,33 +30,7 @@ constructor(props){
 
   componentDidMount() {
     this.fetchData();
-    // this._onClickNamefind();
   }
-
-
-
-  // _onClickNamefind (){
-  //   fetch(URL2, {//手艺人详情
-  //     method: 'POST',
-  //     credentials: "include",
-  //     headers: {
-  //       'Accept': 'application/json',
-  //       'Content-Type': 'application/json',
-  //     }
-  //   })
-  //     .then((response) => response.json())
-  //     .then((json)=>{  
-  //       this.setState({
-  //        name:json.docs[0].name
-  //       })
-  //       copyname=this.state.name
-  //       console.log("66"+copyname)
-  //     })
-  //     .catch((error)=>console.error(error))
-  //     .finally(()=>{
-  //       this.setState({isLonding:false});
-  //     });
-  // }
 
 
   fetchData() {
@@ -66,11 +38,11 @@ constructor(props){
       method: 'POST',
       credentials: "include",
       headers: {
-        'Accept': 'application/json',
+        'Accept': 'application/json', 
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        name: "陈守彬"
+        name: this.props.name
       })
     })
       .then((response) => response.json())
@@ -90,10 +62,6 @@ constructor(props){
     const { navigation } = this.props;
     const data = this.state.docs;
     let invoice = this.state.chuancheng;
-  //   navigation.isFocused = () => {
-  //     console.log("88监测用户状态")
-  //     this.fetchData();
-  // }
   let items = [];
   invoice.map((el, index) => {
       let colorValue = index === 0 ? 'black' : 'black';
@@ -125,7 +93,7 @@ constructor(props){
                       <Text style={{fontSize:13}}>{item.jianjie}</Text>
                     </View>
                   </View>
-                  <View style={{width:350,height:350}}>
+                  <View style={{width:350,height:700}}>
                     <View style={{width:'100%',height:40,flexDirection:'row',alignItems:'center'}}>
                       <View style={{width:4,height:25,backgroundColor:'#c9aa74',marginRight:10}}></View>
                       <Text style={{fontSize:15}}>传承之路</Text>
@@ -213,7 +181,7 @@ const styles = StyleSheet.create({
     flexDirection:'column-reverse',
   },
   workname:{
-    width:100,
+    width:150,
     height:25,
     backgroundColor:'#c9aa74',
     borderTopRightRadius:5,

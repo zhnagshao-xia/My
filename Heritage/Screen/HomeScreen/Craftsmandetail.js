@@ -13,7 +13,6 @@ var URL3 = http + "/shouyiren/fensi/num";
 var URL4 = http + "/shouyiren/addguanzhu1";
 var URL5 = http + "/shouyiren/addguanzhu2";
 var URL6 = http + "/shouyiren/addguanzhu3";
-var URL7 = http + "/shouyiren/nameupdate";
 var copyname;
 var copytouxiang;
 
@@ -40,28 +39,7 @@ export default class Craftsmandetail extends Component {
 
   componentDidMount() {
     this.fetchData();
-    // this._onClickNameupdate();
   }
-
-  // _onClickNameupdate = () => {
-  //   fetch(URL7, {
-  //     method: 'POST',
-  //     credentials: "include",
-  //     headers: {
-  //       'Accept': 'application/json',
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify({
-  //       name: this.state.name,
-  //     })
-  //   })
-  //     .then(function (res) {
-  //       return res.json();
-  //     }).then(function (json) {
-  //       if (json.code == 200) {
-  //       }
-  //     })
-  // }
 
   fetchData() {
     fetch(URL1, {//手艺人详情
@@ -275,8 +253,9 @@ export default class Craftsmandetail extends Component {
         </View>
       </ImageBackground>
     </View>
-    <View style={{flex:1}}>
-          <InformationTab/>
+    <View style={{flex:1}}> 
+          {/* 从props里取出上级页面携带的name, 传递给子组件 */}
+          <InformationTab name={this.props.route.params.name}/>
     </View>
     <Modal style={styles.modal4} position={"bottom"} ref={"modal6"} >
           <View style={{width:'100%',height:'75%',flexDirection:'row'}}>
