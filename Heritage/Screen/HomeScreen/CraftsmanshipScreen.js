@@ -54,16 +54,23 @@ export default class CraftsmanshipScreen extends Component {
             borderBottomWidth:0.5,
             borderBottomColor:"#000",}}>
             <TouchableOpacity
-            activeOpacity={0.8}
+            activeOpacity={0.7}
             onPress={() => navigation.goBack()}
-            style={{right:150}}>
+            style={{width:50,
+                position:"absolute",
+            height:"100%",
+            justifyContent:"center",
+            alignItems:"center",
+            left:0}}>
               <FontAwesome name={'angle-left'} size={25} color={'#000'} /></TouchableOpacity>
+              <View style={{width:200}}>
               <Text style={{fontSize:18,
                 textAlign: 'center',
                 textAlignVertical: 'center',}}>传承志</Text>
+                </View>
           </View>
-        <ScrollView>
             <ScrollView style={styles.main_body}>
+                <View style={{marginBottom:50}}>
                 <FlatList
                     data={data}
                     renderItem={({ item }) =>
@@ -89,15 +96,15 @@ export default class CraftsmanshipScreen extends Component {
                     </View>
                     }
                 />
+                </View>
             </ScrollView>
-        </ScrollView>
         </View>
     )};
 }
 
 const styles = StyleSheet.create({
     main_body: {
-        backgroundColor: '#f2f2f2'
+        backgroundColor: '#f2f2f2',
     },
     part: {
         width:'100%',

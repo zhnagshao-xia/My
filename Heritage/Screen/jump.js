@@ -31,6 +31,7 @@ import Personalinformation from './HomeScreen/personalinformation'
 import Representativework from './HomeScreen/representativework'
 import FollowScreen from './HomeScreen/FollowScreen'
 import FansScreen from './HomeScreen/FansScreen'
+import heritagelist from './HomeScreen/heritagelist'
 
 import Shopcart from './ShopScreen/Shopcart'
 import Shopclassify from './ShopScreen/Shopclassify'
@@ -218,31 +219,32 @@ function bottom_nav() {
 
 // 堆栈导航
 function MyStack() {
-  return (
-    <Stack.Navigator headerMode="none">
-      <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} options={{ headerShown: false }} />
-      <Stack.Screen name="bottom_nav" component={bottom_nav} options={{ headerShown: false }} />
-      <Stack.Screen name="homerecommend" component={homerecommend} />
-      <Stack.Screen name="homeinherit" component={homeinherit} />
-      <Stack.Screen name="HomeScreen" component={HomeScreen} />
-
-      <Stack.Screen name="homeheritage" component={homeheritage} />
-      <Stack.Screen name="传承志" component={CraftsmanshipScreen} />
-      <Stack.Screen name="志愿者" component={volunteerScreen} />
-      <Stack.Screen name="活动" component={activityScreen} />
-      <Stack.Screen name="详情" component={ActivityDetails} />
-      <Stack.Screen name="报名表" component={signScreen} />
-      <Stack.Screen name="记录" component={Activityhistory} />
-      <Stack.Screen name="记" component={Volunteerhistory} />
-      <Stack.Screen name="故事" component={storyScreen} />
-      <Stack.Screen name="匠心力作" component={masterpieceScreen} />
-      <Stack.Screen name="signUp" options={{ title: '填报信息' }} component={SignUp} />
-      <Stack.Screen name="手艺人" component={CraftsmanScreen} />
-      <Stack.Screen name="手艺人详细页面" component={Craftsmandetail} />
-      <Stack.Screen name="personalinformation" component={Personalinformation} />
-      <Stack.Screen name="representativework" component={Representativework} />
-      <Stack.Screen name="手艺人关注" component={FollowScreen} />
-      <Stack.Screen name="手艺人粉丝" component={FansScreen} />
+    return (
+      <Stack.Navigator headerMode="none">
+        <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} options={{headerShown:false}} />
+        <Stack.Screen name="bottom_nav" component={bottom_nav}  options={{headerShown:false}}/>
+        <Stack.Screen name="homerecommend" component={homerecommend} />
+        <Stack.Screen name="homeinherit" component={homeinherit} />
+        <Stack.Screen name="HomeScreen" component={HomeScreen} />
+        
+        <Stack.Screen name="homeheritage" component={homeheritage} />
+        <Stack.Screen name="传承志" component={CraftsmanshipScreen} />
+        <Stack.Screen name="志愿者" component={volunteerScreen} />
+        <Stack.Screen name="活动" component={activityScreen} />
+        <Stack.Screen name="详情" component={ActivityDetails} />
+        <Stack.Screen name="报名表" component={signScreen} />
+        <Stack.Screen name="记录" component={Activityhistory} />
+        <Stack.Screen name="记" component={Volunteerhistory} />
+        <Stack.Screen name="故事" component={storyScreen} />
+        <Stack.Screen name="匠心力作" component={masterpieceScreen} />
+        <Stack.Screen name="signUp" options={{title: '填报信息'}} component={SignUp} />
+        <Stack.Screen name="手艺人" component={CraftsmanScreen} />
+        <Stack.Screen name="手艺人详细页面" component={Craftsmandetail} />
+        <Stack.Screen name="personalinformation" component={Personalinformation} />
+        <Stack.Screen name="representativework" component={Representativework} />
+        <Stack.Screen name="手艺人关注" component={FollowScreen}/>
+        <Stack.Screen name="手艺人粉丝" component={FansScreen}/>
+        <Stack.Screen name="heritagelist" component={heritagelist}/>
 
       <Stack.Screen name="集市" component={ShopScreen} />
       <Stack.Screen name="商城购物车" component={Shopcart} />
