@@ -9,6 +9,7 @@ import { TouchableNativeFeedback } from "react-native-gesture-handler";
 
 var http = "http://192.168.50.91:3000";
 var URL1 = http + "/volunteer";
+var URL2 = http+"/volunteer/timelong";
 
 export default class VolunteerScreen extends React.Component {
   static navigationOptions = {
@@ -27,6 +28,7 @@ export default class VolunteerScreen extends React.Component {
     isDrag: true,
     docs: [],
     Projects: [],
+    sum:"0"
   };
 
   getNextIndex = (index) => {
@@ -145,11 +147,31 @@ export default class VolunteerScreen extends React.Component {
       .finally(() => {
         this.setState({ isLonding: false });
       });
+      fetch(URL2, {//志愿时长
+        method: 'POST',
+        credentials: "include",
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        }
+      })
+        .then((response) => response.json())
+        .then((json)=>{  
+          this.setState({
+            sum:json.docs[0].sum,
+          })
+        })
+        .catch((error)=>console.error(error))
+        .finally(()=>{
+          this.setState({isLonding:false});
+        })
   }
 
   render() {
     const { navigation } = this.props;
     const { Projects } = this.state;
+    const sum = this.state.sum;
+    console.log(sum)
     return (
       <>
         <Appbar.Header
@@ -163,7 +185,7 @@ export default class VolunteerScreen extends React.Component {
             style={{ width: "100%", justifyContent: "center", alignItems: "center" }}
           ></Appbar.Content>
           <TouchableNativeFeedback
-            onPress={() => navigation.navigate("记")}
+            onPress={() => navigation.navigate("记",{sum:sum})}
           >
             <Entypo style={{ marginRight: 5 }} name={"back-in-time"} size={25} color={"#000"} />
           </TouchableNativeFeedback>

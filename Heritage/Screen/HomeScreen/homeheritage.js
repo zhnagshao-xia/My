@@ -16,6 +16,8 @@ import {
 } from "react-native";
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
+var https = "http://121.196.191.45";
+
 export default class homeheritage extends Component {
     constructor(props) {
         super(props);
@@ -51,7 +53,7 @@ export default class homeheritage extends Component {
                 });
               }}
               >
-            <ImageBackground source={require('../../Image/homeheritage/pic_1.png')} style={{ height: 280 }}>
+            <ImageBackground source={{uri:https+"/picture/shouye_feiyi/haibaotu/杭州.png"}} style={{ height: 280 }}>
               <View style={styles.place}>
                 <View style={styles.letter_up}>
                   <View style={styles.letter_left}><Text style={{ color: '#fff', fontSize: 25,fontWeight:'bold' }} >杭州</Text></View>
@@ -72,7 +74,7 @@ export default class homeheritage extends Component {
                   modalTwo: !this.state.modalTwo,
                 });
               }}>
-            <ImageBackground source={require('../../Image/homeheritage/pic_2.png')} style={{ height: 280 }}>
+            <ImageBackground source={{uri:https+"/picture/shouye_feiyi/haibaotu/湖州.png"}} style={{ height: 280 }}>
               <View style={styles.place}>
                 <View style={styles.letter_up}>
                   <View style={styles.letter_left}><Text style={{ color: '#fff', fontSize: 25,fontWeight:'bold' }} >湖州</Text></View>
@@ -93,7 +95,7 @@ export default class homeheritage extends Component {
                   modalThird: !this.state.modalThird
                 });
               }}>
-            <ImageBackground source={require('../../Image/homeheritage/pic_3.png')} style={{ height: 280 }}>
+            <ImageBackground source={{uri:https+"/picture/shouye_feiyi/haibaotu/嘉兴.png"}} style={{ height: 280 }}>
               <View style={styles.place}>
                 <View style={styles.letter_up}>
                   <View style={styles.letter_left}><Text style={{ color: '#fff', fontSize: 25,fontWeight:'bold' }} >嘉兴</Text></View>
@@ -114,7 +116,7 @@ export default class homeheritage extends Component {
                   modal: !this.state.modal,
                 });
               }}>
-            <ImageBackground source={require('../../Image/homeheritage/pic_4.png')} style={{ height: 280 }}>
+            <ImageBackground source={{uri:https+"/picture/shouye_feiyi/haibaotu/金华.png"}} style={{ height: 280 }}>
               <View style={styles.place}>
                 <View style={styles.letter_up}>
                   <View style={styles.letter_left}><Text style={{ color: '#fff', fontSize: 25,fontWeight:'bold' }} >金华</Text></View>
@@ -135,7 +137,7 @@ export default class homeheritage extends Component {
                   modal: !this.state.modal,
                 });
               }}>
-            <ImageBackground source={require('../../Image/homeheritage/pic_5.png')} style={{ height: 280 }}>
+            <ImageBackground source={{uri:https+"/picture/shouye_feiyi/haibaotu/丽水.png"}} style={{ height: 280 }}>
               <View style={styles.place}>
                 <View style={styles.letter_up}>
                   <View style={styles.letter_left}><Text style={{ color: '#fff', fontSize: 25,fontWeight:'bold' }} >丽水</Text></View>
@@ -156,7 +158,7 @@ export default class homeheritage extends Component {
                   modal: !this.state.modal,
                 });
               }}>
-            <ImageBackground source={require('../../Image/homeheritage/pic_6.png')} style={{ height: 280 }}>
+            <ImageBackground source={{uri:https+"/picture/shouye_feiyi/haibaotu/宁波.png"}} style={{ height: 280 }}>
               <View style={styles.place}>
                 <View style={styles.letter_up}>
                   <View style={styles.letter_left}><Text style={{ color: '#fff', fontSize: 25,fontWeight:'bold' }} >宁波</Text></View>
@@ -177,7 +179,7 @@ export default class homeheritage extends Component {
                   modal: !this.state.modal,
                 });
               }}>
-            <ImageBackground source={require('../../Image/homeheritage/pic_7.png')} style={{ height: 280 }}>
+            <ImageBackground source={{uri:https+"/picture/shouye_feiyi/haibaotu/衢州.png"}} style={{ height: 280 }}>
               <View style={styles.place}>
                 <View style={styles.letter_up}>
                   <View style={styles.letter_left}><Text style={{ color: '#fff', fontSize: 25,fontWeight:'bold' }} >衢州</Text></View>
@@ -198,7 +200,7 @@ export default class homeheritage extends Component {
                   modal: !this.state.modal,
                 });
               }}>
-            <ImageBackground source={require('../../Image/homeheritage/pic_8.png')} style={{ height: 280 }}>
+            <ImageBackground source={{uri:https+"/picture/shouye_feiyi/haibaotu/绍兴.png"}} style={{ height: 280 }}>
               <View style={styles.place}>
                 <View style={styles.letter_up}>
                   <View style={styles.letter_left}><Text style={{ color: '#fff', fontSize: 25,fontWeight:'bold' }} >绍兴</Text></View>
@@ -219,7 +221,7 @@ export default class homeheritage extends Component {
                   modal: !this.state.modal,
                 });
               }}>
-            <ImageBackground source={require('../../Image/homeheritage/pic_9.png')} style={{ height: 280 }}>
+            <ImageBackground source={{uri:https+"/picture/shouye_feiyi/haibaotu/台州.png"}} style={{ height: 280 }}>
               <View style={styles.place}>
                 <View style={styles.letter_up}>
                   <View style={styles.letter_left}><Text style={{ color: '#fff', fontSize: 25,fontWeight:'bold' }} >台州</Text></View>
@@ -240,7 +242,7 @@ export default class homeheritage extends Component {
                   modal: !this.state.modal,
                 });
               }}>
-            <ImageBackground source={require('../../Image/homeheritage/pic_10.png')} style={{ height: 280 }}>
+            <ImageBackground source={{uri:https+"/picture/shouye_feiyi/haibaotu/温州.png"}} style={{ height: 280 }}>
               <View style={styles.place}>
                 <View style={styles.letter_up}>
                   <View style={styles.letter_left}><Text style={{ color: '#fff', fontSize: 25,fontWeight:'bold' }} >温州</Text></View>
@@ -261,7 +263,7 @@ export default class homeheritage extends Component {
                   modal: !this.state.modal,
                 });
               }}>
-            <ImageBackground source={require('../../Image/homeheritage/pic_11.png')} style={{ height: 280 }}>
+            <ImageBackground source={{uri:https+"/picture/shouye_feiyi/haibaotu/舟山.png"}} style={{ height: 280 }}>
               <View style={styles.place}>
                 <View style={styles.letter_up}>
                   <View style={styles.letter_left}><Text style={{ color: '#fff', fontSize: 25,fontWeight:'bold' }} >舟山</Text></View>

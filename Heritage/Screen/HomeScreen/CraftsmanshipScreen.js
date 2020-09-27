@@ -2,6 +2,7 @@ import React ,{Component}from 'react';
 import { View, Text, Image, ScrollView, TouchableOpacity, StyleSheet, FlatList, ImageBackground } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
+var https = "http://121.196.191.45";
 var http = "http://192.168.50.91:3000";
 var URL1 = http+"/chuanchengzhi";
 
@@ -69,7 +70,7 @@ export default class CraftsmanshipScreen extends Component {
                     <View style={styles.part}>
                     <ImageBackground 
                     style={styles.pic} 
-                    source={{uri:item.picture}}>
+                    source={{uri:https+item.haibaotu}}>
                     <View style={styles.eye}>
                     <FontAwesome name={'eye'} size={15} color={'#fff'} />
                     <Text style={{marginLeft:8,color:'#fff',fontSize:11}}>{item.pageview}</Text>

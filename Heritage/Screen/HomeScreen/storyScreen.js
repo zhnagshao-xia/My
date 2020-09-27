@@ -4,6 +4,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
 import Modal from 'react-native-modalbox';
 
+var https = "http://121.196.191.45";
 var http = "http://192.168.50.91:3000";
 var URL1 = http+"/chuanchengzhi/addnumber";
 var URL2 = http+"/chuanchengzhi/details";
@@ -112,18 +113,74 @@ export default class ActivityDetails extends Component{
                             <Text style={{ lineHeight: 30,fontSize: 15 }}>{item.name}</Text>
                         </View>
                         <View>
-                            <Text style={{ textAlign: 'auto', lineHeight: 25, fontSize: 15 }}>&#12288;&#12288;{item.project}</Text>
+                            {/* <Text style={{ textAlign: 'auto', lineHeight: 25, fontSize: 15 }}>&#12288;&#12288;{item.project}</Text> */}
                             <View style={{ alignItems: "center" }}>
                                 <Image style={{
-                                    width: 200,
-                                    height: 100,
+                                    width: 300,
+                                    height: 200,
                                     resizeMode: 'stretch',
                                     marginVertical: 15
                                 }}
-                                    source={{uri:item.picture}}>
+                                    source={{uri:https+item.picture1}}>
                                 </Image>
                             </View>
-                            <Text style={{ textAlign: 'auto', lineHeight: 25, fontSize: 15 }}>&#12288;&#12288;{item.story}</Text>
+                            <Text style={{ textAlign: 'auto', lineHeight: 25, fontSize: 15 }}>&#12288;&#12288;{item.content1}</Text>
+                        </View>
+                        <View>
+                            <Text style={{ textAlign: 'auto', lineHeight: 25, fontSize: 15 }}>&#12288;&#12288;{item.content2}</Text>
+                        </View>
+                        <View>
+                            <Text style={{ textAlign: 'auto', lineHeight: 25, fontSize: 15 }}>&#12288;&#12288;{item.content3}</Text>
+                        </View><View>
+                            <View style={{ alignItems: "center" }}>
+                                <Image style={{
+                                    width: 300,
+                                    height: 200,
+                                    resizeMode: 'stretch',
+                                    marginVertical: 15
+                                }}
+                                    source={{uri:https+item.picture4}}>
+                                </Image>
+                            </View>
+                            <Text style={{ textAlign: 'auto', lineHeight: 25, fontSize: 15 }}>&#12288;&#12288;{item.content4}</Text>
+                        </View><View>
+                            <Text style={{ textAlign: 'auto', lineHeight: 25, fontSize: 15 }}>&#12288;&#12288;{item.content5}</Text>
+                        </View><View>
+                            <Text style={{ textAlign: 'auto', lineHeight: 25, fontSize: 15 }}>&#12288;&#12288;{item.content6}</Text>
+                        </View><View>
+                            <View style={{ alignItems: "center" }}>
+                                <Image style={{
+                                    width: 300,
+                                    height: 200,
+                                    resizeMode: 'stretch',
+                                    marginVertical: 15
+                                }}
+                                    source={{uri:https+item.picture7}}>
+                                </Image>
+                            </View>
+                            <Text style={{ textAlign: 'auto', lineHeight: 25, fontSize: 15 }}>&#12288;&#12288;{item.content7}</Text>
+                        </View><View>
+                            <Text style={{ textAlign: 'auto', lineHeight: 25, fontSize: 15 }}>&#12288;&#12288;{item.content8}</Text>
+                        </View><View>
+                            <Text style={{ textAlign: 'auto', lineHeight: 25, fontSize: 15 }}>&#12288;&#12288;{item.content9}</Text>
+                        </View><View>
+                            <View style={{ alignItems: "center" }}>
+                                <Image style={{
+                                    width: 300,
+                                    height: 200,
+                                    resizeMode: 'stretch',
+                                    marginVertical: 15
+                                }}
+                                    source={{uri:https+item.picture10}}>
+                                </Image>
+                            </View>
+                            <Text style={{ textAlign: 'auto', lineHeight: 25, fontSize: 15 }}>&#12288;&#12288;{item.content10}</Text>
+                        </View><View>
+                            <Text style={{ textAlign: 'auto', lineHeight: 25, fontSize: 15 }}>&#12288;&#12288;{item.content11}</Text>
+                        </View><View>
+                            <Text style={{ textAlign: 'auto', lineHeight: 25, fontSize: 15 }}>&#12288;&#12288;{item.content12}</Text>
+                        </View><View>
+                            <Text style={{ textAlign: 'auto', lineHeight: 25, fontSize: 15 }}>&#12288;&#12288;{item.content13}</Text>
                         </View>
                     </View>
                 }

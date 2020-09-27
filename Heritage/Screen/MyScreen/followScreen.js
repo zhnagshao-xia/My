@@ -99,7 +99,7 @@ export default class followScreen extends Component {
         return res.json();
       }).then(function (json) {
         if (json.code == 200) {
-          Alert.alert("已取消关注")
+          Alert.alert("取关成功")
         }
       })
   }
@@ -174,6 +174,7 @@ export default class followScreen extends Component {
                   this._onClickDeleteguanzhu2(),
                   this._onClickDeleteguanzhu3(),
                   this.fetchData()
+                  Alert.alert("已取消关注")
                 }}>
                 <View style={styles.like}>
                   <Text style={{ fontSize: 13 }}>取消关注</Text>

@@ -84,7 +84,7 @@ export default class BarrageMoveView extends Component {
                     })
                 }
             }
-        }, 30);
+        }, 10);
     }
 
     // 添加数据
@@ -161,9 +161,9 @@ export default class BarrageMoveView extends Component {
                         line={b.indexOfLine}
                         key={b.id}
                         data={b}
-                        speed={2}
+                        speed={5}
                         type={2}
-                        heightOfLine={30}
+                        heightOfLine={50}
                     />
                 )
                 views.push(barrageItem);

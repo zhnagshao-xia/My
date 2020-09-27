@@ -25,17 +25,18 @@ export default function CollectionScreen() {
         alignItems: 'center',
         justifyContent: 'center'
       }}>
-        <View style={{
+        <TouchableOpacity style={{
           width: '90%',
           height: '90%',
           borderWidth: 2,
           borderColor: 'black',
-          flexDirection: 'row'
+          flexDirection: 'row',
+        
         }}>
           <Image style={{ width: 50, height: 50, borderRadius: 50, margin: 10 }}
             source={require('../../Image/TribuneScreen/pic10.jpg')}>
           </Image>
-          <View style={{ flexDirection: 'column', }}>
+          <View style={{ flexDirection: 'column'}}>
             <View style={{ flexDirection: 'row', marginVertical: 20 }}>
               <Text style={{ fontSize: 15 }}>高血堂</Text>
               <TouchableOpacity style={{
@@ -58,7 +59,7 @@ export default function CollectionScreen() {
             </View>
           </View>
 
-        </View>
+        </TouchableOpacity>
       </View>
       <View style={{ height: 60, flexDirection: 'row', alignItems: 'center', width: '90%', marginLeft: 20 }}>
         <TouchableOpacity style={{ width: 35, height: 35, marginRight: 10, marginLeft: 5 }}>
