@@ -167,7 +167,7 @@ export default class ModalComp extends Component{
                 </View>
             </View>
             <View style={{width:'100%',height:630,backgroundColor:'#f2f2f2'}}>
-                <View style={{width:'100%',height:250,backgroundColor:'#fff'}}>
+                <View style={{width:'100%',height:250,backgroundColor:'#fff',marginTop:15}}>
                     <View style={{
                         width:'100%',
                         height:50,
@@ -178,10 +178,13 @@ export default class ModalComp extends Component{
                         flexDirection:'row'}}>
                             <Text style={{fontSize:15,marginLeft:10}}>真实姓名</Text>
                             <TextInput 
+                            placeholderTextColor="#e5e3e4"
+                            placeholder={'请输入真实姓名'}
                             style={{width:200,height:40,backgroundColor:'#fff'}}
                             onChangeText={(text)=> this.setState({realname:text})}
-                            //  underlineColorAndroid='transparent'
-                             selectionColor='black'></TextInput>
+                             underlineColorAndroid='transparent'
+                             selectionColor='black'>
+                             </TextInput>
                     </View>
                     <View style={{
                         width:'100%',
@@ -194,6 +197,8 @@ export default class ModalComp extends Component{
                         }}>
                             <Text style={{fontSize:15,marginLeft:10}}>身份证号</Text>
                             <TextInput 
+                            // underlineColorAndroid='transparent'
+                            placeholder={'请输入身份证号'}
                             style={{width:200,height:40,backgroundColor:'#fff'}}
                             onChangeText={(text)=>this.setState({idcard:text})} 
                             keyboardType='numeric' 
@@ -305,7 +310,7 @@ export default class ModalComp extends Component{
                 width:100,
                 height:45,
                 backgroundColor:'#568491',
-                borderRadius:10,
+                borderRadius:5,
                 alignItems:'center',
                 justifyContent:'center',
             },
@@ -332,8 +337,8 @@ export default class ModalComp extends Component{
                 justifyContent: "center",
                 alignItems: "center",
                 borderStyle: "dashed",
-                // borderRadius: 15,
-                borderWidth: 4,
+                borderRadius: 5,
+                borderWidth: 3,
                 borderColor: "#999999",
                 marginLeft: '2%',
                 marginTop: 10,

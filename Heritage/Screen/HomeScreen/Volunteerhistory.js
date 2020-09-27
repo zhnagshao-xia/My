@@ -12,6 +12,7 @@ import {
   Button,
   AsyncStorage,
   Alert,
+  Animated,
 } from "react-native";
 import Entypo from 'react-native-vector-icons/Entypo';
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -30,9 +31,13 @@ var copytitle1;
 var copytitle2;
 
 export default class App extends Component {
+  // state={
+  //   progressStatusValue: 0,
+  //   }
   constructor(props){
     super(props);
     this.state = {
+      progressStatusValue: 0,
       username:"",
       modalVisible: false,
       modalVisibleTwo: false,
@@ -42,8 +47,18 @@ export default class App extends Component {
       docs:[],
       author:"",
       QRcode:"",
-};}
-
+};
+}
+animation = new Animated.Value(0);  //initialisation of Animated component to with initial value as the zero for start of the progress bar.
+onAnimation = () =>{
+this.animation.addListener(({value})=> {
+this.setState({progressStatusValue: parseInt(value,10)});
+});
+Animated.timing(this.animation,{
+toValue: 50,  //value at which it need to reach for end of the progress bar
+duration: 3000,  //duration till the progress bar will continue
+}).start();
+}
 checkUserAction = async () => {
   const res = await AsyncStorage.getItem('userInfo') || '{}'//AsyncStorage.getItem通过key字段来进行查询存储的数据，把该结果值作为参数传入第二个callback方法
   const { username = '' } = JSON.parse(res)
@@ -56,6 +71,7 @@ checkUserAction = async () => {
 componentDidMount() {//componentDidMount:生命周期
   this.checkUserAction();
   this.fetchData();
+  this.onAnimation(); 
 }
 
   fetchData=()=> {
@@ -297,8 +313,17 @@ _closeModaLOk = () => {
       <View style={{width:'100%',height:50,marginBottom:15,alignItems:'center',justifyContent:'center',flexDirection:'row',backgroundColor:'#fff'}}>
           <View style={{width:350,height:50,alignItems:'center',justifyContent:'center',flexDirection:'row'}}>
               <Text style={{fontSize:15}}>志愿时长</Text>
-              <View style={{width:290,height:30,backgroundColor:'skyblue'}}>
-                <Text style={{fontSize:15,alignItems:"center",justifyContent:"center"}}>||||||||||||</Text>
+              <View style={{width:290,height:30}}>
+              <View style={styles.containerStyle}>
+<Animated.View
+style={[
+styles.innerStyle,{width: this.state.progressStatusValue +"%"},
+]}
+/>
+<Animated.Text style={styles.label}>
+{this.state.progressStatusValue }%
+</Animated.Text>
+</View>
               </View>
           </View>
           <TouchableOpacity style={{width:30,height:30,alignItems:'center',justifyContent:'center'}} 
@@ -606,5 +631,30 @@ _closeModaLOk = () => {
       alignItems:'center',
       justifyContent:'center'
       
-  }
+  },
+  containerStyle:{
+    marginLeft:10,
+    width: "85%",
+    height: 25,
+    padding: 3,
+    borderColor: "#945357",
+    borderWidth: 3,
+    borderRadius: 30,
+    // marginTop: 200,
+    justifyContent: "center",
+  },
+    innerStyle:{
+    width: "100%",
+    height: 15,
+    borderRadius: 16,
+    backgroundColor:"#945357",
+    },
+    label:{
+    fontSize:15,
+    color: "black",
+    position: "absolute",
+    zIndex: 1,
+    alignSelf: "center",
+    }
     })
+    
