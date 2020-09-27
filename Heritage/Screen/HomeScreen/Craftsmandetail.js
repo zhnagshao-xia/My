@@ -77,7 +77,7 @@ export default class Craftsmandetail extends Component {
       .then((response) => response.json())
       .then((json) => {
         this.setState({
-          sum1: json.docs[0].sum,
+          sum1: json.docs[0]?.sum ?? 0,
         })
         console.log(json.docs)
       });
@@ -95,7 +95,7 @@ export default class Craftsmandetail extends Component {
       .then((response) => response.json())
       .then((json) => {
         this.setState({
-          sum2: json.docs[0].sum,
+          sum2: json.docs[0]?.sum || 0,
         })
         console.log(json.docs)
       });
@@ -183,42 +183,30 @@ export default class Craftsmandetail extends Component {
           height: 45,
           alignItems: "center",
           justifyContent: "center",
-          backgroundColor: "#ded7c9",
-          flexDirection: 'row',
-          justifyContent: "space-between",
+          backgroundColor: "#ded7c9"
         }}>
+          <View style={{ flexDirection: 'row', justifyContent: "space-between", width: "90%" }}>
             <TouchableOpacity
               activeOpacity={0.8}
-              onPress={() => navigation.goBack()}
-              style={{
-                width: 50,
-                height: "100%",
-                justifyContent: "center",
-                alignItems: "center",
-              }}>
+              onPress={() => navigation.goBack()}>
               <FontAwesome name={'angle-left'} size={25} color={'#000'} />
             </TouchableOpacity>
             <TouchableOpacity
               activeOpacity={0.6}
-              onPress={() => this.refs.modal6.open()}
-              style={{
-                width: 50,
-                height: "100%",
-                justifyContent: "center",
-                alignItems: "center",
-              }}>
-              <Feather name={'more-horizontal'} size={22} color={'#000'} /></TouchableOpacity>
+              onPress={() => this.refs.modal6.open()} >
+              <Feather name={'more-horizontal'} size={20} color={'#000'} /></TouchableOpacity>
           </View>
+        </View>
         <View style={styles.mationUp}>
           <ImageBackground style={{ width: '100%', height: '100%', flexDirection: 'row' }}
             source={require('../../Image/HomeScreen/Personalbg.png')}
             resizeMode='stretch'>
             <View style={{ width: '40%', height: '100%' }}>
-              <Image style={styles.headpic}
-                source={{ uri: https + data.touxiang }} />
+              {/* <Image style={styles.headpic}
+                source={{ uri:  https + data.touxiang }} /> */}
               <View style={styles.namerow}>
-                <Text style={{ fontSize: 15, color: 'black' }}
-                >{data.name}</Text>
+                {/* <Text style={{ fontSize: 15, color: 'black' }}
+                >{data.name}</Text> */}
                 <TouchableOpacity
                   style={styles.like}
                   onPress={() => {
@@ -239,7 +227,7 @@ export default class Craftsmandetail extends Component {
             </View>
             <View style={styles.center}>
               <View style={{ width: 23, height: 130, }}>
-                <Text style={{ fontSize: 12, textAlign: 'center', textAlignVertical: 'center', }}>{data.xiangmu}</Text>
+                {/* <Text style={{ fontSize: 12, textAlign: 'center', textAlignVertical: 'center', }}>{data.xiangmu}</Text> */}
               </View>
               <View style={{ width: 1, height: 130, backgroundColor: 'black' }}></View>
               <View style={{ width: 23, height: 130, flexDirection: 'column-reverse' }}>
