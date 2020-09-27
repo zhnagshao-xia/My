@@ -82,21 +82,30 @@ export default class ActivityDetails extends Component{
         alignItems:"center",
         justifyContent:"center",
         borderBottomWidth:0.5,
-            borderBottomColor:"#000",}}>
-        <View style={{flexDirection:'row',justifyContent:"space-between",width:"90%"}}>
+            borderBottomColor:"#000",
+            flexDirection:'row',
+            justifyContent:"space-between",}}>
         <TouchableOpacity
         activeOpacity={0.8}
-        onPress={() => navigation.goBack()}>
+        onPress={() => navigation.goBack()}
+        style={{width:50,
+          height:"100%",
+          justifyContent:"center",
+          alignItems:"center",}}>
           <FontAwesome name={'angle-left'} size={25} color={'#000'} />
           </TouchableOpacity>
           <Text style={{fontSize:18,
             textAlign: 'center',
             textAlignVertical: 'center',}}>故事</Text>
           <TouchableOpacity
-        activeOpacity={0.6}
-        onPress={() => this.refs.modal6.open()} >
+        activeOpacity={0.8}
+        onPress={() => this.refs.modal6.open()} 
+        style={{width:50,
+          height:"100%",
+          justifyContent:"center",
+          alignItems:"center",
+          }}>
           <Feather name={'more-horizontal'} size={20} color={'#000'} /></TouchableOpacity>
-      </View>
       </View>
         <ScrollView >
             <FlatList
