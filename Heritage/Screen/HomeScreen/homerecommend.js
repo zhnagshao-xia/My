@@ -268,7 +268,7 @@ export default class homerecommend extends Component {
               </ImageBackground>
             </TouchableOpacity>
             <View style={styles.threeright}>
-              <TouchableOpacity style={styles.righttop}
+              <TouchableOpacity activeOpacity={0.8} style={styles.righttop}
                 onPress={() => navigation.navigate('志愿者')}>
                 <ImageBackground
                   style={styles.tu}
@@ -276,7 +276,7 @@ export default class homerecommend extends Component {
                   <Text style={{ color: '#fff', fontSize: 14 }}>志愿者</Text>
                 </ImageBackground>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.rightbottom}
+              <TouchableOpacity activeOpacity={0.8} style={styles.rightbottom}
                 onPress={() => navigation.navigate('活动')}>
                 <ImageBackground
                   style={styles.tu}
@@ -319,6 +319,7 @@ export default class homerecommend extends Component {
                           <Text style={{ color: '#c6a46c', fontSize: 12 }}>{item.chenghao}</Text>
                         </View>
                         <TouchableOpacity
+                        activeOpacity={0.8}
                           style={styles.guanzhu}
                           onPress={() => {
                             copyusername = username,
@@ -333,6 +334,7 @@ export default class homerecommend extends Component {
                           <Text style={{ fontSize: 12 }}>关注</Text>
                         </TouchableOpacity>
                         <TouchableOpacity
+                        activeOpacity={0.8}
                           onPress={() => navigation.navigate('手艺人详细页面',{name:item.name,username:username,usericon:usericon})}
                           style={styles.touxiang}>
                           <Image
@@ -348,6 +350,7 @@ export default class homerecommend extends Component {
               />
             </ScrollView>
             <TouchableOpacity
+            activeOpacity={0.8}
               onPress={() => navigation.navigate('手艺人',{username:username,usericon:usericon})}
               style={{
                 width: '95%',
@@ -395,6 +398,7 @@ export default class homerecommend extends Component {
               />
             </ScrollView>
             <TouchableOpacity
+            activeOpacity={0.8}
               onPress={() => navigation.navigate('匠心力作')}
               style={{
                 width: '100%',
