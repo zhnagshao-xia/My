@@ -34,9 +34,6 @@ constructor(props){
     this.fetchData();
     // this._onClickNamefind();
   }
-
-
-
   // _onClickNamefind (){
   //   fetch(URL2, {//手艺人详情
   //     method: 'POST',

@@ -162,7 +162,8 @@ export default class DrawerExample extends React.Component {
                                                 <Image style={{ width: '100%', height: "100%" }}
                                                     source={require('../../Image/homeheritage/pic_1.png')}></Image>
                                             </View>
-                                            <TouchableOpacity activeOpacity={0.8}>
+                                            <TouchableOpacity activeOpacity={0.8}
+                                            onPress={() => navigation.navigation("heritageDetails")}>
                                             <Text style={{fontSize:20,lineHeight:40,letterSpacing:2}}>啦啦啦啦啦啦</Text>
                                             <Text ellipsizeMode="tail" style={{height:35}}>{item.demo1}</Text>
                                             </TouchableOpacity>
