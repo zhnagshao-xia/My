@@ -34,6 +34,10 @@ export default class DrawerExample extends React.Component {
     }
     render() {
         const { navigation, route } = this.props;
+        let cityname = route.params.cityname;
+        this.state={
+            cityname,
+        }
         const sidebar = (
             <ScrollView style={[styles.container]}>
                 <View style={{height:60,
@@ -110,7 +114,7 @@ export default class DrawerExample extends React.Component {
                             fontSize: 18,
                             textAlign: 'center',
                             textAlignVertical: 'center',
-                        }}>杭州</Text>
+                        }}>{cityname}</Text>
                         <TouchableOpacity
                             activeOpacity={0.8}
                             onPress={() => this.drawer && this.drawer.openDrawer()}

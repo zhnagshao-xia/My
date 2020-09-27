@@ -28,7 +28,7 @@ export default class VolunteerScreen extends React.Component {
     isDrag: true,
     docs: [],
     Projects: [],
-    sum:"0"
+    sum:0
   };
 
   getNextIndex = (index) => {

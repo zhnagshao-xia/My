@@ -26,7 +26,15 @@ export default class homeheritage extends Component {
           modal: false,
           swiperTop: 100,
           modalTwo:false,
-          modalThird:false
+          modalThird:false,
+          modalFour:false,
+          modalFive:false,
+          modalSix:false,
+          modalSeven:false,
+          modalEight:false,
+          modalNine:false,
+          modalTen:false,
+          modalEleven:false
         };
       }
       // 传入组件的ref，获取组件据屏幕顶部的距离设置轮播图出现的位置
@@ -42,6 +50,7 @@ export default class homeheritage extends Component {
 
     render() {
         const { swiperTop } = this.state;
+        const { navigation } = this.props;
     return (
         <ScrollView>
             <TouchableOpacity  ref="TouchableOne"
@@ -113,8 +122,8 @@ export default class homeheritage extends Component {
               onPress={() => {
                 this.getScrollTop(this.refs.TouchableFour);
                 this.setState({
-                  modal: !this.state.modal,
-                });
+                  modalFour: !this.state.modalFour,
+                }); 
               }}>
             <ImageBackground source={{uri:https+"/picture/shouye_feiyi/haibaotu/金华.png"}} style={{ height: 280 }}>
               <View style={styles.place}>
@@ -134,7 +143,7 @@ export default class homeheritage extends Component {
               onPress={() => {
                 this.getScrollTop(this.refs.TouchableFive);
                 this.setState({
-                  modal: !this.state.modal,
+                  modalFive: !this.state.modalFive,
                 });
               }}>
             <ImageBackground source={{uri:https+"/picture/shouye_feiyi/haibaotu/丽水.png"}} style={{ height: 280 }}>
@@ -155,7 +164,7 @@ export default class homeheritage extends Component {
               onPress={() => {
                 this.getScrollTop(this.refs.TouchableSix);
                 this.setState({
-                  modal: !this.state.modal,
+                  modalSix: !this.state.modalSix,
                 });
               }}>
             <ImageBackground source={{uri:https+"/picture/shouye_feiyi/haibaotu/宁波.png"}} style={{ height: 280 }}>
@@ -176,7 +185,7 @@ export default class homeheritage extends Component {
               onPress={() => {
                 this.getScrollTop(this.refs.TouchableSeven);
                 this.setState({
-                  modal: !this.state.modal,
+                  modalSeven: !this.state.modalSeven,
                 });
               }}>
             <ImageBackground source={{uri:https+"/picture/shouye_feiyi/haibaotu/衢州.png"}} style={{ height: 280 }}>
@@ -197,7 +206,7 @@ export default class homeheritage extends Component {
               onPress={() => {
                 this.getScrollTop(this.refs.TouchableEight);
                 this.setState({
-                  modal: !this.state.modal,
+                  modalEight: !this.state.modalEight,
                 });
               }}>
             <ImageBackground source={{uri:https+"/picture/shouye_feiyi/haibaotu/绍兴.png"}} style={{ height: 280 }}>
@@ -218,7 +227,7 @@ export default class homeheritage extends Component {
               onPress={() => {
                 this.getScrollTop(this.refs.TouchableNine);
                 this.setState({
-                  modal: !this.state.modal,
+                  modalNine: !this.state.modalNine,
                 });
               }}>
             <ImageBackground source={{uri:https+"/picture/shouye_feiyi/haibaotu/台州.png"}} style={{ height: 280 }}>
@@ -239,7 +248,7 @@ export default class homeheritage extends Component {
               onPress={() => {
                 this.getScrollTop(this.refs.TouchableTen);
                 this.setState({
-                  modal: !this.state.modal,
+                  modalTen: !this.state.modalTen,
                 });
               }}>
             <ImageBackground source={{uri:https+"/picture/shouye_feiyi/haibaotu/温州.png"}} style={{ height: 280 }}>
@@ -260,7 +269,7 @@ export default class homeheritage extends Component {
               onPress={() => {
                 this.getScrollTop(this.refs.TouchableEleven);
                 this.setState({
-                  modal: !this.state.modal,
+                  modalEleven: !this.state.modalEight,
                 });
               }}>
             <ImageBackground source={{uri:https+"/picture/shouye_feiyi/haibaotu/舟山.png"}} style={{ height: 280 }}>
@@ -275,7 +284,8 @@ export default class homeheritage extends Component {
               </View>
             </ImageBackground>
             </TouchableOpacity>
-            <Modal
+
+        <Modal
           animationType={"none"}
           transparent={true}
           onRequestClose={() => console.log("onRequestClose...")}
@@ -300,8 +310,15 @@ export default class homeheritage extends Component {
                     }}>
                         <View style={{width:'100%',height:'20%',alignItems:'center',flexDirection:'row'}}>
                             <Text style={{fontSize:15,color:'#fff',marginLeft:25}}>杭州</Text>
-                            <Text style={{fontSize:12,color:'#fff',marginLeft:50}}>178项非遗</Text>
-                            <TouchableOpacity style={{width:70,height:40,flexDirection:'row',marginLeft:180,alignItems:'center',justifyContent:'center'}}>
+                            <Text style={{fontSize:12,color:'#fff',marginLeft:50}}>232项非遗</Text>
+                            <TouchableOpacity 
+                            style={{width:70,height:40,flexDirection:'row',marginLeft:180,alignItems:'center',justifyContent:'center'}}
+                            onPress={()=>{
+                              navigation.navigate("heritagelist",{cityname:"杭州"}),
+                              this.setState({
+                                modal: false,
+                              })
+                            }}>
                                 <Text style={{fontSize:15,color:'#fff',marginRight:5}}>更多</Text>
                                 <FontAwesome
                                 name={'cancel'}
@@ -338,6 +355,7 @@ export default class homeheritage extends Component {
                 </View>
           </TouchableOpacity>
         </Modal>
+
         <Modal
           animationType={"slide"}
           transparent={true}
@@ -363,8 +381,15 @@ export default class homeheritage extends Component {
                     }}>
                         <View style={{width:'100%',height:'20%',alignItems:'center',flexDirection:'row'}}>
                             <Text style={{fontSize:15,color:'#fff',marginLeft:25}}>湖州</Text>
-                            <Text style={{fontSize:12,color:'#fff',marginLeft:50}}>178项非遗</Text>
-                            <TouchableOpacity style={{width:70,height:40,flexDirection:'row',marginLeft:180,alignItems:'center',justifyContent:'center'}}>
+                            <Text style={{fontSize:12,color:'#fff',marginLeft:50}}>60项非遗</Text>
+                            <TouchableOpacity 
+                            style={{width:70,height:40,flexDirection:'row',marginLeft:180,alignItems:'center',justifyContent:'center'}}
+                            onPress={()=>{
+                              navigation.navigate("heritagelist",{cityname:"湖州"}),
+                              this.setState({
+                                modalTwo: false,
+                              })
+                            }}>
                                 <Text style={{fontSize:15,color:'#fff',marginRight:5}}>更多</Text>
                                 <FontAwesome
                                 name={'cancel'}
@@ -401,6 +426,7 @@ export default class homeheritage extends Component {
                 </View>
           </TouchableOpacity>
         </Modal>
+
         <Modal
           animationType={"slide"}
           transparent={true}
@@ -424,8 +450,15 @@ export default class homeheritage extends Component {
                     }}>
                         <View style={{width:'100%',height:'20%',alignItems:'center',flexDirection:'row'}}>
                             <Text style={{fontSize:15,color:'#fff',marginLeft:25}}>嘉兴</Text>
-                            <Text style={{fontSize:12,color:'#fff',marginLeft:50}}>178项非遗</Text>
-                            <TouchableOpacity style={{width:70,height:40,flexDirection:'row',marginLeft:180,alignItems:'center',justifyContent:'center'}}>
+                            <Text style={{fontSize:12,color:'#fff',marginLeft:50}}>87项非遗</Text>
+                            <TouchableOpacity 
+                            style={{width:70,height:40,flexDirection:'row',marginLeft:180,alignItems:'center',justifyContent:'center'}}
+                            onPress={()=>{
+                              navigation.navigate("heritagelist",{cityname:"嘉兴"}),
+                              this.setState({
+                                modalThird: false,
+                              })
+                            }}>
                                 <Text style={{fontSize:15,color:'#fff',marginRight:5}}>更多</Text>
                                 <FontAwesome
                                 name={'cancel'}
@@ -462,7 +495,560 @@ export default class homeheritage extends Component {
                 </View>
           </TouchableOpacity>
         </Modal>
-          </ScrollView>
+
+        <Modal
+          animationType={"slide"}
+          transparent={true}
+          onRequestClose={() => console.log("onRequestClose...")}
+          visible={this.state.modalFour}
+        >
+          <TouchableOpacity
+            onPress={() =>
+              this.setState({
+                modalFour: false,
+              })
+            }
+          >
+          
+              <View style={styles.header}>
+                  <View style={{
+                    position: "absolute",
+                    width: "100%",
+                    height:180,
+                    top: swiperTop,
+                    }}>
+                        <View style={{width:'100%',height:'20%',alignItems:'center',flexDirection:'row'}}>
+                            <Text style={{fontSize:15,color:'#fff',marginLeft:25}}>金华</Text>
+                            <Text style={{fontSize:12,color:'#fff',marginLeft:50}}>148项非遗</Text>
+                            <TouchableOpacity 
+                            style={{width:70,height:40,flexDirection:'row',marginLeft:180,alignItems:'center',justifyContent:'center'}}
+                            onPress={()=>{
+                              navigation.navigate("heritagelist",{cityname:"金华"}),
+                              this.setState({
+                                modalFour: false,
+                              })
+                            }}>
+                                <Text style={{fontSize:15,color:'#fff',marginRight:5}}>更多</Text>
+                                <FontAwesome
+                                name={'cancel'}
+                                size={20}
+                                color={'#000'} />
+                            </TouchableOpacity>
+                        </View>
+                        <View style={{width:'100%',height:'80%',alignItems:'center',flexDirection:'row'}}>
+                            <ScrollView horizontal={true}>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/qinci.png')}>
+                                    <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
+                                        <Text style={{fontSize:13,color:'#fff'}}>越窑青瓷烧纸技艺</Text>
+                                    </View>
+                                </ImageBackground>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/yinshua.png')}>
+                                    <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
+                                        <Text style={{fontSize:13,color:'#fff'}}>木板水印技艺</Text>
+                                    </View>
+                                </ImageBackground>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/qinci.png')}>
+                                    <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
+                                        <Text style={{fontSize:13,color:'#fff'}}>越窑青瓷烧纸技艺</Text>
+                                    </View>
+                                </ImageBackground>
+                            </TouchableOpacity>
+                            </ScrollView>
+                        </View>
+                    </View>
+                </View>
+          </TouchableOpacity>
+        </Modal>
+           
+        <Modal
+          animationType={"slide"}
+          transparent={true}
+          onRequestClose={() => console.log("onRequestClose...")}
+          visible={this.state.modalFive}
+        >
+          <TouchableOpacity
+            onPress={() =>
+              this.setState({
+                modalFive: false,
+              })
+            }
+          >
+          
+              <View style={styles.header}>
+                  <View style={{
+                    position: "absolute",
+                    width: "100%",
+                    height:180,
+                    top: swiperTop,
+                    }}>
+                        <View style={{width:'100%',height:'20%',alignItems:'center',flexDirection:'row'}}>
+                            <Text style={{fontSize:15,color:'#fff',marginLeft:25}}>丽水</Text>
+                            <Text style={{fontSize:12,color:'#fff',marginLeft:50}}>125项非遗</Text>
+                            <TouchableOpacity 
+                            style={{width:70,height:40,flexDirection:'row',marginLeft:180,alignItems:'center',justifyContent:'center'}}
+                            onPress={()=>{
+                              navigation.navigate("heritagelist",{cityname:"丽水"}),
+                              this.setState({
+                                modalFive: false,
+                              })
+                            }}>
+                                <Text style={{fontSize:15,color:'#fff',marginRight:5}}>更多</Text>
+                                <FontAwesome
+                                name={'cancel'}
+                                size={20}
+                                color={'#000'} />
+                            </TouchableOpacity>
+                        </View>
+                        <View style={{width:'100%',height:'80%',alignItems:'center',flexDirection:'row'}}>
+                            <ScrollView horizontal={true}>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/qinci.png')}>
+                                    <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
+                                        <Text style={{fontSize:13,color:'#fff'}}>越窑青瓷烧纸技艺</Text>
+                                    </View>
+                                </ImageBackground>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/yinshua.png')}>
+                                    <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
+                                        <Text style={{fontSize:13,color:'#fff'}}>木板水印技艺</Text>
+                                    </View>
+                                </ImageBackground>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/qinci.png')}>
+                                    <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
+                                        <Text style={{fontSize:13,color:'#fff'}}>越窑青瓷烧纸技艺</Text>
+                                    </View>
+                                </ImageBackground>
+                            </TouchableOpacity>
+                            </ScrollView>
+                        </View>
+                    </View>
+                </View>
+          </TouchableOpacity>
+        </Modal>
+          
+        <Modal
+          animationType={"slide"}
+          transparent={true}
+          onRequestClose={() => console.log("onRequestClose...")}
+          visible={this.state.modalSix}
+        >
+          <TouchableOpacity
+            onPress={() =>
+              this.setState({
+                modalSix: false,
+              })
+            }
+          >
+          
+              <View style={styles.header}>
+                  <View style={{
+                    position: "absolute",
+                    width: "100%",
+                    height:180,
+                    top: swiperTop,
+                    }}>
+                        <View style={{width:'100%',height:'20%',alignItems:'center',flexDirection:'row'}}>
+                            <Text style={{fontSize:15,color:'#fff',marginLeft:25}}>宁波</Text>
+                            <Text style={{fontSize:12,color:'#fff',marginLeft:50}}>120项非遗</Text>
+                            <TouchableOpacity 
+                            style={{width:70,height:40,flexDirection:'row',marginLeft:180,alignItems:'center',justifyContent:'center'}}
+                            onPress={()=>{
+                              navigation.navigate("heritagelist",{cityname:"宁波"}),
+                              this.setState({
+                                modalSix: false,
+                              })
+                            }}>
+                                <Text style={{fontSize:15,color:'#fff',marginRight:5}}>更多</Text>
+                                <FontAwesome
+                                name={'cancel'}
+                                size={20}
+                                color={'#000'} />
+                            </TouchableOpacity>
+                        </View>
+                        <View style={{width:'100%',height:'80%',alignItems:'center',flexDirection:'row'}}>
+                            <ScrollView horizontal={true}>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/qinci.png')}>
+                                    <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
+                                        <Text style={{fontSize:13,color:'#fff'}}>越窑青瓷烧纸技艺</Text>
+                                    </View>
+                                </ImageBackground>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/yinshua.png')}>
+                                    <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
+                                        <Text style={{fontSize:13,color:'#fff'}}>木板水印技艺</Text>
+                                    </View>
+                                </ImageBackground>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/qinci.png')}>
+                                    <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
+                                        <Text style={{fontSize:13,color:'#fff'}}>越窑青瓷烧纸技艺</Text>
+                                    </View>
+                                </ImageBackground>
+                            </TouchableOpacity>
+                            </ScrollView>
+                        </View>
+                    </View>
+                </View>
+          </TouchableOpacity>
+        </Modal>
+
+        <Modal
+          animationType={"slide"}
+          transparent={true}
+          onRequestClose={() => console.log("onRequestClose...")}
+          visible={this.state.modalSeven}
+        >
+          <TouchableOpacity
+            onPress={() =>
+              this.setState({
+                modalSeven: false,
+              })
+            }
+          >
+          
+              <View style={styles.header}>
+                  <View style={{
+                    position: "absolute",
+                    width: "100%",
+                    height:180,
+                    top: swiperTop,
+                    }}>
+                        <View style={{width:'100%',height:'20%',alignItems:'center',flexDirection:'row'}}>
+                            <Text style={{fontSize:15,color:'#fff',marginLeft:25}}>衢州</Text>
+                            <Text style={{fontSize:12,color:'#fff',marginLeft:50}}>87项非遗</Text>
+                            <TouchableOpacity 
+                            style={{width:70,height:40,flexDirection:'row',marginLeft:180,alignItems:'center',justifyContent:'center'}}
+                            onPress={()=>{
+                              navigation.navigate("heritagelist",{cityname:"衢州"}),
+                              this.setState({
+                                modalSeven: false,
+                              })
+                            }}>
+                                <Text style={{fontSize:15,color:'#fff',marginRight:5}}>更多</Text>
+                                <FontAwesome
+                                name={'cancel'}
+                                size={20}
+                                color={'#000'} />
+                            </TouchableOpacity>
+                        </View>
+                        <View style={{width:'100%',height:'80%',alignItems:'center',flexDirection:'row'}}>
+                            <ScrollView horizontal={true}>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/qinci.png')}>
+                                    <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
+                                        <Text style={{fontSize:13,color:'#fff'}}>越窑青瓷烧纸技艺</Text>
+                                    </View>
+                                </ImageBackground>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/yinshua.png')}>
+                                    <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
+                                        <Text style={{fontSize:13,color:'#fff'}}>木板水印技艺</Text>
+                                    </View>
+                                </ImageBackground>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/qinci.png')}>
+                                    <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
+                                        <Text style={{fontSize:13,color:'#fff'}}>越窑青瓷烧纸技艺</Text>
+                                    </View>
+                                </ImageBackground>
+                            </TouchableOpacity>
+                            </ScrollView>
+                        </View>
+                    </View>
+                </View>
+          </TouchableOpacity>
+        </Modal>
+
+        <Modal
+          animationType={"slide"}
+          transparent={true}
+          onRequestClose={() => console.log("onRequestClose...")}
+          visible={this.state.modalEight}
+        >
+          <TouchableOpacity
+            onPress={() =>
+              this.setState({
+                modalEight: false,
+              })
+            }
+          >
+          
+              <View style={styles.header}>
+                  <View style={{
+                    position: "absolute",
+                    width: "100%",
+                    height:180,
+                    top: swiperTop,
+                    }}>
+                        <View style={{width:'100%',height:'20%',alignItems:'center',flexDirection:'row'}}>
+                            <Text style={{fontSize:15,color:'#fff',marginLeft:25}}>绍兴</Text>
+                            <Text style={{fontSize:12,color:'#fff',marginLeft:50}}>110项非遗</Text>
+                            <TouchableOpacity 
+                            style={{width:70,height:40,flexDirection:'row',marginLeft:180,alignItems:'center',justifyContent:'center'}}
+                            onPress={()=>{
+                              navigation.navigate("heritagelist",{cityname:"绍兴"}),
+                              this.setState({
+                                modalEight: false,
+                              })
+                            }}>
+                                <Text style={{fontSize:15,color:'#fff',marginRight:5}}>更多</Text>
+                                <FontAwesome
+                                name={'cancel'}
+                                size={20}
+                                color={'#000'} />
+                            </TouchableOpacity>
+                        </View>
+                        <View style={{width:'100%',height:'80%',alignItems:'center',flexDirection:'row'}}>
+                            <ScrollView horizontal={true}>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/qinci.png')}>
+                                    <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
+                                        <Text style={{fontSize:13,color:'#fff'}}>越窑青瓷烧纸技艺</Text>
+                                    </View>
+                                </ImageBackground>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/yinshua.png')}>
+                                    <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
+                                        <Text style={{fontSize:13,color:'#fff'}}>木板水印技艺</Text>
+                                    </View>
+                                </ImageBackground>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/qinci.png')}>
+                                    <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
+                                        <Text style={{fontSize:13,color:'#fff'}}>越窑青瓷烧纸技艺</Text>
+                                    </View>
+                                </ImageBackground>
+                            </TouchableOpacity>
+                            </ScrollView>
+                        </View>
+                    </View>
+                </View>
+          </TouchableOpacity>
+        </Modal>
+
+        <Modal
+          animationType={"slide"}
+          transparent={true}
+          onRequestClose={() => console.log("onRequestClose...")}
+          visible={this.state.modalNine}
+        >
+          <TouchableOpacity
+            onPress={() =>
+              this.setState({
+                modalNine: false,
+              })
+            }
+          >
+          
+              <View style={styles.header}>
+                  <View style={{
+                    position: "absolute",
+                    width: "100%",
+                    height:180,
+                    top: swiperTop,
+                    }}>
+                        <View style={{width:'100%',height:'20%',alignItems:'center',flexDirection:'row'}}>
+                            <Text style={{fontSize:15,color:'#fff',marginLeft:25}}>台州</Text>
+                            <Text style={{fontSize:12,color:'#fff',marginLeft:50}}>122项非遗</Text>
+                            <TouchableOpacity 
+                            style={{width:70,height:40,flexDirection:'row',marginLeft:180,alignItems:'center',justifyContent:'center'}}
+                            onPress={()=>{
+                              navigation.navigate("heritagelist",{cityname:"台州"}),
+                              this.setState({
+                                modalNine: false,
+                              })
+                            }}>
+                                <Text style={{fontSize:15,color:'#fff',marginRight:5}}>更多</Text>
+                                <FontAwesome
+                                name={'cancel'}
+                                size={20}
+                                color={'#000'} />
+                            </TouchableOpacity>
+                        </View>
+                        <View style={{width:'100%',height:'80%',alignItems:'center',flexDirection:'row'}}>
+                            <ScrollView horizontal={true}>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/qinci.png')}>
+                                    <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
+                                        <Text style={{fontSize:13,color:'#fff'}}>越窑青瓷烧纸技艺</Text>
+                                    </View>
+                                </ImageBackground>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/yinshua.png')}>
+                                    <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
+                                        <Text style={{fontSize:13,color:'#fff'}}>木板水印技艺</Text>
+                                    </View>
+                                </ImageBackground>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/qinci.png')}>
+                                    <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
+                                        <Text style={{fontSize:13,color:'#fff'}}>越窑青瓷烧纸技艺</Text>
+                                    </View>
+                                </ImageBackground>
+                            </TouchableOpacity>
+                            </ScrollView>
+                        </View>
+                    </View>
+                </View>
+          </TouchableOpacity>
+        </Modal>
+
+        <Modal
+          animationType={"slide"}
+          transparent={true}
+          onRequestClose={() => console.log("onRequestClose...")}
+          visible={this.state.modalTen}
+        >
+          <TouchableOpacity
+            onPress={() =>
+              this.setState({
+                modalTen: false,
+              })
+            }
+          >
+          
+              <View style={styles.header}>
+                  <View style={{
+                    position: "absolute",
+                    width: "100%",
+                    height:180,
+                    top: swiperTop,
+                    }}>
+                        <View style={{width:'100%',height:'20%',alignItems:'center',flexDirection:'row'}}>
+                            <Text style={{fontSize:15,color:'#fff',marginLeft:25}}>温州</Text>
+                            <Text style={{fontSize:12,color:'#fff',marginLeft:50}}>183项非遗</Text>
+                            <TouchableOpacity 
+                            style={{width:70,height:40,flexDirection:'row',marginLeft:180,alignItems:'center',justifyContent:'center'}}
+                            onPress={()=>{
+                              navigation.navigate("heritagelist",{cityname:"温州"}),
+                              this.setState({
+                                modalTen: false,
+                              })
+                            }}>
+                                <Text style={{fontSize:15,color:'#fff',marginRight:5}}>更多</Text>
+                                <FontAwesome
+                                name={'cancel'}
+                                size={20}
+                                color={'#000'} />
+                            </TouchableOpacity>
+                        </View>
+                        <View style={{width:'100%',height:'80%',alignItems:'center',flexDirection:'row'}}>
+                            <ScrollView horizontal={true}>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/qinci.png')}>
+                                    <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
+                                        <Text style={{fontSize:13,color:'#fff'}}>越窑青瓷烧纸技艺</Text>
+                                    </View>
+                                </ImageBackground>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/yinshua.png')}>
+                                    <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
+                                        <Text style={{fontSize:13,color:'#fff'}}>木板水印技艺</Text>
+                                    </View>
+                                </ImageBackground>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/qinci.png')}>
+                                    <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
+                                        <Text style={{fontSize:13,color:'#fff'}}>越窑青瓷烧纸技艺</Text>
+                                    </View>
+                                </ImageBackground>
+                            </TouchableOpacity>
+                            </ScrollView>
+                        </View>
+                    </View>
+                </View>
+          </TouchableOpacity>
+        </Modal>
+
+        <Modal
+          animationType={"slide"}
+          transparent={true}
+          onRequestClose={() => console.log("onRequestClose...")}
+          visible={this.state.modalEleven}
+        >
+          <TouchableOpacity
+            onPress={() =>
+              this.setState({
+                modalEleven: false,
+              })
+            }
+          >
+          
+              <View style={styles.header}>
+                  <View style={{
+                    position: "absolute",
+                    width: "100%",
+                    height:180,
+                    top: swiperTop,
+                    }}>
+                        <View style={{width:'100%',height:'20%',alignItems:'center',flexDirection:'row'}}>
+                            <Text style={{fontSize:15,color:'#fff',marginLeft:25}}>舟山</Text>
+                            <Text style={{fontSize:12,color:'#fff',marginLeft:50}}>43项非遗</Text>
+                            <TouchableOpacity 
+                            style={{width:70,height:40,flexDirection:'row',marginLeft:180,alignItems:'center',justifyContent:'center'}}
+                            onPress={()=>{
+                              navigation.navigate("heritagelist",{cityname:"舟山"}),
+                              this.setState({
+                                modalEleven: false,
+                              })
+                            }}>
+                                <Text style={{fontSize:15,color:'#fff',marginRight:5}}>更多</Text>
+                                <FontAwesome
+                                name={'cancel'}
+                                size={20}
+                                color={'#000'} />
+                            </TouchableOpacity>
+                        </View>
+                        <View style={{width:'100%',height:'80%',alignItems:'center',flexDirection:'row'}}>
+                            <ScrollView horizontal={true}>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/qinci.png')}>
+                                    <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
+                                        <Text style={{fontSize:13,color:'#fff'}}>越窑青瓷烧纸技艺</Text>
+                                    </View>
+                                </ImageBackground>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/yinshua.png')}>
+                                    <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
+                                        <Text style={{fontSize:13,color:'#fff'}}>木板水印技艺</Text>
+                                    </View>
+                                </ImageBackground>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/qinci.png')}>
+                                    <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
+                                        <Text style={{fontSize:13,color:'#fff'}}>越窑青瓷烧纸技艺</Text>
+                                    </View>
+                                </ImageBackground>
+                            </TouchableOpacity>
+                            </ScrollView>
+                        </View>
+                    </View>
+                </View>
+          </TouchableOpacity>
+        </Modal>
+
+        </ScrollView>
     );
 }
 componentDidMount() {
