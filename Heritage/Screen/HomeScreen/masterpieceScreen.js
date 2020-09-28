@@ -10,7 +10,9 @@ export default function masterpieceScreen({ navigation }) {
         height: 45,
         alignItems: "center",
         justifyContent: "center",
-        flexDirection: 'row'
+        flexDirection: 'row',
+        borderBottomWidth: 0.5,
+        borderBottomColor: "#000"
       }}>
         <TouchableOpacity
           activeOpacity={0.8}
@@ -22,8 +24,20 @@ export default function masterpieceScreen({ navigation }) {
           textAlign: 'center',
           textAlignVertical: 'center',
         }}>匠心力作</Text>
+        {/* <Text style={{bottom:28}}>12</Text> */}
       </View>
+
       <Turn />
+
+      {/* <View style={{
+        backgroundColor: "#dfd7ca",flexDirection:'row'}}>
+          <TouchableOpacity style={{left:10,bottom:15}}>
+          <FontAwesome name={'angle-left'} size={25} color={'#000'} />
+        </TouchableOpacity>
+        <TouchableOpacity style={{left:380,bottom:15}}>
+          <FontAwesome name={'angle-right'} size={25} color={'#000'} />
+        </TouchableOpacity>
+        </View> */}
     </View>
   );
 }

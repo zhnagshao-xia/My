@@ -70,7 +70,7 @@ container1: {
     flex: 1,
 },
 item: {
-    backgroundColor: '#000',
+    backgroundColor: '#fff',
     width: width/numColumns,
     height: 190,  
     alignItems: 'center',

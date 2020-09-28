@@ -175,7 +175,7 @@ export default class VolunteerScreen extends React.Component {
     return (
       <>
         <Appbar.Header
-          style={{ width: "100%", height: 40, backgroundColor: "#fff" }}
+          style={{ width: "100%", height: 45, backgroundColor: "#fff" }}
         >
           <TouchableNativeFeedback onPress={() => navigation.goBack()}>
             <FontAwesome style={{ marginLeft: 10 }} name="angle-left" color="#000" size={30} />
