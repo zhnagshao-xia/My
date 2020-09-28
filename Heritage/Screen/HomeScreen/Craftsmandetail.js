@@ -201,11 +201,11 @@ export default class Craftsmandetail extends Component {
             source={require('../../Image/HomeScreen/Personalbg.png')}
             resizeMode='stretch'>
             <View style={{ width: '40%', height: '100%' }}>
-              {/* <Image style={styles.headpic}
-                source={{ uri:  https + data.touxiang }} /> */}
+              <Image style={styles.headpic}
+                source={{ uri:  https + data.touxiang }} />
               <View style={styles.namerow}>
-                {/* <Text style={{ fontSize: 15, color: 'black' }}
-                >{data.name}</Text> */}
+                <Text style={{ fontSize: 15, color: 'black' }}
+                >{data.name}</Text>
                 <TouchableOpacity
                   style={styles.like}
                   onPress={() => {
@@ -226,7 +226,7 @@ export default class Craftsmandetail extends Component {
             </View>
             <View style={styles.center}>
               <View style={{ width: 23, height: 130, }}>
-                {/* <Text style={{ fontSize: 12, textAlign: 'center', textAlignVertical: 'center', }}>{data.xiangmu}</Text> */}
+                <Text style={{ fontSize: 12, textAlign: 'center', textAlignVertical: 'center', }}>{data.xiangmu}</Text>
               </View>
               <View style={{ width: 1, height: 130, backgroundColor: 'black' }}></View>
               <View style={{ width: 23, height: 130, flexDirection: 'column-reverse' }}>
@@ -255,7 +255,8 @@ export default class Craftsmandetail extends Component {
           </ImageBackground>
         </View>
         <View style={{ flex: 1 }}>
-          <InformationTab />
+          {/* 从props里取出上级页面携带的name, 传递给子组件 */}
+          <InformationTab name={this.props.route.params.name}/>
         </View>
         <Modal style={styles.modal4} position={"bottom"} ref={"modal6"} >
           <View style={{ width: '100%', height: '75%', flexDirection: 'row' }}>

@@ -5,8 +5,6 @@ import Feather from 'react-native-vector-icons/Feather';
 import Modal from 'react-native-modalbox';
 
 var http = "http://192.168.50.91:3000";
-var URL1 = http+"/chuanchengzhi/addnumber";
-var URL2 = http+"/chuanchengzhi/details";
 
 export default class heritageDetails extends Component{
     constructor(props) {
@@ -25,30 +23,8 @@ export default class heritageDetails extends Component{
 
       componentDidMount() {//componentDidMount:生命周期
         this.fetchData();
-        this._onClickAdd();
       }
-
-      _onClickAdd=()=> {//浏览量
-        fetch(URL1, {
-          method: 'POST',
-          credentials: "include",
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            name:this.state.name
-          })
-        })
-        .then(function (res) {
-          return res.json();
-      }).then(function (json) {
-          if (json.code == 200) {
-              
-          } 
-      })
-      } 
-
+      
       fetchData() {
         fetch(URL2, {
           method: 'POST',
