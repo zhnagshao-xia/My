@@ -19,12 +19,12 @@ var URL1 = http + "/shouyiren/personal";
 
 // let data = require('../../data.json');
 export default class representativework extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.state={
-      name:"",
-      docs:[],
-      daibiaozuo:[],
+    this.state = {
+      name: "",
+      docs: [],
+      daibiaozuo: [],
     }
   }
 
@@ -38,7 +38,7 @@ export default class representativework extends Component {
       method: 'POST',
       credentials: "include",
       headers: {
-        'Accept': 'application/json', 
+        'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
@@ -46,65 +46,70 @@ export default class representativework extends Component {
       })
     })
       .then((response) => response.json())
-      .then((json)=>{  
+      .then((json) => {
         this.setState({
-          docs:json.docs,
-          daibiaozuo:json.docs[0].daibiaozuo
+          docs: json.docs,
+          daibiaozuo: json.docs[0].daibiaozuo
         })
         console.log(json.docs)
       })
-      .catch((error)=>console.error(error))
-      .finally(()=>{
-        this.setState({isLonding:false});
-      });}
+      .catch((error) => console.error(error))
+      .finally(() => {
+        this.setState({ isLonding: false });
+      });
+  }
 
   render() {
     const { navigation } = this.props;
     const data = this.state.daibiaozuo;
     return (
-        <FlatList 
-        data = {data}
-          numColumns ={2} // 一行2个
-          renderItem={({item})=>
+      <FlatList
+        data={data}
+        numColumns={2} // 一行2个
+        renderItem={({ item }) =>
           <View style={styles.goodsContainer}>
-          <ImageBackground source={{uri:https+item.picture}} 
-          style={styles.goodsImg}>
-              <View style={{width:'100%',height:35,backgroundColor:'rgba(0,0,0,0.5)'}}>
-              <View style={{width:'100%',height:'50%',justifyContent:'center'}}>
-                <Text style={{fontSize:13,color:'#c9aa74'}}>{item.leibie}</Text>
-              </View>
-              <View style={{width:'100%',height:'50%',flexDirection:'row-reverse'}}>
-                <Text style={{fontSize:13,color:'#c9aa74'}}>------{item.name}</Text>
-              </View>
+            <View style={{
+              width: 170,
+              height: 210,
+              shadowColor: 'red',
+              shadowOffset: { width: 10, height: 10 },
+              shadowOpacity: 0.8,
+              shadowRadius: 10,
+              elevation: 10
+            }}>
+              <ImageBackground source={{ uri: https + item.picture }}
+                style={styles.goodsImg}>
+                <View style={{
+                  width: '100%',
+                  height: 45,
+                  backgroundColor: 'rgba(0,0,0,0.5)',
+                  padding: 5
+                }}>
+                  <Text style={{ fontSize: 13, color: '#c9aa74' }}>{item.leibie}</Text>
+                  <Text style={{ fontSize: 13, color: '#c9aa74', textAlign: 'right' }}>------{item.name}</Text>
+                </View>
+              </ImageBackground>
             </View>
-          </ImageBackground>
-          <View>
+            <View>
+            </View>
           </View>
-          {/* <View style={{width:'100%',height:20,backgroundColor:'red'}}></View> */}
-        </View>
         }
-        >
-        </FlatList>
+      >
+      </FlatList>
     )
   }
 }
 const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    padding: 20,
- 
-  },
   goodsContainer: {
-    flex:1, // 空间平均分布
+    flex: 1, // 空间平均分布
     alignItems: 'center',
-    // backgroundColor:'red'
+    padding: 20
   },
   goodsImg: {
-    width:170,
-    height:210,
-    // backgroundColor:'skyblue',
-    flexDirection:'column-reverse',
-    marginTop:20
+    position:"absolute",
+    width: 170,
+    height: 210,
+    flexDirection: 'column-reverse',
   },
   goodsPrice: {
     color: '#f00'

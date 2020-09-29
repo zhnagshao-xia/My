@@ -198,6 +198,8 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     alignItems: 'center',
     justifyContent: 'center',
+    borderColor:"#000",
+    borderWidth:2
   },
   demol: {
     fontSize: 15,

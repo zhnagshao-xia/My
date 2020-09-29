@@ -64,21 +64,35 @@ _onClickUp=()=> {
       return (
         <View>
           <View style={{
-            height:45,
-            alignItems:"center",
-            justifyContent:"center",
-            flexDirection:'row',
-            borderBottomWidth:0.5,
-            borderBottomColor:"#000",}}>
-            <TouchableOpacity
-            activeOpacity={0.8}
-            onPress={() => navigation.goBack()}
-            style={{right:130}}>
-              <FontAwesome name={'angle-left'} size={25} color={'#000'} /></TouchableOpacity>
-              <Text style={{fontSize:18,
-                textAlign: 'center',
-                textAlignVertical: 'center',}}>报名表</Text>
-          </View>
+                    backgroundColor: "#fff",
+                    height: 45,
+                    alignItems: "center",
+                    justifyContent: "center",
+                    flexDirection: 'row',
+                    borderBottomWidth: 0.5,
+                    borderBottomColor: "#000",
+                }}>
+                    <TouchableOpacity
+                        activeOpacity={0.8}
+                        onPress={() => navigation.goBack()}
+                        style={{
+                            width: 50,
+                            position: "absolute",
+                            height: "100%",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            left: 0
+                        }}>
+                        <FontAwesome name={'angle-left'} size={25} color={'#000'} />
+                    </TouchableOpacity>
+                    <View style={{ width: 200 }}>
+                        <Text style={{
+                            fontSize: 18,
+                            textAlign: 'center',
+                            textAlignVertical: 'center',
+                        }}>报名表</Text>
+                    </View>
+                </View>
         <View style={styles.container}>
             <View style={styles.header}>
                 <ImageBackground 

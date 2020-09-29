@@ -26,21 +26,27 @@ export default class BasicTabsExample extends React.Component {
                     alignItems: "center",
                     justifyContent: "center",
                     flexDirection: 'row',
-                    // borderBottomWidth: 0.5,
-                    // borderBottomColor: "#000",
                 }}>
                     <TouchableOpacity
                         activeOpacity={0.8}
                         onPress={() => navigation.goBack()}
-                        style={{ right: 160 }}>
+                        style={{
+                            width: 50,
+                            position: "absolute",
+                            height: "100%",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            left: 0
+                        }}>
                         <FontAwesome name={'angle-left'} size={25} color={'#000'} />
                     </TouchableOpacity>
-                    <Text style={{
-                        fontSize: 18,
-                        textAlign: 'center',
-                        textAlignVertical: 'center',
-                    }}>集市</Text>
-
+                    <View style={{ width: 200 }}>
+                        <Text style={{
+                            fontSize: 18,
+                            textAlign: 'center',
+                            textAlignVertical: 'center',
+                        }}>集市</Text>
+                    </View>
                 </View>
                 <ScrollView style={{ marginBottom: 50 }}>
                     <View style={{

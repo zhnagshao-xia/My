@@ -83,27 +83,27 @@ constructor(props){
               <FlatList
                 data={data}
                 renderItem={({ item }) =>
-                <View style={{width:'100%',height:'100%'}}>
-                  <View style={{width:350,height:120}}>
-                    <View style={{width:'100%',height:40,flexDirection:'row',alignItems:'center'}}>
+                <View style={{flex:1,alignItems:"center"}}>
+                  <View style={{width:"95%"}}>
+                    <View style={{width:'100%',flexDirection:'row',alignItems:'center',marginVertical:10}}>
                       <View style={{width:4,height:25,backgroundColor:'#c9aa74',marginRight:10}}></View>
                       <Text style={{fontSize:15}}>简介</Text>
                     </View>
-                    <View style={{width:'100%',height:70,}}>
+                    <View style={{width:'100%',marginBottom:20}}>
                       <Text style={{fontSize:13}}>{item.jianjie}</Text>
                     </View>
                   </View>
-                  <View style={{width:350,height:700}}>
-                    <View style={{width:'100%',height:40,flexDirection:'row',alignItems:'center'}}>
+                  <View style={{width:"95%"}}>
+                    <View style={{width:'100%',flexDirection:'row',alignItems:'center',marginVertical:10}}>
                       <View style={{width:4,height:25,backgroundColor:'#c9aa74',marginRight:10}}></View>
                       <Text style={{fontSize:15}}>传承之路</Text>
                     </View>
-                    <View style={{width:'100%',height:300,}}>
+                    <View style={{width:'100%',marginBottom:20}}>
                     {items}
                     </View>
                   </View>
-                  <View style={{width:350,height:170}}>
-                    <View style={{width:'100%',height:40,flexDirection:'row',alignItems:'center'}}>
+                  <View style={{width:"95%"}}>
+                    <View style={{width:'100%',flexDirection:'row',alignItems:'center',marginVertical:10}}>
                       <View style={{width:4,height:25,backgroundColor:'#c9aa74',marginRight:10}}></View>
                       <Text style={{fontSize:15}}>非遗技艺</Text>
                     </View>

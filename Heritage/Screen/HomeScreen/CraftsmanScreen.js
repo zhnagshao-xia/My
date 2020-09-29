@@ -142,13 +142,20 @@ export default class CollectionScreen extends Component{
             borderBottomWidth:0.5,
             borderBottomColor:"#000",}}>
             <TouchableOpacity
-            activeOpacity={0.8}
+            activeOpacity={0.7}
             onPress={() => navigation.goBack()}
-            style={{right:130}}>
+            style={{width:50,
+                position:"absolute",
+            height:"100%",
+            justifyContent:"center",
+            alignItems:"center",
+            left:0}}>
               <FontAwesome name={'angle-left'} size={25} color={'#000'} /></TouchableOpacity>
+              <View style={{width:200}}>
               <Text style={{fontSize:18,
                 textAlign: 'center',
                 textAlignVertical: 'center',}}>推荐手艺人</Text>
+                </View>
           </View>
     <ScrollView >
       <FlatList

@@ -17,27 +17,24 @@ export default function masterpieceScreen({ navigation }) {
         <TouchableOpacity
           activeOpacity={0.8}
           onPress={() => navigation.goBack()}
-          style={{ right: 150 }}>
+          style={{
+            width: 50,
+            position: "absolute",
+            height: "100%",
+            justifyContent: "center",
+            alignItems: "center",
+            left: 0
+          }}>
           <FontAwesome name={'angle-left'} size={25} color={'#000'} /></TouchableOpacity>
-        <Text style={{
-          fontSize: 18,
-          textAlign: 'center',
-          textAlignVertical: 'center',
-        }}>匠心力作</Text>
-        {/* <Text style={{bottom:28}}>12</Text> */}
+        <View style={{ width: 200 }}>
+          <Text style={{
+            fontSize: 18,
+            textAlign: 'center',
+            textAlignVertical: 'center',
+          }}>匠心力作</Text>
+        </View>
       </View>
-
       <Turn />
-
-      {/* <View style={{
-        backgroundColor: "#dfd7ca",flexDirection:'row'}}>
-          <TouchableOpacity style={{left:10,bottom:15}}>
-          <FontAwesome name={'angle-left'} size={25} color={'#000'} />
-        </TouchableOpacity>
-        <TouchableOpacity style={{left:380,bottom:15}}>
-          <FontAwesome name={'angle-right'} size={25} color={'#000'} />
-        </TouchableOpacity>
-        </View> */}
     </View>
   );
 }

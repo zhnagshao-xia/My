@@ -100,16 +100,23 @@ export default class ModalComp extends Component{
         
         return (
         <View>
-            <View style={{height:45,
-            backgroundColor:"#fff",
-        alignItems:"center",
-        justifyContent:"center",
-        borderBottomWidth:0.5,
-            borderBottomColor:"#000",}}>
-                <View style={{flexDirection:'row',justifyContent:"space-between",width:"90%"}}>
-                    <TouchableOpacity
-                    activeOpacity={0.8}
-                    onPress={() => navigation.goBack()}>
+           <View style={{
+          height: 45,
+          alignItems: "center",
+          justifyContent: "center",
+          backgroundColor:"#fff",
+          flexDirection: 'row',
+          justifyContent: "space-between",
+        }}>
+        <TouchableOpacity
+            activeOpacity={0.8}
+            onPress={() => navigation.goBack()}
+            style={{
+              width: 50,
+              height: "100%",
+              justifyContent: "center",
+              alignItems: "center",
+            }}>
                         <FontAwesome name={'angle-left'} size={25} color={'#000'} />
                     </TouchableOpacity>
                     <Text style={{fontSize:18,
@@ -117,11 +124,16 @@ export default class ModalComp extends Component{
                     textAlignVertical: 'center',}}>编辑</Text>
                     <TouchableOpacity
                     activeOpacity={0.6}
-                    onPress={() => {this._onClickUpdate()}} >
+                    onPress={() => {this._onClickUpdate()}} 
+                    style={{
+                        width: 50,
+                        height: "100%",
+                        justifyContent: "center",
+                        alignItems: "center",
+                      }}>
                         <AntDesign name={'check'} size={23} color={'#000'} />
                     </TouchableOpacity>
               </View>
-            </View>
             <View style={{width:'100%',height:700,backgroundColor:'#f2f2f2'}}>
                 <View style={{width:'100%',height:230,marginTop:20,alignItems:'center',justifyContent:'center',backgroundColor:'#fff'}}>
                     <TextInput 

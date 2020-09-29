@@ -16,6 +16,7 @@ import ImagePicker from 'react-native-image-crop-picker';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 export default class ModalComp extends Component{
   
+  
   constructor(props) {
     super(props);
     this.state = {
@@ -55,6 +56,7 @@ _fetchImage(image) {
     })
 }
   render() {
+    const { navigation, route } = this.props;
     var imgDate = [
       {
           key: 1,
@@ -95,15 +97,24 @@ _fetchImage(image) {
   ]
   return (
     <View>
-    <View style={{height:45,
-      alignItems:"center",
-      justifyContent:"center",
-      borderBottomWidth:0.5,
-      borderBottomColor:"#000",}}>
-      <View style={{flexDirection:'row',justifyContent:"space-between",width:"90%"}}>
+    <View style={{
+          height: 45,
+          alignItems: "center",
+          justifyContent: "center",
+          borderBottomWidth: 0.5,
+          borderBottomColor: "#000",
+          flexDirection: 'row',
+          justifyContent: "space-between",
+        }}>
           <TouchableOpacity
-          activeOpacity={0.8}
-          onPress={() => navigation.goBack()}>
+            activeOpacity={0.8}
+            onPress={() => navigation.goBack()}
+            style={{
+              width: 50,
+              height: "100%",
+              justifyContent: "center",
+              alignItems: "center",
+            }}>
               <FontAwesome name={'angle-left'} size={25} color={'#000'} />
           </TouchableOpacity>
           <Text style={{fontSize:18,
@@ -156,7 +167,6 @@ _fetchImage(image) {
                     {/* </TouchableWithoutFeedback> */}
                     </TouchableOpacity>
                 </Modal>
-      </View>
   </View>
   <View style={{width:'100%',height:620,backgroundColor:'#f2f2f2'}}>
   <TextInput 
@@ -184,6 +194,7 @@ _fetchImage(image) {
                                 }
 
                         <TouchableOpacity
+                        activeOpacity={0.8}
                          onPress={() => {
                             // 从本地相册选择单幅图像
                             // 调用多个图像
@@ -231,7 +242,8 @@ const styles = StyleSheet.create({
   backgroundColor:'#f76220',
   borderRadius:5,
   alignItems:'center',
-  justifyContent:'center'
+  justifyContent:'center',
+  marginRight:10
 },
 addPicBox: {
   height: 72,

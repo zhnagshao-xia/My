@@ -38,7 +38,7 @@ export default class App extends Component {
   //   }
   constructor(props) {
     super(props);
-    const {navigation,route} = this.props;
+    const { navigation, route } = this.props;
     let sum = route.params.sum;
     this.state = {
       progressStatusValue: 0,
@@ -48,30 +48,30 @@ export default class App extends Component {
       modalVisibleThird: false,
       modalVisibleFour: false,
       modalVisibleOK: false,
-      docs:[],
-      author:"",
-      QRcode:"",
+      docs: [],
+      author: "",
+      QRcode: "",
       sum,
-};
-}
-animation = new Animated.Value(0);  //initialisation of Animated component to with initial value as the zero for start of the progress bar.
-onAnimation = () =>{
-this.animation.addListener(({value})=> {
-this.setState({progressStatusValue: parseInt(value,10)});
-});
-Animated.timing(this.animation,{
-toValue: this.state.sum,  //value at which it need to reach for end of the progress bar
-duration: 3000,  //duration till the progress bar will continue
-}).start();
-}
-checkUserAction = async () => {
-  const res = await AsyncStorage.getItem('userInfo') || '{}'//AsyncStorage.getItem通过key字段来进行查询存储的数据，把该结果值作为参数传入第二个callback方法
-  const { username = '' } = JSON.parse(res)
-  username && this.setState({
-    username
-  })
-  this.fetchData();
-}
+    };
+  }
+  animation = new Animated.Value(0);  //initialisation of Animated component to with initial value as the zero for start of the progress bar.
+  onAnimation = () => {
+    this.animation.addListener(({ value }) => {
+      this.setState({ progressStatusValue: parseInt(value, 10) });
+    });
+    Animated.timing(this.animation, {
+      toValue: this.state.sum,  //value at which it need to reach for end of the progress bar
+      duration: 3000,  //duration till the progress bar will continue
+    }).start();
+  }
+  checkUserAction = async () => {
+    const res = await AsyncStorage.getItem('userInfo') || '{}'//AsyncStorage.getItem通过key字段来进行查询存储的数据，把该结果值作为参数传入第二个callback方法
+    const { username = '' } = JSON.parse(res)
+    username && this.setState({
+      username
+    })
+    this.fetchData();
+  }
 
   componentDidMount() {//componentDidMount:生命周期
     this.checkUserAction();
@@ -97,9 +97,9 @@ checkUserAction = async () => {
           docs: json.docs,
         })
       })
-      .catch((error)=>console.error(error))
-      .finally(()=>{
-        this.setState({isLonding:false});
+      .catch((error) => console.error(error))
+      .finally(() => {
+        this.setState({ isLonding: false });
       });
   }
 
@@ -497,7 +497,7 @@ checkUserAction = async () => {
                               </View>
                               <Text style={{ fontSize: 12 }}>{author}</Text>
                             </View>
-                          </View>
+                          </View>                 
                         </View>
                       </View>
                     </TouchableOpacity>
