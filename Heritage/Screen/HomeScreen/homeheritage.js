@@ -321,31 +321,49 @@ export default class homeheritage extends Component {
                             }}>
                                 <Text style={{fontSize:15,color:'#fff',marginRight:5}}>更多</Text>
                                 <FontAwesome
-                                name={'cancel'}
+                                name={'angle-right'}
                                 size={20}
-                                color={'#000'} />
+                                color={'#fff'} />
                             </TouchableOpacity>
                         </View>
                         <View style={{width:'100%',height:'80%',alignItems:'center',flexDirection:'row'}}>
                             <ScrollView horizontal={true}>
-                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
-                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/qinci.png')}>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            onPress={()=>{
+                              navigation.navigate("heritageDetails",{xiangmu:"越窑青瓷烧制技艺"}),
+                              this.setState({
+                                modal: false,
+                              })
+                            }}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={{uri:https+"/picture/feiyi/杭州/越窑青瓷烧制技艺.jpg"}}>
                                     <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
-                                        <Text style={{fontSize:13,color:'#fff'}}>越窑青瓷烧纸技艺</Text>
+                                        <Text style={{fontSize:13,color:'#fff'}}>越窑青瓷烧制技艺</Text>
                                     </View>
                                 </ImageBackground>
                             </TouchableOpacity>
-                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
-                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/yinshua.png')}>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            onPress={()=>{
+                              navigation.navigate("heritageDetails",{xiangmu:"金石篆刻（西泠印社）"}),
+                              this.setState({
+                                modal: false,
+                              })
+                            }}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={{uri:https+"/picture/feiyi/杭州/金石篆刻（西泠印社）.jpg"}}>
                                     <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
-                                        <Text style={{fontSize:13,color:'#fff'}}>木板水印技艺</Text>
+                                        <Text style={{fontSize:13,color:'#fff'}}>金石篆刻（西泠印社）</Text>
                                     </View>
                                 </ImageBackground>
                             </TouchableOpacity>
-                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
-                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/qinci.png')}>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            onPress={()=>{
+                              navigation.navigate("heritageDetails",{xiangmu:"江南丝竹"}),
+                              this.setState({
+                                modal: false,
+                              })
+                            }}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={{uri:https+"/picture/feiyi/杭州/江南丝竹.jpg"}}>
                                     <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
-                                        <Text style={{fontSize:13,color:'#fff'}}>越窑青瓷烧纸技艺</Text>
+                                        <Text style={{fontSize:13,color:'#fff'}}>江南丝竹</Text>
                                     </View>
                                 </ImageBackground>
                             </TouchableOpacity>
@@ -392,9 +410,9 @@ export default class homeheritage extends Component {
                             }}>
                                 <Text style={{fontSize:15,color:'#fff',marginRight:5}}>更多</Text>
                                 <FontAwesome
-                                name={'cancel'}
+                                name={'angle-right'}
                                 size={20}
-                                color={'#000'} />
+                                color={'#fff'} />
                             </TouchableOpacity>
                         </View>
                         <View style={{width:'100%',height:'80%',alignItems:'center',flexDirection:'row'}}>
@@ -461,9 +479,9 @@ export default class homeheritage extends Component {
                             }}>
                                 <Text style={{fontSize:15,color:'#fff',marginRight:5}}>更多</Text>
                                 <FontAwesome
-                                name={'cancel'}
+                                name={'angle-right'}
                                 size={20}
-                                color={'#000'} />
+                                color={'#fff'} />
                             </TouchableOpacity>
                         </View>
                         <View style={{width:'100%',height:'80%',alignItems:'center',flexDirection:'row'}}>
@@ -530,9 +548,9 @@ export default class homeheritage extends Component {
                             }}>
                                 <Text style={{fontSize:15,color:'#fff',marginRight:5}}>更多</Text>
                                 <FontAwesome
-                                name={'cancel'}
+                                name={'angle-right'}
                                 size={20}
-                                color={'#000'} />
+                                color={'#fff'} />
                             </TouchableOpacity>
                         </View>
                         <View style={{width:'100%',height:'80%',alignItems:'center',flexDirection:'row'}}>
@@ -599,9 +617,9 @@ export default class homeheritage extends Component {
                             }}>
                                 <Text style={{fontSize:15,color:'#fff',marginRight:5}}>更多</Text>
                                 <FontAwesome
-                                name={'cancel'}
+                                name={'angle-right'}
                                 size={20}
-                                color={'#000'} />
+                                color={'#fff'} />
                             </TouchableOpacity>
                         </View>
                         <View style={{width:'100%',height:'80%',alignItems:'center',flexDirection:'row'}}>
@@ -668,31 +686,49 @@ export default class homeheritage extends Component {
                             }}>
                                 <Text style={{fontSize:15,color:'#fff',marginRight:5}}>更多</Text>
                                 <FontAwesome
-                                name={'cancel'}
+                                name={'angle-right'}
                                 size={20}
-                                color={'#000'} />
+                                color={'#fff'} />
                             </TouchableOpacity>
                         </View>
                         <View style={{width:'100%',height:'80%',alignItems:'center',flexDirection:'row'}}>
                             <ScrollView horizontal={true}>
-                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
-                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/qinci.png')}>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            onPress={()=>{
+                              navigation.navigate("heritageDetails",{xiangmu:"宁波泥金彩漆"}),
+                              this.setState({
+                                modalSix: false,
+                              })
+                            }}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={{uri:https+"/picture/feiyi/宁波/宁波泥金彩漆.jpg"}}>
                                     <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
-                                        <Text style={{fontSize:13,color:'#fff'}}>越窑青瓷烧纸技艺</Text>
+                                        <Text style={{fontSize:13,color:'#fff'}}>宁波泥金彩漆</Text>
                                     </View>
                                 </ImageBackground>
                             </TouchableOpacity>
-                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
-                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/yinshua.png')}>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            onPress={()=>{
+                              navigation.navigate("heritageDetails",{xiangmu:"中医诊疗法"}),
+                              this.setState({
+                                modalSix: false,
+                              })
+                            }}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={{uri:https+"/picture/feiyi/宁波/中医诊疗法.jpg"}}>
                                     <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
-                                        <Text style={{fontSize:13,color:'#fff'}}>木板水印技艺</Text>
+                                        <Text style={{fontSize:13,color:'#fff'}}>中医诊疗法</Text>
                                     </View>
                                 </ImageBackground>
                             </TouchableOpacity>
-                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
-                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/qinci.png')}>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            onPress={()=>{
+                              navigation.navigate("heritageDetails",{xiangmu:"汉族传统婚俗（宁海十里红妆婚俗）"}),
+                              this.setState({
+                                modalSix: false,
+                              })
+                            }}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={{uri:https+"/picture/feiyi/宁波/汉族传统婚俗（宁海十里红妆婚俗）.jpg"}}>
                                     <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
-                                        <Text style={{fontSize:13,color:'#fff'}}>越窑青瓷烧纸技艺</Text>
+                                        <Text style={{fontSize:13,color:'#fff'}}>汉族传统婚俗（宁海十里红妆婚俗）</Text>
                                     </View>
                                 </ImageBackground>
                             </TouchableOpacity>
@@ -737,9 +773,9 @@ export default class homeheritage extends Component {
                             }}>
                                 <Text style={{fontSize:15,color:'#fff',marginRight:5}}>更多</Text>
                                 <FontAwesome
-                                name={'cancel'}
+                                name={'angle-right'}
                                 size={20}
-                                color={'#000'} />
+                                color={'#fff'} />
                             </TouchableOpacity>
                         </View>
                         <View style={{width:'100%',height:'80%',alignItems:'center',flexDirection:'row'}}>
@@ -806,9 +842,9 @@ export default class homeheritage extends Component {
                             }}>
                                 <Text style={{fontSize:15,color:'#fff',marginRight:5}}>更多</Text>
                                 <FontAwesome
-                                name={'cancel'}
+                                name={'angle-right'}
                                 size={20}
-                                color={'#000'} />
+                                color={'#fff'} />
                             </TouchableOpacity>
                         </View>
                         <View style={{width:'100%',height:'80%',alignItems:'center',flexDirection:'row'}}>
@@ -875,9 +911,9 @@ export default class homeheritage extends Component {
                             }}>
                                 <Text style={{fontSize:15,color:'#fff',marginRight:5}}>更多</Text>
                                 <FontAwesome
-                                name={'cancel'}
+                                name={'angle-right'}
                                 size={20}
-                                color={'#000'} />
+                                color={'#fff'} />
                             </TouchableOpacity>
                         </View>
                         <View style={{width:'100%',height:'80%',alignItems:'center',flexDirection:'row'}}>
@@ -944,9 +980,9 @@ export default class homeheritage extends Component {
                             }}>
                                 <Text style={{fontSize:15,color:'#fff',marginRight:5}}>更多</Text>
                                 <FontAwesome
-                                name={'cancel'}
+                                name={'angle-right'}
                                 size={20}
-                                color={'#000'} />
+                                color={'#fff'} />
                             </TouchableOpacity>
                         </View>
                         <View style={{width:'100%',height:'80%',alignItems:'center',flexDirection:'row'}}>
@@ -1013,9 +1049,9 @@ export default class homeheritage extends Component {
                             }}>
                                 <Text style={{fontSize:15,color:'#fff',marginRight:5}}>更多</Text>
                                 <FontAwesome
-                                name={'cancel'}
+                                name={'angle-right'}
                                 size={20}
-                                color={'#000'} />
+                                color={'#fff'} />
                             </TouchableOpacity>
                         </View>
                         <View style={{width:'100%',height:'80%',alignItems:'center',flexDirection:'row'}}>

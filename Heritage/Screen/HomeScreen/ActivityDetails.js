@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Text, View, FlatList, ScrollView, StyleSheet, Image, TouchableOpacity,TouchableHighlight,AsyncStorage } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
+var https = "http://121.196.191.45";
 var http = "http://192.168.50.91:3000";
 var URL1 = http+"/activity/details";
 
@@ -98,18 +99,18 @@ export default class ActivityDetails extends Component {
                             <Text style={{ lineHeight: 30,fontSize: 17 }}>{item.sendtime}</Text>
                         </View>
                         <View>
-                            <Text style={{ textAlign: 'auto', lineHeight: 25, fontSize: 15 }}>&#12288;&#12288;{item.content}</Text>
-                            <View style={{ alignItems: "center" }}>
+                        <View style={{ alignItems: "center" }}>
                                 <Image style={{
                                     width: '100%',
                                     height: 250,
                                     resizeMode: 'stretch',
                                     marginVertical: 15
                                 }}
-                                    source={{uri:item.picture}}>
+                                    source={{uri:https+item.picture1}}>
                                 </Image>
                             </View>
                             <Text style={{ textAlign: 'auto', lineHeight: 25, fontSize: 15 }}>&#12288;&#12288;{item.content1}</Text>
+                            <Text style={{ textAlign: 'auto', lineHeight: 25, fontSize: 15 }}>&#12288;&#12288;{item.content2}</Text>
                             <View style={{ alignItems: "center" }}>
                                 <Image style={{
                                     width: '100%',
@@ -117,10 +118,22 @@ export default class ActivityDetails extends Component {
                                     resizeMode: 'stretch',
                                     marginVertical: 15
                                 }}
-                                    source={{uri:item.picture1}}>
+                                    source={{uri:https+item.picture2}}>
                                 </Image>
                             </View>
-                            <Text style={{ textAlign: 'auto', lineHeight: 25, fontSize: 15 }}>&#12288;&#12288;{item.content2}</Text>
+                            <Text style={{ textAlign: 'auto', lineHeight: 25, fontSize: 15 }}>&#12288;&#12288;{item.content3}</Text>
+                            <Text style={{ textAlign: 'auto', lineHeight: 25, fontSize: 15 }}>&#12288;&#12288;{item.content4}</Text>
+                            <View style={{ alignItems: "center" }}>
+                                <Image style={{
+                                    width: '100%',
+                                    height: 250,
+                                    resizeMode: 'stretch',
+                                    marginVertical: 15
+                                }}
+                                    source={{uri:https+item.picture3}}>
+                                </Image>
+                            </View>
+                            <Text style={{ textAlign: 'auto', lineHeight: 25, fontSize: 15 }}>&#12288;&#12288;{item.content5}</Text>
                         </View>
                         <TouchableHighlight 
                         onPress={() => navigation.navigate('报名表',{username:username,title:item.title})}

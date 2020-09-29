@@ -7,6 +7,7 @@ import {
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import Entypo from 'react-native-vector-icons/Entypo'
 
+var https = "http://121.196.191.45";
 var http = "http://192.168.50.91:3000";
 var URL1 = http + "/activity";
 
@@ -90,7 +91,7 @@ export default class activityScreen extends Component {
           }}>活动</Text>
           <TouchableOpacity
             activeOpacity={0.8}
-            onPress={() => this.refs.modal6.open()}
+            onPress={() => navigation.navigate('记录',{username:username})}
             style={{
               width: 50,
               height: "100%",
@@ -127,7 +128,7 @@ export default class activityScreen extends Component {
                     alignItems: 'center',
                     justifyContent: 'center'
                   }}
-                    source={{ uri: item.picture }}>
+                    source={{ uri: https+item.picture1 }}>
                     <TouchableOpacity
                       onPress={() => navigation.navigate('详情', { title: item.title })}
                       style={{

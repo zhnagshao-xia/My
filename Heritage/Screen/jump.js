@@ -33,6 +33,7 @@ import FollowScreen from './HomeScreen/FollowScreen'
 import FansScreen from './HomeScreen/FansScreen'
 import heritagelist from './HomeScreen/heritagelist'
 import heritageDetails from './HomeScreen/heritageDetails'
+import Heritagefenlei from './HomeScreen/Heritagefenlei'
 
 import Shopcart from './ShopScreen/Shopcart'
 import Shopclassify from './ShopScreen/Shopclassify'
@@ -247,6 +248,7 @@ function MyStack() {
         <Stack.Screen name="手艺人粉丝" component={FansScreen}/>
         <Stack.Screen name="heritagelist" component={heritagelist}/>
         <Stack.Screen name="heritageDetails" component={heritageDetails}/>
+        <Stack.Screen name="Heritagefenlei" component={Heritagefenlei}/>
 
       <Stack.Screen name="集市" component={ShopScreen} />
       <Stack.Screen name="商城购物车" component={Shopcart} />

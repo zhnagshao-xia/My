@@ -6,9 +6,9 @@ import Feather from 'react-native-vector-icons/Feather';
 
 var https = "http://121.196.191.45";
 var http = "http://192.168.50.91:3000";
-var URL1 = http + "/feiyi/list";
+var URL1 = http + "/feiyi/list/find";
 
-export default class DrawerExample extends React.Component {
+export default class Heritagefenlei extends React.Component {
     // constructor() {
     //     super(...arguments);
     //     this.onOpenChange = isOpen => {
@@ -21,12 +21,11 @@ export default class DrawerExample extends React.Component {
         // super(...arguments);
         const { navigation, route } = this.props;
         let cityname = route.params.cityname;
+        let leibie = route.params.leibie;
         this.state={
             cityname,
+            leibie,
             docs:[]
-        };
-        this.onOpenChange = isOpen => {
-            console.log('是否打开了 Drawer', isOpen.toString());
         };
       }
 
@@ -43,7 +42,8 @@ export default class DrawerExample extends React.Component {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              cityname: this.state.cityname
+              cityname: this.state.cityname,
+              leibie:this.state.leibie
             })
           })
             .then((response) => response.json())
@@ -62,110 +62,10 @@ export default class DrawerExample extends React.Component {
     render() {
         const { navigation } = this.props;
         const cityname = this.state.cityname;
+        const leibie = this.state.leibie;
         const data = this.state.docs;
         console.log("666"+data)
-        const sidebar = (
-            <ScrollView style={[styles.container]}>
-                <View style={{height:60,
-                alignItems:"center",
-                justifyContent:"center"}}>
-                    <Text style={{fontSize:19}}>分类</Text>
-                </View>
-                <View style={{alignItems:"center"}}>
-                    <TouchableOpacity 
-                    activeOpacity={0.8} 
-                    style={styles.kuang}
-                    onPress={() => 
-                    navigation.navigate('Heritagefenlei',{cityname:cityname,leibie:"民间文学"})
-                    }>
-                        <Text style={styles.zi}>民间文学</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity 
-                    activeOpacity={0.8} 
-                    style={styles.kuang}
-                    onPress={() => 
-                        navigation.navigate('Heritagefenlei',{cityname:cityname,leibie:"传统工艺"})
-                        }>
-                        <Text style={styles.zi}>传统工艺</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity 
-                    activeOpacity={0.8} 
-                    activeOpacity={0.8} 
-                    style={styles.kuang}
-                    onPress={() => 
-                        navigation.navigate('Heritagefenlei',{cityname:cityname,leibie:"传统舞蹈"})
-                        }>
-                        <Text style={styles.zi}>传统舞蹈</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity 
-                    activeOpacity={0.8} 
-                    style={styles.kuang}
-                    onPress={() => 
-                        navigation.navigate('Heritagefenlei',{cityname:cityname,leibie:"传统戏剧"})
-                        }>
-                        <Text style={styles.zi}>传统戏剧</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity 
-                    activeOpacity={0.8} 
-                    style={styles.kuang}
-                    onPress={() => 
-                        navigation.navigate('Heritagefenlei',{cityname:cityname,leibie:"曲艺"})
-                        }>
-                        <Text style={styles.zi}>曲    艺</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity 
-                    activeOpacity={0.8} 
-                    style={styles.kuang}
-                    onPress={() => 
-                        navigation.navigate('Heritagefenlei',{cityname:cityname,leibie:"传统美术"})
-                        }>
-                        <Text style={styles.zi}>传统美术</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity 
-                    activeOpacity={0.8} 
-                    style={styles.kuang}
-                    onPress={() => 
-                        navigation.navigate('Heritagefenlei',{cityname:cityname,leibie:"传统技艺"})
-                        }>
-                        <Text style={styles.zi}>传统技艺</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity 
-                    activeOpacity={0.8} 
-                    style={styles.kuang}
-                    onPress={() => 
-                        navigation.navigate('Heritagefenlei',{cityname:cityname,leibie:"传统医药"})
-                        }>
-                        <Text style={styles.zi}>传统医药</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity 
-                    activeOpacity={0.8} 
-                    style={styles.kuang}
-                    onPress={() => 
-                        navigation.navigate('Heritagefenlei',{cityname:cityname,leibie:"民俗"})
-                        }>
-                        <Text style={styles.zi}>民    俗</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity 
-                    activeOpacity={0.8} 
-                    style={styles.kuang}
-                    onPress={() => 
-                        navigation.navigate('Heritagefenlei',{cityname:cityname,leibie:"传统体育游艺杂技"})
-                        }>
-                        <Text style={styles.zi}>传统体育游艺杂技</Text>
-                    </TouchableOpacity>
-                </View>
-            </ScrollView>
-        );
         return (
-            <Drawer
-                sidebar={sidebar}
-                position="right"
-                open={false}
-                drawerRef={el => (this.drawer = el)}
-                onOpenChange={this.onOpenChange}
-                drawerBackgroundColor="#fff"
-                drawerWidth={170}
-            >
                 <View style={{ flex: 1, backgroundColor: "#f2f2f2" }}>
                     <View style={{
                         height: 45,
@@ -191,10 +91,10 @@ export default class DrawerExample extends React.Component {
                             fontSize: 18,
                             textAlign: 'center',
                             textAlignVertical: 'center',
-                        }}>{cityname}</Text>
+                        }}>{leibie}({cityname})</Text>
                         <TouchableOpacity
                             activeOpacity={0.8}
-                            onPress={() => this.drawer && this.drawer.openDrawer()}
+                            onPress={() => navigation.navigate('heritagelist')}
                             style={{
                                 width: 50,
                                 height: "100%",
@@ -233,7 +133,6 @@ export default class DrawerExample extends React.Component {
                         </View>
                     </ScrollView>
                 </View>
-            </Drawer>
         );
     }
 }
