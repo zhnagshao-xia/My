@@ -182,19 +182,32 @@ export default class Craftsmandetail extends Component {
           height: 45,
           alignItems: "center",
           justifyContent: "center",
-          backgroundColor: "#ded7c9"
+          backgroundColor: "#ded7c9",
+          flexDirection: 'row',
+          justifyContent: "space-between",
         }}>
-          <View style={{ flexDirection: 'row', justifyContent: "space-between", width: "90%" }}>
-            <TouchableOpacity
-              activeOpacity={0.8}
-              onPress={() => navigation.goBack()}>
-              <FontAwesome name={'angle-left'} size={25} color={'#000'} />
-            </TouchableOpacity>
-            <TouchableOpacity
-              activeOpacity={0.6}
-              onPress={() => this.refs.modal6.open()} >
-              <Feather name={'more-horizontal'} size={20} color={'#000'} /></TouchableOpacity>
-          </View>
+          <TouchableOpacity
+            activeOpacity={0.8}
+            onPress={() => navigation.goBack()}
+            style={{
+              width: 50,
+              height: "100%",
+              justifyContent: "center",
+              alignItems: "center",
+            }}>
+            <FontAwesome name={'angle-left'} size={25} color={'#000'} />
+          </TouchableOpacity>
+          <TouchableOpacity
+            activeOpacity={0.6}
+            onPress={() => this.refs.modal6.open()}
+            style={{
+              width: 50,
+              height: "100%",
+              justifyContent: "center",
+              alignItems: "center",
+            }}>
+            <Feather name={'more-horizontal'} size={20} color={'#000'} />
+          </TouchableOpacity>
         </View>
         <View style={styles.mationUp}>
           <ImageBackground style={{ width: '100%', height: '100%', flexDirection: 'row' }}
@@ -202,7 +215,7 @@ export default class Craftsmandetail extends Component {
             resizeMode='stretch'>
             <View style={{ width: '40%', height: '100%' }}>
               <Image style={styles.headpic}
-                source={{ uri:  https + data.touxiang }} />
+                source={{ uri: https + data.touxiang }} />
               <View style={styles.namerow}>
                 <Text style={{ fontSize: 15, color: 'black' }}
                 >{data.name}</Text>
@@ -238,6 +251,7 @@ export default class Craftsmandetail extends Component {
                 <View style={{ width: 70, height: 30, alignItems: 'center', justifyContent: 'center', flexDirection: "row" }}>
                   <Text style={{ fontSize: 15, color: '#fff' }}>关注   </Text>
                   <TouchableOpacity
+                    activeOpacity={0.8}
                     onPress={() => navigation.navigate('手艺人关注', { name: data.name, username: username, usericon: usericon })}>
                     <Text style={{ fontSize: 15, color: '#fff' }}>{sum1}</Text>
                   </TouchableOpacity>
@@ -246,6 +260,7 @@ export default class Craftsmandetail extends Component {
                 <View style={{ width: 70, height: 30, alignItems: 'center', justifyContent: 'center', flexDirection: "row" }}>
                   <Text style={{ fontSize: 15, color: '#fff' }}>粉丝   </Text>
                   <TouchableOpacity
+                    activeOpacity={0.8}
                     onPress={() => navigation.navigate('手艺人粉丝', { name: data.name, username: username, usericon: usericon })}>
                     <Text style={{ fontSize: 15, color: '#fff' }}>{sum2}</Text>
                   </TouchableOpacity>
@@ -256,7 +271,7 @@ export default class Craftsmandetail extends Component {
         </View>
         <View style={{ flex: 1 }}>
           {/* 从props里取出上级页面携带的name, 传递给子组件 */}
-          <InformationTab name={this.props.route.params.name}/>
+          <InformationTab name={this.props.route.params.name} />
         </View>
         <Modal style={styles.modal4} position={"bottom"} ref={"modal6"} >
           <View style={{ width: '100%', height: '75%', flexDirection: 'row' }}>

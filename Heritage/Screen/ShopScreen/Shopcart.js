@@ -1,5 +1,5 @@
-import React, {Component} from 'react'
-import {View, Text, TouchableOpacity, Image, StyleSheet, SectionList} from 'react-native';
+import React, { Component } from 'react'
+import { View, Text, TouchableOpacity, Image, StyleSheet, SectionList } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 // import {commonStyle} from './commonStyle'
@@ -63,7 +63,7 @@ export default class Shopcart extends Component {
     tempShop.checked = isSelectedAllShopItem
 
     let isSelectedAllShop = true
-    for (let k = 0; k < tempStatus.length; k ++) {
+    for (let k = 0; k < tempStatus.length; k++) {
       let shop = tempStatus[k]
       if (!shop.checked) {
         isSelectedAllShop = false
@@ -72,7 +72,7 @@ export default class Shopcart extends Component {
     }
 
     this.calculateCountAndPrice()
-    this.setState({isSelectedAllItem: isSelectedAllShop, status: tempStatus})
+    this.setState({ isSelectedAllItem: isSelectedAllShop, status: tempStatus })
   }
 
   checkedShop(index) {
@@ -94,7 +94,7 @@ export default class Shopcart extends Component {
       }
     }
     this.calculateCountAndPrice()
-    this.setState({isSelectedAllItem: isSelectedAllShop, status: tempStatus})
+    this.setState({ isSelectedAllItem: isSelectedAllShop, status: tempStatus })
   }
   checkAllShop() {
     let tempSelectedAllItem = !this.state.isSelectedAllItem
@@ -110,7 +110,7 @@ export default class Shopcart extends Component {
     }
 
     this.calculateCountAndPrice()
-    this.setState({isSelectedAllItem: tempSelectedAllItem, status: tempStatus})
+    this.setState({ isSelectedAllItem: tempSelectedAllItem, status: tempStatus })
   }
 
   minus(sectionIndex, index) {
@@ -119,7 +119,7 @@ export default class Shopcart extends Component {
     let items = shop.items
     let item = items[index]
     if (item.quantity <= item.minQuantity) {
-      alert('商品购买数量不能小于:'+item.minQuantity)
+      alert('商品购买数量不能小于:' + item.minQuantity)
     } else {
       item.quantity -= 1
     }
@@ -127,7 +127,7 @@ export default class Shopcart extends Component {
     if (item.checked) {
       this.calculateCountAndPrice()
     }
-    this.setState({status: tempStatus})
+    this.setState({ status: tempStatus })
   }
 
   add(sectionIndex, index) {
@@ -136,21 +136,21 @@ export default class Shopcart extends Component {
     let items = shop.items
     let item = items[index]
     if (item.quantity >= item.maxQuantity) {
-      alert('商品购买数量不能大于:'+item.maxQuantity)
+      alert('商品购买数量不能大于:' + item.maxQuantity)
     } else {
       item.quantity += 1
     }
     if (item.checked) {
       this.calculateCountAndPrice()
     }
-    this.setState({status: tempStatus})
+    this.setState({ status: tempStatus })
   }
 
   calculateCountAndPrice() {
     let tempTotalNum = 0
     let tempTotalPrice = 0
     let tempStatus = this.state.status
-    for (let i = 0; i < tempStatus.length; i ++) {
+    for (let i = 0; i < tempStatus.length; i++) {
       let shop = tempStatus[i]
       let items = shop.items
       for (let j = 0; j < items.length; j++) {
@@ -161,7 +161,7 @@ export default class Shopcart extends Component {
         }
       }
     }
-    this.setState({totalNum: tempTotalNum, totalPrice: tempTotalPrice})
+    this.setState({ totalNum: tempTotalNum, totalPrice: tempTotalPrice })
   }
 
   renderItem = info => {
@@ -172,27 +172,33 @@ export default class Shopcart extends Component {
     let statusItem = shop.items[index]
     return (
       <View style={styles.cellStyle}>
-        <TouchableOpacity style={{width:'10%',height:'100%',justifyContent:'center'}}
-         onPress={() => this.checkItem(sectionIndex, index)}>
-          <Image style={styles.checkBox} source={statusItem.checked ? require('../../Image/ShopScreen/ic_selected.png') : require('../../Image/ShopScreen/ic_defult.png')} resizeMode={'center'}/>
+        <TouchableOpacity
+          activeOpacity={0.8}
+          style={{ width: '10%', height: '100%', justifyContent: 'center' }}
+          onPress={() => this.checkItem(sectionIndex, index)}>
+          <Image style={styles.checkBox} source={statusItem.checked ? require('../../Image/ShopScreen/ic_selected.png') : require('../../Image/ShopScreen/ic_defult.png')} resizeMode={'center'} />
         </TouchableOpacity>
-        <Image style={{width:'20%', height: 80}} source={{uri: item.itemimg}}>
+        <Image style={{ width: '20%', height: 80 }} source={{ uri: item.itemimg }}>
         </Image>
-        <View style={{width:'70%'}}>
-          <View style={{ flex: 1, marginHorizontal: 10, height: 50}}>
-            <Text style={{fontSize: 13, color:'black'}}>{item.itemName}</Text>
+        <View style={{ width: '70%' }}>
+          <View style={{ flex: 1, marginHorizontal: 10, height: 50 }}>
+            <Text style={{ fontSize: 13, color: 'black' }}>{item.itemName}</Text>
           </View>
-          <View style={{width:95,flexDirection:'row', alignItems:'center', marginHorizontal: 20}}>
-            <Text style={{fontSize: 15, color:'#f76220'}}>{`￥${item.itemPrice}`}</Text>
-            <View style={{flexDirection:'row',alignItems:'center',justifyContent:'center'}}>
-              <TouchableOpacity onPress={() => this.minus(sectionIndex, index)} style={{borderTopLeftRadius:5,borderBottomLeftRadius:5,marginLeft:120,borderWidth:0.5,borderColor:'black'}}>
-                <Image style={{borderTopLeftRadius:10,borderBottomLeftRadius:10}} source={require('../../Image/ShopScreen/Group.png')}/>
+          <View style={{ width: 95, flexDirection: 'row', alignItems: 'center', marginHorizontal: 20 }}>
+            <Text style={{ fontSize: 15, color: '#f76220' }}>{`￥${item.itemPrice}`}</Text>
+            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+              <TouchableOpacity
+                activeOpacity={0.8}
+                onPress={() => this.minus(sectionIndex, index)} style={{ borderTopLeftRadius: 5, borderBottomLeftRadius: 5, marginLeft: 120, borderWidth: 0.5, borderColor: 'black' }}>
+                <Image style={{ borderTopLeftRadius: 10, borderBottomLeftRadius: 10 }} source={require('../../Image/ShopScreen/Group.png')} />
               </TouchableOpacity>
-              <View style={{width: 40,height:27,borderTopWidth:0.5,borderBottomWidth:0.5,borderColor:'black',alignItems:'center',justifyContent:'center'}}>
-                <Text style={{fontSize:15}}>{statusItem.quantity}</Text>
+              <View style={{ width: 40, height: 27, borderTopWidth: 0.5, borderBottomWidth: 0.5, borderColor: 'black', alignItems: 'center', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 15 }}>{statusItem.quantity}</Text>
               </View>
-              <TouchableOpacity style={{borderTopRightRadius:5,borderBottomRightRadius:5,borderWidth:0.5,borderColor:'black'}} onPress={() => this.add(sectionIndex, index)}>
-                <Image style={{borderTopRightRadius:10,borderBottomRightRadius:10}} source={require('../../Image/ShopScreen/Group5.png')}/>
+              <TouchableOpacity
+                activeOpacity={0.8}
+                style={{ borderTopRightRadius: 5, borderBottomRightRadius: 5, borderWidth: 0.5, borderColor: 'black' }} onPress={() => this.add(sectionIndex, index)}>
+                <Image style={{ borderTopRightRadius: 10, borderBottomRightRadius: 10 }} source={require('../../Image/ShopScreen/Group5.png')} />
               </TouchableOpacity>
             </View>
           </View>
@@ -207,10 +213,12 @@ export default class Shopcart extends Component {
     let shop = this.state.status[index]
     return (
       <View style={styles.sectionHeader}>
-        <TouchableOpacity onPress={() => this.checkedShop(index)}>
-          <Image style={styles.checkBox} source={shop.checked ? require('../../Image/ShopScreen/ic_selected.png') : require('../../Image/ShopScreen/ic_defult.png')} resizeMode={'center'}/>
+        <TouchableOpacity
+          activeOpacity={0.8}
+          onPress={() => this.checkedShop(index)}>
+          <Image style={styles.checkBox} source={shop.checked ? require('../../Image/ShopScreen/ic_selected.png') : require('../../Image/ShopScreen/ic_defult.png')} resizeMode={'center'} />
         </TouchableOpacity>
-        <Text style={{color: 'blue', fontSize: 12}}>{section}</Text>
+        <Text style={{ color: 'blue', fontSize: 12 }}>{section}</Text>
       </View>
     )
   }
@@ -227,45 +235,60 @@ export default class Shopcart extends Component {
     return (
       <View style={styles.container}>
         <View style={{
-            height:45,
-            alignItems:"center",
-            justifyContent:"center",
-            flexDirection:'row',
-            borderBottomWidth:0.5,
-            borderBottomColor:"#000",
-            backgroundColor:"#fff"}}>
-            <TouchableOpacity
+          backgroundColor: "#fff",
+          height: 45,
+          alignItems: "center",
+          justifyContent: "center",
+          flexDirection: 'row',
+          borderBottomWidth: 0.5,
+          borderBottomColor: "#000",
+        }}>
+          <TouchableOpacity
             activeOpacity={0.8}
             onPress={() => navigation.goBack()}
-            style={{right:150}}>
-              <FontAwesome name={'angle-left'} size={25} color={'#000'} /></TouchableOpacity>
-              <Text style={{fontSize:18,
-                textAlign: 'center',
-                textAlignVertical: 'center',}}>购物车</Text>
-              
+            style={{
+              width: 50,
+              position: "absolute",
+              height: "100%",
+              justifyContent: "center",
+              alignItems: "center",
+              left: 0
+            }}>
+            <FontAwesome name={'angle-left'} size={25} color={'#000'} />
+          </TouchableOpacity>
+          <View style={{ width: 200 }}>
+            <Text style={{
+              fontSize: 18,
+              textAlign: 'center',
+              textAlignVertical: 'center',
+            }}>购物车</Text>
           </View>
+        </View>
         <SectionList
           renderSectionHeader={this.renderSectionHeader}
           renderItem={this.renderItem}
           sections={tempArr}
-          ItemSeparatorComponent={() => <View/>}
-          ListHeaderComponent={() => <View/>}
-          ListFooterComponent={() => <View/>}
+          ItemSeparatorComponent={() => <View />}
+          ListHeaderComponent={() => <View />}
+          ListFooterComponent={() => <View />}
         />
         <View style={styles.toolBar}>
-          <View style={{flex:1,flexDirection:'row',alignItems:'center'}}>
-            <TouchableOpacity onPress={() => this.checkAllShop()}>
-              <Image style={styles.checkBox} source={this.state.isSelectedAllItem ? require('../../Image/ShopScreen/ic_selected.png') : require('../../Image/ShopScreen/ic_defult.png')} resizeMode={'center'}/>
+          <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+            <TouchableOpacity
+              activeOpacity={0.8}
+              onPress={() => this.checkAllShop()}>
+              <Image style={styles.checkBox} source={this.state.isSelectedAllItem ? require('../../Image/ShopScreen/ic_selected.png') : require('../../Image/ShopScreen/ic_defult.png')} resizeMode={'center'} />
             </TouchableOpacity>
             <Text>全选</Text>
           </View>
-          <Text style={{marginHorizontal: 10}}>合计:
-            <Text style={{color:'#f76220'}}>￥{parseFloat(this.state.totalPrice).toFixed(2)}</Text>
+          <Text style={{ marginHorizontal: 10 }}>合计:
+            <Text style={{ color: '#f76220' }}>￥{parseFloat(this.state.totalPrice).toFixed(2)}</Text>
           </Text>
-          <TouchableOpacity 
-          onPress={() => navigation.navigate('确认订单')}
-          style={{width: 100, backgroundColor:'#f76220', alignItems: 'center',marginRight:5, justifyContent: 'center', height:35,borderRadius:20}}>
-            <Text style={{color: '#fff'}}>下单({this.state.totalNum})</Text>
+          <TouchableOpacity
+            activeOpacity={0.8}
+            onPress={() => navigation.navigate('确认订单')}
+            style={{ width: 100, backgroundColor: '#f76220', alignItems: 'center', marginRight: 5, justifyContent: 'center', height: 35, borderRadius: 20 }}>
+            <Text style={{ color: '#fff' }}>下单({this.state.totalNum})</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -284,28 +307,28 @@ const styles = StyleSheet.create({
     // justifyContent: 'center',
     borderBottomWidth: 0.7,
     borderBottomColor: 'black',
-    flexDirection:'row',
+    flexDirection: 'row',
     // alignItems:'center',
     // justifyContent:'center'
   },
   cellStyle: {
-    flexDirection:'row',
-    alignItems:'center',
+    flexDirection: 'row',
+    alignItems: 'center',
     paddingVertical: 10,
-    marginBottom:10,
+    marginBottom: 10,
     // borderBottomWidth: 1,
     // borderBottomColor:'black',
-    backgroundColor:'#fff',
-    width:'100%',
-    height:100
+    backgroundColor: '#fff',
+    width: '100%',
+    height: 100
   },
   sectionHeader: {
     height: 40,
     flexDirection: 'row',
     backgroundColor: '#fff',
     alignItems: 'center',
-    borderBottomWidth:0.5,
-    borderColor:'grey'
+    borderBottomWidth: 0.5,
+    borderColor: 'grey'
   },
   checkBox: {
     width: 40,
@@ -313,9 +336,9 @@ const styles = StyleSheet.create({
   },
   toolBar: {
     height: 44,
-    flexDirection:'row',
+    flexDirection: 'row',
     alignItems: 'center',
     // backgroundColor:'red'
-   
+
   }
 })

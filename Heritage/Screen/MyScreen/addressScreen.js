@@ -59,24 +59,39 @@ export default class addressScreen extends Component {
     const data = this.state.docs;
       return (
           <View style={styles.container}>
-            <View style={{backgroundColor:"#fff",
-            height:45,
-            alignItems:"center",
-            justifyContent:"center",
-            flexDirection:'row',
-            borderBottomWidth:0.5,
-            borderBottomColor:"#000",}}>
-        <View style={{flexDirection:'row',justifyContent:"space-between",width:"90%"}}>
+            <View style={{
+          height: 45,
+          alignItems: "center",
+          justifyContent: "center",
+          borderBottomWidth: 0.5,
+          borderBottomColor: "#000",
+          backgroundColor:"#fff",
+          flexDirection: 'row',
+          justifyContent: "space-between",
+        }}>
         <TouchableOpacity
-        onPress={() => navigation.goBack()}>
-          <FontAwesome name={'angle-left'} size={25} color={'#000'} /></TouchableOpacity>
+            activeOpacity={0.8}
+            onPress={() => navigation.goBack()}
+            style={{
+              width: 50,
+              height: "100%",
+              justifyContent: "center",
+              alignItems: "center",
+            }}>
+          <FontAwesome name={'angle-left'} size={25} color={'#000'} />
+          </TouchableOpacity>
           <Text style={{fontSize:18,
             textAlign: 'center',
             textAlignVertical: 'center',}}>地址管理</Text>
           <TouchableOpacity
-          onPress={() => navigation.navigate('编辑',{username:this.state.username})}>
+          onPress={() => navigation.navigate('编辑',{username:this.state.username})}
+          style={{
+            width: 50,
+            height: "100%",
+            justifyContent: "center",
+            alignItems: "center",
+          }}>
           <AntDesign name={'plus'} size={25} color={'#000'} /></TouchableOpacity>
-      </View>
       </View>
             <View > 
             <FlatList

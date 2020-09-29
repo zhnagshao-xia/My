@@ -25,11 +25,23 @@ export default class App extends Component {
                     <ImageBackground style={{width:'100%',height:'100%',}} source={require('../../Image/ShopScreen/umbrella1.png')}>
                     <View style={styles.sigh}>
                     <TouchableOpacity
-                    onPress={() => navigation.goBack()}>
+                    onPress={() => navigation.goBack()}
+                    style={{
+                        width: 50,
+                        height: "100%",
+                        justifyContent: "center",
+                        alignItems: "center",
+                      }}>
                         <FontAwesome name={'angle-left'} size={25} color={'#fff'} />
                     </TouchableOpacity>
                     <TouchableOpacity
-                    onPress={() => navigation.navigate('商城购物车')}>
+                    onPress={() => navigation.navigate('商城购物车')}
+                    style={{
+                        width: 50,
+                        height: "100%",
+                        justifyContent: "center",
+                        alignItems: "center",
+                      }}>
                         <FontAwesome name={'shopping-cart'} size={25} color={'#fff'} />
                         </TouchableOpacity>
                     </View>
@@ -142,7 +154,6 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         justifyContent:'space-between',
         alignItems:'center',
-        paddingHorizontal:20
     },
     box:{
         width:'100%',

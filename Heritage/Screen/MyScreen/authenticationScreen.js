@@ -148,24 +148,34 @@ export default class ModalComp extends Component{
       const { navigation } = this.props;
         return (
         <View>
-            <View style={{height:45,
-                backgroundColor:"#fff",
-                alignItems:"center",
-                justifyContent:"center",
-                borderBottomWidth:0.5,
-                borderBottomColor:"#000",}}>
-                <View style={{flexDirection:'row',justifyContent:"space-between",width:"90%"}}>
-                    <TouchableOpacity
-                    onPress={() => navigation.goBack()}>
-                        <FontAwesome name={'angle-left'} size={25} color={'#000'} />
-                    </TouchableOpacity>
-                    <Text style={{fontSize:18,
-                    textAlign: 'center',
-                    textAlignVertical: 'center'}}>认证</Text>
-                    <View>
-                    </View>
-                </View>
-            </View>
+            <View style={{
+          backgroundColor: "#fff",
+          height: 45,
+          alignItems: "center",
+          justifyContent: "center",
+          flexDirection: 'row',
+        }}>
+          <TouchableOpacity
+            activeOpacity={0.8}
+            onPress={() => navigation.goBack()}
+            style={{
+              width: 50,
+              position: "absolute",
+              height: "100%",
+              justifyContent: "center",
+              alignItems: "center",
+              left: 0
+            }}>
+            <FontAwesome name={'angle-left'} size={25} color={'#000'} />
+          </TouchableOpacity>
+          <View style={{ width: 200 }}>
+            <Text style={{
+              fontSize: 18,
+              textAlign: 'center',
+              textAlignVertical: 'center',
+            }}>认证</Text>
+          </View>
+        </View>
             <View style={{width:'100%',height:630,backgroundColor:'#f2f2f2'}}>
                 <View style={{width:'100%',height:250,backgroundColor:'#fff',marginTop:15}}>
                     <View style={{

@@ -62,22 +62,39 @@ export default class App extends Component {
       const { navigation } = this.props;
       return (
           <View style={styles.container}>
-            <View style={{height:45,
-            backgroundColor:"#fff",
-        alignItems:"center",
-        justifyContent:"center",
-        borderBottomWidth:0.5,
-            borderBottomColor:"#000",}}>
-        <View style={{flexDirection:'row',justifyContent:"space-between",width:"90%"}}>
+            <View style={{
+          height: 45,
+          alignItems: "center",
+          justifyContent: "center",
+          borderBottomWidth: 0.5,
+          borderBottomColor: "#000",
+          backgroundColor:"#fff",
+          flexDirection: 'row',
+          justifyContent: "space-between",
+        }}>
         <TouchableOpacity
-        onPress={() => navigation.goBack()}>
+            activeOpacity={0.8}
+            onPress={() => navigation.goBack()}
+            style={{
+              width: 50,
+              height: "100%",
+              justifyContent: "center",
+              alignItems: "center",
+            }}>
           <FontAwesome name={'angle-left'} size={25} color={'#000'} /></TouchableOpacity>
           <Text style={{fontSize:18,
             textAlign: 'center',
             textAlignVertical: 'center',}}>编辑</Text>
-          <TouchableOpacity onPress={() => {this._onClickAdd();}}>
-          <AntDesign name={'check'} size={25} color={'#000'} /></TouchableOpacity>
-      </View>
+          <TouchableOpacity 
+          onPress={() => {this._onClickAdd();}}
+          style={{
+            width: 50,
+            height: "100%",
+            justifyContent: "center",
+            alignItems: "center",
+          }}>
+          <AntDesign name={'check'} size={25} color={'#000'} />
+          </TouchableOpacity>
       </View>
             <View style={styles.contant}>
                 <View style={styles.box}>

@@ -5,6 +5,7 @@ import {
   Text,
   View,
   Image,
+  ScrollView
 } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
@@ -56,23 +57,36 @@ export default class orderScreen extends Component {
     const data = this.state.docs;
     return (
       <View>
-        <View style={{
-            backgroundColor:"#fff",
-            height:45,
-            alignItems:"center",
-            flexDirection:'row',
-            borderBottomWidth:0.5,
-            borderBottomColor:"#000",}}>
-            <TouchableOpacity
+       <View style={{
+          backgroundColor: "#fff",
+          height: 45,
+          alignItems: "center",
+          justifyContent: "center",
+          flexDirection: 'row',
+        }}>
+          <TouchableOpacity
             activeOpacity={0.8}
             onPress={() => navigation.goBack()}
-            style={{marginRight:145,marginLeft:20}}>
-              <FontAwesome name={'angle-left'} size={25} color={'#000'} /></TouchableOpacity>
-              <Text style={{fontSize:18,
-                textAlign: 'center',
-                textAlignVertical: 'center',}}>我的订单</Text>
+            style={{
+              width: 50,
+              position: "absolute",
+              height: "100%",
+              justifyContent: "center",
+              alignItems: "center",
+              left: 0
+            }}>
+            <FontAwesome name={'angle-left'} size={25} color={'#000'} />
+          </TouchableOpacity>
+          <View style={{ width: 200 }}>
+            <Text style={{
+              fontSize: 18,
+              textAlign: 'center',
+              textAlignVertical: 'center',
+            }}>我的订单</Text>
           </View>
-      <View style = {styles.container}>
+        </View>
+      <ScrollView style = {styles.container}>
+        <View style={{marginBottom:70}}>
           <FlatList
             data = {data}
             renderItem = {({item})=>
@@ -104,7 +118,8 @@ export default class orderScreen extends Component {
             </View>
             }
           />
-      </View> 
+          </View>
+      </ScrollView> 
       </View>
     );
   }
