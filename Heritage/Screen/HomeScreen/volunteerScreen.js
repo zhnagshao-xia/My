@@ -9,14 +9,13 @@ import { TouchableNativeFeedback } from "react-native-gesture-handler";
 
 var http = "http://192.168.50.91:3000";
 var URL1 = http + "/volunteer";
-var URL2 = http+"/volunteer/timelong";
+var URL2 = http + "/volunteer/timelong";
 
 export default class VolunteerScreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
 
-  
   state = {
     pan: new Animated.ValueXY(),
     scale: new Animated.Value(0.9),
@@ -28,7 +27,7 @@ export default class VolunteerScreen extends React.Component {
     isDrag: true,
     docs: [],
     Projects: [],
-    sum:0
+    sum: 0
   };
 
   getNextIndex = (index) => {
@@ -77,7 +76,7 @@ export default class VolunteerScreen extends React.Component {
       onPanResponderMove: Animated.event([
         null,
         { dx: this.state.pan.x, dy: this.state.pan.y },
-      ],{useNativeDriver:false}),
+      ], { useNativeDriver: false }),
       onPanResponderRelease: () => {
         const positionY = this.state.pan.y.__getValue();
         const positionX = this.state.pan.x.__getValue();
@@ -99,7 +98,7 @@ export default class VolunteerScreen extends React.Component {
           });
         } else {
           Animated.spring(this.state.pan, {
-            toValue: { x: 0, y: 0 }, useNativeDriver:false
+            toValue: { x: 0, y: 0 }, useNativeDriver: false
           }).start();
 
           Animated.spring(this.state.scale, {
@@ -147,24 +146,24 @@ export default class VolunteerScreen extends React.Component {
       .finally(() => {
         this.setState({ isLonding: false });
       });
-      fetch(URL2, {//志愿时长
-        method: 'POST',
-        credentials: "include",
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-        }
+    fetch(URL2, {//志愿时长
+      method: 'POST',
+      credentials: "include",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      }
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        this.setState({
+          sum: json.docs[0].sum,
+        })
       })
-        .then((response) => response.json())
-        .then((json)=>{  
-          this.setState({
-            sum:json.docs[0].sum,
-          })
-        })
-        .catch((error)=>console.error(error))
-        .finally(()=>{
-          this.setState({isLonding:false});
-        })
+      .catch((error) => console.error(error))
+      .finally(() => {
+        this.setState({ isLonding: false });
+      })
   }
 
   render() {
@@ -175,19 +174,22 @@ export default class VolunteerScreen extends React.Component {
     return (
       <>
         <Appbar.Header
-          style={{ width: "100%", height: 45, backgroundColor: "#fff" }}
+          style={{ height: 45, backgroundColor: '#fff', elevation: 0, borderBottomWidth: 0.5, borderBottomColor: "#000" }}
         >
-          <TouchableNativeFeedback onPress={() => navigation.goBack()}>
-            <FontAwesome style={{ marginLeft: 10 }} name="angle-left" color="#000" size={30} />
+          <TouchableNativeFeedback onPress={() => navigation.goBack()}
+            style={{ width: 50, height: '100%', justifyContent: 'center', alignItems: 'center' }}
+          >
+            <FontAwesome name="angle-left" color="#000" size={30} />
           </TouchableNativeFeedback>
           <Appbar.Content
             title="志愿者"
-            style={{ width: "100%", justifyContent: "center", alignItems: "center" }}
+            style={{ justifyContent: "center", alignItems: "center" }}
           ></Appbar.Content>
           <TouchableNativeFeedback
-            onPress={() => navigation.navigate("记",{sum:sum})}
+            onPress={() => navigation.navigate("记", { sum: sum })}
+            style={{ width: 50, height: '100%', justifyContent: 'center', alignItems: 'center' }}
           >
-            <Entypo style={{ marginRight: 5 }} name={"back-in-time"} size={25} color={"#000"} />
+            <Entypo name={"back-in-time"} size={25} color={"#000"} />
           </TouchableNativeFeedback>
         </Appbar.Header>
         {Projects && Projects.length != 0 ? (
