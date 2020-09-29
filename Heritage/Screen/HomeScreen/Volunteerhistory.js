@@ -497,7 +497,7 @@ export default class App extends Component {
                               </View>
                               <Text style={{ fontSize: 12 }}>{author}</Text>
                             </View>
-                          </View>                 
+                          </View>
                         </View>
                       </View>
                     </TouchableOpacity>
