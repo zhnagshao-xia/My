@@ -1,14 +1,22 @@
 import React, { Component } from 'react';
 import {
-    StyleSheet,
-    FlatList,
-    Text,
-    View,
-    Image,
-    Animated,
-  Easing
+  StyleSheet,
+  FlatList,
+  Text,
+  View,
+  Image,
+  Animated,
+  Easing,
+  Path,
+  Svg,
+  G,
+  getPanelWidth
 } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import * as Animatable from 'react-native-animatable';
+import AnimatedTabs from "react-native-animated-tabs";
+import FontAwesome from 'react-native-vector-icons/FontAwesome'
+
+
 
 // export default class App extends Component {
 //   constructor () {
@@ -50,33 +58,92 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 //         );
 //     }
 // }
-export default class App extends Component {
+// export default class App extends Component {
+//   constructor(props) {
+//     super(props);
+//     this.animatedValue = new Animated.Value(0); // 渐隐动画初始值，默认为0，透明
+// }
+// animation(){
+//   setInterval(()=>{
+//   this.animatedValue.setValue(0);
+//       Animated.timing(
+//           this.animatedValue,
+//           {
+//               toValue: 1,
+//               duration: 2000,
+//               easing: Easing.linear
+//           }
+//       ).start();
+//     },2000)
+//         }
+
+//   render(){
+
+//   const textSize = this.animatedValue.interpolate({
+//       inputRange: [0, 0.3, 1],
+//       outputRange: [0, 300, 0]
+// });
+
+//     return(
+//       <View>
+//       <Animated.Text
+//       style={{
+//         marginLeft: textSize,
+//         marginTop: 10,
+//         color: 'green'}} >
+//           {
+//               this.animation()
+//           }
+//       Animated Text!
+//   </Animated.Text>
+//   </View>
+//     )
+//   }
+// }
+// export default class App extends Component {
+
+//   render(){
+
+//     return(
+// <Animatable.Text animation="pulse" easing="ease-out" iterationCount="infinite"  style={{ textAlign: 'center' }}>❤️</Animatable.Text>
+
+//     )
+//   }
+// }
+export default class LikeBtn extends React.Component {
   constructor(props) {
-    super(props);
-    this.animatedValue = new Animated.Value(0); // 渐隐动画初始值，默认为0，透明
-}
-  render(){
-    this.animatedValue.setValue(0);
-        Animated.timing(
-            this.animatedValue,
-            {
-                toValue: 1,
-                duration: 2000,
-                easing: Easing.linear
-            }
-        ).start();
-  const textSize = this.animatedValue.interpolate({
-    inputRange: [0, 0.5, 1],
-    outputRange: [18, 32, 18]
-});
-    return(
-      <Animated.Text
-      style={{
-        fontSize: textSize,
-        marginTop: 10,
-        color: 'green'}} >
-      Animated Text!
-  </Animated.Text>
-    )
+    super(props)
+    this.state = {
+      like: 100,
+      liked: 'null',
+    };
+  }
+  islike = () => {
+    let liked = this.state.liked;
+    if (liked) {
+      if (liked === 'like') {
+        this.setState({ liked: null })
+        this.setState({ like: this.state.like - 1 });
+      }
+      else {
+        this.setState({ liked: 'like' });
+        this.setState({ like: this.state.like + 1, });
+
+      }
+    }
+    else {
+      this.setState({
+        like: this.state.like + 1,
+      });
+      this.setState({ liked: 'like' });
+    }
+  };
+  render() {
+    return (
+      <div style={{ width: 60, float: "left" }}>
+        <FontAwesome onClick={this.islike} name={'like'} theme={this.state.liked === 'like' ? 'filled' : ''} />{this.state.like}
+      </div>
+    );
   }
 }
+
