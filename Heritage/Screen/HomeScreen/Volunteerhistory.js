@@ -680,7 +680,7 @@ const styles = StyleSheet.create({
   },
   containerStyle: {
     marginLeft: 10,
-    width: "85%",
+    width: "95%",
     height: 25,
     padding: 3,
     borderColor: "#945357",

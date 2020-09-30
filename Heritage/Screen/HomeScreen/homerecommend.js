@@ -32,8 +32,8 @@ export default class homerecommend extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
-      usericon: "",
+      username: "立即登录",
+      usericon: "/picture/touxiang/fans/b0.jpg",
       docs: [],
       docs1: [],
     }

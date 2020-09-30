@@ -26,7 +26,7 @@ export default class MyScreen extends Component {
     state = {
         username: '立即登录',
         honor:"暂无",
-        usericon:https+"/picture/touxiang/fans/b0.jpg",
+        usericon:"/picture/touxiang/fans/b0.jpg",
         sum1:"0",
         sum2:"0",
         sum3:"0",

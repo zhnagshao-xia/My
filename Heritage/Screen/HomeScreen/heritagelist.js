@@ -3,6 +3,7 @@ import { View, Text, Image, ScrollView, TouchableOpacity, StyleSheet, FlatList, 
 import { Button, Drawer, List, WhiteSpace } from '@ant-design/react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
+import Heritagetwo from '../HomeScreen/Heritagetwo';
 
 var https = "http://121.196.191.45";
 var http = "http://192.168.50.91:3000";
@@ -23,7 +24,8 @@ export default class DrawerExample extends React.Component {
         let cityname = route.params.cityname;
         this.state={
             cityname,
-            docs:[]
+            docs:[],
+            docs1:[]
         };
         this.onOpenChange = isOpen => {
             console.log('是否打开了 Drawer', isOpen.toString());
@@ -59,10 +61,12 @@ export default class DrawerExample extends React.Component {
             });
       }
 
+
     render() {
         const { navigation } = this.props;
         const cityname = this.state.cityname;
         const data = this.state.docs;
+        const data1 = this.state.docs1;
         console.log("666"+data)
         const sidebar = (
             <ScrollView style={[styles.container]}>
@@ -75,7 +79,7 @@ export default class DrawerExample extends React.Component {
                     <TouchableOpacity 
                     activeOpacity={0.8} 
                     style={styles.kuang}
-                    onPress={() => 
+                    onPress={() =>
                     navigation.navigate('Heritagefenlei',{cityname:cityname,leibie:"民间文学"})
                     }>
                         <Text style={styles.zi}>民间文学</Text>
@@ -84,9 +88,9 @@ export default class DrawerExample extends React.Component {
                     activeOpacity={0.8} 
                     style={styles.kuang}
                     onPress={() => 
-                        navigation.navigate('Heritagefenlei',{cityname:cityname,leibie:"传统工艺"})
+                        navigation.navigate('Heritagefenlei',{cityname:cityname,leibie:"传统音乐"})
                         }>
-                        <Text style={styles.zi}>传统工艺</Text>
+                        <Text style={styles.zi}>传统音乐</Text>
                     </TouchableOpacity>
                     <TouchableOpacity 
                     activeOpacity={0.8} 
@@ -111,7 +115,7 @@ export default class DrawerExample extends React.Component {
                     onPress={() => 
                         navigation.navigate('Heritagefenlei',{cityname:cityname,leibie:"曲艺"})
                         }>
-                        <Text style={styles.zi}>曲    艺</Text>
+                        <Text style={styles.zi}>曲     艺</Text>
                     </TouchableOpacity>
                     <TouchableOpacity 
                     activeOpacity={0.8} 
@@ -143,7 +147,7 @@ export default class DrawerExample extends React.Component {
                     onPress={() => 
                         navigation.navigate('Heritagefenlei',{cityname:cityname,leibie:"民俗"})
                         }>
-                        <Text style={styles.zi}>民    俗</Text>
+                        <Text style={styles.zi}>民     俗</Text>
                     </TouchableOpacity>
                     <TouchableOpacity 
                     activeOpacity={0.8} 
@@ -231,8 +235,13 @@ export default class DrawerExample extends React.Component {
                                 }
                             />
                         </View>
+                        {/* <ScrollView>
+                        <Heritagetwo />
+                    </ScrollView> */}
+                    
                     </ScrollView>
                 </View>
+                
             </Drawer>
         );
     }
