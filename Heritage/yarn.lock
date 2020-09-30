@@ -5520,6 +5520,18 @@ react-is@^16.12.0, react-is@^16.13.0, react-is@^16.7.0, react-is@^16.8.1, react-
   resolved "https://registry.npm.taobao.org/react-is/download/react-is-16.13.1.tgz?cache=0&sync_timestamp=1595004873699&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Freact-is%2Fdownload%2Freact-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha1-eJcppNw23imZ3BVt1sHZwYzqVqQ=
 
+react-native-animatable@^1.3.3:
+  version "1.3.3"
+  resolved "https://registry.npm.taobao.org/react-native-animatable/download/react-native-animatable-1.3.3.tgz#a13a4af8258e3bb14d0a9d839917e9bb9274ec8a"
+  integrity sha1-oTpK+CWOO7FNCp2DmRfpu5J07Io=
+  dependencies:
+    prop-types "^15.7.2"
+
+react-native-animated-tabs@^1.3.3:
+  version "1.3.3"
+  resolved "https://registry.npm.taobao.org/react-native-animated-tabs/download/react-native-animated-tabs-1.3.3.tgz#1ca012581816c1c32fc332d008a04bddc1f3c08d"
+  integrity sha1-HKASWBgWwcMvwzLQCKBL3cHzwI0=
+
 react-native-collapsible@^1.5.2:
   version "1.5.2"
   resolved "https://registry.npm.taobao.org/react-native-collapsible/download/react-native-collapsible-1.5.2.tgz#544616dc04a71870508dc707049544a805402993"

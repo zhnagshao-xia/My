@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, View, ImageBackground, Image, ScrollView, FlatList, Dimensions, TouchableOpacity, Alert, AsyncStorage } from 'react-native';
+import { Share,Text, StyleSheet, View, ImageBackground, Image, ScrollView, FlatList, Dimensions, TouchableOpacity, Alert, AsyncStorage } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
 import Modal from 'react-native-modalbox';
@@ -169,6 +169,28 @@ export default class Craftsmandetail extends Component {
       })
   }
 
+
+  onShare = async () => {
+    try {
+      const result = await Share.share({
+        message:
+          'React Native | A framework for building native apps using React',
+      });
+
+      if (result.action === Share.sharedAction) {
+        if (result.activityType) {
+          // shared with activity type of result.activityType
+        } else {
+          // shared
+        }
+      } else if (result.action === Share.dismissedAction) {
+        // dismissed
+      }
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
   render() {
     const { navigation } = this.props;
     const data = this.state.docs;
@@ -199,7 +221,10 @@ export default class Craftsmandetail extends Component {
           </TouchableOpacity>
           <TouchableOpacity
             activeOpacity={0.6}
-            onPress={() => this.refs.modal6.open()}
+            onPress={() => {
+              // this.refs.modal6.open()
+              this.onShare();
+            }}
             style={{
               width: 50,
               height: "100%",
@@ -273,7 +298,7 @@ export default class Craftsmandetail extends Component {
           {/* 从props里取出上级页面携带的name, 传递给子组件 */}
           <InformationTab name={this.props.route.params.name} />
         </View>
-        <Modal style={styles.modal4} position={"bottom"} ref={"modal6"} >
+        {/* <Modal style={styles.modal4} position={"bottom"} ref={"modal6"} >
           <View style={{ width: '100%', height: '75%', flexDirection: 'row' }}>
             <TouchableOpacity style={{ width: '25%', height: '100%', alignItems: 'center', justifyContent: 'center' }}>
               <Image style={{ width: 60, height: 60 }}
@@ -300,7 +325,7 @@ export default class Craftsmandetail extends Component {
             onPress={() => this.refs.modal6.close()} >
             <Text style={{ fontSize: 15 }}>取消</Text>
           </TouchableOpacity>
-        </Modal>
+        </Modal> */}
       </View>
     );
   }
