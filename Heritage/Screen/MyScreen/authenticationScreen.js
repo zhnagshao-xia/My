@@ -207,12 +207,11 @@ export default class ModalComp extends Component{
                         }}>
                             <Text style={{fontSize:15,marginLeft:10}}>身份证号</Text>
                             <TextInput 
-                            // underlineColorAndroid='transparent'
+                            placeholderTextColor="#e5e3e4"
                             placeholder={'请输入身份证号'}
                             style={{width:200,height:40,backgroundColor:'#fff'}}
                             onChangeText={(text)=>this.setState({idcard:text})} 
                             keyboardType='numeric' 
-                            //  underlineColorAndroid='transparent'
                              selectionColor='black'
                             ></TextInput>
                         </View>
