@@ -122,7 +122,7 @@ export default class Heritagefenlei extends React.Component {
                                                     source={{uri:https+item.zhanshitu}}></Image>
                                             </View>
                                             <TouchableOpacity activeOpacity={0.8}
-                                            onPress={() => navigation.navigate("heritageDetails",{xiangmu:item.xiangmu})}>
+                                            onPress={() => navigation.navigate("heritageDetails",{xiangmu:item.xiangmu,cityname:item.suozaidi})}>
                                             <Text style={{fontSize:20,lineHeight:40,letterSpacing:2}}>{item.xiangmu}</Text>
                                             <Text ellipsizeMode="tail" style={{height:35}}>{item.jianjie}</Text>
                                             </TouchableOpacity>

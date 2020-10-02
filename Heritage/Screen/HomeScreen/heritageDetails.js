@@ -13,12 +13,14 @@ export default class heritageDetails extends Component{
         super(props);
         const { navigation, route } = this.props;
         let xiangmu = route.params.xiangmu;
+        let cityname = route.params.cityname;
         this.state = {
           isOpen: false,
           isDisabled: false,
           swipeToClose: true,
           sliderValue: 0.3,
           xiangmu,
+          cityname,
           docs:[]
         };
       }
@@ -36,7 +38,8 @@ export default class heritageDetails extends Component{
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              xiangmu: this.state.xiangmu
+              xiangmu: this.state.xiangmu,
+              cityname:this.state.cityname
             })
           })
             .then((response) => response.json())

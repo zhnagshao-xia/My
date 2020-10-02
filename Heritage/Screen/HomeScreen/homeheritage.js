@@ -330,7 +330,7 @@ export default class homeheritage extends Component {
                             <ScrollView horizontal={true}>
                             <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
                             onPress={()=>{
-                              navigation.navigate("heritageDetails",{xiangmu:"越窑青瓷烧制技艺"}),
+                              navigation.navigate("heritageDetails",{xiangmu:"越窑青瓷烧制技艺",cityname:"杭州"}),
                               this.setState({
                                 modal: false,
                               })
@@ -343,7 +343,7 @@ export default class homeheritage extends Component {
                             </TouchableOpacity>
                             <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
                             onPress={()=>{
-                              navigation.navigate("heritageDetails",{xiangmu:"金石篆刻（西泠印社）"}),
+                              navigation.navigate("heritageDetails",{xiangmu:"金石篆刻（西泠印社）",cityname:"杭州"}),
                               this.setState({
                                 modal: false,
                               })
@@ -356,7 +356,7 @@ export default class homeheritage extends Component {
                             </TouchableOpacity>
                             <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
                             onPress={()=>{
-                              navigation.navigate("heritageDetails",{xiangmu:"江南丝竹"}),
+                              navigation.navigate("heritageDetails",{xiangmu:"江南丝竹",cityname:"杭州"}),
                               this.setState({
                                 modal: false,
                               })
@@ -417,24 +417,42 @@ export default class homeheritage extends Component {
                         </View>
                         <View style={{width:'100%',height:'80%',alignItems:'center',flexDirection:'row'}}>
                             <ScrollView horizontal={true}>
-                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
-                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/qinci.png')}>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            onPress={()=>{
+                              navigation.navigate("heritageDetails",{xiangmu:"龙舞（长兴百叶龙）",cityname:"湖州"}),
+                              this.setState({
+                                modalTwo:false,
+                              })
+                            }}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={{uri:https+"/picture/feiyi/湖州/龙舞（长兴百叶龙）.jpg"}}>
                                     <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
-                                        <Text style={{fontSize:13,color:'#fff'}}>越窑青瓷烧纸技艺</Text>
+                                        <Text style={{fontSize:13,color:'#fff'}}>龙舞（长兴百叶龙）</Text>
                                     </View>
                                 </ImageBackground>
                             </TouchableOpacity>
-                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
-                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/yinshua.png')}>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            onPress={()=>{
+                              navigation.navigate("heritageDetails",{xiangmu:"湖笔制作技艺",cityname:"湖州"}),
+                              this.setState({
+                                modalTwo:false,
+                              })
+                            }}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={{uri:https+"/picture/feiyi/湖州/湖笔制作技艺.jpg"}}>
                                     <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
-                                        <Text style={{fontSize:13,color:'#fff'}}>木板水印技艺</Text>
+                                        <Text style={{fontSize:13,color:'#fff'}}>湖笔制作技艺</Text>
                                     </View>
                                 </ImageBackground>
                             </TouchableOpacity>
-                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
-                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/qinci.png')}>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            onPress={()=>{
+                              navigation.navigate("heritageDetails",{xiangmu:"辑里湖丝手工制作技艺",cityname:"湖州"}),
+                              this.setState({
+                                modalTwo:false,
+                              })
+                            }}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={{uri:https+"/picture/feiyi/湖州/蚕丝织造技艺（辑里湖丝手工制作技艺）.jpg"}}>
                                     <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
-                                        <Text style={{fontSize:13,color:'#fff'}}>越窑青瓷烧纸技艺</Text>
+                                        <Text style={{fontSize:13,color:'#fff'}}>辑里湖丝手工制作技艺</Text>
                                     </View>
                                 </ImageBackground>
                             </TouchableOpacity>
@@ -486,24 +504,42 @@ export default class homeheritage extends Component {
                         </View>
                         <View style={{width:'100%',height:'80%',alignItems:'center',flexDirection:'row'}}>
                             <ScrollView horizontal={true}>
-                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
-                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/qinci.png')}>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            onPress={()=>{
+                              navigation.navigate("heritageDetails",{xiangmu:"中国皮影戏（海宁皮影戏）",cityname:"嘉兴"}),
+                              this.setState({
+                                modalThird:false,
+                              })
+                            }}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={{uri:https+"/picture/feiyi/嘉兴/中国皮影戏（海宁皮影戏）.jpg"}}>
                                     <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
-                                        <Text style={{fontSize:13,color:'#fff'}}>越窑青瓷烧纸技艺</Text>
+                                        <Text style={{fontSize:13,color:'#fff'}}>中国皮影戏（海宁皮影戏）</Text>
                                     </View>
                                 </ImageBackground>
                             </TouchableOpacity>
-                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
-                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/yinshua.png')}>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            onPress={()=>{
+                              navigation.navigate("heritageDetails",{xiangmu:"端午节（嘉兴端午习俗）",cityname:"嘉兴"}),
+                              this.setState({
+                                modalThird:false,
+                              })
+                            }}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={{uri:https+"/picture/feiyi/嘉兴/端午节（嘉兴端午习俗）.jpg"}}>
                                     <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
-                                        <Text style={{fontSize:13,color:'#fff'}}>木板水印技艺</Text>
+                                        <Text style={{fontSize:13,color:'#fff'}}>端午节（嘉兴端午习俗）</Text>
                                     </View>
                                 </ImageBackground>
                             </TouchableOpacity>
-                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
-                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/qinci.png')}>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            onPress={()=>{
+                              navigation.navigate("heritageDetails",{xiangmu:"灯彩（硖石灯彩）",cityname:"嘉兴"}),
+                              this.setState({
+                                modalThird:false,
+                              })
+                            }}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={{uri:https+"/picture/feiyi/嘉兴/灯彩（硖石灯彩）.jpg"}}>
                                     <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
-                                        <Text style={{fontSize:13,color:'#fff'}}>越窑青瓷烧纸技艺</Text>
+                                        <Text style={{fontSize:13,color:'#fff'}}>灯彩（硖石灯彩）</Text>
                                     </View>
                                 </ImageBackground>
                             </TouchableOpacity>
@@ -555,24 +591,42 @@ export default class homeheritage extends Component {
                         </View>
                         <View style={{width:'100%',height:'80%',alignItems:'center',flexDirection:'row'}}>
                             <ScrollView horizontal={true}>
-                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
-                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/qinci.png')}>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            onPress={()=>{
+                              navigation.navigate('heritageDetails',{xiangmu:"锡雕",cityname:"金华"}),
+                              this.setState({
+                                modalFour:false,
+                              })
+                            }}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={{uri:https+"/picture/feiyi/金华/锡雕.jpg"}}>
                                     <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
-                                        <Text style={{fontSize:13,color:'#fff'}}>越窑青瓷烧纸技艺</Text>
+                                        <Text style={{fontSize:13,color:'#fff'}}>锡雕</Text>
                                     </View>
                                 </ImageBackground>
                             </TouchableOpacity>
-                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
-                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/yinshua.png')}>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            onPress={()=>{
+                              navigation.navigate('heritageDetails',{xiangmu:"麦秆剪贴",cityname:"金华"}),
+                              this.setState({
+                                modalFour:false,
+                              })
+                            }}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={{uri:https+"/picture/feiyi/金华/麦秆剪贴.jpg"}}>
                                     <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
-                                        <Text style={{fontSize:13,color:'#fff'}}>木板水印技艺</Text>
+                                        <Text style={{fontSize:13,color:'#fff'}}>麦秆剪贴</Text>
                                     </View>
                                 </ImageBackground>
                             </TouchableOpacity>
-                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
-                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/qinci.png')}>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            onPress={()=>{
+                              navigation.navigate('heritageDetails',{xiangmu:"东阳木雕",cityname:"金华"}),
+                              this.setState({
+                                modalFour:false,
+                              })
+                            }}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={{uri:https+"/picture/feiyi/金华/东阳木雕.jpg"}}>
                                     <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
-                                        <Text style={{fontSize:13,color:'#fff'}}>越窑青瓷烧纸技艺</Text>
+                                        <Text style={{fontSize:13,color:'#fff'}}>东阳木雕</Text>
                                     </View>
                                 </ImageBackground>
                             </TouchableOpacity>
@@ -624,24 +678,42 @@ export default class homeheritage extends Component {
                         </View>
                         <View style={{width:'100%',height:'80%',alignItems:'center',flexDirection:'row'}}>
                             <ScrollView horizontal={true}>
-                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
-                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/qinci.png')}>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            onPress={()=>{
+                              navigation.navigate("heritageDetails",{xiangmu:"龙泉青瓷传统烧制技艺",cityname:"丽水"}),
+                              this.setState({
+                                modalFive:false,
+                              })
+                            }}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={{uri:https+"/picture/feiyi/丽水/龙泉青瓷传统烧制技艺.jpg"}}>
                                     <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
-                                        <Text style={{fontSize:13,color:'#fff'}}>越窑青瓷烧纸技艺</Text>
+                                        <Text style={{fontSize:13,color:'#fff'}}>龙泉青瓷传统烧制技艺</Text>
                                     </View>
                                 </ImageBackground>
                             </TouchableOpacity>
-                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
-                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/yinshua.png')}>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            onPress={()=>{
+                              navigation.navigate("heritageDetails",{xiangmu:"青田石雕",cityname:"丽水"}),
+                              this.setState({
+                                modalFive:false,
+                              })
+                            }}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={{uri:https+"/picture/feiyi/丽水/青田石雕.jpg"}}>
                                     <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
-                                        <Text style={{fontSize:13,color:'#fff'}}>木板水印技艺</Text>
+                                        <Text style={{fontSize:13,color:'#fff'}}>青田石雕</Text>
                                     </View>
                                 </ImageBackground>
                             </TouchableOpacity>
-                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
-                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/qinci.png')}>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            onPress={()=>{
+                              navigation.navigate("heritageDetails",{xiangmu:"龙泉宝剑锻制技艺",cityname:"丽水"}),
+                              this.setState({
+                                modalFive:false,
+                              })
+                            }}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={{uri:https+"/picture/feiyi/丽水/龙泉宝剑锻制技艺.jpg"}}>
                                     <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
-                                        <Text style={{fontSize:13,color:'#fff'}}>越窑青瓷烧纸技艺</Text>
+                                        <Text style={{fontSize:13,color:'#fff'}}>龙泉宝剑锻制技艺</Text>
                                     </View>
                                 </ImageBackground>
                             </TouchableOpacity>
@@ -695,7 +767,7 @@ export default class homeheritage extends Component {
                             <ScrollView horizontal={true}>
                             <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
                             onPress={()=>{
-                              navigation.navigate("heritageDetails",{xiangmu:"宁波泥金彩漆"}),
+                              navigation.navigate("heritageDetails",{xiangmu:"宁波泥金彩漆",cityname:"宁波"}),
                               this.setState({
                                 modalSix: false,
                               })
@@ -708,7 +780,7 @@ export default class homeheritage extends Component {
                             </TouchableOpacity>
                             <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
                             onPress={()=>{
-                              navigation.navigate("heritageDetails",{xiangmu:"中医诊疗法"}),
+                              navigation.navigate("heritageDetails",{xiangmu:"中医诊疗法",cityname:"宁波"}),
                               this.setState({
                                 modalSix: false,
                               })
@@ -721,7 +793,7 @@ export default class homeheritage extends Component {
                             </TouchableOpacity>
                             <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
                             onPress={()=>{
-                              navigation.navigate("heritageDetails",{xiangmu:"汉族传统婚俗（宁海十里红妆婚俗）"}),
+                              navigation.navigate("heritageDetails",{xiangmu:"汉族传统婚俗（宁海十里红妆婚俗）",cityname:"宁波"}),
                               this.setState({
                                 modalSix: false,
                               })
@@ -780,24 +852,42 @@ export default class homeheritage extends Component {
                         </View>
                         <View style={{width:'100%',height:'80%',alignItems:'center',flexDirection:'row'}}>
                             <ScrollView horizontal={true}>
-                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
-                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/qinci.png')}>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            onPress={()=>{
+                              navigation.navigate("heritageDetails",{xiangmu:"九华立春祭",cityname:"衢州"}),
+                              this.setState({
+                                modalSeven:false,
+                              })
+                            }}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={{uri:https+"/picture/feiyi/衢州/九华立春祭.jpg"}}>
                                     <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
-                                        <Text style={{fontSize:13,color:'#fff'}}>越窑青瓷烧纸技艺</Text>
+                                        <Text style={{fontSize:13,color:'#fff'}}>九华立春祭</Text>
                                     </View>
                                 </ImageBackground>
                             </TouchableOpacity>
-                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
-                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/yinshua.png')}>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            onPress={()=>{
+                              navigation.navigate("heritageDetails",{xiangmu:"木偶戏（廿八都木偶戏）",cityname:"衢州"}),
+                              this.setState({
+                                modalSeven:false,
+                              })
+                            }}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={{uri:https+"/picture/feiyi/衢州/木偶戏（廿八都木偶戏）.jpg"}}>
                                     <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
-                                        <Text style={{fontSize:13,color:'#fff'}}>木板水印技艺</Text>
+                                        <Text style={{fontSize:13,color:'#fff'}}>木偶戏（廿八都木偶戏）</Text>
                                     </View>
                                 </ImageBackground>
                             </TouchableOpacity>
-                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
-                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/qinci.png')}>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            onPress={()=>{
+                              navigation.navigate("heritageDetails",{xiangmu:"高腔（西安高腔）",cityname:"衢州"}),
+                              this.setState({
+                                modalSeven:false,
+                              })
+                            }}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={{uri:https+"/picture/feiyi/衢州/高腔（西安高腔）.jpg"}}>
                                     <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
-                                        <Text style={{fontSize:13,color:'#fff'}}>越窑青瓷烧纸技艺</Text>
+                                        <Text style={{fontSize:13,color:'#fff'}}>高腔（西安高腔）</Text>
                                     </View>
                                 </ImageBackground>
                             </TouchableOpacity>
@@ -849,24 +939,42 @@ export default class homeheritage extends Component {
                         </View>
                         <View style={{width:'100%',height:'80%',alignItems:'center',flexDirection:'row'}}>
                             <ScrollView horizontal={true}>
-                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
-                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/qinci.png')}>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            onPress={()=>{
+                              navigation.navigate("heritageDetails",{xiangmu:"嵊州竹编",cityname:"绍兴"}),
+                              this.setState({
+                                modalEight:false,
+                              })
+                            }}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={{uri:https+"/picture/feiyi/绍兴/嵊州竹编.jpg"}}>
                                     <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
-                                        <Text style={{fontSize:13,color:'#fff'}}>越窑青瓷烧纸技艺</Text>
+                                        <Text style={{fontSize:13,color:'#fff'}}>嵊州竹编</Text>
                                     </View>
                                 </ImageBackground>
                             </TouchableOpacity>
-                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
-                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/yinshua.png')}>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            onPress={()=>{
+                              navigation.navigate("heritageDetails",{xiangmu:"绍剧",cityname:"绍兴"}),
+                              this.setState({
+                                modalEight:false,
+                              })
+                            }}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={{uri:https+"/picture/feiyi/绍兴/绍剧.jpg"}}>
                                     <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
-                                        <Text style={{fontSize:13,color:'#fff'}}>木板水印技艺</Text>
+                                        <Text style={{fontSize:13,color:'#fff'}}>绍剧</Text>
                                     </View>
                                 </ImageBackground>
                             </TouchableOpacity>
-                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
-                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/qinci.png')}>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            onPress={()=>{
+                              navigation.navigate("heritageDetails",{xiangmu:"绍兴黄酒酿制技艺",cityname:"绍兴"}),
+                              this.setState({
+                                modalEight:false,
+                              })
+                            }}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={{uri:https+"/picture/feiyi/绍兴/绍兴黄酒酿制技艺.jpg"}}>
                                     <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
-                                        <Text style={{fontSize:13,color:'#fff'}}>越窑青瓷烧纸技艺</Text>
+                                        <Text style={{fontSize:13,color:'#fff'}}>绍兴黄酒酿制技艺</Text>
                                     </View>
                                 </ImageBackground>
                             </TouchableOpacity>
@@ -918,24 +1026,42 @@ export default class homeheritage extends Component {
                         </View>
                         <View style={{width:'100%',height:'80%',alignItems:'center',flexDirection:'row'}}>
                             <ScrollView horizontal={true}>
-                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
-                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/qinci.png')}>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            onPress={()=>{
+                              navigation.navigate("heritageDetails",{xiangmu:"竹刻（黄岩翻簧竹雕）",cityname:"台州"}),
+                              this.setState({
+                                modalNine:false,
+                              })
+                            }}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={{uri:https+"/picture/feiyi/台州/竹刻（黄岩翻簧竹雕）.jpg"}}>
                                     <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
-                                        <Text style={{fontSize:13,color:'#fff'}}>越窑青瓷烧纸技艺</Text>
+                                        <Text style={{fontSize:13,color:'#fff'}}>竹刻（黄岩翻簧竹雕）</Text>
                                     </View>
                                 </ImageBackground>
                             </TouchableOpacity>
-                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
-                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/yinshua.png')}>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            onPress={()=>{
+                              navigation.navigate("heritageDetails",{xiangmu:"灯彩（仙居花灯）",cityname:"台州"}),
+                              this.setState({
+                                modalNine:false,
+                              })
+                            }}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={{uri:https+"/picture/feiyi/台州/灯彩（仙居花灯）.jpg"}}>
                                     <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
-                                        <Text style={{fontSize:13,color:'#fff'}}>木板水印技艺</Text>
+                                        <Text style={{fontSize:13,color:'#fff'}}>灯彩（仙居花灯）</Text>
                                     </View>
                                 </ImageBackground>
                             </TouchableOpacity>
-                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
-                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/qinci.png')}>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            onPress={()=>{
+                              navigation.navigate("heritageDetails",{xiangmu:"乱弹",cityname:"台州"}),
+                              this.setState({
+                                modalNine:false,
+                              })
+                            }}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={{uri:https+"/picture/feiyi/台州/乱弹.jpg"}}>
                                     <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
-                                        <Text style={{fontSize:13,color:'#fff'}}>越窑青瓷烧纸技艺</Text>
+                                        <Text style={{fontSize:13,color:'#fff'}}>乱弹</Text>
                                     </View>
                                 </ImageBackground>
                             </TouchableOpacity>
@@ -987,24 +1113,42 @@ export default class homeheritage extends Component {
                         </View>
                         <View style={{width:'100%',height:'80%',alignItems:'center',flexDirection:'row'}}>
                             <ScrollView horizontal={true}>
-                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
-                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/qinci.png')}>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            onPress={()=>{
+                              navigation.navigate("heritageDetails",{xiangmu:"中国活字印刷术",cityname:"温州"}),
+                              this.setState({
+                                modalTen:false,
+                              })
+                            }}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={{uri:https+"/picture/feiyi/温州/中国活字印刷术.jpg"}}>
                                     <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
-                                        <Text style={{fontSize:13,color:'#fff'}}>越窑青瓷烧纸技艺</Text>
+                                        <Text style={{fontSize:13,color:'#fff'}}>中国活字印刷术</Text>
                                     </View>
                                 </ImageBackground>
                             </TouchableOpacity>
-                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
-                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/yinshua.png')}>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            onPress={()=>{
+                              navigation.navigate("heritageDetails",{xiangmu:"昆曲",cityname:"温州"}),
+                              this.setState({
+                                modalTen:false,
+                              })
+                            }}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={{uri:https+"/picture/feiyi/温州/昆曲.jpg"}}>
                                     <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
-                                        <Text style={{fontSize:13,color:'#fff'}}>木板水印技艺</Text>
+                                        <Text style={{fontSize:13,color:'#fff'}}>昆曲</Text>
                                     </View>
                                 </ImageBackground>
                             </TouchableOpacity>
-                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
-                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/qinci.png')}>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            onPress={()=>{
+                              navigation.navigate("heritageDetails",{xiangmu:"木偶头雕刻（泰顺木偶头雕刻）",cityname:"温州"}),
+                              this.setState({
+                                modalTen:false,
+                              })
+                            }}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={{uri:https+"/picture/feiyi/温州/木偶头雕刻（泰顺木偶头雕刻）.jpg"}}>
                                     <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
-                                        <Text style={{fontSize:13,color:'#fff'}}>越窑青瓷烧纸技艺</Text>
+                                        <Text style={{fontSize:13,color:'#fff'}}>木偶头雕刻（泰顺木偶头雕刻）</Text>
                                     </View>
                                 </ImageBackground>
                             </TouchableOpacity>
@@ -1056,24 +1200,42 @@ export default class homeheritage extends Component {
                         </View>
                         <View style={{width:'100%',height:'80%',alignItems:'center',flexDirection:'row'}}>
                             <ScrollView horizontal={true}>
-                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
-                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/qinci.png')}>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            onPress={()=>{
+                              navigation.navigate("heritageDetails",{xiangmu:"观音传说",cityname:"舟山"}),
+                              this.setState({
+                                modalEleven:false,
+                              })
+                            }}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={{uri:https+"/picture/feiyi/舟山/观音传说.jpg"}}>
                                     <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
-                                        <Text style={{fontSize:13,color:'#fff'}}>越窑青瓷烧纸技艺</Text>
+                                        <Text style={{fontSize:13,color:'#fff'}}>观音传说</Text>
                                     </View>
                                 </ImageBackground>
                             </TouchableOpacity>
-                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
-                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/yinshua.png')}>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            onPress={()=>{
+                              navigation.navigate("heritageDetails",{xiangmu:"舟山贝雕",cityname:"舟山"}),
+                              this.setState({
+                                modalEleven:false,
+                              })
+                            }}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={{uri:https+"/picture/feiyi/舟山/舟山贝雕.jpg"}}>
                                     <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
-                                        <Text style={{fontSize:13,color:'#fff'}}>木板水印技艺</Text>
+                                        <Text style={{fontSize:13,color:'#fff'}}>舟山贝雕</Text>
                                     </View>
                                 </ImageBackground>
                             </TouchableOpacity>
-                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}>
-                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={require('../../Image/homeheritage/qinci.png')}>
+                            <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            onPress={()=>{
+                              navigation.navigate("heritageDetails",{xiangmu:"民间绘画（普陀渔民画）",cityname:"舟山"}),
+                              this.setState({
+                                modalEleven:false,
+                              })
+                            }}>
+                                <ImageBackground style={{width:'100%',height:'100%',flexDirection:'column-reverse'}} source={{uri:https+"/picture/feiyi/舟山/民间绘画（普陀渔民画）.jpg"}}>
                                     <View style={{width:150,height:30,backgroundColor:'#c9aa74',borderTopRightRadius:10,justifyContent:'center',alignItems:'center'}}>
-                                        <Text style={{fontSize:13,color:'#fff'}}>越窑青瓷烧纸技艺</Text>
+                                        <Text style={{fontSize:13,color:'#fff'}}>民间绘画（普陀渔民画）</Text>
                                     </View>
                                 </ImageBackground>
                             </TouchableOpacity>
