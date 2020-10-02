@@ -7,6 +7,7 @@ import FontAwesome from "react-native-vector-icons/FontAwesome";
 import Entypo from "react-native-vector-icons/Entypo";
 import { TouchableNativeFeedback } from "react-native-gesture-handler";
 
+var https = "http://121.196.191.45";
 var http = "http://192.168.50.91:3000";
 var URL1 = http + "/volunteer";
 var URL2 = http + "/volunteer/timelong";
@@ -208,7 +209,7 @@ export default class VolunteerScreen extends React.Component {
             >
               <Card
                 title={Projects[this.state.index].title}
-                image={Projects[this.state.index].image}
+                image={https+Projects[this.state.index].image}
                 author={Projects[this.state.index].author}
                 text={Projects[this.state.index].text}
                 canOpen={true}
@@ -234,7 +235,7 @@ export default class VolunteerScreen extends React.Component {
             >
               <Card
                 title={Projects[this.getNextIndex(this.state.index)].title}
-                image={Projects[this.getNextIndex(this.state.index)].image}
+                image={https+Projects[this.getNextIndex(this.state.index)].image}
                 author={Projects[this.getNextIndex(this.state.index)].author}
                 text={Projects[this.getNextIndex(this.state.index)].text}
               />
@@ -257,7 +258,7 @@ export default class VolunteerScreen extends React.Component {
             >
               <Card
                 title={Projects[this.getNextIndex(this.state.index + 1)].title}
-                image={Projects[this.getNextIndex(this.state.index + 1)].image}
+                image={https+Projects[this.getNextIndex(this.state.index + 1)].image}
                 author={Projects[this.getNextIndex(this.state.index + 1)].author}
                 text={Projects[this.getNextIndex(this.state.index + 1)].text}
               />

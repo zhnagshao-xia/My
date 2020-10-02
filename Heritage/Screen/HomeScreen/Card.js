@@ -11,6 +11,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import { Button } from 'react-native-paper';
 import { useFocusEffect } from "@react-navigation/native"
 
+var https = "http://121.196.191.45";
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;

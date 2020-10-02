@@ -16,6 +16,7 @@ import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
+var https = "http://121.196.191.45";
 var http = "http://192.168.50.91:3000";
 var URL1 = http + "/activity/history";
 var URL2 = http + "/activity/delete";
@@ -420,7 +421,7 @@ export default class App extends Component {
                             <View style={{ width: '100%', height: '85%', borderColor: 'grey', borderBottomWidth: 1, alignItems: 'center' }}>
                               <View style={{ width: '100%', height: '85%', alignItems: 'center', justifyContent: 'center' }}>
                                 <Image style={{ width: 200, height: 200 }}
-                                  source={{ uri: QRcode }}
+                                  source={{ uri: https+QRcode }}
                                 ></Image>
                               </View>
                               <View style={{ width: '100%', height: '15%', alignItems: 'center' }}>
