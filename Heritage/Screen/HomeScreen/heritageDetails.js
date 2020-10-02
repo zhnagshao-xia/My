@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, FlatList, ScrollView, StyleSheet, Image, Button, TouchableOpacity } from 'react-native';
+import { Share, Text, View, FlatList, ScrollView, StyleSheet, Image, Button, TouchableOpacity } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
@@ -56,6 +56,27 @@ export default class heritageDetails extends Component {
       });
   }
 
+  onShare = async () => {
+    try {
+      const result = await Share.share({
+        message:
+          'React Native | A framework for building native apps using React',
+      });
+
+      if (result.action === Share.sharedAction) {
+        if (result.activityType) {
+          // shared with activity type of result.activityType
+        } else {
+          // shared
+        }
+      } else if (result.action === Share.dismissedAction) {
+        // dismissed
+      }
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
   render() {
     const { navigation } = this.props;
     const data = this.state.docs;
@@ -88,7 +109,7 @@ export default class heritageDetails extends Component {
           }}></Text>
           <TouchableOpacity
             activeOpacity={0.8}
-            onPress={() => this.refs.modal6.open()}
+            onPress={() => { this.onShare(); }}
             style={{
               width: 50,
               height: "100%",
@@ -124,7 +145,6 @@ export default class heritageDetails extends Component {
                     <TouchableOpacity style={{top:'-82%',left:'43%'}}>
                       <AntDesign name={'staro'} size={23} color={'#fff'} />
                     </TouchableOpacity>
-
                   </View>
                   <Text style={{ textAlign: 'auto', lineHeight: 25, fontSize: 15 }}>&#12288;&#12288;{item.xiangqing}</Text>
                 </View>
@@ -132,7 +152,7 @@ export default class heritageDetails extends Component {
             }
           />
         </ScrollView>
-        <Modal style={styles.modal4} position={"bottom"} ref={"modal6"} >
+        {/* <Modal style={styles.modal4} position={"bottom"} ref={"modal6"} >
           <View style={{ width: '100%', height: '60%', flexDirection: 'row' }}>
             <TouchableOpacity style={{ width: '25%', height: '100%', alignItems: 'center', justifyContent: 'center' }}>
               <Image style={{ width: 60, height: 60 }}
@@ -159,7 +179,7 @@ export default class heritageDetails extends Component {
             onPress={() => this.refs.modal6.close()} >
             <Text style={{ fontSize: 15, marginTop: 3 }}>取消</Text>
           </TouchableOpacity>
-        </Modal>
+        </Modal> */}
       </View>
     );
   }
