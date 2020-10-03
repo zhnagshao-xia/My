@@ -6,7 +6,9 @@ import {
 } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
-var URL = "http://192.168.50.91:3000/users/shoucang/list";
+var https = "http://121.196.191.45";
+var http = "http://192.168.50.91:3000";
+var URL = http+"/users/shoucang/list";
 
 export default class CollectionScreen extends Component {
   constructor(props) {
@@ -85,12 +87,20 @@ export default class CollectionScreen extends Component {
           <FlatList
             data={data}
             renderItem={({ item }) =>
+            <TouchableOpacity activeOpacity={0.8}
+            onPress={()=>{
+              navigation.navigate('heritageDetails',{xiangmu:item.xiangmu,cityname:item.suozaidi})
+            }}>
               <View style={{ width: '100%', height: 150, alignItems: 'center', backgroundColor: '#fff', flexDirection: 'column-reverse', marginBottom: 20 }}>
-                <Image style={{ width: '60%', height: '100%' }} source={{ uri: item.zhanshitu }}></Image>
+                
+                <Image 
+                style={{ width: '60%', height: '100%' }} 
+                source={{ uri: https+item.zhanshitu }}
+                ></Image>
                 <View style={{ width: '100%', height: 30, backgroundColor: 'rgba(20,20,20,0.5)', position: 'absolute', alignItems: 'center', justifyContent: 'center' }}>
                   <Text style={{ fontSize: 15, color: '#fff' }}>{item.xiangmu}</Text>
                 </View>
-              </View>
+              </View></TouchableOpacity>
             }
           />
         </ScrollView>

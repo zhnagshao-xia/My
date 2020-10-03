@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Share, Text, View, FlatList, ScrollView, StyleSheet, Image, Button, TouchableOpacity } from 'react-native';
+import { Share, Text, View, FlatList, ScrollView, StyleSheet, Image, Button, TouchableOpacity,AsyncStorage,Alert } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
@@ -8,6 +8,10 @@ import Modal from 'react-native-modalbox';
 var https = "http://121.196.191.45";
 var http = "http://192.168.50.91:3000";
 var URL1 = http + "/feiyi/list/details";
+var URL2 = http + "/feiyi/list/details/shoucang";
+var copyusername;
+var copyxiangmu;
+var copyzhanshitu;
 
 export default class heritageDetails extends Component {
   constructor(props) {
@@ -22,8 +26,19 @@ export default class heritageDetails extends Component {
       sliderValue: 0.3,
       xiangmu,
       cityname,
-      docs: []
+      docs: [],
+      username: "",
     };
+  }
+
+  checkUserAction = async () => {
+    const res = await AsyncStorage.getItem('userInfo') || '{}'//AsyncStorage.getItem通过key字段来进行查询存储的数据，把该结果值作为参数传入第二个callback方法
+    const { username = '' } = JSON.parse(res)
+    username && this.setState({
+      username
+    })
+    console.log("888" + username)
+    copyusername=username;
   }
 
   componentDidMount() {
@@ -56,6 +71,30 @@ export default class heritageDetails extends Component {
       });
   }
 
+  _onClickShoucang = () => {
+    fetch(URL2, {
+      method: 'POST',
+      credentials: "include",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: copyusername,
+        xiangmu: copyxiangmu,
+        zhanshitu: copyzhanshitu,
+        cityname:this.state.cityname
+      })
+    })
+      .then(function (res) {
+        return res.json();
+      }).then(function (json) {
+        if (json.code == 200) {
+          Alert.alert("收藏成功")
+        }
+      })
+  }
+
   onShare = async () => {
     try {
       const result = await Share.share({
@@ -80,6 +119,10 @@ export default class heritageDetails extends Component {
   render() {
     const { navigation } = this.props;
     const data = this.state.docs;
+    navigation.isFocused = () => {
+      console.log("监测用户状态")
+      this.checkUserAction();
+    }
     return (
       <View>
         <View style={{
@@ -142,7 +185,14 @@ export default class heritageDetails extends Component {
                     }}
                       source={{ uri: https + item.zhanshitu }}>
                     </Image>
-                    <TouchableOpacity style={{top:'-82%',left:'43%'}}>
+                    <TouchableOpacity activeOpacity={0.8}
+                    style={{top:'-82%',left:'43%'}}
+                    onPress={()=>{
+                      this.checkUserAction(),
+                      copyxiangmu=item.xiangmu,
+                      copyzhanshitu=item.zhanshitu,
+                      this._onClickShoucang()
+                    }}>
                       <AntDesign name={'staro'} size={23} color={'#fff'} />
                     </TouchableOpacity>
                   </View>
