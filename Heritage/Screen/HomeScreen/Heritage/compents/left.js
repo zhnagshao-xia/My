@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
     line:{
         borderWidth:0.6,
         borderColor:"#8B4513",
-        marginLeft:20
+        marginLeft:30
     },
     changeFont:{
         fontSize:17,
