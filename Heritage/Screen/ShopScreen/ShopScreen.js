@@ -14,7 +14,7 @@ import {
   SectionList,
   FlatList,
 } from 'react-native';
-import { Drawer, List, } from '@ant-design/react-native';
+import { Button, Drawer, List, } from '@ant-design/react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
 import EZSwiper from 'react-native-ezswiper';
@@ -22,69 +22,16 @@ const { height, width } = Dimensions.get('window');
 
 const numColumns = 2;
 
-const images = [require('../../Image/ShopScreen/pic4.jpg'), require('../../Image/ShopScreen/pic4.jpg'), require('../../Image/ShopScreen/pic4.jpg')]
+var https = "http://121.196.191.45";
+var http = "http://192.168.50.91:3000";
+var URL1 = http + "/shopping";
 
-
-const styles = StyleSheet.create({
-  scrow_container: {
-    backgroundColor: '#f2f2f2',
-  },
-  liststyle: {
-    backgroundColor: '#f2f2f2',
-    width: 320,
-    height: 800,
-  },
-  header: {
-    justifyContent: 'center',
-    backgroundColor: '#fff',
-    borderBottomWidth: 1,
-    borderBottomColor: 'rgba(0,0,0,0.2)'
-  },
-  last: {
-    marginTop: 10,
-    backgroundColor: '#fff',
-    width: '100%',
-  },
-  key: {
-    flexDirection: 'row',
-  },
-  container: {
-    backgroundColor: 'white',
-    marginVertical: 10,
-    paddingVertical: 10
-  },
-  swiper: {
-    backgroundColor: 'white',
-  },
-  cell: {
-    backgroundColor: 'red',
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 15
-  },
-
-
-
-  container1: {
-    flex: 1,
-  },
-  item: {
-    backgroundColor: '#fff',
-    width: width / numColumns,
-    height: 190,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  itemImage: {
-    width: 160,
-    height: 160,
-  },
-  itemText: {
-    fontSize: 12,
-  }
-});
-
+const images = [
+  { uri: https + "/picture/shopping/headcarousel/1.jpg" },
+  { uri: https + "/picture/shopping/headcarousel/2.jpg" },
+  { uri: https + "/picture/shopping/headcarousel/3.jpg" },
+  { uri: https + "/picture/shopping/headcarousel/4.jpg" },
+  { uri: https + "/picture/shopping/headcarousel/5.jpg" }]
 
 export default class DrawerExample extends React.Component {
 
@@ -92,8 +39,10 @@ export default class DrawerExample extends React.Component {
     super(props)
     this.state = {
       currentPage: 0,
+      docs: [],
     };
   }
+
   renderImageRow(obj, index) {
     return (
       <View style={[styles.cell, { backgroundColor: 'gray', overflow: 'hidden' }]}>
@@ -105,39 +54,34 @@ export default class DrawerExample extends React.Component {
     )
   }
 
+  componentDidMount() {
+    this.fetchData();
+  }
+  fetchData() {
+    fetch(URL1, {
+      method: 'POST',
+      credentials: "include",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      }
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        this.setState({
+          docs: json.docs,
+        })
+        // console.log(json.docs)
+      })
+      .catch((error) => console.error(error))
+      .finally(() => {
+        this.setState({ isLonding: false });
+      });
+  }
+
   render() {
     const { navigation } = this.props;
-
-    const data = [{
-      content: [
-        { key: '', title: '排行榜' },
-        { key: '', title: '审帖' },
-        { key: '', title: '漫画' },
-        { key: '', title: '我的收藏' },
-        { key: '', title: '附近' },
-        { key: '', title: '随机穿越' },
-        { key: '', title: '意见反馈' },
-        { key: '', title: '更多' },
-        { key: '', title: '更多' },
-        { key: '', title: '更多' },
-        { key: '', title: '更多' },
-        { key: '', title: '更多' },
-        { key: '', title: '更多' },
-        { key: '', title: '更多' },
-        { key: '', title: '更多' },
-        { key: '', title: '更多' },
-        { key: '', title: '更多' },
-        { key: '', title: '更多' },
-        { key: '', title: '更多' },
-        { key: '', title: '更多' },
-        { key: '', title: '更多' },
-        { key: '', title: '更多' },
-
-
-      ],
-      key: 'content',
-    }];
-
+    const data = this.state.docs;
     return (
       <View>
         <View style={styles.header}>
@@ -190,35 +134,52 @@ export default class DrawerExample extends React.Component {
             alignItems: 'center',
             justifyContent: 'space-around'
           }}>
-            <TouchableOpacity activeOpacity={0.8}>
+            <TouchableOpacity
+              activeOpacity={0.8}
+              onPress={() => {
+                navigation.navigate('Shopclassifymore', { dalei: "琢磨", pinyin: "ZHUOMO" })
+              }}>
               <Image
                 style={{ width: 60, height: 60, borderRadius: 50 }}
-                source={require('../../Image/ShopScreen/pic5.jpg')}
+                source={{ uri: https + "/picture/shopping/class/琢磨/琢磨.jpg" }}
               >
               </Image>
-              <Text style={{ marginTop: 3, fontSize: 13 }}>雕刻工艺</Text>
+              <Text style={{ marginTop: 3, fontSize: 13, marginLeft: 18 }}>琢磨</Text>
             </TouchableOpacity>
-            <TouchableOpacity activeOpacity={0.8}>
+            <TouchableOpacity
+              activeOpacity={0.8}
+              onPress={() => {
+                navigation.navigate('Shopclassifymore', { dalei: "浴火", pinyin: "YUHUO" })
+              }}>
               <Image
                 style={{ width: 60, height: 60, borderRadius: 50 }}
-                source={require('../../Image/ShopScreen/pic4.jpg')}
+                source={{ uri: https + "/picture/shopping/class/浴火/浴火.jpg" }}
               >
               </Image>
-              <Text style={{ marginTop: 3, fontSize: 13 }}>瓷器工艺</Text>
+              <Text style={{ marginTop: 3, fontSize: 13, marginLeft: 18 }}>浴火</Text>
             </TouchableOpacity>
-            <TouchableOpacity activeOpacity={0.8}>
+            <TouchableOpacity
+              activeOpacity={0.8}
+              onPress={() => {
+                navigation.navigate('Shopclassifymore', { dalei: "茶道", pinyin: "CHADAO" })
+              }}>
               <Image
                 style={{ width: 60, height: 60, borderRadius: 50 }}
-                source={require('../../Image/ShopScreen/pic3.jpg')}
+                source={{ uri: https + "/picture/shopping/class/茶道/茶道.jpg" }}
               >
               </Image>
-              <Text style={{ marginTop: 3, fontSize: 13 }}>工艺特色</Text>
+              <Text style={{ marginTop: 3, fontSize: 13, marginLeft: 18 }}>茶道</Text>
             </TouchableOpacity>
             <TouchableOpacity
               activeOpacity={0.8}
               onPress={() => navigation.navigate('商城分类页面')}
               style={{ width: 50, height: 50, alignItems: "center", justifyContent: "center" }}>
-              <FontAwesome name={'angle-double-right'} size={25} color={'#000'} />
+              <Image
+                style={{ width: 60, height: 60, borderRadius: 50 }}
+                source={{ uri: https + "/picture/shopping/class/全部.jpg" }}
+              >
+              </Image>
+              <Text style={{ marginTop: 3, fontSize: 13, marginLeft: 12 }}>全部</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.last}>
@@ -233,10 +194,56 @@ export default class DrawerExample extends React.Component {
             </View>
             <View style={{ marginBottom: 60 }}>
               <SafeAreaView style={styles.container1}>
-                <SectionList
-                  sections={[{ data }]}
-                  renderItem={this._renderSectionItem}
-                />
+                <SectionList />
+
+                <FlatList
+                  data={data}
+                  numColumns={2} // 一行2个
+                  renderItem={({ item }) =>
+                    <View >
+                      <TouchableOpacity
+                        activeOpacity={0.8}
+                        style={styles.item}
+                        onPress={()=>{
+                          navigation.navigate("商品详情页面",{goods:item.goods})
+                        }}
+                      >
+                        <View>
+                          <Image
+                            source={{ uri: https + item.fengmian }}
+                            style={styles.itemImage}
+                          />
+                        </View>
+                        <View style={{
+                          backgroundColor: "rgba(0,0,0,0.8)",
+                          width: 160,
+                          position: "absolute",
+                          bottom: 10,
+                          height: 40,
+                          padding: 5,
+                          flexDirection: 'column'
+                        }}>
+                          <View style={{
+                            flexDirection: "row",
+                            justifyContent: "space-between"
+                          }}>
+                            <Text style={styles.itemText}>{item.goods}</Text>
+                            <Text style={{
+                              textAlign: "right",
+                              color: "#fff",
+                              fontSize: 12
+                            }}>￥{item.price}</Text>
+                          </View>
+                          <Text style={{
+                            textAlign: "right",
+                            color: "#fff",
+                            fontSize: 8
+                          }}>月销：{item.sales}</Text>
+                        </View>
+                      </TouchableOpacity>
+                    </View>
+                  } />
+
               </SafeAreaView>
             </View>
           </View>
@@ -244,37 +251,60 @@ export default class DrawerExample extends React.Component {
       </View>
     );
   }
-  keyExtractor = (item, index) => {
-    return item.key;
-  }
-
-
-  _renderItem = ({ item }) => {
-    return (
-      <TouchableOpacity
-        activeOpacity={0.8}
-        style={styles.item}
-      >
-        <Image
-          source={require('../../Image/ShopScreen/pic5.jpg')}
-          style={styles.itemImage}
-        />
-        <Text style={styles.itemText}>{item.title}</Text>
-      </TouchableOpacity>
-    )
-  }
-
-  _renderSectionItem = ({ section }) => {
-    return (
-      <FlatList
-        data={section.data[0].content}
-        numColumns={numColumns}
-        renderItem={this._renderItem}
-        style={{ backgroundColor: '#fff' }}
-        scrollEnabled={false}
-      />
-    )
-  }
-
 
 }
+
+const styles = StyleSheet.create({
+  scrow_container: {
+    backgroundColor: '#f2f2f2',
+  },
+  header: {
+    justifyContent: 'center',
+    backgroundColor: '#fff',
+    borderBottomWidth: 1,
+    borderBottomColor: 'rgba(0,0,0,0.2)'
+  },
+  last: {
+    marginTop: 10,
+    backgroundColor: '#fff',
+    width: '100%',
+  },
+  key: {
+    flexDirection: 'row',
+  },
+  container: {
+    backgroundColor: 'white',
+    marginVertical: 10,
+    paddingVertical: 10
+  },
+  swiper: {
+    backgroundColor: 'white',
+  },
+  cell: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 15
+  },
+
+
+
+  container1: {
+    flex: 1,
+  },
+  item: {
+    backgroundColor: '#fff',
+    width: width / numColumns,
+    height: 270,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  itemImage: {
+    width: 160,
+    height: 240,
+  },
+  itemText: {
+    fontSize: 14,
+    color: "#fff"
+  }
+});
