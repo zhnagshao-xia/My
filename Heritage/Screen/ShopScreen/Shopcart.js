@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import { View, Text, TouchableOpacity, Image, StyleSheet, SectionList } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
-// import {commonStyle} from './commonStyle'
-const shoppingCartData = require('../ShopScreen/ShoppingCartDate.json')
+var https = "http://121.196.191.45";
+var http = "http://192.168.50.91:3000";
+var URL1 = http + "/shopping/shopcar";
 
 export default class Shopcart extends Component {
 
@@ -16,33 +17,106 @@ export default class Shopcart extends Component {
       isSelectedAllItem: false,
       totalNum: 0,
       totalPrice: 0.00,
+      docs:[],
+      shoppingCartData:[]
     }
   }
+  
+
+  componentDidMount() {
+    this.fetchData();
+}
+
+
+fetchData() {
+    fetch(URL1, {
+        method: 'POST',
+        credentials: "include",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            username: "诗画浙江"
+        })
+    })
+        .then((response) => response.json())
+        .then((json) => {
+            this.setState({
+                docs: json.docs[0],
+                shoppingCartData:json.docs[0]
+            })
+            console.log("1111"+json.docs)
+        })
+        .catch((error) => console.error(error))
+        .finally(() => {
+            this.setState({ isLonding: false });
+        });
+}
 
   componentWillMount() {
-    let dataArr = shoppingCartData.data
+const shoppingCartData = {
+  "docs": [
+      {
+          "shopcar": [
+              {
+                  "goods": "手倚莲花",
+                  "miaoshu": "#乐清黄杨木雕#华东一枝花#于精雕细刻中不乏写意流畅#手倚莲花",
+                  "price": 688,
+                  "fengmian": "/picture/shopping/goods/琢磨/木雕/乐清黄杨木雕2_1.jpg",
+                  "number": "1"
+              },
+              {
+                  "goods": "龙龟",
+                  "miaoshu": "#乐清黄杨木雕#华东一枝花#于精雕细刻中不乏写意流畅#龙龟",
+                  "price": 688,
+                  "fengmian": "/picture/shopping/goods/琢磨/木雕/乐清黄杨木雕12_1.jpg",
+                  "number": "1"
+              },
+              {
+                  "goods": "调皮兔",
+                  "miaoshu": "#乐清黄杨木雕#华东一枝花#于精雕细刻中不乏写意流畅#调皮兔",
+                  "price": 688,
+                  "fengmian": "/picture/shopping/goods/琢磨/木雕/乐清黄杨木雕19_1.jpg",
+                  "number": "1"
+              },
+              {
+                  "goods": "国泰民安",
+                  "miaoshu": "#乐清黄杨木雕#华东一枝花#于精雕细刻中不乏写意流畅#国泰民安",
+                  "price": 688,
+                  "fengmian": "/picture/shopping/goods/琢磨/木雕/乐清黄杨木雕17_1.jpg",
+                  "number": "1"
+              },
+              {
+                  "goods": "牛气冲天",
+                  "miaoshu": "#乐清黄杨木雕#华东一枝花#于精雕细刻中不乏写意流畅#牛气冲天",
+                  "price": 688,
+                  "fengmian": "/picture/shopping/goods/琢磨/木雕/乐清黄杨木雕8_1.jpg",
+                  "number": "1"
+              }
+          ]
+      }
+  ]
+}
+this.setState({shoppingCartData: shoppingCartData})
+    let dataArr = shoppingCartData.docs
     let tempStatusArr = []
-    for (let i = 0; i < dataArr.length; i++) {
-      let items = dataArr[i].shopItems
+      let items = dataArr[0].shopcar
       let shopObj = {}
       shopObj.checked = false
       let tempItems = []
       for (let j = 0; j < items.length; j++) {
         let item = items[j]
         item.checked = false
-        item.quantity = item.minQuantity
+        item.quantity = item.number
         tempItems.push(item)
       }
       shopObj.items = tempItems
       tempStatusArr.push(shopObj)
-    }
     this.state.status = tempStatusArr
     console.log(this.state.status)
   }
 
-  componentDidMount() {
-    // 网络请求获取购物车数据
-  }
 
   checkItem(sectionIndex, index) {
     let tempStatus = this.state.status
@@ -115,11 +189,12 @@ export default class Shopcart extends Component {
 
   minus(sectionIndex, index) {
     let tempStatus = this.state.status
+    let minQuantity = 1//设定最小购买数
     let shop = tempStatus[sectionIndex]
     let items = shop.items
     let item = items[index]
-    if (item.quantity <= item.minQuantity) {
-      alert('商品购买数量不能小于:' + item.minQuantity)
+    if (item.quantity <= minQuantity) {
+      alert('商品购买数量不能小于:' + minQuantity)
     } else {
       item.quantity -= 1
     }
@@ -132,11 +207,12 @@ export default class Shopcart extends Component {
 
   add(sectionIndex, index) {
     let tempStatus = this.state.status
+    let maxQuantity = 1//设定最大购买数
     let shop = tempStatus[sectionIndex]
     let items = shop.items
     let item = items[index]
-    if (item.quantity >= item.maxQuantity) {
-      alert('商品购买数量不能大于:' + item.maxQuantity)
+    if (item.quantity >= maxQuantity) {
+      alert('商品购买数量不能大于:' + maxQuantity)
     } else {
       item.quantity += 1
     }
@@ -157,7 +233,7 @@ export default class Shopcart extends Component {
         let item = items[j]
         if (item.checked) {
           tempTotalNum += 1
-          tempTotalPrice += item.itemPrice * item.quantity
+          tempTotalPrice += item.price * item.quantity
         }
       }
     }
@@ -178,14 +254,14 @@ export default class Shopcart extends Component {
           onPress={() => this.checkItem(sectionIndex, index)}>
           <Image style={styles.checkBox} source={statusItem.checked ? require('../../Image/ShopScreen/ic_selected.png') : require('../../Image/ShopScreen/ic_defult.png')} resizeMode={'center'} />
         </TouchableOpacity>
-        <Image style={{ width: '20%', height: 80 }} source={{ uri: item.itemimg }}>
+        <Image style={{ width: '20%', height: 80 }} source={{ uri: https+item.fengmian }}>
         </Image>
         <View style={{ width: '70%' }}>
           <View style={{ flex: 1, marginHorizontal: 10, height: 50 }}>
-            <Text style={{ fontSize: 13, color: 'black' }}>{item.itemName}</Text>
+            <Text style={{ fontSize: 13, color: 'black' }}>{item.miaoshu}</Text>
           </View>
           <View style={{ width: 95, flexDirection: 'row', alignItems: 'center', marginHorizontal: 20 }}>
-            <Text style={{ fontSize: 15, color: '#f76220' }}>{`￥${item.itemPrice}`}</Text>
+            <Text style={{ fontSize: 15, color: '#f76220' }}>{`￥${item.price}`}</Text>
             <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
               <TouchableOpacity
                 activeOpacity={0.8}
@@ -224,11 +300,54 @@ export default class Shopcart extends Component {
   }
 
   render() {
-    let tempArr = shoppingCartData.data.map((item, index) => {
+const shoppingCartData = {
+  "docs": [
+      {
+          "shopcar": [
+              {
+                  "goods": "手倚莲花",
+                  "miaoshu": "#乐清黄杨木雕#华东一枝花#于精雕细刻中不乏写意流畅#手倚莲花",
+                  "price": 688,
+                  "fengmian": "/picture/shopping/goods/琢磨/木雕/乐清黄杨木雕2_1.jpg",
+                  "number": "1"
+              },
+              {
+                  "goods": "龙龟",
+                  "miaoshu": "#乐清黄杨木雕#华东一枝花#于精雕细刻中不乏写意流畅#龙龟",
+                  "price": 688,
+                  "fengmian": "/picture/shopping/goods/琢磨/木雕/乐清黄杨木雕12_1.jpg",
+                  "number": "1"
+              },
+              {
+                  "goods": "调皮兔",
+                  "miaoshu": "#乐清黄杨木雕#华东一枝花#于精雕细刻中不乏写意流畅#调皮兔",
+                  "price": 688,
+                  "fengmian": "/picture/shopping/goods/琢磨/木雕/乐清黄杨木雕19_1.jpg",
+                  "number": "1"
+              },
+              {
+                  "goods": "国泰民安",
+                  "miaoshu": "#乐清黄杨木雕#华东一枝花#于精雕细刻中不乏写意流畅#国泰民安",
+                  "price": 688,
+                  "fengmian": "/picture/shopping/goods/琢磨/木雕/乐清黄杨木雕17_1.jpg",
+                  "number": "1"
+              },
+              {
+                  "goods": "牛气冲天",
+                  "miaoshu": "#乐清黄杨木雕#华东一枝花#于精雕细刻中不乏写意流畅#牛气冲天",
+                  "price": 688,
+                  "fengmian": "/picture/shopping/goods/琢磨/木雕/乐清黄杨木雕8_1.jpg",
+                  "number": "1"
+              }
+          ]
+      }
+  ]
+}
+    let tempArr = shoppingCartData.docs.map((item, index) => {
       let tempData = {}
-      tempData.key = item.shopName
+      // tempData.key = item.shopName
       tempData.index = index
-      tempData.data = item.shopItems
+      tempData.data = item.shopcar
       return tempData
     })
     const { navigation } = this.props;
@@ -265,7 +384,7 @@ export default class Shopcart extends Component {
           </View>
         </View>
         <SectionList
-          renderSectionHeader={this.renderSectionHeader}
+          // renderSectionHeader={this.renderSectionHeader}//店铺组件
           renderItem={this.renderItem}
           sections={tempArr}
           ItemSeparatorComponent={() => <View />}
@@ -338,7 +457,7 @@ const styles = StyleSheet.create({
     height: 44,
     flexDirection: 'row',
     alignItems: 'center',
-    // backgroundColor:'red'
+    backgroundColor:'#fff'
 
   }
 })

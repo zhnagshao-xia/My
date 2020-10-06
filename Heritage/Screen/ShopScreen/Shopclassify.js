@@ -57,7 +57,7 @@ export default class BasicTabsExample extends React.Component {
                         <View style={{ width: "92%" }}>
                             <Image style={{
                                 width: "100%",
-                                height: 160,
+                                height: 200,
                                 resizeMode: "stretch",
                                 marginVertical: 10
                             }}

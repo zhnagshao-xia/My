@@ -9,31 +9,104 @@ import {
   FlatList,
   Dimensions,
   Modal,
-  TouchableOpacity} from 'react-native';
+  TouchableOpacity,
+  Alert,
+  AsyncStorage} from 'react-native';
 import { TextInput } from 'react-native-paper';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import ImagePicker from 'react-native-image-crop-picker';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+
+var https = "http://121.196.191.45";
+var http = "http://192.168.50.91:3000";
+var URL = http + "/users/usericon";
+var URL1 = http+"/shopping/details/pinglun";
+var copyusername;
+var copyusericon;
+
 export default class ModalComp extends Component{
-  
-  
   constructor(props) {
     super(props);
+    const {navigation,route} = this.props;
+    let goods = route.params.goods;
     this.state = {
+        goods,
         addPicState: "flex",
         avatarSource: [],
         source: new Array(9),
         title: '',
         words: '',
         modalVisible: false,
+        username: "立即登录",
+        usericon: "/picture/touxiang/fans/b0.jpg",
+        pingyu:""
     };
 }
+
+checkUserAction = async () => {
+  const res = await AsyncStorage.getItem('userInfo') || '{}'//AsyncStorage.getItem通过key字段来进行查询存储的数据，把该结果值作为参数传入第二个callback方法
+  const { username = '' } = JSON.parse(res)
+  username && this.setState({
+    username
+  })
+  fetch(URL, {//头像
+    method: 'POST',
+    credentials: "include",
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      username: this.state.username,
+    })
+  })
+    .then((response) => response.json())
+    .then((json) => {
+      this.setState({
+        usericon: json.docs[0].usericon,//usericon: json.docs[0].usericon,
+      })
+      console.log(json.docs)
+    })
+    .catch((error) => console.error(error))
+    .finally(() => {
+      this.setState({ isLonding: false });
+    });
+  console.log("888" + username),
+    this.fetchData();
+}
+
 _openModalWin = () => {
   this.setState({modalVisible: true});
 }
 
 _closeModalWin = () => {
   this.setState({modalVisible: false});
+}
+
+_onClickPinglun = () => {
+  fetch(URL1, {
+    method: 'POST',
+    credentials: "include",
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      goods: this.state.goods,
+      username:copyusername,
+      usericon:copyusericon,
+      time:"刚刚",
+      pingyu:this.state.pingyu,
+      maijiaxiu:"/picture/shopping/pinglun/琢磨/木雕/2.jpg"
+    })
+  })
+    .then(function (res) {
+      return res.json();
+    }).then(function (json) {
+      if (json.code == 200) {
+        Alert.alert("评价成功")
+      }
+    })
 }
 
 _fetchImage(image) {
@@ -57,6 +130,13 @@ _fetchImage(image) {
 }
   render() {
     const { navigation, route } = this.props;
+    const goods = this.state.goods;
+    const username = this.state.username;
+    const usericon = this.state.usericon;
+    navigation.isFocused = () => {
+      console.log("监测用户状态")
+      this.checkUserAction();
+    }
     var imgDate = [
       {
           key: 1,
@@ -121,7 +201,12 @@ _fetchImage(image) {
               textAlign: 'center',
               textAlignVertical: 'center',}}>评价</Text>
           <TouchableOpacity
-           onPress={this._openModalWin}
+           onPress={()=>{
+             copyusername=username,
+             copyusericon=usericon,
+             this._openModalWin,
+             this._onClickPinglun(),
+             navigation.navigate('商品详情页面',{goods:goods})}}
            style={styles.out}>
             <Text style={{color:'#fff',fontSize:13}}>发表</Text>
           </TouchableOpacity>
@@ -176,6 +261,9 @@ _fetchImage(image) {
                     maxLength={100} 
                     multiline={true} 
                     style={{backgroundColor:'#f2f2f2',fontSize:15}}
+                    onChangeText={(text)=>{
+                      this.setState({pingyu:text});
+                    }}
                     ></TextInput>
                          <View style={{width:'100%',height:150}}>
                         <View style={{width:'100%',height:100,flexWrap: "wrap",flexDirection: "row",alignItems:'center' }}>

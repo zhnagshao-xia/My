@@ -10,7 +10,9 @@ import {
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
-var URL = "http://192.168.50.91:3000/users/dindan/list";
+var https = "http://121.196.191.45";
+var http = "http://192.168.50.91:3000";
+var URL = http+"/users/dindan/list";
 
 export default class orderScreen extends Component {
   constructor(props) {
@@ -92,16 +94,23 @@ export default class orderScreen extends Component {
             renderItem = {({item})=>
             <View style = {styles.one}>
               <View style={{flexDirection:'row',width:'100%',}}>
-                <Image source={{uri:item.fengmian}}
+              <TouchableOpacity 
+                    activeOpacity={0.8}
+                    onPress={()=>navigation.navigate('商品详情页面',{goods:item.goods})}>
+                <Image source={{uri:https+item.fengmian}}
                  style={{width:85,height:100,margin:10,backgroundColor:'red'}}>
                 </Image>
+                </TouchableOpacity>
                 <View style={{ width:200,height:85,marginTop:10}}>
-                    <Text style={{width:'100%',fontSize:13}}>{item.goods}</Text>
+                <TouchableOpacity 
+                    activeOpacity={0.8}
+                    onPress={()=>navigation.navigate('商品详情页面',{goods:item.goods})}>
+                    <Text style={{width:'100%',fontSize:13}}>{item.miaoshu}</Text>
                     <View style={{width:'100%',flexDirection:'row',justifyContent:'space-between',marginTop:15}}>
                         <Text style={{fontSize:14,color:'#f76220'}}>￥{item.price}</Text>
                         <Text style={{fontSize:14}}>{item.state}</Text>
                     </View>
-                  
+                  </TouchableOpacity>
                 <TouchableOpacity 
                 style={{
                   width:60,
@@ -110,7 +119,8 @@ export default class orderScreen extends Component {
                   justifyContent:'center',
                   borderColor:'black',
                   borderWidth:0.7,
-                  marginTop:10}}>
+                  marginTop:10}}
+                  onPress={()=>navigation.navigate('评价商品页面',{goods:item.goods})}>
                   <Text style={{fontSize:14}}>评 价</Text>
                 </TouchableOpacity>
               </View>

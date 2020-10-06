@@ -8,6 +8,8 @@ import {
     TouchableOpacity,
     ImageBackground,
     ScrollView,
+    Alert,
+    AsyncStorage
 } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
@@ -16,6 +18,11 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 var https = "http://121.196.191.45";
 var http = "http://192.168.50.91:3000";
 var URL1 = http + "/shopping/details";
+var URL2 = http + "/shopping/addshopcar";
+var copymiaoshu;
+var copyprice;
+var copyfengmian;
+var copyusername;
 
 export default class App extends Component {
     constructor(props) {
@@ -30,13 +37,23 @@ export default class App extends Component {
         };
     }
 
+    checkUserAction = async () => {
+        const res = await AsyncStorage.getItem('userInfo') || '{}'//AsyncStorage.getItem通过key字段来进行查询存储的数据，把该结果值作为参数传入第二个callback方法
+        const { username = '' } = JSON.parse(res)
+        username && this.setState({
+          username
+        })
+        console.log("888" + username)
+        copyusername=username;
+      }
+
     componentDidMount() {
         this.fetchData();
     }
 
 
     fetchData() {
-        fetch(URL1, {//手艺人详情
+        fetch(URL1, {
             method: 'POST',
             credentials: "include",
             headers: {
@@ -62,11 +79,41 @@ export default class App extends Component {
             });
     }
 
+    __onClickAddshopcar=()=> {
+        fetch(URL2, {
+            method: 'POST',
+            credentials: "include",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                username:copyusername,
+                goods: this.state.goods,
+                miaoshu:copymiaoshu,
+                price:copyprice,
+                fengmian:copyfengmian,
+                number:"1"
+            })
+        })
+        .then(function (res) {
+            return res.json();
+          }).then(function (json) {
+            if (json.code == 200) {
+              Alert.alert("加购成功")
+            }
+          })
+    }
+
     render() {
         const { navigation } = this.props;
         const docs = this.state.docs;
         const pinglun = this.state.pinglun;
         const xiangqingtu = this.state.xiangqingtu;
+        navigation.isFocused = () => {
+            console.log("监测用户状态")
+            this.checkUserAction();
+          }
         return (
             <View style={styles.container}>
                 <ScrollView>
@@ -119,10 +166,20 @@ export default class App extends Component {
                                 </View>
 
                                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                    <TouchableOpacity
+                                    activeOpacity={0.8}
+                                    onPress={() => {
+                                        this.checkUserAction(),
+                                        copymiaoshu=docs.miaoshu,
+                                        copyprice=docs.price,
+                                        copyfengmian=docs.fengmian,
+                                        this.__onClickAddshopcar()
+                                    }}>
                                     <MaterialIcons name={'add-shopping-cart'} size={30} color={'#000'} />
+                                    </TouchableOpacity>
                                     <TouchableOpacity
                                         activeOpacity={0.8}
-                                        onPress={() => navigation.navigate('确认订单')}
+                                        onPress={() => navigation.navigate('Buynow',{goods:docs.goods,miaoshu:docs.miaoshu,fengmian:docs.fengmian,price:docs.price,number:"1"})}
                                         style={{ width: 80, height: 35, marginLeft: 15, backgroundColor: 'orange', borderRadius: 20, alignItems: 'center', justifyContent: 'center' }}>
                                         <Text style={{ fontSize: 20 }}>购买</Text>
                                     </TouchableOpacity>
