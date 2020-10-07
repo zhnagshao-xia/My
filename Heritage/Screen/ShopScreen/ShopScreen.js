@@ -129,7 +129,7 @@ export default class DrawerExample extends React.Component {
           <View style={{
             flexDirection: 'row',
             width: '100%',
-            height: 100,
+            height: 90,
             backgroundColor: '#fff',
             alignItems: 'center',
             justifyContent: 'space-around'
@@ -184,15 +184,14 @@ export default class DrawerExample extends React.Component {
           </View>
           <View style={styles.last}>
             <View style={{
-              height: 50, justifyContent: 'center',
+              height: 35, justifyContent: 'center',
               alignItems: 'center',
               borderBottomWidth: 0.5,
               borderColor: "#000",
-              marginBottom: 20
             }}>
-              <Text style={{ fontSize: 15, color: '#c9ab77' }}>新品推荐</Text>
+              <Text style={{ fontSize: 16, color: '#c9ab77' }}>新品推荐</Text>
             </View>
-            <View style={{ marginBottom: 60 }}>
+            <View style={{ marginBottom: 50 }}>
               <SafeAreaView style={styles.container1}>
                 <SectionList />
 
@@ -274,7 +273,6 @@ const styles = StyleSheet.create({
   },
   container: {
     backgroundColor: 'white',
-    marginVertical: 10,
     paddingVertical: 10
   },
   swiper: {

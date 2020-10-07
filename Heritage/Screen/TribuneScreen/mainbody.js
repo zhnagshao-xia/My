@@ -9,9 +9,13 @@ import {
     TouchableOpacity,
     Image, ScrollView,
     Alert,
-    AsyncStorage
+    AsyncStorage,
+    NativeModules,
+  LayoutAnimation,
 } from 'react-native';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import FontAwesome from 'react-native-vector-icons/FontAwesome'
+import EvilIcons from 'react-native-vector-icons/EvilIcons'
+import Feather from 'react-native-vector-icons/Feather'
 
 var https = "http://121.196.191.45";
 var http = "http://192.168.50.91:3000";
@@ -27,7 +31,31 @@ var copyyonghuming;
 var copytouxiang;
 var copyyonghuming2;
 
+const { UIManager } = NativeModules;
+UIManager.setLayoutAnimationEnabledExperimental &&
+UIManager.setLayoutAnimationEnabledExperimental(true);
+var ffk = true;
+
 export default class mainbody extends Component {
+
+  state = {
+    w: 0,
+    h: 0,
+  };
+
+  _onPress = () => {
+    // Animate the update
+    if (ffk) {
+      LayoutAnimation.spring();
+      this.setState({ w: this.state.w + 200, h: this.state.h + 200 })
+      ffk = false
+    } else {
+      this.setState({ w: 0, h: 0 })
+      ffk = true;
+    }
+  }
+
+
     constructor(props) {
         super(props);
         const { navigation, route } = this.props;
@@ -284,7 +312,7 @@ export default class mainbody extends Component {
                                 width: '100%',
                                 backgroundColor: '#fff',
                                 paddingHorizontal:20,
-                                paddingBottom:10
+                                paddingBottom:20
                             }}>
                                 <View style={{
                                     flexDirection: 'row',
@@ -308,18 +336,21 @@ export default class mainbody extends Component {
                                             this._onClickPinglunlikes(),
                                             this.fetchData()
                                         }}>
-                                            <FontAwesome name={'thumbs-up'} size={20} color={'#000'} />
+                                            <FontAwesome name={'heart-o'} size={20} color={'#000'} />
                                         </TouchableOpacity>
                                         <Text style={{ fontSize: 13, marginLeft: 5 }}>{item.likes}</Text>
                                     </View>
                                 </View>
-                                <View style={{ width: '100%', height: 50, }}>
+                                <View style={{ width: '100%',marginBottom:10}}>
                                     <Text style={{ fontSize: 13 }}>{item.huitie}</Text>
                                 </View>
-                                <TouchableOpacity style={{ width: '95%', height: 25, backgroundColor: '#e7e7e7', borderRadius: 5, alignItems: 'center', flexDirection: 'row' }}>
-                                    <Text style={{ fontSize: 13, marginRight: 5 }}>    共12条回复</Text>
+                                <TouchableOpacity 
+                                onPress={this._onPress}
+                                style={{ width: '95%', height: 25, backgroundColor: '#e7e7e7', borderRadius: 5, alignItems: 'center', flexDirection: 'row' }}>
+                                    <Text style={{ fontSize: 13, marginRight: 5 }}>共12条回复</Text>
                                     <FontAwesome name={'angle-right'} size={20} color={'#000'} />
                                 </TouchableOpacity>
+                                <View style={[styles.box, { width: this.state.w, height: this.state.h }]} />
                             </View>
                         }
                     />
@@ -337,13 +368,13 @@ export default class mainbody extends Component {
                     onPress={() => { 
                         copy_id=docs._id;
                         this.onShare(); }}>
-                        <FontAwesome name={'link=ext'} size={20} color={'#000'} />
+                        <EvilIcons name={'share-google'} size={30} color={'#000'} />
                         <Text style={{ fontSize: 15, marginLeft: 5 }}>{docs.forward}</Text>
                     </TouchableOpacity>
                     <TouchableOpacity 
                     activeOpacity={0.8}
                     style={{ width: 100, height: 40, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-                        <FontAwesome name={'commenting'} size={20} color={'#000'} />
+                        <FontAwesome name={'heart-o'} size={20} color={'#000'} />
                         <Text style={{ fontSize: 15, marginLeft: 5 }}>评论</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
@@ -353,7 +384,7 @@ export default class mainbody extends Component {
                         copy_id1=docs._id;
                         this._onClickLikes();
                     }}>
-                        <FontAwesome name={'thumbs-up'} size={20} color={'#000'} />
+                        <Feather name={'message-square'} size={22} color={'#000'} />
                         <Text style={{ fontSize: 15, marginLeft: 5 }}>{docs.likes}</Text>
                     </TouchableOpacity>
                 </View>
@@ -416,6 +447,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection: 'row'
-    }
+    },
+    box: {
+      width: 200,
+      height:200,
+      backgroundColor: 'red',
+    },
 
 }); 

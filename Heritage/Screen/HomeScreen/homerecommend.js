@@ -188,86 +188,86 @@ export default class homerecommend extends Component {
       })
   }
 
-  static defaultProps = {
-    multiList: [
-      {
-        "id": "0",
-        "name": "音乐",
-        select: false
-      },
-    ]
-  };
-  //多选
-  _selectMultiItemPress(item) {
-    if (item.select) {
-      this.state.selectMultiItem.splice(this.state.selectMultiItem.findIndex(function (x) {
-        return x === item.id;
-      }), 1);
-    } else {
-      this.state.selectMultiItem.push(item.id);
-    }
-    this.state.multiData[item.id].select = !item.select;
-    this.setState({ multiData: this.state.multiData });
-  }
-  //递交 选中 
-  _submitMultiPress() {
-    alert(`选中了${JSON.stringify(this.state.selectMultiItem)}`)
-  }
-  //渲染多选标记
-  _renderMultiMark() {
-    let multiData = this.state.docs;
+  // static defaultProps = {
+  //   multiList: [
+  //     {
+  //       "id": "0",
+  //       "name": "音乐",
+  //       select: false
+  //     },
+  //   ]
+  // };
+  // //多选
+  // _selectMultiItemPress(item) {
+  //   if (item.select) {
+  //     this.state.selectMultiItem.splice(this.state.selectMultiItem.findIndex(function (x) {
+  //       return x === item.id;
+  //     }), 1);
+  //   } else {
+  //     this.state.selectMultiItem.push(item.id);
+  //   }
+  //   this.state.multiData[item.id].select = !item.select;
+  //   this.setState({ multiData: this.state.multiData });
+  // }
+  // //递交 选中 
+  // _submitMultiPress() {
+  //   alert(`选中了${JSON.stringify(this.state.selectMultiItem)}`)
+  // }
+  // //渲染多选标记
+  // _renderMultiMark() {
+  //   let multiData = this.state.docs;
     
-    let len = multiData.length;
-    let menuArr = [];
-    for (let i = 0; i < len; i++) {
-      let item = multiData[i];
-      if (item.select) {
-        menuArr.push(
-          //选中状态
-          <TouchableOpacity
-            onPress={() => this._selectMultiItemPress(item)}
-          >
-            <Text style={{
-              fontSize: 12,
-              color: "#000",
-              textAlign: "center",
-              flexDirection: "row"
-            }}>已关注</Text>
-          </TouchableOpacity>
-        )
-      } else {
-        menuArr.push(
-          // 未选中状态
-          <TouchableOpacity
-            onPress={() => this._selectMultiItemPress(item)}
-            style={{}}>
-            <Text style={{
-              fontSize: 12,
-              color: "#000",
-              textAlign: "center",
-            }}>+关注</Text>
-          </TouchableOpacity>
-        )
-      }
-    }
-    return (
-      //讲各类状态框输出到前端页面
-      <TouchableOpacity
-        activeOpacity={0.8}
-        style={styles.guanzhu}
-        onPress={() => {
-          copyusername = username,
-            copyusericon = usericon,
-            copyname = item.name,
-            copytouxiang = item.touxiang,
-            this._onClickAddguanzhu1(),
-            this._onClickAddguanzhu2(),
-            this._onClickAddguanzhu3()
-        }}>
-        {menuArr}
-      </TouchableOpacity>
-    );
-  }
+  //   let len = multiData.length;
+  //   let menuArr = [];
+  //   for (let i = 0; i < len; i++) {
+  //     let item = multiData[i];
+  //     if (item.select) {
+  //       menuArr.push(
+  //         //选中状态
+  //         <TouchableOpacity
+  //           onPress={() => this._selectMultiItemPress(item)}
+  //         >
+  //           <Text style={{
+  //             fontSize: 12,
+  //             color: "#000",
+  //             textAlign: "center",
+  //             flexDirection: "row"
+  //           }}>已关注</Text>
+  //         </TouchableOpacity>
+  //       )
+  //     } else {
+  //       menuArr.push(
+  //         // 未选中状态
+  //         <TouchableOpacity
+  //           onPress={() => this._selectMultiItemPress(item)}
+  //           style={{}}>
+  //           <Text style={{
+  //             fontSize: 12,
+  //             color: "#000",
+  //             textAlign: "center",
+  //           }}>+关注</Text>
+  //         </TouchableOpacity>
+  //       )
+  //     }
+  //   }
+  //   return (
+  //     //讲各类状态框输出到前端页面
+  //     <TouchableOpacity
+  //       activeOpacity={0.8}
+  //       style={styles.guanzhu}
+  //       onPress={() => {
+  //         copyusername = username,
+  //           copyusericon = usericon,
+  //           copyname = item.name,
+  //           copytouxiang = item.touxiang,
+  //           this._onClickAddguanzhu1(),
+  //           this._onClickAddguanzhu2(),
+  //           this._onClickAddguanzhu3()
+  //       }}>
+  //       {menuArr}
+  //     </TouchableOpacity>
+  //   );
+  // }
 
 
   render() {
@@ -401,24 +401,26 @@ export default class homerecommend extends Component {
                       }}>
                         <View style={{ marginLeft: 110, marginVertical: 10 }}>
                           <Text style={{ fontSize: 14 }}>{item.name}</Text>
+                          <View style={{width:150}}>
                           <Text style={{ color: '#c6a46c', fontSize: 12 }}>{item.chenghao}</Text>
+                          </View>
                         </View>
                         <View
-                          // activeOpacity={0.8}
-                          // style={styles.guanzhu}
-                          // onPress={() => {
-                          //   copyusername = username,
-                          //     copyusericon = usericon,
-                          //     copyname = item.name,
-                          //     copytouxiang = item.touxiang,
-                          //     this._onClickAddguanzhu1(),
-                          //     this._onClickAddguanzhu2(),
-                          //     this._onClickAddguanzhu3()
-                          // }}
+                          activeOpacity={0.8}
+                          style={styles.guanzhu}
+                          onPress={() => {
+                            copyusername = username,
+                              copyusericon = usericon,
+                              copyname = item.name,
+                              copytouxiang = item.touxiang,
+                              this._onClickAddguanzhu1(),
+                              this._onClickAddguanzhu2(),
+                              this._onClickAddguanzhu3()
+                          }}
                           >
-                          {this._renderMultiMark()}
-                          {/* <Text style={{ color: '#945357', fontSize: 12, marginRight: 3 }}>+</Text>
-                          <Text style={{ fontSize: 12 }}>关注</Text> */}
+                          {/* {this._renderMultiMark()} */}
+                          <Text style={{ color: '#945357', fontSize: 12, marginRight: 3 }}>+</Text>
+                          <Text style={{ fontSize: 12 }}>关注</Text>
                         </View>
                         <TouchableOpacity
                           activeOpacity={0.8}
@@ -607,7 +609,7 @@ const styles = StyleSheet.create({
     marginBottom: 15
   },
   Headlines_right: {
-    marginLeft: 15,
+    marginLeft: 10,
     width: 300,
     justifyContent: 'center'
   },

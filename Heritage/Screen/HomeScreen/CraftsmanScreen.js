@@ -176,7 +176,8 @@ export default class CollectionScreen extends Component{
               }}>
                 <View style={{ marginLeft: 110, marginVertical: 10 }}>
                   <Text style={{ fontSize: 14 }}>{item.name}</Text>
-                  <Text style={{ color: '#c6a46c', fontSize: 12 }}>{item.chenghao}</Text>
+                  <View style={{width:150}}>
+                  <Text style={{ color: '#c6a46c', fontSize: 12 }}>{item.chenghao}</Text></View>
                 </View>
                 <TouchableOpacity 
                 style={styles.guanzhu}
