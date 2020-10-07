@@ -45,12 +45,14 @@ import Reviewscreen from './ShopScreen/Reviewscreen'
 import Typeone from './ShopScreen/Typeone'
 import Shopclassifymore from './ShopScreen/Shopclassifymore'
 import Shoplist from './ShopScreen/Shoplist'
+import Buynow from './ShopScreen/buynow'
 
 import Tribunefollow from './TribuneScreen/Tribunefollow'
 import Tribunerecommend from './TribuneScreen/Tribunerecommend'
 import Tribunenewest from './TribuneScreen/Tribunenewest'
 import message from './TribuneScreen/message'
 import publish from './TribuneScreen/publish'
+import mainbody from './TribuneScreen/mainbody'
 
 import CollectionScreen from './MyScreen/CollectionScreen'
 import followScreen from './MyScreen/followScreen'
@@ -264,6 +266,7 @@ function MyStack() {
       <Stack.Screen name="Typeone" component={Typeone} />
       <Stack.Screen name="Shopclassifymore" component={Shopclassifymore}/>
       <Stack.Screen name="Shoplist" component={Shoplist}/>
+      <Stack.Screen name="Buynow" component={Buynow}/>
 
       <Stack.Screen name="讨论" component={TribuneScreen} />
       <Stack.Screen name="Tribunefollow" component={Tribunefollow} />
@@ -271,6 +274,7 @@ function MyStack() {
       <Stack.Screen name="Tribunenewest" component={Tribunenewest} />
       <Stack.Screen name="message" component={message} />
       <Stack.Screen name="publish" component={publish} />
+      <Stack.Screen name="mainbody" component={mainbody} />
 
       <Stack.Screen name="我的" component={MyScreen} />
       <Stack.Screen name="收藏" component={CollectionScreen} />

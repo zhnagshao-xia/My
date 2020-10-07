@@ -101,13 +101,7 @@ export default class Shopclassifymore extends React.Component {
                         alignItems: "center",
                     }}>
                         <View style={{ width: "92%" }}>
-                            <View style={{
-                                borderColor: "#000",
-                                borderRadius: 100,
-                                height: 0.5,
-                                borderWidth: 0.5,
-                                borderStyle:"dashed"
-                            }}></View>
+                           
                         </View>
                         <View style={{ width: "92%" }}>
                             <View style={{ marginTop: 30, width: 130 }}>

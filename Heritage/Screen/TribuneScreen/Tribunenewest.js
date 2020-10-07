@@ -1,13 +1,51 @@
-import React from 'react';
+import React ,{Component} from 'react';
 import { Share, ScrollView, Text, View, TouchableOpacity, StyleSheet, ImageBackground, Image, FlatList } from 'react-native';
 import { Tabs } from '@ant-design/react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import EvilIcons from 'react-native-vector-icons/EvilIcons'
 import Feather from 'react-native-vector-icons/Feather'
-export default function CollectionScreen() {
 
-  const onShare = async () => {
+var https = "http://121.196.191.45";
+var http = "http://192.168.50.91:3000";
+var URL1 = http+"/luntan";
+
+export default class CollectionScreen extends Component{
+  constructor(props) {
+    super(props);
+    this.state = {
+      docs:[]
+    };
+  }
+
+  componentDidMount() {
+    this.fetchData();
+  }
+
+  fetchData() {
+    fetch(URL1, {
+      method: 'POST',
+      credentials: "include",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      }
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        this.setState({
+          docs: json.docs,
+        })
+        console.log(json.docs)
+      })
+      .catch((error) => console.error(error))
+      .finally(() => {
+        this.setState({ isLonding: false });
+      });
+  }
+
+
+ onShare = async () => {
     try {
       const result = await Share.share({
         message:
@@ -27,18 +65,16 @@ export default function CollectionScreen() {
     }
   };
 
+render(){
+  const { navigation } = this.props;
+  const data = this.state.docs;
   return (
     <View style={{ width: '100%', backgroundColor: '#f2f2f2' }}>
       <FlatList
-        data={[
-          { key: '' },
-          { key: '' },
-          { key: '' },
-          { key: '' },
-        ]}
+        data={data}
         renderItem={({ item }) =>
           <View style={styles.one}>
-            <Text style={styles.demol}>{item.key}</Text>
+            {/* <Text style={styles.demol}>{item.key}</Text> */}
             <View style={{ width: '100%', flexDirection: 'row' }}>
               <Image style={{
                 width: 50,
@@ -47,7 +83,7 @@ export default function CollectionScreen() {
                 backgroundColor: '#000',
                 margin: 10
               }}
-                source={require('../../Image/TribuneScreen/pic10.jpg')}>
+                source={{uri:https+item.touxiang}}>
               </Image>
               <View >
                 <View style={{
@@ -58,16 +94,16 @@ export default function CollectionScreen() {
                 }}>
                   <View>
                     <Text style={{ fontSize: 15, marginBottom: 5 }}>
-                      叶子不是椰子
+                      {item.yonghuming}
                       </Text>
                     <Text style={{ fontSize: 12 }}>
-                      刚刚
+                      {item.time}
                       </Text>
                   </View>
                 </View>
                 <View style={{ width: '85%', marginBottom: 10 }}>
                   <Text style={{ fontSize: 13 }}>
-                    浙江省级非物质文化遗产已于2005年、2007年公布了两批，共计289项。是我国非物质文化遗产保护较早的省份之一，保护成果具中国首位。
+                    {item.content}
                     </Text>
                 </View>
                 <View style={{
@@ -78,11 +114,23 @@ export default function CollectionScreen() {
                 }}>
                   <TouchableOpacity
                   activeOpacity={0.8}
-                  onPress={onShare}>
-                    <EvilIcons name={'share-google'} size={30} color={'#000'} /></TouchableOpacity>
-                  <TouchableOpacity>
-                    <FontAwesome name={'heart-o'} size={20} color={'#000'} /></TouchableOpacity>
-                  <TouchableOpacity>
+                    onPress={() => { this.onShare(); }}>
+                      <View style={{flexDirection: 'row',}}>
+                    <EvilIcons name={'share-google'} size={30} color={'#000'} />
+              <Text style={{marginLeft:5}}>{item.forward}</Text>
+                    </View>
+                    </TouchableOpacity>
+                  <TouchableOpacity
+                  activeOpacity={0.8}>
+                    <View style={{flexDirection: 'row',}}>
+                    <FontAwesome name={'heart-o'} size={20} color={'#000'} />
+                    <Text style={{marginLeft:5}}>{item.likes}</Text>
+                    </View>
+                    </TouchableOpacity>
+                  <TouchableOpacity
+                  activeOpacity={0.8}
+                  onPress={()=>
+                  navigation.navigate('mainbody',{_id:item._id})}>
                     <Feather name={'message-square'} size={22} color={'#000'} /></TouchableOpacity>
                 </View>
               </View>
@@ -91,7 +139,7 @@ export default function CollectionScreen() {
         }
       />
     </View>
-  );
+  )};
 }
 const styles = StyleSheet.create({
   one: {

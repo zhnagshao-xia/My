@@ -15,20 +15,26 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome'
 var https = "http://121.196.191.45";
 var http = "http://192.168.50.91:3000";
 var URL1 = http + "/shopping/shopcar/address";
-var URL2 = http + "/shopping/shopcar/goods";
-var URL3 = http + "/shopping/shopcar/allprice";
-var URL4 = http + "/shopping/shopcar/buy";
-var URL5 = http + "/shopping/shopcar/allbuy";
+var URL2 = http + "/shopping/shopcar/buy";
 var copyusername;
 
-export default class App extends Component {
+export default class buynow extends Component {
     constructor(props) {
         super(props);
+        const { navigation, route } = this.props;
+        let goods = route.params.goods;
+        let miaoshu = route.params.miaoshu;
+        let fengmian = route.params.fengmian;
+        let price = route.params.price;
+        let number = route.params.number;
         this.state={
+            goods,
+            miaoshu,
+            fengmian,
+            price,
+            number,
             username:"立即登录",
             address:[],
-            shopcar:[],
-            sum:[]
         }
     }
 
@@ -60,80 +66,43 @@ export default class App extends Component {
             .finally(() => {
                 this.setState({ isLonding: false });
             });
-            fetch(URL2, {
-                method: 'POST',
-                credentials: "include",
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    username: this.state.username
-                })
-            })
-                .then((response) => response.json())
-                .then((json) => {
-                    this.setState({
-                        shopcar: json.docs[0].shopcar,
-                    })
-                    console.log("1111"+json.docs)
-                })
-                .catch((error) => console.error(error))
-                .finally(() => {
-                    this.setState({ isLonding: false });
-                });
-                fetch(URL3, {
-                    method: 'POST',
-                    credentials: "include",
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        username: this.state.username
-                    })
-                })
-                    .then((response) => response.json())
-                    .then((json) => {
-                        this.setState({
-                            sum: json.docs[0].sum,
-                        })
-                        console.log("1111"+json.docs)
-                    })
-                    .catch((error) => console.error(error))
-                    .finally(() => {
-                        this.setState({ isLonding: false });
-                    });
         console.log("888" + username)
     }
 
-    _onClickAllbuy = () => {
-        fetch(URL5, {
-          method: 'POST',
-          credentials: "include",
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            username: copyusername,
+    _onClickBuy=()=>{
+        fetch(URL2, {
+            method: 'POST',
+            credentials: "include",
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              username: copyusername,
+              goods:this.state.goods,
+              fengmian:this.state.fengmian,
+              price:this.state.price,
+              number:this.state.number,
+              miaoshu:this.state.miaoshu
+            })
           })
-        })
-          .then(function (res) {
-            return res.json();
-          }).then(function (json) {
-            if (json.code == 200) {
-              Alert.alert("下单成功")
-            }
-          })
-      }
+            .then(function (res) {
+              return res.json();
+            }).then(function (json) {
+              if (json.code == 200) {
+              }
+            })
+    }
 
     render() {
         const { navigation } = this.props;
         const address = this.state.address;
-        const data = this.state.shopcar;
-        const sum =this.state.sum;
         const username = this.state.username;
+        const goods = this.state.goods;
+        const miaoshu = this.state.miaoshu;
+        const fengmian = this.state.fengmian;
+        const price = this.state.price;
+        const number = this.state.number;
         navigation.isFocused = () => {
             console.log("监测用户状态")
             this.checkUserAction();
@@ -182,44 +151,35 @@ export default class App extends Component {
                                 <Text style={{ fontSize: 15, marginTop: 15 }}>{address.dizhi}</Text>
                             </View>
                         </View>
-                        <FlatList
-                            data={data}
-                            renderItem={({ item }) =>
-                            tradeBox(item.goods,item.fengmian,item.price,item.number,item.miaoshu)}/>
-                        <FlatList
-                            data={data}
-                            renderItem={({ item }) =>
                                 <TouchableOpacity 
                                 activeOpacity={0.8}
-                                onPress={() => navigation.navigate('商品详情页面',{goods:item.goods})}
+                                onPress={() => navigation.navigate('商品详情页面',{goods:goods})}
                                 style={styles.one}>
                                     <View style={{ width: '100%', height: '80%', flexDirection: 'row', alignItems: 'center' }}>
                                         <View style={{ width: 110, height: '100%' }}>
-                                            <Image style={{ width: 100, height: 100, marginLeft: 15 }} source={{uri:https+item.fengmian}}></Image>
+                                            <Image style={{ width: 100, height: 100, marginLeft: 15 }} source={{uri:https+fengmian}}></Image>
 
                                         </View>
                                         <View style={{ width: 230, height: '95%', margin: 15 }}>
-                                            <Text style={{ fontSize: 15 }}>{item.miaoshu}</Text>
+                                            <Text style={{ fontSize: 15 }}>{miaoshu}</Text>
                                             <View style={{ flexDirection: 'row-reverse', marginTop: 30 }}>
-                                                <Text style={{ fontSize: 15, color: '#f76220', marginRight: 10 }}>￥{item.price}</Text>
+                                                <Text style={{ fontSize: 15, color: '#f76220', marginRight: 10 }}>￥{price}</Text>
                                                 <Text style={{ fontSize: 15 }}>小计：</Text>
                                             </View>
                                         </View>
                                     </View>
                                 </TouchableOpacity>
-                            }
-                        />
                         </View>
                 </ScrollView>
                 <View style={styles.footer}>
                     <Text style={{ fontSize: 15, marginLeft: 200 }}>合计：</Text>
-                    <Text style={{ fontSize: 20, color: '#f76220' }}>￥{sum}</Text>
+                    <Text style={{ fontSize: 20, color: '#f76220' }}>￥{price}</Text>
                     <TouchableOpacity 
                     activeOpacity={0.8}
                     onPress={() =>
                         {   
-                            // copyusername=username,
-                            // this._onClickAllbuy(),
+                            copyusername=username,
+                            this._onClickBuy(),
                             Alert.alert('下单成功')
                             navigation.navigate('订单',{username:username})}}
                     style={{ width: 80, height: 30, backgroundColor: '#f76220', marginLeft: 10, borderRadius: 15, alignItems: 'center', justifyContent: 'center' }}>
@@ -228,30 +188,6 @@ export default class App extends Component {
                 </View>
             </View>
         );
-        function tradeBox(goods,fengmian,price,number,miaoshu){
-                fetch(URL4, {
-                  method: 'POST',
-                  credentials: "include",
-                  headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                  },
-                  body: JSON.stringify({
-                    username: username,
-                    goods:goods,
-                    fengmian:fengmian,
-                    price:price,
-                    number:number,
-                    miaoshu:miaoshu
-                  })
-                })
-                  .then(function (res) {
-                    return res.json();
-                  }).then(function (json) {
-                    if (json.code == 200) {
-                    }
-                  })
-              }
         }
 }
 const styles = StyleSheet.create({
