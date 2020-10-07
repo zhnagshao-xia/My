@@ -27,6 +27,7 @@
     "react-native": "0.62.2",
     "react-native-animatable": "^1.3.3",
     "react-native-animated-tabs": "^1.3.3",
+    "react-native-collapsible": "^1.5.3",
     "react-native-ezswiper": "^1.3.0",
     "react-native-gesture-handler": "^1.6.1",
     "react-native-image-crop-picker": "^0.34.1",

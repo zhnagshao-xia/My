@@ -1,9 +1,30 @@
 import React from 'react';
-import { ScrollView, Text, View, TouchableOpacity, StyleSheet, ImageBackground, Image, FlatList } from 'react-native';
+import { Share,ScrollView, Text, View, TouchableOpacity, StyleSheet, ImageBackground, Image, FlatList } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import EvilIcons from 'react-native-vector-icons/EvilIcons'
 import Feather from 'react-native-vector-icons/Feather'
 export default function CollectionScreen() {
+
+  const onShare = async () => {
+    try {
+      const result = await Share.share({
+        message:
+          'React Native | A framework for building native apps using React',
+      });
+      if (result.action === Share.sharedAction) {
+        if (result.activityType) {
+          // shared with activity type of result.activityType
+        } else {
+          // shared
+        }
+      } else if (result.action === Share.dismissedAction) {
+        // dismissed
+      }
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
     return (
         <View style={{ width: '100%', backgroundColor: '#f2f2f2' }}>
           <FlatList
@@ -50,10 +71,17 @@ export default function CollectionScreen() {
                       flexDirection: 'row', 
                       marginBottom: 10, 
                       justifyContent: 'space-between', }}>
-                    <EvilIcons name={'share-google'} size={30} color={'#000'} />
-                    <FontAwesome name={'heart-o'} size={20} color={'#000'} />
-                    <Feather name={'message-square'} size={22} color={'#000'} />
-                    </View>
+                     <TouchableOpacity
+                  activeOpacity={0.8}
+                  onPress={onShare}>
+                    <EvilIcons name={'share-google'} size={30} color={'#000'} /></TouchableOpacity>
+                  <TouchableOpacity
+                  activeOpacity={0.8}>
+                    <FontAwesome name={'heart-o'} size={20} color={'#000'} /></TouchableOpacity>
+                  <TouchableOpacity
+                  activeOpacity={0.8}>
+                    <Feather name={'message-square'} size={22} color={'#000'} /></TouchableOpacity>
+                </View>
                   </View>
                 </View>
               </View>

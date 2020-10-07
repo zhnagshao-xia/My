@@ -7,13 +7,12 @@ import EvilIcons from 'react-native-vector-icons/EvilIcons'
 import Feather from 'react-native-vector-icons/Feather'
 export default function CollectionScreen() {
 
-  onShare = async () => {
+  const onShare = async () => {
     try {
       const result = await Share.share({
         message:
           'React Native | A framework for building native apps using React',
       });
-
       if (result.action === Share.sharedAction) {
         if (result.activityType) {
           // shared with activity type of result.activityType
@@ -27,7 +26,6 @@ export default function CollectionScreen() {
       alert(error.message);
     }
   };
-
 
   return (
     <View style={{ width: '100%', backgroundColor: '#f2f2f2' }}>
@@ -80,7 +78,7 @@ export default function CollectionScreen() {
                 }}>
                   <TouchableOpacity
                   activeOpacity={0.8}
-                    onPress={() => { this.onShare(); }}>
+                  onPress={onShare}>
                     <EvilIcons name={'share-google'} size={30} color={'#000'} /></TouchableOpacity>
                   <TouchableOpacity>
                     <FontAwesome name={'heart-o'} size={20} color={'#000'} /></TouchableOpacity>

@@ -37,6 +37,10 @@ export default class homerecommend extends Component {
       docs: [],
       docs1: [],
     }
+    this.state = {
+      multiData: this.props.multiList,
+      selectMultiItem: [],
+    }
   }
 
   checkUserAction = async () => {
@@ -184,6 +188,87 @@ export default class homerecommend extends Component {
       })
   }
 
+  static defaultProps = {
+    multiList: [
+      {
+        "id": "0",
+        "name": "音乐",
+        select: false
+      },
+    ]
+  };
+  //多选
+  _selectMultiItemPress(item) {
+    if (item.select) {
+      this.state.selectMultiItem.splice(this.state.selectMultiItem.findIndex(function (x) {
+        return x === item.id;
+      }), 1);
+    } else {
+      this.state.selectMultiItem.push(item.id);
+    }
+    this.state.multiData[item.id].select = !item.select;
+    this.setState({ multiData: this.state.multiData });
+  }
+  //递交 选中 
+  _submitMultiPress() {
+    alert(`选中了${JSON.stringify(this.state.selectMultiItem)}`)
+  }
+  //渲染多选标记
+  _renderMultiMark() {
+    let multiData = this.state.docs;
+    
+    let len = multiData.length;
+    let menuArr = [];
+    for (let i = 0; i < len; i++) {
+      let item = multiData[i];
+      if (item.select) {
+        menuArr.push(
+          //选中状态
+          <TouchableOpacity
+            onPress={() => this._selectMultiItemPress(item)}
+          >
+            <Text style={{
+              fontSize: 12,
+              color: "#000",
+              textAlign: "center",
+              flexDirection: "row"
+            }}>已关注</Text>
+          </TouchableOpacity>
+        )
+      } else {
+        menuArr.push(
+          // 未选中状态
+          <TouchableOpacity
+            onPress={() => this._selectMultiItemPress(item)}
+            style={{}}>
+            <Text style={{
+              fontSize: 12,
+              color: "#000",
+              textAlign: "center",
+            }}>+关注</Text>
+          </TouchableOpacity>
+        )
+      }
+    }
+    return (
+      //讲各类状态框输出到前端页面
+      <TouchableOpacity
+        activeOpacity={0.8}
+        style={styles.guanzhu}
+        onPress={() => {
+          copyusername = username,
+            copyusericon = usericon,
+            copyname = item.name,
+            copytouxiang = item.touxiang,
+            this._onClickAddguanzhu1(),
+            this._onClickAddguanzhu2(),
+            this._onClickAddguanzhu3()
+        }}>
+        {menuArr}
+      </TouchableOpacity>
+    );
+  }
+
 
   render() {
     const { navigation } = this.props;
@@ -305,7 +390,7 @@ export default class homerecommend extends Component {
                     <View style={{ width: '100%', height: 190 }}>
                       <Image
                         style={{ width: '100%', height: '100%', resizeMode: 'stretch', }}
-                        source={{ uri: https+item.xingxiangtu }}>
+                        source={{ uri: https + item.xingxiangtu }}>
                       </Image>
                     </View>
                     <View style={styles.fourword}>
@@ -318,28 +403,30 @@ export default class homerecommend extends Component {
                           <Text style={{ fontSize: 14 }}>{item.name}</Text>
                           <Text style={{ color: '#c6a46c', fontSize: 12 }}>{item.chenghao}</Text>
                         </View>
+                        <View
+                          // activeOpacity={0.8}
+                          // style={styles.guanzhu}
+                          // onPress={() => {
+                          //   copyusername = username,
+                          //     copyusericon = usericon,
+                          //     copyname = item.name,
+                          //     copytouxiang = item.touxiang,
+                          //     this._onClickAddguanzhu1(),
+                          //     this._onClickAddguanzhu2(),
+                          //     this._onClickAddguanzhu3()
+                          // }}
+                          >
+                          {this._renderMultiMark()}
+                          {/* <Text style={{ color: '#945357', fontSize: 12, marginRight: 3 }}>+</Text>
+                          <Text style={{ fontSize: 12 }}>关注</Text> */}
+                        </View>
                         <TouchableOpacity
-                        activeOpacity={0.8}
-                          style={styles.guanzhu}
-                          onPress={() => {
-                            copyusername = username,
-                              copyusericon = usericon,
-                              copyname = item.name,
-                              copytouxiang = item.touxiang,
-                              this._onClickAddguanzhu1(),
-                              this._onClickAddguanzhu2(),
-                              this._onClickAddguanzhu3()
-                          }}>
-                          <Text style={{ color: '#945357', fontSize: 12, marginRight: 3 }}>+</Text>
-                          <Text style={{ fontSize: 12 }}>关注</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity
-                        activeOpacity={0.8}
-                          onPress={() => navigation.navigate('手艺人详细页面',{name:item.name,username:username,usericon:usericon})}
+                          activeOpacity={0.8}
+                          onPress={() => navigation.navigate('手艺人详细页面', { name: item.name, username: username, usericon: usericon })}
                           style={styles.touxiang}>
                           <Image
                             style={{ width: '100%', height: '100%', resizeMode: 'stretch', }}
-                            source={{ uri: https+item.touxiang }}>
+                            source={{ uri: https + item.touxiang }}>
                           </Image>
                         </TouchableOpacity>
                       </View>
@@ -350,8 +437,8 @@ export default class homerecommend extends Component {
               />
             </ScrollView>
             <TouchableOpacity
-            activeOpacity={0.8}
-              onPress={() => navigation.navigate('手艺人',{username:username,usericon:usericon})}
+              activeOpacity={0.8}
+              onPress={() => navigation.navigate('手艺人', { username: username, usericon: usericon })}
               style={{
                 width: '95%',
                 height: 40,
@@ -385,20 +472,20 @@ export default class homerecommend extends Component {
                     <View style={{ width: '100%', height: 250, }}>
                       <Image
                         style={{ width: '100%', height: '100%', resizeMode: 'stretch', }}
-                        source={{uri:https+item.picture}}>
+                        source={{ uri: https + item.picture }}>
                       </Image>
                     </View>
                     <View style={{ width: '100%', height: 50, justifyContent: "center", alignItems: "center" }}>
                       <Text style={{ fontSize: 14 }}>
                         {item.jxlzproject}
-                  </Text>
+                      </Text>
                     </View>
                   </View>
                 }
               />
             </ScrollView>
             <TouchableOpacity
-            activeOpacity={0.8}
+              activeOpacity={0.8}
               onPress={() => navigation.navigate('匠心力作')}
               style={{
                 width: '100%',

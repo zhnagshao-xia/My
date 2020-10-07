@@ -1,21 +1,72 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
-  StyleSheet,
-  FlatList,
+  NativeModules,
+  LayoutAnimation,
   Text,
+  TouchableOpacity,
+  StyleSheet,
   View,
-  Image,
-  Animated,
-  Easing,
-  Path,
-  Svg,
-  G,
-  getPanelWidth
 } from 'react-native';
-import * as Animatable from 'react-native-animatable';
-import AnimatedTabs from "react-native-animated-tabs";
-import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
+const { UIManager } = NativeModules;
+
+UIManager.setLayoutAnimationEnabledExperimental &&
+  UIManager.setLayoutAnimationEnabledExperimental(true);
+  
+var ffk = true;
+export default class App extends React.Component {
+  state = {
+    w: 0,
+    h: 0,
+  };
+
+  _onPress = () => {
+    // Animate the update
+    if (ffk) {
+      LayoutAnimation.spring();
+      this.setState({ w: this.state.w+200, h: this.state.h + 200 })
+      ffk = false
+    } else {
+      this.setState({ w: 0, h: 0 })
+      ffk = true;
+    }
+  }
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <TouchableOpacity onPress={this._onPress}>
+          <View style={styles.button}>
+            <Text style={styles.buttonText}>Press me!</Text>
+          </View>
+        </TouchableOpacity>
+        <View style={[styles.box, { width: this.state.w, height: this.state.h }]} />
+      </View>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  box: {
+    width: 200,
+    backgroundColor: 'red',
+  },
+  button: {
+    backgroundColor: 'black',
+    paddingHorizontal: 20,
+    paddingVertical: 15,
+    marginTop: 15,
+  },
+  buttonText: {
+    color: '#fff',
+    fontWeight: 'bold',
+  },
+});
 
 
 // export default class App extends Component {
@@ -110,11 +161,5 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome'
 //     )
 //   }
 // }
-export default class LikeBtn extends React.Component {
-  render() {
-    return (
-      <Text style={{ fontSize: 60 }}>叶子铭大傻逼</Text>
-    );
-  }
-}
+// s
 

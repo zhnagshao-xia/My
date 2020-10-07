@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, ScrollView,FlatList, TouchableOpacity} from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
+import Chat from '../../chat'
 
 export default function Servicescreen ({navigation}){
   return (
@@ -33,21 +34,12 @@ export default function Servicescreen ({navigation}){
             }}>客服  </Text>
           </View>
         </View>
-      <ScrollView style={styles.body}>
-        
-      </ScrollView>
-      <View style={styles.bottom}>
-          <TouchableOpacity style={styles.icon}>
-               <FontAwesome name={'plus'} size={20} color={'#666666'}/>
-          </TouchableOpacity>
-          <View style={styles.input}>
-               <TextInput style={{ width: '100%', height: '60%', backgroundColor: '#dcdcdc', borderRadius: 20 }}></TextInput>
-          </View>
-          <TouchableOpacity style={styles.icon}>
-               <FontAwesome name={'send-o'} size={20} color={'#000'}/>
-          </TouchableOpacity>
+      <View style={{flex:1}}>
+        <Chat />
       </View>
     </View>
+
+    
   );
 }
 
@@ -56,11 +48,6 @@ export default function Servicescreen ({navigation}){
 const styles = StyleSheet.create({
     container: {
        flex: 1
-    },
-    body:{
-        width:'100%',
-        height:'90%',
-        backgroundColor:'#f2f2f2'
     },
     letter_up_1:{
       width:'80%',
@@ -74,24 +61,5 @@ const styles = StyleSheet.create({
       letterSpacing:1,
       top:4,
       left:4
-    },
-    bottom:{
-      backgroundColor:"#fff",
-        width:'100%',
-        height:'10%',
-        flexDirection:'row',
-        justifyContent:'space-between',
-    },
-    input:{
-        width:'76%',
-        height:'100%',
-        justifyContent:'center',
-        alignItems:'center'
-    },
-    icon:{
-        width:'12%',
-        height:'100%',
-        justifyContent:'center',
-        alignItems:'center'
     }
   }); 
