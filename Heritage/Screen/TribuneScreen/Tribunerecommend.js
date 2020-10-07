@@ -4,7 +4,10 @@ import { Tabs } from '@ant-design/react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import Barrage from './Barrage'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
-export default function CollectionScreen() {
+
+var https = "http://121.196.191.45";
+
+export default function CollectionScreen({navigation}) {
   return (
     <View>
       <View style={{
@@ -14,9 +17,9 @@ export default function CollectionScreen() {
         {/* <ImageBackground
           style={{ width: '100%', height: '100%', opacity: 0.2 }}
           source={require('../../Image/TribuneScreen/pic9.jpg')}> */}
-          <View style={{ flex: 1 }}>
-            <Barrage />
-          </View>
+        <View style={{ flex: 1 }}>
+          <Barrage />
+        </View>
         {/* </ImageBackground> */}
       </View>
       <View style={{
@@ -25,40 +28,25 @@ export default function CollectionScreen() {
         alignItems: 'center',
         justifyContent: 'center'
       }}>
-        <TouchableOpacity style={{
-          width: '90%',
-          height: '90%',
-          borderWidth: 2,
-          borderColor: 'black',
-          flexDirection: 'row',
-        
-        }}>
-          <Image style={{ width: 50, height: 50, borderRadius: 50, margin: 10 }}
-            source={require('../../Image/TribuneScreen/pic10.jpg')}>
+        <TouchableOpacity
+        onPress={() => navigation.navigate('mainbody',{_id:"5f593d16d4966ae48caebb7c"})}
+        activeOpacity={0.8}
+          style={{
+            width: '90%',
+            borderWidth: 2,
+            borderColor: 'black',
+            flexDirection: 'row',
+            padding: 10
+          }}>
+          <Image style={{ width: 50, height: 50, borderRadius: 50, marginRight: 10 }}
+            source={{ uri: https + "/picture/touxiang/fans/a0.jpg" }}>
           </Image>
-          <View style={{ flexDirection: 'column'}}>
-            <View style={{ flexDirection: 'row', marginVertical: 20 }}>
-              <Text style={{ fontSize: 15 }}>高血堂</Text>
-              <TouchableOpacity style={{
-                width: 50,
-                height: 20,
-                marginLeft: 30,
-                flexDirection: 'row',
-                alignItems: 'center',
-                borderWidth: 1,
-                borderColor: 'black',
-                justifyContent: "center",
-                borderRadius: 5
-              }}>
-                <Text style={{ color: '#945357', fontSize: 12, marginRight: 3 }}>+</Text>
-                <Text style={{ fontSize: 12 }}>关注</Text>
-              </TouchableOpacity>
-            </View>
-            <View style={{ width: '85%' }}>
-              <Text style={{ fontSize: 13, }}>官宣：浙江30件国家级非遗位数位列全国第一。</Text>
+          <View style={{ flexDirection: 'column' }}>
+            <Text style={{ fontSize: 15, marginTop: 10 }}>诗画浙江</Text>
+            <View style={{ width: '90%', marginTop: 10 }}>
+              <Text style={{ fontSize: 10, }}>【二十四节气：#在时间里感受非遗#】“春雨惊春清谷天，夏满芒夏暑相连。秋处露秋寒霜降，冬雪雪冬小大寒。”这首仅28个字的24节气歌蕴含了中华民族千百年来的智慧。2016年，“二十四节气”入选联合国教科文组织非物质文化遗产名录。#非遗在身边#惊蛰、谷雨、芒种...二十四节气的名字，你最喜欢哪一个</Text>
             </View>
           </View>
-
         </TouchableOpacity>
       </View>
       <View style={{ height: 60, flexDirection: 'row', alignItems: 'center', width: '90%', marginLeft: 20 }}>

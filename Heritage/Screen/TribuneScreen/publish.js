@@ -9,12 +9,22 @@ import {
   FlatList,
   Dimensions,
   Modal,
-  TouchableOpacity
+  TouchableOpacity,
+  AsyncStorage,
+  Alert
 } from 'react-native';
 import { TextInput } from 'react-native-paper';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import ImagePicker from 'react-native-image-crop-picker';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+
+var https = "http://121.196.191.45";
+var http = "http://192.168.50.91:3000";
+var URL = http + "/users/usericon";
+var URL1 = http+"/luntan/fatie";
+var copyusername;
+var copyusericon;
+
 export default class ModalComp extends Component {
 
   constructor(props) {
@@ -26,8 +36,89 @@ export default class ModalComp extends Component {
       title: '',
       words: '',
       modalVisible: false,
+      username: "立即登录",
+      usericon: "/picture/touxiang/fans/b0.jpg",
+      content:""
     };
   }
+
+  checkUserAction = async () => {
+    const res = await AsyncStorage.getItem('userInfo') || '{}'//AsyncStorage.getItem通过key字段来进行查询存储的数据，把该结果值作为参数传入第二个callback方法
+    const { username = '' } = JSON.parse(res)
+    username && this.setState({
+      username
+    })
+    fetch(URL, {//头像
+      method: 'POST',
+      credentials: "include",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: this.state.username,
+      })
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        this.setState({
+          usericon: json.docs[0].usericon,//usericon: json.docs[0].usericon,
+        })
+        console.log(json.docs)
+      })
+      .catch((error) => console.error(error))
+      .finally(() => {
+        this.setState({ isLonding: false });
+      });
+    console.log("888" + username),
+      this.fetchData();
+  }
+
+_onClickFatie = () => {
+  var date = new Date();
+  var seperatorl = "-";
+  var year = date.getFullYear();
+  var month = date.getMonth()+1;
+  var strDate = date.getDate();
+  var hour = date.getHours();
+  var minute = date.getMinutes();
+  if(month>=1&&month<=9){
+    month="0"+month;
+  }
+  if(strDate>=0&&strDate<=9){
+    strDate="0"+strDate;
+  }
+  if(hour>=0&&hour<=9){
+    hour="0"+hour;
+  }
+  if(minute>=1&&minute<=9){
+    minute="0"+minute
+  }
+  var currentdate = year+seperatorl+month+seperatorl+strDate+" "+hour+":"+minute;
+  fetch(URL1, {
+    method: 'POST',
+    credentials: "include",
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      username:copyusername,
+      usericon:copyusericon,
+      time:currentdate,
+      content:this.state.content,
+      picture:"/picture/luntan/a1.jpg"
+    })
+  })
+    .then(function (res) {
+      return res.json();
+    }).then(function (json) {
+      if (json.code == 200) {
+        Alert.alert("发帖成功")
+      }
+    })
+}
+
   _openModalWin = () => {
     this.setState({ modalVisible: true });
   }
@@ -57,6 +148,12 @@ export default class ModalComp extends Component {
   }
   render() {
     const { navigation, route } = this.props;
+    const username = this.state.username;
+    const usericon = this.state.usericon;
+    navigation.isFocused = () => {
+      console.log("监测用户状态")
+      this.checkUserAction();
+    }
     var imgDate = [
       {
         key: 1,
@@ -124,7 +221,12 @@ export default class ModalComp extends Component {
           }}>消息</Text>
           <TouchableOpacity
           activeOpacity={0.8}
-            onPress={this._openModalWin}
+          onPress={()=>{
+            copyusername=username,
+            copyusericon=usericon,
+            this._openModalWin,
+            this._onClickFatie(),
+            navigation.goBack('Tribunerecommend')}}
             style={styles.out}>
             <Text style={{ color: '#fff', fontSize: 13 }}>发送</Text>
           </TouchableOpacity>
@@ -179,6 +281,9 @@ export default class ModalComp extends Component {
             placeholder="分享你的想法..."
             maxLength={100}
             multiline={true}
+            onChangeText={(text)=>{
+              this.setState({content:text});
+            }}
             style={{ backgroundColor: '#f2f2f2', fontSize: 15 }}
           ></TextInput>
           <View style={{ width: '100%', height: 150 }}>

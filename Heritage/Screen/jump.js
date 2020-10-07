@@ -52,6 +52,7 @@ import Tribunerecommend from './TribuneScreen/Tribunerecommend'
 import Tribunenewest from './TribuneScreen/Tribunenewest'
 import message from './TribuneScreen/message'
 import publish from './TribuneScreen/publish'
+import mainbody from './TribuneScreen/mainbody'
 
 import CollectionScreen from './MyScreen/CollectionScreen'
 import followScreen from './MyScreen/followScreen'
@@ -273,6 +274,7 @@ function MyStack() {
       <Stack.Screen name="Tribunenewest" component={Tribunenewest} />
       <Stack.Screen name="message" component={message} />
       <Stack.Screen name="publish" component={publish} />
+      <Stack.Screen name="mainbody" component={mainbody} />
 
       <Stack.Screen name="我的" component={MyScreen} />
       <Stack.Screen name="收藏" component={CollectionScreen} />

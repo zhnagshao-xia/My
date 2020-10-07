@@ -1,257 +1,421 @@
-import React, { useState } from "react";
-import { 
-    StyleSheet, 
-    Text, 
-    View, 
-    TextInput, 
-    FlatList, 
+import React, { Component } from "react";
+import {
+    Share,
+    StyleSheet,
+    Text,
+    View,
+    TextInput,
+    FlatList,
     TouchableOpacity,
-    Image,
+    Image, ScrollView,
+    Alert,
+    AsyncStorage
 } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
-// function activityUser(userBackGroundPic, head, username, lineNum, userLv, select) {
-const App = () => {
-    const [count, setCount] = useState(150);
-    const onPress = () => setCount(prevCount => prevCount + 1);
-    // const [count2, setCount2] = useState(50);
-    // const onPress = () => setCount2(prevCount2 => prevCount2 + 1);]
-  return (
-    <View style={styles.container}>
-        <View style={{height:45,
-        backgroundColor:"#fff",
-        alignItems:"center",
-        justifyContent:"center",
-        borderBottomColor:'black',
-        borderWidth:0.5
-        }}>
-            <View style={{flexDirection:'row',justifyContent:"space-between",width:"90%"}}>
-                <TouchableOpacity
-                    onPress={() => navigation.goBack()}>
-                    <FontAwesome name={'angle-left'} size={25} color={'#000'} />
+var https = "http://121.196.191.45";
+var http = "http://192.168.50.91:3000";
+var URL1 = http+"/luntan/zhengwen";
+var URL2 = http+"/luntan/forward";
+var URL3 = http+"/luntan/likes";
+var URL4 = http+"/luntan/zhengwen/addguanzhu";
+var URL5 = http+"/luntan/pinglun/likes";
+var copy_id;
+var copy_id1;
+var copyusername;
+var copyyonghuming;
+var copytouxiang;
+var copyyonghuming2;
 
-                </TouchableOpacity>
-                <Text style={{fontSize:18,
-                textAlign: 'center',
-                textAlignVertical: 'center',}}>正文</Text>
-                 <View></View>
-            </View>
-           
-      </View>
-      <View style={styles.body}>
-        <FlatList
-            data={[{word: '我爱非遗+',
-            a:'非物质文化遗产，是根据联合国教科文组织的《保护非物质文化遗产公约》定义。',
-            word2:'非遗+',
-            b:'共两条评论'
-        },
-            
-        
-                  ]}
-                    renderItem={({ item }) =>
-                    <View>
-                        <View style={styles.ques}>
-                            <View style={styles.names}>
+export default class mainbody extends Component {
+    constructor(props) {
+        super(props);
+        const { navigation, route } = this.props;
+        let _id = route.params._id;
+        this.state = {
+            username:"立即登录",
+            _id,
+            docs:[],
+            pinglun:[],
+            picture:[]
+        }
+      }
+
+      checkUserAction = async () => {
+        const res = await AsyncStorage.getItem('userInfo') || '{}'//AsyncStorage.getItem通过key字段来进行查询存储的数据，把该结果值作为参数传入第二个callback方法
+        const { username = '' } = JSON.parse(res)
+        username && this.setState({
+          username
+        })}
+
+      componentDidMount() {
+        this.fetchData();
+      }
+    
+      fetchData() {
+        fetch(URL1, {
+          method: 'POST',
+          credentials: "include",
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            _id: this.state._id,
+          })
+        })
+          .then((response) => response.json())
+          .then((json) => {
+            this.setState({
+              docs: json.docs[0],
+              pinglun:json.docs[0].pinglun,
+              picture:json.docs[0].picture
+            })
+            console.log(json.docs)
+          })
+          .catch((error) => console.error(error))
+          .finally(() => {
+            this.setState({ isLonding: false });
+          });
+      }
+
+      _onClickForward = () => {
+        fetch(URL2, {
+          method: 'POST',
+          credentials: "include",
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            _id: copy_id,
+          })
+        })
+          .then(function (res) {
+            return res.json();
+          }).then(function (json) {
+            if (json.code == 200) {
+              Alert.alert("收藏成功")
+            }
+          })
+      }
+    
+      _onClickLikes = () => {
+        fetch(URL3, {
+          method: 'POST',
+          credentials: "include",
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            _id: copy_id1,
+          })
+        })
+          .then(function (res) {
+            return res.json();
+          }).then(function (json) {
+            if (json.code == 200) {
+              Alert.alert("点赞成功")
+            }
+          })
+      }
+
+      _onClickPinglunlikes = () => {
+        fetch(URL5, {
+          method: 'POST',
+          credentials: "include",
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            yonghuming:copyyonghuming2,
+          })
+        })
+          .then(function (res) {
+            return res.json();
+          }).then(function (json) {
+            if (json.code == 200) { 
+              Alert.alert("点赞成功")
+            }
+          })
+      }
+
+      _onClickAddguanzhu = () => {
+        fetch(URL4, {
+          method: 'POST',
+          credentials: "include",
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            username: copyusername,
+            yonghuming:copyyonghuming,
+            touxiang:copytouxiang
+          })
+        })
+          .then(function (res) {
+            return res.json();
+          }).then(function (json) {
+            if (json.code == 200) {
+              Alert.alert("关注成功") 
+            }
+          })
+      }
+
+      onShare = async () => {
+        try {
+          const result = await Share.share({
+            message:
+              'React Native | A framework for building native apps using React',
+          });
+    
+          if (result.action === Share.sharedAction) {
+            if (result.activityType) {
+              // shared with activity type of result.activityType
+            } else {
+              // shared
+            }
+          } else if (result.action === Share.dismissedAction) {
+            // dismissed
+          }
+        } catch (error) {
+          alert(error.message);
+        }
+        this._onClickForward();
+        this.fetchData();
+      };
+
+    render() {
+        const { navigation } = this.props;
+        const docs = this.state.docs;
+        const data = this.state.pinglun;
+        const data1 = this.state.picture;
+        const username = this.state.username;
+        navigation.isFocused = () => {
+            console.log("监测用户状态")
+            this.checkUserAction();
+          }
+        return (
+            <View style={{flex:1}}>
+                <View style={{
+                    height: 45,
+                    backgroundColor: "#fff",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    borderBottomColor: 'black',
+                    borderWidth: 0.5
+                }}>
+                    <View style={{ flexDirection: 'row', justifyContent: "space-between", width: "90%" }}>
+                        <TouchableOpacity
+                            onPress={() => navigation.goBack()}
+                        >
+                            <FontAwesome name={'angle-left'} size={25} color={'#000'} />
+                        </TouchableOpacity>
+                        <Text style={{
+                            fontSize: 18,
+                            textAlign: 'center',
+                            textAlignVertical: 'center',
+                        }}>正文</Text>
+                        <View></View>
+                    </View>
+
+                </View>
+                <ScrollView style={styles.body}>
+                    <View style={styles.ques}>
+                        <View style={styles.names}>
+                            <View style={{
+                                flexDirection: 'row'
+                            }}>
                                 <Image
-                                source={require('../../Image/ShopScreen/pic10.jpg')}
-                                style={styles.head}></Image>
-                                <View style={styles.right}>
-                                    <View style={styles.shang}>
-                                        <Text style={styles.word}>{item.word}</Text>
-                                        <TouchableOpacity style={styles.guanzhu}>
-                                            <FontAwesome name={'plus'} size={10} color={'#000'} />
-                                            <Text style={{fontSize:12,color:'black'}}>关注</Text>
-                                        </TouchableOpacity>
-                                    </View>     
-                                    <Text style={{fontSize:12,marginLeft:2}}>刚刚</Text>
+                                    source={{uri:https+docs.touxiang}}
+                                    style={styles.head}>
+                                </Image>
+                                <View style={{
+                                    flexDirection: 'column',
+                                    marginTop: 10
+                                }}>
+                                    <Text style={styles.word}>{docs.yonghuming}</Text>
+                                    <Text style={{ fontSize: 12, marginLeft: 2 }}>{docs.time}</Text>
                                 </View>
-                            </View>  
-                            <View style={{width:390,height:50}}>
-                                <Text style={{fontSize:13}}>{item.a}</Text>   
-                            </View>    
-                            <View style={{width:390,height:90}}>
-                                <Image style={{width:90,height:90}}
-                                source={require('../../Image/TribuneScreen/pic9.jpg')}
-                                ></Image>
-                            </View>    
-                        </View> 
-                        <View style={{width:'100%',backgroundColor:'#fff',marginTop:20,alignItems:'center'}}>
-                            <View style={{width:'100%',height:40,backgroundColor:'#fff',alignItems:'center',justifyContent:'center'}}>
-                                <Text style={{fontSize:15}}>评论</Text>
                             </View>
-                            <View style={{width:390,height:150,alignItems:'center'}}>
-                                <View style={{width:'100%',height:50,alignItems:'center',flexDirection:'row'}}>
-                                    <Image
-                                     source={require('../../Image/ShopScreen/pic10.jpg')}
-                                     style={{width:40,height:40,backgroundColor:'black',borderRadius:50,marginRight:5}}></Image> 
-                                    <View style={{width:340,height:40}}>
-                                        <View style={{width:'100%',height:'60%',flexDirection:'row',alignItems:'center'}}>
-                                            <Text style={{fontSize:15,color:'black',marginRight:5}}>{item.word2}</Text>
-                                            <TouchableOpacity style={styles.guanzhu}>
-                                                <FontAwesome name={'plus'} size={10} color={'#000'} />
-                                                <Text style={{fontSize:12,color:'black'}}>关注</Text>
-                                            </TouchableOpacity>
-                                            <TouchableOpacity  onPress={onPress}>
-                                                <FontAwesome name={'thumbs-up'} size={25} color={'#000'} style={{marginLeft:200}}/>
-                                            </TouchableOpacity>
-                                            <Text style={{fontSize:13,marginLeft:10}}>{count}</Text>
-                                        </View>
-                                        <View style={{width:'100%',height:'40%',backgroundColor:'#fff'}}>
-                                            <Text style={{fontSize:12}}>刚刚</Text>
-                                        </View>
-                                    </View>
-                                </View>
-                                <View style={{width:'100%',height:50,}}>
-                                    <Text style={{fontSize:13}}>{item.a}</Text>
-                                </View>
-                                <TouchableOpacity style={{width:'95%',height:25,backgroundColor:'#e7e7e7',borderRadius:5,alignItems:'center',flexDirection:'row'}}>
-                                    <Text style={{fontSize:13,marginRight:5}}>{item.b}</Text>
-                                    <FontAwesome name={'angle-right'} size={20} color={'#000'} />
-                                </TouchableOpacity>
-                            </View>
-                            <View style={{width:390,height:150,alignItems:'center'}}>
-                                <View style={{width:'100%',height:50,alignItems:'center',flexDirection:'row'}}>
-                                    <Image
-                                    source={require('../../Image/ShopScreen/pic10.jpg')}
-                                     style={{width:40,height:40,backgroundColor:'black',borderRadius:50,marginRight:5}}></Image> 
-                                    <View style={{width:340,height:40}}>
-                                        <View style={{width:'100%',height:'60%',flexDirection:'row',alignItems:'center'}}>
-                                            <Text style={{fontSize:15,color:'black',marginRight:5}}>{item.word2}</Text>
-                                            <TouchableOpacity style={styles.guanzhu}>
-                                                <FontAwesome name={'plus'} size={10} color={'#000'} />
-                                                <Text style={{fontSize:12,color:'black'}}>关注</Text>
-                                                {/* <Text style={{ borderWidth: 1, borderRadius: 2,textAlign:'center',  borderColor:select ?"#6C9575":"#EFEFEF", color: select ? '#6C9575' : "#999999", backgroundColor: select ? '#fff' : "#EFEFEF50", fontSize: 10, width:viewportWidth*0.15, paddingVertical: 5, marginTop: 10 }}>
-              {select ? '关注' : '已关注'}</Text> */}
-                                            </TouchableOpacity>
-                                            <TouchableOpacity  onPress={onPress}>
-                                            <FontAwesome name={'thumbs-up'} size={25} color={'#000'} style={{marginLeft:200}}/>
-                                            </TouchableOpacity>
-                                            <Text style={{fontSize:13,marginLeft:10}}>{count}</Text>
-                                        </View>
-                                        <View style={{width:'100%',height:'40%',backgroundColor:'#fff'}}>
-                                            <Text style={{fontSize:12}}>刚刚</Text>
-                                        </View>
-                                    </View>
-                                </View>
-                                <View style={{width:'100%',height:50,}}>
-                                    <Text style={{fontSize:13}}>{item.a}</Text>
-                                </View>
-                                <TouchableOpacity style={{width:'95%',height:25,backgroundColor:'#e7e7e7',borderRadius:5,alignItems:'center',flexDirection:'row'}}>
-                                    <Text style={{fontSize:13,marginRight:5}}>{item.b}</Text>
-                                    <FontAwesome name={'angle-right'} size={20} color={'#000'} />
-                                </TouchableOpacity>
-                            </View>
-                            <View style={{width:390,height:150,alignItems:'center'}}>
-                                <View style={{width:'100%',height:50,alignItems:'center',flexDirection:'row'}}>
-                                    <Image
-                                    source={require('../../Image/ShopScreen/pic10.jpg')}
-                                     style={{width:40,height:40,backgroundColor:'black',borderRadius:50,marginRight:5}}></Image> 
-                                    <View style={{width:340,height:40}}>
-                                        <View style={{width:'100%',height:'60%',flexDirection:'row',alignItems:'center'}}>
-                                            <Text style={{fontSize:15,color:'black',marginRight:5}}>{item.word2}</Text>
-                                            <TouchableOpacity style={styles.guanzhu}>
-                                                <FontAwesome name={'plus'} size={10} color={'#000'} />
-                                                <Text style={{fontSize:12,color:'black'}}>关注</Text>
-                                            </TouchableOpacity>
-                                            <TouchableOpacity onPress={onPress}>
-                                            <FontAwesome name={'thumbs-up'} size={25} color={'#000'} style={{marginLeft:200}}/>
-                                            </TouchableOpacity>
-                                            <Text style={{fontSize:13,marginLeft:10}}>{count}</Text>
-                                        </View>
-                                        <View style={{width:'100%',height:'40%',backgroundColor:'#fff'}}>
-                                            <Text style={{fontSize:12}}>刚刚</Text>
-                                        </View>
-                                    </View>
-                                </View>
-                                <View style={{width:'100%',height:50,}}>
-                                    <Text style={{fontSize:13}}>{item.a}</Text>
-                                </View>
-                                <TouchableOpacity style={{width:'95%',height:25,backgroundColor:'#e7e7e7',borderRadius:5,alignItems:'center',flexDirection:'row'}}>
-                                    <Text style={{fontSize:13,marginRight:5}}>{item.b}</Text>
-                                    <FontAwesome name={'angle-right'} size={20} color={'#000'} />
-                                </TouchableOpacity>
-                            </View>
+                            <TouchableOpacity style={styles.guanzhu}
+                            onPress={()=>{
+                                copyusername=username,
+                                copyyonghuming=docs.yonghuming,
+                                copytouxiang=docs.touxiang,
+                                this._onClickAddguanzhu()
+                            }}>
+                                <FontAwesome name={'plus'} size={10} color={'#000'} />
+                                <Text style={{ fontSize: 12, color: 'black' }}>关注</Text>
+                            </TouchableOpacity>
+                        </View>
+                        <View style={{ marginVertical: 10 }}>
+                            <Text style={{ fontSize: 13 }}>{docs.content}</Text>
+                        </View>
+                        <View style={{flexDirection: 'row',}}>
+                        <FlatList
+                        data={data1}
+                        numColumns={3}
+                        renderItem={({ item }) =>
+                            <View style={{width:100,height:100}}>
+                            <Image style={{ width: 90, height: 90 }}
+                                source={{uri:https+item.p}}
+                            ></Image></View>
+                        }/>
                         </View>
                     </View>
-                    }
-        />
-      </View>
-      <View style={{width:'100%',height:45,backgroundColor:'#bfbfbf',flexDirection:'row',alignItems:'center',justifyContent:'space-around'}}>
-          <TouchableOpacity style={{width:100,height:40,flexDirection:'row',alignItems:'center',justifyContent:'center'}}>
-          <FontAwesome name={'link=ext'} size={20} color={'#000'} />
-          <Text style={{fontSize:15,marginLeft:5}}>转发</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={{width:100,height:40,flexDirection:'row',alignItems:'center',justifyContent:'center'}}>
-          <FontAwesome name={'commenting'} size={20} color={'#000'} />
-          <Text style={{fontSize:15,marginLeft:5}}>评论</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={{width:100,height:40,flexDirection:'row',alignItems:'center',justifyContent:'center'}}>
-          <FontAwesome name={'thumbs-up'} size={20} color={'#000'} />
-          <Text style={{fontSize:15,marginLeft:5}}>点赞</Text>
-          </TouchableOpacity>
-      </View>
-    
-    </View>
-  );
+                    <View style={{
+                        width: '100%',
+                        height: 35,
+                        backgroundColor: '#fff',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        marginTop: 20
+                    }}>
+                        <Text style={{ fontSize: 15 }}>评论</Text>
+                    </View>
+                    <FlatList
+                        data={data}
+                        renderItem={({ item }) =>
+                            <View style={{
+                                width: '100%',
+                                backgroundColor: '#fff',
+                                paddingHorizontal:20,
+                                paddingBottom:10
+                            }}>
+                                <View style={{
+                                    flexDirection: 'row',
+                                    justifyContent: "space-between"
+                                }}>
+                                    <View style={{ flexDirection: "row" }}>
+                                        <Image
+                                            source={{uri:https+item.touxiang}}
+                                            style={{ width: 40, height: 40, backgroundColor: 'black', borderRadius: 50, marginRight: 7 }}>
+                                        </Image>
+                                        <View style={{ flexDirection: "column", marginTop: 10 }}>
+                                            <Text style={{ fontSize: 15, color: 'black', marginRight: 5 }}>{item.yonghuming}</Text>
+                                            <Text style={{ fontSize: 12 }}>{item.time}</Text>
+                                        </View>
+                                    </View>
+                                    <View style={{ flexDirection: "row" }}>
+                                        <TouchableOpacity
+                                        activeOpacity={0.8}
+                                        onPress={()=>{
+                                            copyyonghuming2=item.yonghuming,
+                                            this._onClickPinglunlikes(),
+                                            this.fetchData()
+                                        }}>
+                                            <FontAwesome name={'thumbs-up'} size={20} color={'#000'} />
+                                        </TouchableOpacity>
+                                        <Text style={{ fontSize: 13, marginLeft: 5 }}>{item.likes}</Text>
+                                    </View>
+                                </View>
+                                <View style={{ width: '100%', height: 50, }}>
+                                    <Text style={{ fontSize: 13 }}>{item.huitie}</Text>
+                                </View>
+                                <TouchableOpacity style={{ width: '95%', height: 25, backgroundColor: '#e7e7e7', borderRadius: 5, alignItems: 'center', flexDirection: 'row' }}>
+                                    <Text style={{ fontSize: 13, marginRight: 5 }}>    共12条回复</Text>
+                                    <FontAwesome name={'angle-right'} size={20} color={'#000'} />
+                                </TouchableOpacity>
+                            </View>
+                        }
+                    />
+                </ScrollView>
+                <View style={{ width: '100%', 
+                height: 45, 
+                backgroundColor: '#bfbfbf', 
+                flexDirection: 'row', 
+                alignItems: 'center', 
+                justifyContent: 'space-around',
+                position:"absolute",
+                bottom:0}}>
+                    <TouchableOpacity style={{ width: 100, height: 40, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}
+                    activeOpacity={0.8}
+                    onPress={() => { 
+                        copy_id=docs._id;
+                        this.onShare(); }}>
+                        <FontAwesome name={'link=ext'} size={20} color={'#000'} />
+                        <Text style={{ fontSize: 15, marginLeft: 5 }}>{docs.forward}</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity 
+                    activeOpacity={0.8}
+                    style={{ width: 100, height: 40, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+                        <FontAwesome name={'commenting'} size={20} color={'#000'} />
+                        <Text style={{ fontSize: 15, marginLeft: 5 }}>评论</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                    activeOpacity={0.8} 
+                    style={{ width: 100, height: 40, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}
+                    onPress={()=>{
+                        copy_id1=docs._id;
+                        this._onClickLikes();
+                    }}>
+                        <FontAwesome name={'thumbs-up'} size={20} color={'#000'} />
+                        <Text style={{ fontSize: 15, marginLeft: 5 }}>{docs.likes}</Text>
+                    </TouchableOpacity>
+                </View>
+
+            </View>
+        );
+    }
 }
-// }
 
 
 
 const styles = StyleSheet.create({
-    
-    body:{
-        width:'100%',
-        height:570,
-        backgroundColor:'#f2f2f2'
-    },
-    ques:{
-      width:'100%',
-      height:200, 
-      backgroundColor:'#fff',
-      alignItems:'center'
-   
-    },
-    word:{
-      fontSize:15,
-      color:'#000',
-      letterSpacing:3,
-    },
-    names:{
-        width:390,
-        height:50,
-        alignItems:'center',
-        flexDirection:'row',
-    },
-    head:{
-        width:40,
-        height:40,
-        backgroundColor:'black',
-        borderRadius:50,
-        marginRight:5
-    },
-    right:{
-        width:350,
-        height:40,
-    },
-    shang:{
-        width:'95%',
-        height:'60%',
-        flexDirection:'row',
-        alignItems:'center',
 
-        justifyContent:'space-between',
+    body: {
+        width: '100%',
+        backgroundColor: '#f2f2f2'
     },
-    guanzhu:{
-        width:40,
-        height:20,
-        borderRadius:5,
-        borderWidth:1,
-        borderColor:'black',
-        alignItems:'center',
-        justifyContent:'center',
-        flexDirection:'row'
+    ques: {
+        width: '100%',
+        backgroundColor: '#fff',
+        paddingVertical: 10,
+        paddingHorizontal: 20
+    },
+    word: {
+        fontSize: 15,
+        color: '#000',
+        letterSpacing: 2,
+    },
+    names: {
+        width: "100%",
+        flexDirection: 'row',
+        justifyContent: "space-between"
+    },
+    head: {
+        width: 40,
+        height: 40,
+        backgroundColor: 'black',
+        borderRadius: 50,
+        marginRight: 7
+    },
+    right: {
+        width: 250,
+        height: 40,
+        backgroundColor: 'red'
+    },
+    shang: {
+        width: '95%',
+        height: '60%',
+        flexDirection: 'row',
+        alignItems: 'center',
+
+        justifyContent: 'space-between',
+    },
+    guanzhu: {
+        width: 40,
+        height: 20,
+        borderRadius: 5,
+        borderWidth: 1,
+        borderColor: 'black',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'row'
     }
-  
-  }); 
-  export default App;
+
+}); 

@@ -84,6 +84,26 @@ _closeModalWin = () => {
 }
 
 _onClickPinglun = () => {
+  var date = new Date();
+  var seperatorl = "-";
+  var year = date.getFullYear();
+  var month = date.getMonth()+1;
+  var strDate = date.getDate();
+  var hour = date.getHours();
+  var minute = date.getMinutes();
+  if(month>=1&&month<=9){
+    month="0"+month;
+  }
+  if(strDate>=0&&strDate<=9){
+    strDate="0"+strDate;
+  }
+  if(hour>=0&&hour<=9){
+    hour="0"+hour;
+  }
+  if(minute>=1&&minute<=9){
+    minute="0"+minute
+  }
+  var currentdate = year+seperatorl+month+seperatorl+strDate+" "+hour+":"+minute;
   fetch(URL1, {
     method: 'POST',
     credentials: "include",
@@ -95,7 +115,7 @@ _onClickPinglun = () => {
       goods: this.state.goods,
       username:copyusername,
       usericon:copyusericon,
-      time:"刚刚",
+      time:currentdate,
       pingyu:this.state.pingyu,
       maijiaxiu:"/picture/shopping/pinglun/琢磨/木雕/2.jpg"
     })
