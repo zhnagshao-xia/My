@@ -113,7 +113,7 @@ class Project extends React.Component {
     return (
       <TouchableWithoutFeedback onPress={this.openCard}>
         <AnimatedContainer
-          style={{ width: this.state.cardWidth, height: this.state.cardHeight }}>
+          style={{ width: this.state.cardWidth, height: this.state.cardHeight,}}>
           <Cover>
             <Image source={{ uri: this.props.image || undefined }} />
             <AnimatedTitle style={{ top: this.state.titleTop }}>
@@ -130,10 +130,11 @@ class Project extends React.Component {
               this.props.navigation.navigate('signUp',{title:this.props.title});
             }}
             style={{
+              backgroundColor:'#6092a0',
               position: 'absolute',
-              bottom: '10%',
-              width: '90%',
-              left: '5%',
+              bottom: '5%',
+              width:80,
+              left: '40%',
               opacity: this.state.opacity,
             }}
             mode="contained">

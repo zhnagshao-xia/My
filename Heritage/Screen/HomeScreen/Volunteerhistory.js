@@ -192,7 +192,7 @@ export default class App extends Component {
         return res.json();
       }).then(function (json) {
         if (json.code == 200) {
-          Alert.alert("删除成功")
+          // Alert.alert("删除成功")
           navigation.navigate('记');
         }
       })
@@ -215,7 +215,7 @@ export default class App extends Component {
         return res.json();
       }).then(function (json) {
         if (json.code == 200) {
-          Alert.alert("清除成功")
+          // Alert.alert("清除成功")
           navigation.navigate('记');
         }
       })

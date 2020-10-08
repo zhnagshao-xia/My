@@ -12,13 +12,17 @@ import {
   Button,
   Alert,
   TouchableWithoutFeedback,
-  
+  Animated,
+  Easing
 } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import { TextInput } from 'react-native-paper';
 import ImagePicker from 'react-native-image-crop-picker';
+import LottieView from 'lottie-react-native';
+
 var URL="http://192.168.50.91:3000/users/renzheng";
+
 
 export default class ModalComp extends Component{
     constructor(props){
@@ -43,7 +47,10 @@ export default class ModalComp extends Component{
           source: new Array(9),
           title: '',
           words: '',
+          progress: new Animated.Value(0),
+          
         }
+        
       
       };
 
@@ -104,6 +111,18 @@ export default class ModalComp extends Component{
     _closeModalWin = () => {
         this.setState({modalVisible: false});
     }
+
+
+    componentDidMount() {
+        Animated.timing(this.state.progress, {
+          toValue: 1,
+          duration: 3500,
+          easing: Easing.linear,
+          
+        }).start();
+      }
+
+
     render() {
 
         var imgDate = [
@@ -295,14 +314,27 @@ export default class ModalComp extends Component{
                                 }}                           
                             >
                         <View style={styles.modalContainer}>
-                            <View style={{width:'100%',height:'75%',alignItems:'center',justifyContent:'center'}}>
-                                <Text style={styles.modalTitleStyle}>成功提交！</Text>
-                            </View>
+                           
+                          <View style={{width:150,
+                            height:'45%',
+                            // backgroundColor:'red',
+                            alignItems:'center',
+                            justifyContent:'center'
+                            }}>
+ <LottieView source={require('../../success.json')} progress={this.state.progress} />
+                          </View>
+                          <View style={{width:'100%',
+                          height:'25%',
+                          alignItems:'center',
+                        //   justifyContent:'center',
+                        //   marginBottom:10
+                          }}>
+                              <Text style={{fontSize:15}}>提交成功</Text>
+                          </View>
                             <TouchableOpacity style={styles.modalButtonStyle}
-                            onPress={this._onClickrenzheng}>      
-                            <Text style={{fontSize:15}}>确认</Text> 
+                                    onPress={this._closeModalWin}>
+                                        <Text style={{fontSize:15}}>确定</Text>
                             </TouchableOpacity>
-                            
                         </View>
                         </TouchableOpacity>
                     </View>
@@ -327,14 +359,16 @@ export default class ModalComp extends Component{
                 backgroundColor: 'rgba(0, 0, 0, 0.45)',
                 flex: 1,
                 justifyContent: 'center',
-                padding: 32
+                alignItems:'center',
+               
             },
             modalContainer: {
+                width:250,
                 height: 150,
-                backgroundColor: 'white',
+                backgroundColor: '#fff',
                 justifyContent: 'center',
-                borderRadius:10,
-                
+                alignItems:'center',
+                borderRadius:10
             },
             modalTitleStyle: {
                 textAlign: 'center',
