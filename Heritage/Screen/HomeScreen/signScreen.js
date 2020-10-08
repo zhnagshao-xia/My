@@ -40,7 +40,7 @@ export default class App extends Component {
 
 _onClickUp=()=> {
     this.setState({modalVisible: true});//加这个
-  var navigation = this.props.navigation;
+//   var navigation = this.props.navigation;
   fetch(URL1, {
     method: 'POST',
     credentials: "include",
@@ -165,7 +165,10 @@ _closeModalWin = () => {//加这个整个
                               <Text style={{fontSize:15}}>提交成功</Text>
                           </View>
                             <TouchableOpacity style={styles.modalButtonStyle}
-                                    onPress={this._closeModalWin}>
+                                    onPress={()=>{     
+                                        this._closeModalWin
+                                        navigation.goBack()
+                                      }}>
                                         <Text style={{fontSize:15}}>确定</Text>
                             </TouchableOpacity>
                         </View>

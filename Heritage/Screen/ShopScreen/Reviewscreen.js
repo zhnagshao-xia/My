@@ -11,11 +11,14 @@ import {
   Modal,
   TouchableOpacity,
   Alert,
+  Animated,//加这个
+  Easing,//加这个
   AsyncStorage} from 'react-native';
 import { TextInput } from 'react-native-paper';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import ImagePicker from 'react-native-image-crop-picker';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import LottieView from 'lottie-react-native';//加这个
 
 var https = "http://121.196.191.45";
 var http = "http://192.168.50.91:3000";
@@ -39,7 +42,8 @@ export default class ModalComp extends Component{
         modalVisible: false,
         username: "立即登录",
         usericon: "/picture/touxiang/fans/b0.jpg",
-        pingyu:""
+        pingyu:"",
+        progress: new Animated.Value(0),//加这个在是state里面
     };
 }
 
@@ -75,15 +79,16 @@ checkUserAction = async () => {
     this.fetchData();
 }
 
-_openModalWin = () => {
-  this.setState({modalVisible: true});
-}
+// _openModalWin = () => {
+//   this.setState({modalVisible: true});
+// }
 
-_closeModalWin = () => {
-  this.setState({modalVisible: false});
-}
+// _closeModalWin = () => {
+//   this.setState({modalVisible: false});
+// }
 
 _onClickPinglun = () => {
+  this.setState({modalVisible: true});//加这个
   var date = new Date();
   var seperatorl = "-";
   var year = date.getFullYear();
@@ -148,6 +153,19 @@ _fetchImage(image) {
         return response.json();
     })
 }
+_closeModalWin = () => {
+  this.setState({ modalVisible: false });
+}
+
+componentDidMount() {
+  Animated.timing(this.state.progress, {
+    toValue: 1,
+    duration: 4000,
+    easing: Easing.linear,
+    
+  }).start();
+  }//加这个整个
+  
   render() {
     const { navigation, route } = this.props;
     const goods = this.state.goods;
@@ -225,8 +243,9 @@ _fetchImage(image) {
              copyusername=username,
              copyusericon=usericon,
              this._openModalWin,
-             this._onClickPinglun(),
-             navigation.navigate('商品详情页面',{goods:goods})}}
+             this._onClickPinglun()
+            //  navigation.navigate('商品详情页面',{goods:goods})
+            }}
            style={styles.out}>
             <Text style={{color:'#fff',fontSize:13}}>发表</Text>
           </TouchableOpacity>
@@ -234,42 +253,43 @@ _fetchImage(image) {
                     animationType='fade' // 指定了 modal 的动画类型。类型：slide 从底部滑入滑出|fade 淡入淡出|none 没有动画
                     transparent={true} // 背景是否透明，默认为白色，当为true时表示背景为透明。
                     visible={this.state.modalVisible} // 是否显示 modal 窗口
-                    onRequestClose={() => { this._closeModalWin(); }} // 回调会在用户按下 Android 设备上的后退按键或是 Apple TV 上的菜单键时触发。请务必注意本属性在 Android 平台上为必填，且会在 modal 处于开启状态时阻止BackHandler事件
+                    onRequestClose={() =>{ this._closeModalWin(); }} // 回调会在用户按下 Android 设备上的后退按键或是 Apple TV 上的菜单键时触发。请务必注意本属性在 Android 平台上为必填，且会在 modal 处于开启状态时阻止BackHandler事件
                     onShow={()=>{console.log('modal窗口显示了');}} // 回调函数会在 modal 显示时调用
                 >
-                    {/* <TouchableWithoutFeedback
-                    style={{backgroundColor:"red",height:20,width:20,position:"absolute",top:0,left:0}}
-                onPress={()=>{
-                    this._closeModalWin
-                }}
-            > */}
             <TouchableOpacity
             style={{height:'100%',width:'100%',position:"absolute",top:0,left:0}}
         >
                     <View style={styles.modalLayer}>
                           <TouchableOpacity
-                                onPress={()=>{
+                                onPress={()=>{        
                                 }}                           
                             >
                         <View style={styles.modalContainer}>
-                          <View style={{width:'100%',height:'70%',alignItems:'center',justifyContent:'center'}}>
-                            <Text style={styles.modalTitleStyle}>发表成功！</Text>
-                          </View> 
-                            <TouchableOpacity
-                               style={{width:'100%',
-                               height:'30%',
-                               borderTopWidth:0.5,
-                               alignItems:'center',
-                               justifyContent:'center'
-                              }}
-                                    onPress={this._closeModalWin}
-                                >
-                                  <Text style={{fontSize:13}}>确定</Text>
-                                </TouchableOpacity>
+                          <View style={{width:150,
+                            height:'45%',
+                            // backgroundColor:'red',
+                            alignItems:'center',
+                            justifyContent:'center'
+                            }}>
+ <LottieView source={require('../../success.json')} //这个就是动画的路径
+ progress={this.state.progress} />
+                          </View>
+                          <View style={{width:'100%',
+                          height:'25%',
+                          alignItems:'center',
+                          }}>
+                              <Text style={{fontSize:15}}>发送成功</Text>
+                          </View>
+                            <TouchableOpacity style={styles.modalButtonStyle}
+                                   onPress={()=>{     
+                                    this._closeModalWin
+                                    navigation.goBack()
+                                  }}>
+                                        <Text style={{fontSize:15}}>确定</Text>
+                            </TouchableOpacity>
                         </View>
                         </TouchableOpacity>
                     </View>
-                    {/* </TouchableWithoutFeedback> */}
                     </TouchableOpacity>
                 </Modal>
   </View>
@@ -378,22 +398,27 @@ modalLayer: {
   flex: 1,
   justifyContent: 'center',
   alignItems:'center',
+ 
 },
 modalContainer: {
-  width:200,
-  height: 130,
-  backgroundColor: 'white',
+  width:250,
+  height: 150,
+  backgroundColor: '#fff',
   justifyContent: 'center',
-  borderRadius:5
+  alignItems:'center',
+  borderRadius:10
 },
 modalTitleStyle: {
   textAlign: 'center',
   fontSize: 15
 },
 modalButtonStyle: {
-  paddingLeft: 30,
-  paddingRight: 30,
-  marginTop: 10
+alignItems:'center',
+justifyContent:'center',
+width:'100%',
+height:'25%',
+borderTopWidth:0.5,
+borderColor:'grey'
 }
 })
 
