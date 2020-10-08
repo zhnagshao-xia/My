@@ -47,7 +47,7 @@ export default class mainbody extends Component {
     // Animate the update
     if (ffk) {
       LayoutAnimation.spring();
-      this.setState({ w: this.state.w + 200, h: this.state.h + 200 })
+      this.setState({ w:parseInt(this.state.w + 200), h:parseInt(this.state.h + 200) })
       ffk = false
     } else {
       this.setState({ w: 0, h: 0 })
@@ -347,7 +347,7 @@ export default class mainbody extends Component {
                                 <TouchableOpacity 
                                 onPress={this._onPress}
                                 style={{ width: '95%', height: 25, backgroundColor: '#e7e7e7', borderRadius: 5, alignItems: 'center', flexDirection: 'row' }}>
-                                    <Text style={{ fontSize: 13, marginRight: 5 }}>共12条回复</Text>
+                                    <Text style={{ fontSize: 13, marginRight: 5 }}> 共12条回复</Text>
                                     <FontAwesome name={'angle-right'} size={20} color={'#000'} />
                                 </TouchableOpacity>
                                 <View style={[styles.box, { width: this.state.w, height: this.state.h }]} />

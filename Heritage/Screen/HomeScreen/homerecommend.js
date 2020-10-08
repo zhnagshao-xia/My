@@ -38,7 +38,7 @@ export default class homerecommend extends Component {
       docs1: [],
     }
     this.state = {
-      multiData: this.props.multiList,
+      docs: this.props.multiList,
       selectMultiItem: [],
     }
   }
@@ -188,86 +188,168 @@ export default class homerecommend extends Component {
       })
   }
 
-  // static defaultProps = {
-  //   multiList: [
-  //     {
-  //       "id": "0",
-  //       "name": "音乐",
-  //       select: false
-  //     },
-  //   ]
-  // };
-  // //多选
-  // _selectMultiItemPress(item) {
-  //   if (item.select) {
-  //     this.state.selectMultiItem.splice(this.state.selectMultiItem.findIndex(function (x) {
-  //       return x === item.id;
-  //     }), 1);
-  //   } else {
-  //     this.state.selectMultiItem.push(item.id);
-  //   }
-  //   this.state.multiData[item.id].select = !item.select;
-  //   this.setState({ multiData: this.state.multiData });
-  // }
-  // //递交 选中 
-  // _submitMultiPress() {
-  //   alert(`选中了${JSON.stringify(this.state.selectMultiItem)}`)
-  // }
-  // //渲染多选标记
-  // _renderMultiMark() {
-  //   let multiData = this.state.docs;
-    
-  //   let len = multiData.length;
-  //   let menuArr = [];
-  //   for (let i = 0; i < len; i++) {
-  //     let item = multiData[i];
-  //     if (item.select) {
-  //       menuArr.push(
-  //         //选中状态
-  //         <TouchableOpacity
-  //           onPress={() => this._selectMultiItemPress(item)}
-  //         >
-  //           <Text style={{
-  //             fontSize: 12,
-  //             color: "#000",
-  //             textAlign: "center",
-  //             flexDirection: "row"
-  //           }}>已关注</Text>
-  //         </TouchableOpacity>
-  //       )
-  //     } else {
-  //       menuArr.push(
-  //         // 未选中状态
-  //         <TouchableOpacity
-  //           onPress={() => this._selectMultiItemPress(item)}
-  //           style={{}}>
-  //           <Text style={{
-  //             fontSize: 12,
-  //             color: "#000",
-  //             textAlign: "center",
-  //           }}>+关注</Text>
-  //         </TouchableOpacity>
-  //       )
-  //     }
-  //   }
-  //   return (
-  //     //讲各类状态框输出到前端页面
-  //     <TouchableOpacity
-  //       activeOpacity={0.8}
-  //       style={styles.guanzhu}
-  //       onPress={() => {
-  //         copyusername = username,
-  //           copyusericon = usericon,
-  //           copyname = item.name,
-  //           copytouxiang = item.touxiang,
-  //           this._onClickAddguanzhu1(),
-  //           this._onClickAddguanzhu2(),
-  //           this._onClickAddguanzhu3()
-  //       }}>
-  //       {menuArr}
-  //     </TouchableOpacity>
-  //   );
-  // }
+  static defaultProps = 
+  {
+    multiList: [
+      {
+        "id": "0",
+        "name": "音乐",
+        select: false
+      },
+      {
+        "id": "1",
+        "name": "美术",
+        select: false
+      },
+      {
+        "id": "2",
+        "name": "舞蹈",
+        select: false
+      },
+    ]
+  };
+  //多选
+  _selectMultiItemPress(item,i) {
+    if (item.select) {
+      this.state.selectMultiItem.splice(this.state.selectMultiItem.findIndex(function (x) {
+        return x === item.name;
+      }), 1);
+    } else {
+      this.state.selectMultiItem.push(item.name);
+    }
+    this.state.docs[i].select = !item.select;
+    this.setState({ docs: this.state.docs });
+  }
+  //递交 选中 
+  _submitMultiPress() {
+    alert(`选中了${JSON.stringify(this.state.selectMultiItem)}`)
+  }
+  //渲染多选标记
+  _renderMultiMark() {
+    let docs = this.state.docs;
+    let len = docs.length;
+    let menuArr = [];
+    for (let i = 0; i < len; i++) {
+      let item = docs[i];
+      if (item.select) {
+        menuArr.push(
+          //选中状态
+          <View style={styles.BigSize}>
+            <View style={{ width: '100%', height: 190 }}>
+              <Image
+                style={{ width: '100%', height: '100%', resizeMode: 'stretch', }}
+                source={{uri:https+item.xingxiangtu}}>
+              </Image>
+            </View>
+            <View style={styles.fourword}>
+              <View style={{
+                width: '100%',
+                flexDirection: 'row',
+                justifyContent: 'space-between'
+              }}>
+                <View style={{ marginLeft: 110, marginVertical: 10 }}>
+                  <Text style={{ fontSize: 14 }}>{item.name}</Text>
+                  <View style={{ width: 150 }}>
+                    <Text style={{ color: '#c6a46c', fontSize: 12 }}>{item.chenghao}</Text>
+                  </View>
+                </View>
+                <TouchableOpacity
+                activeOpacity={0.8}
+                  onPress={() => this._selectMultiItemPress(item,i)}
+                  style={{
+                    borderWidth: 1,
+                    borderColor: '#c9c5c5',
+                    width: 50,
+                    height: 23,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    margin: 10,
+                    borderRadius: 5,
+
+                    backgroundColor: "white",
+                  }}>
+                  <Text style={{
+                    fontSize: 12,
+                  }}>已关注</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  activeOpacity={0.8}
+                  onPress={() => navigation.navigate('手艺人详细页面', { name: item.name, username: username, usericon: usericon })}
+                  style={styles.touxiang}>
+                  <Image
+                    style={{ width: '100%', height: '100%', resizeMode: 'stretch', }}
+                    source={{ uri: https + item.touxiang }}>
+                  </Image>
+                </TouchableOpacity>
+              </View>
+              <Text style={{ marginLeft: 30, fontSize: 14 }}>{item.xingrong}</Text>
+            </View>
+
+          </View>
+        )
+      } else {
+        menuArr.push(
+
+          // 未选中状态
+          <View style={styles.BigSize}>
+            <View style={{ width: '100%', height: 190 }}>
+              <Image
+                style={{ width: '100%', height: '100%', resizeMode: 'stretch', }}
+                source={{uri:https+item.xingxiangtu}}>
+              </Image>
+            </View>
+            <View style={styles.fourword}>
+              <View style={{
+                width: '100%',
+                flexDirection: 'row',
+                justifyContent: 'space-between'
+              }}>
+                <View style={{ marginLeft: 110, marginVertical: 10 }}>
+                  <Text style={{ fontSize: 14 }}>{item.name}</Text>
+                  <View style={{ width: 150 }}>
+                    <Text style={{ color: '#c6a46c', fontSize: 12 }}>{item.chenghao}</Text>
+                  </View>
+                </View>
+                <TouchableOpacity
+                activeOpacity={0.8}
+                  onPress={() => this._selectMultiItemPress(item,i)}
+                  style={{
+                    borderWidth: 1,
+                    borderColor: '#c9c5c5',
+                    width: 50,
+                    height: 23,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    margin: 10,
+                    borderRadius: 5,
+
+                    backgroundColor: "white",
+                  }}>
+                  <Text style={{
+                    fontSize: 12,
+                  }}>+关注</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  activeOpacity={0.8}
+                  onPress={() => navigation.navigate('手艺人详细页面', { name: item.name, username: username, usericon: usericon })}
+                  style={styles.touxiang}>
+                  <Image
+                    style={{ width: '100%', height: '100%', resizeMode: 'stretch', }}
+                    source={{ uri: https + item.touxiang }}>
+                  </Image>
+                </TouchableOpacity>
+              </View>
+              <Text style={{ marginLeft: 30, fontSize: 14 }}>{item.xingrong}</Text>
+            </View>
+          </View>
+        )
+      }
+    }
+    return (
+      //讲各类状态框输出到前端页面
+      <View>{menuArr}</View>
+    );
+  }
 
 
   render() {
@@ -375,7 +457,6 @@ export default class homerecommend extends Component {
         <View style={styles.partfour}>
           <View style={{
             width: '100%',
-            alignItems: "center"
           }}>
             <View style={styles.fourtitle}>
               <Text style={{ fontSize: 15, color: '#c6a46c' }}>
@@ -383,7 +464,8 @@ export default class homerecommend extends Component {
                   </Text>
             </View>
             <ScrollView >
-              <FlatList
+              {this._renderMultiMark()}
+              {/* <FlatList
                 data={data}
                 renderItem={({ item }) =>
                   <View style={styles.BigSize}>
@@ -418,7 +500,7 @@ export default class homerecommend extends Component {
                               this._onClickAddguanzhu3()
                           }}
                           >
-                          {/* {this._renderMultiMark()} */}
+                          {this._renderMultiMark()}
                           <Text style={{ color: '#945357', fontSize: 12, marginRight: 3 }}>+</Text>
                           <Text style={{ fontSize: 12 }}>关注</Text>
                         </View>
@@ -436,7 +518,7 @@ export default class homerecommend extends Component {
                     </View>
                   </View>
                 }
-              />
+              /> */}
             </ScrollView>
             <TouchableOpacity
               activeOpacity={0.8}
