@@ -226,6 +226,9 @@ export default class homerecommend extends Component {
   }
   //渲染多选标记
   _renderMultiMark() {
+    const { navigation } = this.props;
+    let username = this.state.username;
+    let usericon = this.state.usericon;
     let docs = this.state.docs;
     let len = docs.length;
     let menuArr = [];
