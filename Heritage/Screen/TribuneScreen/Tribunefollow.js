@@ -124,16 +124,6 @@ export default class CollectionScreen extends Component {
           "name": "音乐",
           select: false
         },
-        {
-          "id": "1",
-          "name": "美术",
-          select: false
-        },
-        {
-          "id": "2",
-          "name": "舞蹈",
-          select: false
-        },
       ]
     };
   //多选

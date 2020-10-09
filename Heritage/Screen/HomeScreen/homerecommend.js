@@ -268,8 +268,6 @@ export default class homerecommend extends Component {
                     alignItems: 'center',
                     margin: 10,
                     borderRadius: 5,
-
-                    backgroundColor: "white",
                   }}>
                   <Text style={{
                     fontSize: 12,
@@ -325,8 +323,6 @@ export default class homerecommend extends Component {
                     alignItems: 'center',
                     margin: 10,
                     borderRadius: 5,
-
-                    backgroundColor: "white",
                   }}>
                   <Text style={{
                     fontSize: 12,
@@ -523,6 +519,7 @@ export default class homerecommend extends Component {
                 }
               /> */}
             </ScrollView>
+            <View style={{alignItems:"center"}}>
             <TouchableOpacity
               activeOpacity={0.8}
               onPress={() => navigation.navigate('手艺人', { username: username, usericon: usericon })}
@@ -541,6 +538,7 @@ export default class homerecommend extends Component {
                 size={15}
                 color={'#000'} />
             </TouchableOpacity>
+            </View>
           </View>
         </View>
 

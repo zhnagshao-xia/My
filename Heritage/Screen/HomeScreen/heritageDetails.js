@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Share, Text, View, FlatList, ScrollView, StyleSheet, Image, Button, TouchableOpacity,AsyncStorage,Alert } from 'react-native';
+import { Share, Text, View, FlatList, ScrollView, StyleSheet, Image, Button, TouchableOpacity, AsyncStorage, Alert } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
@@ -28,6 +28,8 @@ export default class heritageDetails extends Component {
       cityname,
       docs: [],
       username: "",
+      docs: this.props.multiList,
+      selectMultiItem: [],
     };
   }
 
@@ -38,7 +40,7 @@ export default class heritageDetails extends Component {
       username
     })
     console.log("888" + username)
-    copyusername=username;
+    copyusername = username;
   }
 
   componentDidMount() {
@@ -55,7 +57,9 @@ export default class heritageDetails extends Component {
       },
       body: JSON.stringify({
         xiangmu: this.state.xiangmu,
+        // "越窑青瓷烧制技艺",
         cityname: this.state.cityname
+        // "杭州"
       })
     })
       .then((response) => response.json())
@@ -63,7 +67,7 @@ export default class heritageDetails extends Component {
         this.setState({
           docs: json.docs,
         })
-        console.log(json.docs)
+        console.log("555" + json.docs)
       })
       .catch((error) => console.error(error))
       .finally(() => {
@@ -83,14 +87,14 @@ export default class heritageDetails extends Component {
         username: copyusername,
         xiangmu: copyxiangmu,
         zhanshitu: copyzhanshitu,
-        cityname:this.state.cityname
+        cityname: this.state.cityname
       })
     })
       .then(function (res) {
         return res.json();
       }).then(function (json) {
         if (json.code == 200) {
-          Alert.alert("收藏成功")
+
         }
       })
   }
@@ -115,6 +119,136 @@ export default class heritageDetails extends Component {
       alert(error.message);
     }
   };
+
+  static defaultProps =
+    {
+      multiList: [
+        {
+          "id": "0",
+          "name": "音乐",
+          select: false
+        },{
+          "id": "0",
+          "name": "音乐",
+          select: false
+        },{
+          "id": "0",
+          "name": "音乐",
+          select: false
+        },
+      ]
+    };
+  //多选
+  _selectMultiItemPress(item, i) {
+    if (item.select) {
+      this.state.selectMultiItem.splice(this.state.selectMultiItem.findIndex(function (x) {
+        return x === item.name;
+      }), 1);
+    } else {
+      this.state.selectMultiItem.push(item.name);
+    }
+    this.state.docs[i].select = !item.select;
+    this.setState({ docs: this.state.docs });
+  }
+  //递交 选中 
+  _submitMultiPress() {
+    alert(`选中了${JSON.stringify(this.state.selectMultiItem)}`)
+  }
+  //渲染多选标记
+  _renderMultiMark() {
+    const { navigation } = this.props;
+    let docs = this.state.docs;
+    let len = docs.length;
+    let menuArr = [];
+    for (let i = 0; i < len; i++) {
+      let item = docs[i];
+      if (item.select) {
+        menuArr.push(
+          //选中状态
+          <View>
+          <View style={{
+            paddingHorizontal: 30,
+            paddingTop: 20,
+            marginBottom: 90,
+            alignItems: "center",
+          }}>
+            <View style={{ alignItems: "center" }}>
+              <Text style={{ fontSize: 16 }}>{item.xiangmu}</Text>
+              <Text style={{ lineHeight: 30, fontSize: 15 }}>{item.jibie}</Text>
+            </View>
+            <View>
+              <View style={{ alignItems: "center" }}>
+                <Image style={{
+                  width: 350,
+                  height: 200,
+                  resizeMode: 'stretch',
+                  marginVertical: 15
+                }}
+                  source={{ uri: https + item.zhanshitu }}>
+                </Image>
+                
+              </View>
+              <Text style={{ textAlign: 'auto', lineHeight: 25, fontSize: 15 }}>&#12288;&#12288;{item.xiangqing}</Text>
+            </View>
+          </View>
+          <TouchableOpacity activeOpacity={0.8}
+                  style={{position:'absolute',right:0,margin:10}}
+                  onPress={() => {
+                    this._selectMultiItemPress(item, i)
+                  }}>
+                  <AntDesign name={'star'} size={23} color={'#faa83e'} />
+                </TouchableOpacity>
+          </View>
+        )
+      } else {
+        menuArr.push(
+
+          // 未选中状态
+          <View>
+          <View style={{
+            paddingHorizontal: 30,
+            paddingTop: 20,
+            marginBottom: 90,
+            alignItems: "center",
+          }}>
+            <View style={{ alignItems: "center" }}>
+              <Text style={{ fontSize: 16 }}>{item.xiangmu}</Text>
+              <Text style={{ lineHeight: 30, fontSize: 15 }}>{item.jibie}</Text>
+            </View>
+            <View>
+              <View style={{ alignItems: "center" }}>
+                <Image style={{
+                  width: 350,
+                  height: 200,
+                  resizeMode: 'stretch',
+                  marginVertical: 15
+                }}
+                  source={{ uri: https + item.zhanshitu }}>
+                </Image>
+              </View>
+              <Text style={{ textAlign: 'auto', lineHeight: 25, fontSize: 15 }}>&#12288;&#12288;{item.xiangqing}</Text>
+            </View>
+          </View>
+          <TouchableOpacity activeOpacity={0.8}
+              style={{ position: "absolute",right:0,margin:10}}
+              onPress={() => {
+                this.checkUserAction(),
+                  copyxiangmu = item.xiangmu,
+                  copyzhanshitu = item.zhanshitu,
+                  this._onClickShoucang();
+                this._selectMultiItemPress(item, i)
+              }}>
+              <AntDesign name={'staro'} size={23} color={'#faa83e'} />
+            </TouchableOpacity>
+          </View>
+        )
+      }
+    }
+    return (
+      //讲各类状态框输出到前端页面
+      <View>{menuArr}</View>
+    );
+  }
 
   render() {
     const { navigation } = this.props;
@@ -162,7 +296,8 @@ export default class heritageDetails extends Component {
             <Feather name={'more-horizontal'} size={20} color={'#000'} /></TouchableOpacity>
         </View>
         <ScrollView >
-          <FlatList
+          {this._renderMultiMark()}
+          {/* <FlatList
             data={data}
             renderItem={({ item }) =>
               <View style={{
@@ -200,36 +335,8 @@ export default class heritageDetails extends Component {
                 </View>
               </View>
             }
-          />
+          /> */}
         </ScrollView>
-        {/* <Modal style={styles.modal4} position={"bottom"} ref={"modal6"} >
-          <View style={{ width: '100%', height: '60%', flexDirection: 'row' }}>
-            <TouchableOpacity style={{ width: '25%', height: '100%', alignItems: 'center', justifyContent: 'center' }}>
-              <Image style={{ width: 60, height: 60 }}
-                source={require('../../Image/HomeScreen/wechat.png')}></Image>
-              <Text style={{ fontSize: 15 }}>微信好友</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={{ width: '25%', height: '100%', alignItems: 'center', justifyContent: 'center' }}>
-              <Image style={{ width: 60, height: 60 }}
-                source={require('../../Image/HomeScreen/friend.png')}></Image>
-              <Text style={{ fontSize: 15 }}>朋友圈</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={{ width: '25%', height: '100%', alignItems: 'center', justifyContent: 'center' }}>
-              <Image style={{ width: 60, height: 60 }}
-                source={require('../../Image/HomeScreen/qq.png')}></Image>
-              <Text style={{ fontSize: 15 }}>QQ好友</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={{ width: '25%', height: '100%', alignItems: 'center', justifyContent: 'center' }}>
-              <Image style={{ width: 60, height: 60 }}
-                source={require('../../Image/HomeScreen/share.png')}></Image>
-              <Text style={{ fontSize: 15 }}>复制链接</Text>
-            </TouchableOpacity>
-          </View>
-          <TouchableOpacity style={{ width: '100%', height: '40%', backgroundColor: '#f2f2f2', alignItems: 'center' }}
-            onPress={() => this.refs.modal6.close()} >
-            <Text style={{ fontSize: 15, marginTop: 3 }}>取消</Text>
-          </TouchableOpacity>
-        </Modal> */}
       </View>
     );
   }

@@ -308,11 +308,11 @@ export default class homeheritage extends Component {
                     top: swiperTop,
                     // backfaceVisibility:'red'
                     }}>
-                        <View style={{width:'100%',height:'20%',alignItems:'center',flexDirection:'row'}}>
+                        <View style={{width:'100%',height:'20%',alignItems:'center',flexDirection:'row',justifyContent:"space-between"}}>
                             <Text style={{fontSize:15,color:'#fff',marginLeft:25}}>杭州</Text>
-                            <Text style={{fontSize:12,color:'#fff',marginLeft:50}}>232项非遗</Text>
+                            <Text style={{fontSize:12,color:'#fff',marginRight:200}}>232项非遗</Text>
                             <TouchableOpacity 
-                            style={{width:70,height:40,flexDirection:'row',marginLeft:180,alignItems:'center',justifyContent:'center'}}
+                            style={{width:70,height:40,flexDirection:'row',alignItems:'center',justifyContent:'center'}}
                             onPress={()=>{
                               navigation.navigate("heritagelist",{cityname:"杭州"}),
                               this.setState({
@@ -397,11 +397,11 @@ export default class homeheritage extends Component {
                     top: swiperTop,
                     // backfaceVisibility:'red'
                     }}>
-                        <View style={{width:'100%',height:'20%',alignItems:'center',flexDirection:'row'}}>
+                        <View style={{width:'100%',height:'20%',alignItems:'center',flexDirection:'row',justifyContent:"space-between"}}>
                             <Text style={{fontSize:15,color:'#fff',marginLeft:25}}>湖州</Text>
-                            <Text style={{fontSize:12,color:'#fff',marginLeft:50}}>60项非遗</Text>
+                            <Text style={{fontSize:12,color:'#fff',marginRight:200}}>60项非遗</Text>
                             <TouchableOpacity 
-                            style={{width:70,height:40,flexDirection:'row',marginLeft:180,alignItems:'center',justifyContent:'center'}}
+                            style={{width:70,height:40,flexDirection:'row',alignItems:'center',justifyContent:'center'}}
                             onPress={()=>{
                               navigation.navigate("heritagelist",{cityname:"湖州"}),
                               this.setState({
@@ -484,11 +484,11 @@ export default class homeheritage extends Component {
                     height:180,
                     top: swiperTop,
                     }}>
-                        <View style={{width:'100%',height:'20%',alignItems:'center',flexDirection:'row'}}>
+                        <View style={{width:'100%',height:'20%',alignItems:'center',flexDirection:'row',justifyContent:"space-between"}}>
                             <Text style={{fontSize:15,color:'#fff',marginLeft:25}}>嘉兴</Text>
-                            <Text style={{fontSize:12,color:'#fff',marginLeft:50}}>87项非遗</Text>
+                            <Text style={{fontSize:12,color:'#fff',marginRight:200}}>87项非遗</Text>
                             <TouchableOpacity 
-                            style={{width:70,height:40,flexDirection:'row',marginLeft:180,alignItems:'center',justifyContent:'center'}}
+                            style={{width:70,height:40,flexDirection:'row',alignItems:'center',justifyContent:'center'}}
                             onPress={()=>{
                               navigation.navigate("heritagelist",{cityname:"嘉兴"}),
                               this.setState({
@@ -571,11 +571,11 @@ export default class homeheritage extends Component {
                     height:180,
                     top: swiperTop,
                     }}>
-                        <View style={{width:'100%',height:'20%',alignItems:'center',flexDirection:'row'}}>
+                        <View style={{width:'100%',height:'20%',alignItems:'center',flexDirection:'row',justifyContent:"space-between"}}>
                             <Text style={{fontSize:15,color:'#fff',marginLeft:25}}>金华</Text>
-                            <Text style={{fontSize:12,color:'#fff',marginLeft:50}}>148项非遗</Text>
+                            <Text style={{fontSize:12,color:'#fff',marginRight:200}}>148项非遗</Text>
                             <TouchableOpacity 
-                            style={{width:70,height:40,flexDirection:'row',marginLeft:180,alignItems:'center',justifyContent:'center'}}
+                            style={{width:70,height:40,flexDirection:'row',alignItems:'center',justifyContent:'center'}}
                             onPress={()=>{
                               navigation.navigate("heritagelist",{cityname:"金华"}),
                               this.setState({
@@ -658,11 +658,11 @@ export default class homeheritage extends Component {
                     height:180,
                     top: swiperTop,
                     }}>
-                        <View style={{width:'100%',height:'20%',alignItems:'center',flexDirection:'row'}}>
+                        <View style={{width:'100%',height:'20%',alignItems:'center',flexDirection:'row',justifyContent:"space-between"}}>
                             <Text style={{fontSize:15,color:'#fff',marginLeft:25}}>丽水</Text>
-                            <Text style={{fontSize:12,color:'#fff',marginLeft:50}}>125项非遗</Text>
+                            <Text style={{fontSize:12,color:'#fff',marginRight:200}}>125项非遗</Text>
                             <TouchableOpacity 
-                            style={{width:70,height:40,flexDirection:'row',marginLeft:180,alignItems:'center',justifyContent:'center'}}
+                            style={{width:70,height:40,flexDirection:'row',alignItems:'center',justifyContent:'center'}}
                             onPress={()=>{
                               navigation.navigate("heritagelist",{cityname:"丽水"}),
                               this.setState({
@@ -745,11 +745,11 @@ export default class homeheritage extends Component {
                     height:180,
                     top: swiperTop,
                     }}>
-                        <View style={{width:'100%',height:'20%',alignItems:'center',flexDirection:'row'}}>
+                        <View style={{width:'100%',height:'20%',alignItems:'center',flexDirection:'row',justifyContent:"space-between"}}>
                             <Text style={{fontSize:15,color:'#fff',marginLeft:25}}>宁波</Text>
-                            <Text style={{fontSize:12,color:'#fff',marginLeft:50}}>120项非遗</Text>
+                            <Text style={{fontSize:12,color:'#fff',marginRight:200}}>120项非遗</Text>
                             <TouchableOpacity 
-                            style={{width:70,height:40,flexDirection:'row',marginLeft:180,alignItems:'center',justifyContent:'center'}}
+                            style={{width:70,height:40,flexDirection:'row',alignItems:'center',justifyContent:'center'}}
                             onPress={()=>{
                               navigation.navigate("heritagelist",{cityname:"宁波"}),
                               this.setState({
@@ -832,11 +832,11 @@ export default class homeheritage extends Component {
                     height:180,
                     top: swiperTop,
                     }}>
-                        <View style={{width:'100%',height:'20%',alignItems:'center',flexDirection:'row'}}>
+                        <View style={{width:'100%',height:'20%',alignItems:'center',flexDirection:'row',justifyContent:"space-between"}}>
                             <Text style={{fontSize:15,color:'#fff',marginLeft:25}}>衢州</Text>
-                            <Text style={{fontSize:12,color:'#fff',marginLeft:50}}>87项非遗</Text>
+                            <Text style={{fontSize:12,color:'#fff',marginRight:200}}>87项非遗</Text>
                             <TouchableOpacity 
-                            style={{width:70,height:40,flexDirection:'row',marginLeft:180,alignItems:'center',justifyContent:'center'}}
+                            style={{width:70,height:40,flexDirection:'row',alignItems:'center',justifyContent:'center'}}
                             onPress={()=>{
                               navigation.navigate("heritagelist",{cityname:"衢州"}),
                               this.setState({
@@ -919,11 +919,11 @@ export default class homeheritage extends Component {
                     height:180,
                     top: swiperTop,
                     }}>
-                        <View style={{width:'100%',height:'20%',alignItems:'center',flexDirection:'row'}}>
+                        <View style={{width:'100%',height:'20%',alignItems:'center',flexDirection:'row',justifyContent:"space-between"}}>
                             <Text style={{fontSize:15,color:'#fff',marginLeft:25}}>绍兴</Text>
-                            <Text style={{fontSize:12,color:'#fff',marginLeft:50}}>110项非遗</Text>
+                            <Text style={{fontSize:12,color:'#fff',marginRight:200}}>110项非遗</Text>
                             <TouchableOpacity 
-                            style={{width:70,height:40,flexDirection:'row',marginLeft:180,alignItems:'center',justifyContent:'center'}}
+                            style={{width:70,height:40,flexDirection:'row',alignItems:'center',justifyContent:'center'}}
                             onPress={()=>{
                               navigation.navigate("heritagelist",{cityname:"绍兴"}),
                               this.setState({
@@ -1006,11 +1006,11 @@ export default class homeheritage extends Component {
                     height:180,
                     top: swiperTop,
                     }}>
-                        <View style={{width:'100%',height:'20%',alignItems:'center',flexDirection:'row'}}>
+                        <View style={{width:'100%',height:'20%',alignItems:'center',flexDirection:'row',justifyContent:"space-between"}}>
                             <Text style={{fontSize:15,color:'#fff',marginLeft:25}}>台州</Text>
-                            <Text style={{fontSize:12,color:'#fff',marginLeft:50}}>122项非遗</Text>
+                            <Text style={{fontSize:12,color:'#fff',marginRight:200}}>122项非遗</Text>
                             <TouchableOpacity 
-                            style={{width:70,height:40,flexDirection:'row',marginLeft:180,alignItems:'center',justifyContent:'center'}}
+                            style={{width:70,height:40,flexDirection:'row',alignItems:'center',justifyContent:'center'}}
                             onPress={()=>{
                               navigation.navigate("heritagelist",{cityname:"台州"}),
                               this.setState({
@@ -1093,11 +1093,11 @@ export default class homeheritage extends Component {
                     height:180,
                     top: swiperTop,
                     }}>
-                        <View style={{width:'100%',height:'20%',alignItems:'center',flexDirection:'row'}}>
+                        <View style={{width:'100%',height:'20%',alignItems:'center',flexDirection:'row',justifyContent:"space-between"}}>
                             <Text style={{fontSize:15,color:'#fff',marginLeft:25}}>温州</Text>
-                            <Text style={{fontSize:12,color:'#fff',marginLeft:50}}>183项非遗</Text>
+                            <Text style={{fontSize:12,color:'#fff',marginRight:200}}>183项非遗</Text>
                             <TouchableOpacity 
-                            style={{width:70,height:40,flexDirection:'row',marginLeft:180,alignItems:'center',justifyContent:'center'}}
+                            style={{width:70,height:40,flexDirection:'row',alignItems:'center',justifyContent:'center'}}
                             onPress={()=>{
                               navigation.navigate("heritagelist",{cityname:"温州"}),
                               this.setState({
@@ -1180,11 +1180,11 @@ export default class homeheritage extends Component {
                     height:180,
                     top: swiperTop,
                     }}>
-                        <View style={{width:'100%',height:'20%',alignItems:'center',flexDirection:'row'}}>
+                        <View style={{width:'100%',height:'20%',alignItems:'center',flexDirection:'row',justifyContent:"space-between"}}>
                             <Text style={{fontSize:15,color:'#fff',marginLeft:25}}>舟山</Text>
-                            <Text style={{fontSize:12,color:'#fff',marginLeft:50}}>43项非遗</Text>
+                            <Text style={{fontSize:12,color:'#fff',marginRight:200}}>43项非遗</Text>
                             <TouchableOpacity 
-                            style={{width:70,height:40,flexDirection:'row',marginLeft:180,alignItems:'center',justifyContent:'center'}}
+                            style={{width:70,height:40,flexDirection:'row',alignItems:'center',justifyContent:'center'}}
                             onPress={()=>{
                               navigation.navigate("heritagelist",{cityname:"舟山"}),
                               this.setState({
