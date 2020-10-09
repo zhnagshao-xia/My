@@ -8,14 +8,32 @@ import {
   TouchableHighlight,
   StyleSheet,
   ImageBackground,
-  FlatList
+  FlatList,
+  Dimensions,
 } from 'react-native';
+import Lightbox from 'react-native-lightbox';
+import Carousel from 'react-native-looped-carousel';
 import Swiper from 'react-native-swiper';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 var https = "http://121.196.191.45";
 var http = "http://192.168.50.91:3000";
 var URL1 = http + "/shouyiren/personal";
+
+
+const WINDOW_WIDTH = Dimensions.get('window').width;
+const BASE_PADDING = 10;
+
+// const renderCarousel = () => (
+//   <Carousel style={{ width: WINDOW_WIDTH, height: WINDOW_WIDTH }}>
+//     <Image
+//       style={{ flex: 1 }}
+//       resizeMode="contain"
+//       source={{ uri: 'http://cdn.lolwot.com/wp-content/uploads/2015/07/20-pictures-of-animals-in-hats-to-brighten-up-your-day-1.jpg' }}
+//     />
+   
+//   </Carousel>
+// )
 
 // let data = require('../../data.json');
 export default class representativework extends Component {
@@ -25,6 +43,7 @@ export default class representativework extends Component {
       name: "",
       docs: [],
       daibiaozuo: [],
+      big:[]
     }
   }
 
@@ -49,7 +68,8 @@ export default class representativework extends Component {
       .then((json) => {
         this.setState({
           docs: json.docs,
-          daibiaozuo: json.docs[0].daibiaozuo
+          daibiaozuo: json.docs[0].daibiaozuo,
+          big:json.docs[0].daibiaozuo[0]
         })
         console.log(json.docs)
       })
@@ -62,11 +82,27 @@ export default class representativework extends Component {
   render() {
     const { navigation } = this.props;
     const data = this.state.daibiaozuo;
+    const big = this.state.big;
+    const len = big.length;
+    const renderCarousel = () => 
+    (
+      <Carousel style={{ width: WINDOW_WIDTH, height: WINDOW_WIDTH }}>
+        <Image
+          style={{ flex: 1 }}
+          resizeMode="contain"
+          source={{ uri: https+big.picture}}
+        />
+      </Carousel>
+    )
     return (
       <FlatList
         data={data}
         numColumns={2} // 一行2个
         renderItem={({ item }) =>
+        <Lightbox springConfig={{tension: 15, friction: 7}}
+        swipeToDismiss={false} 
+        renderContent={renderCarousel}
+        >
           <View style={styles.goodsContainer}>
             <View style={{
               width: 170,
@@ -77,6 +113,7 @@ export default class representativework extends Component {
               shadowRadius: 10,
               elevation: 10
             }}>
+               
               <ImageBackground source={{ uri: https + item.picture }}
                 style={styles.goodsImg}>
                 <View style={{
@@ -93,6 +130,7 @@ export default class representativework extends Component {
             <View>
             </View>
           </View>
+          </Lightbox>
         }
       >
       </FlatList>

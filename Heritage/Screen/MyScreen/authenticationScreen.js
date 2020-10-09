@@ -332,7 +332,11 @@ export default class ModalComp extends Component{
                               <Text style={{fontSize:15}}>提交成功</Text>
                           </View>
                             <TouchableOpacity style={styles.modalButtonStyle}
-                                    onPress={this._closeModalWin}>
+                                     onPress={()=>{     
+                                        this._closeModalWin
+                                        navigation.goBack()
+                                      }}
+                                    >
                                         <Text style={{fontSize:15}}>确定</Text>
                             </TouchableOpacity>
                         </View>
