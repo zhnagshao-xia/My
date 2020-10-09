@@ -31,7 +31,7 @@ const BASE_PADDING = 10;
 //       resizeMode="contain"
 //       source={{ uri: 'http://cdn.lolwot.com/wp-content/uploads/2015/07/20-pictures-of-animals-in-hats-to-brighten-up-your-day-1.jpg' }}
 //     />
-   
+
 //   </Carousel>
 // )
 
@@ -43,7 +43,7 @@ export default class representativework extends Component {
       name: "",
       docs: [],
       daibiaozuo: [],
-      big:[]
+      big: []
     }
   }
 
@@ -69,7 +69,7 @@ export default class representativework extends Component {
         this.setState({
           docs: json.docs,
           daibiaozuo: json.docs[0].daibiaozuo,
-          big:json.docs[0].daibiaozuo[0]
+          big: json.docs[0].daibiaozuo
         })
         console.log(json.docs)
       })
@@ -83,53 +83,56 @@ export default class representativework extends Component {
     const { navigation } = this.props;
     const data = this.state.daibiaozuo;
     const big = this.state.big;
-    const len = big.length;
-    const renderCarousel = () => 
-    (
-      <Carousel style={{ width: WINDOW_WIDTH, height: WINDOW_WIDTH }}>
-        <Image
-          style={{ flex: 1 }}
-          resizeMode="contain"
-          source={{ uri: https+big.picture}}
-        />
-      </Carousel>
-    )
+    const renderCarousel = () =>
+      (
+        <Carousel style={{ width: WINDOW_WIDTH, height: WINDOW_WIDTH }}>
+          {big.map((item) => {
+            return (
+              <Image
+                style={{ flex: 1 }}
+                resizeMode="contain"
+                source={{ uri: https + item.picture }}
+              />
+            )
+          })}
+        </Carousel>
+      )
     return (
       <FlatList
         data={data}
         numColumns={2} // 一行2个
         renderItem={({ item }) =>
-        <Lightbox springConfig={{tension: 15, friction: 7}}
-        swipeToDismiss={false} 
-        renderContent={renderCarousel}
-        >
-          <View style={styles.goodsContainer}>
-            <View style={{
-              width: 170,
-              height: 210,
-              shadowColor: 'red',
-              shadowOffset: { width: 10, height: 10 },
-              shadowOpacity: 0.8,
-              shadowRadius: 10,
-              elevation: 10
-            }}>
-               
-              <ImageBackground source={{ uri: https + item.picture }}
-                style={styles.goodsImg}>
-                <View style={{
-                  width: '100%',
-                  height: 45,
-                  backgroundColor: 'rgba(0,0,0,0.5)',
-                  padding: 5
-                }}>
-                  <Text style={{ fontSize: 13, color: '#c9aa74' }}>{item.leibie}</Text>
-                  <Text style={{ fontSize: 13, color: '#c9aa74', textAlign: 'right' }}>------{item.name}</Text>
-                </View>
-              </ImageBackground>
+          <Lightbox springConfig={{ tension: 15, friction: 7 }}
+            swipeToDismiss={false}
+            renderContent={renderCarousel}
+          >
+            <View style={styles.goodsContainer}>
+              <View style={{
+                width: 170,
+                height: 210,
+                shadowColor: 'red',
+                shadowOffset: { width: 10, height: 10 },
+                shadowOpacity: 0.8,
+                shadowRadius: 10,
+                elevation: 10
+              }}>
+
+                <ImageBackground source={{ uri: https + item.picture }}
+                  style={styles.goodsImg}>
+                  <View style={{
+                    width: '100%',
+                    height: 45,
+                    backgroundColor: 'rgba(0,0,0,0.5)',
+                    padding: 5
+                  }}>
+                    <Text style={{ fontSize: 13, color: '#c9aa74' }}>{item.leibie}</Text>
+                    <Text style={{ fontSize: 13, color: '#c9aa74', textAlign: 'right' }}>------{item.name}</Text>
+                  </View>
+                </ImageBackground>
+              </View>
+              <View>
+              </View>
             </View>
-            <View>
-            </View>
-          </View>
           </Lightbox>
         }
       >
@@ -144,7 +147,7 @@ const styles = StyleSheet.create({
     padding: 20
   },
   goodsImg: {
-    position:"absolute",
+    position: "absolute",
     width: 170,
     height: 210,
     flexDirection: 'column-reverse',
