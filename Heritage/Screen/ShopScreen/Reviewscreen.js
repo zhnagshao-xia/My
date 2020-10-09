@@ -129,7 +129,7 @@ _onClickPinglun = () => {
       return res.json();
     }).then(function (json) {
       if (json.code == 200) {
-        Alert.alert("评价成功")
+        // Alert.alert("评价成功")
       }
     })
 }
@@ -278,7 +278,7 @@ componentDidMount() {
                           height:'25%',
                           alignItems:'center',
                           }}>
-                              <Text style={{fontSize:15}}>发送成功</Text>
+                              <Text style={{fontSize:15}}>发表成功</Text>
                           </View>
                             <TouchableOpacity style={styles.modalButtonStyle}
                                    onPress={()=>{     

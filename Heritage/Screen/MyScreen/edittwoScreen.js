@@ -11,11 +11,14 @@ import {
   Modal,
   Button,
   TextInput,
-  Alert
+  Alert,
+  Animated,//加这个
+  Easing,//加这个
   
 } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import LottieView from 'lottie-react-native';//加这个
 
 var URL1 = "http://192.168.50.91:3000/users/address/list/change/update";
 var URL2 = "http://192.168.50.91:3000/users/address/list/change/delete"
@@ -30,11 +33,14 @@ export default class ModalComp extends Component{
         this.state = { 
             shopname:shopname,modalVisible: false,
             telephone:telephone,modalVisible: false,
-            dizhi:dizhi,modalVisible: false
+            dizhi:dizhi,modalVisible: false,
+            progress: new Animated.Value(0),//加这个在是state里面
+            modalVisible2: false,
          };
       }
 
       _onClickUpdate=()=> {
+        this.setState({modalVisible: true});//加这个
         var navigation = this.props.navigation;
         fetch(URL1, {
           method: 'POST',
@@ -54,14 +60,14 @@ export default class ModalComp extends Component{
           return res.json();
       }).then(function (json) {
           if (json.code == 200) {
-              Alert.alert("修改成功")
-              navigation.navigate("地址");
+            //   Alert.alert("修改成功")
+            //   navigation.navigate("地址");
           } 
       })
       } 
       
       _onClickDelete=()=> {
-        var navigation = this.props.navigation;
+        // var navigation = this.props.navigation;
         fetch(URL2, {
           method: 'POST',
           credentials: "include",
@@ -77,8 +83,8 @@ export default class ModalComp extends Component{
           return res.json();
       }).then(function (json) {
           if (json.code == 200) {
-              Alert.alert("删除成功")
-              navigation.navigate("地址");
+            //   Alert.alert("删除成功")
+            //   navigation.navigate("地址");
           } 
       })
       } 
@@ -87,14 +93,28 @@ export default class ModalComp extends Component{
             modalVisible: false,
     };
     
-    _openModalWin = () => {
-        this.setState({modalVisible: true});
+    _openModalWin2 = () => {
+        this.setState({modalVisible2: true});
     }
  
-    _closeModalWin = () => {
+    _closeModalWin2 = () => {
+        this.setState({modalVisible2: false});
+    }
+    _closeModalWin = () => {//加这个整个
         this.setState({modalVisible: false});
-    }
- 
+        }
+        
+    
+    componentDidMount() {
+        Animated.timing(this.state.progress, {
+          toValue: 1,
+          duration: 4000,
+          easing: Easing.linear,
+          
+        }).start();
+        }//加这个整个
+
+        
     render() {
     const { navigation } = this.props;
         
@@ -133,6 +153,49 @@ export default class ModalComp extends Component{
                       }}>
                         <AntDesign name={'check'} size={23} color={'#000'} />
                     </TouchableOpacity>
+                    <Modal
+                    animationType='fade' // 指定了 modal 的动画类型。类型：slide 从底部滑入滑出|fade 淡入淡出|none 没有动画
+                    transparent={true} // 背景是否透明，默认为白色，当为true时表示背景为透明。
+                    visible={this.state.modalVisible} // 是否显示 modal 窗口
+                    onRequestClose={() =>{ this._closeModalWin(); }} // 回调会在用户按下 Android 设备上的后退按键或是 Apple TV 上的菜单键时触发。请务必注意本属性在 Android 平台上为必填，且会在 modal 处于开启状态时阻止BackHandler事件
+                    onShow={()=>{console.log('modal窗口显示了');}} // 回调函数会在 modal 显示时调用
+                >
+            <TouchableOpacity
+            style={{height:'100%',width:'100%',position:"absolute",top:0,left:0}}
+        >
+                    <View style={styles.modalLayer2}>
+                          <TouchableOpacity
+                                onPress={()=>{        
+                                }}                           
+                            >
+                        <View style={styles.modalContainer2}>
+                          <View style={{width:150,
+                            height:'45%',
+                            // backgroundColor:'red',
+                            alignItems:'center',
+                            justifyContent:'center'
+                            }}>
+ <LottieView source={require('../../success.json')} //这个就是动画的路径
+ progress={this.state.progress} />
+                          </View>
+                          <View style={{width:'100%',
+                          height:'25%',
+                          alignItems:'center',
+                          }}>
+                              <Text style={{fontSize:15}}>添加成功</Text>
+                          </View>
+                            <TouchableOpacity style={styles.modalButtonStyle2}
+                                   onPress={()=>{        
+                                 
+                                    navigation.goBack()
+                                  }}>
+                                        <Text style={{fontSize:15}}>确定</Text>
+                            </TouchableOpacity>
+                        </View>
+                        </TouchableOpacity>
+                    </View>
+                    </TouchableOpacity>
+                </Modal>
               </View>
             <View style={{width:'100%',height:700,backgroundColor:'#f2f2f2'}}>
                 <View style={{width:'100%',height:230,marginTop:20,alignItems:'center',justifyContent:'center',backgroundColor:'#fff'}}>
@@ -156,14 +219,14 @@ export default class ModalComp extends Component{
                     />
                 </View>
                 <TouchableOpacity style={{width:'100%',height:40,backgroundColor:'#fff',marginTop:20,alignItems:'center',justifyContent:'center'}}
-                onPress={this._openModalWin}>
+                onPress={this._openModalWin2}>
                     <Text style={{fontSize:15,color:'red'}}>删除收货地址</Text>
                 </TouchableOpacity>
                 <Modal
                     animationType='fade' // 指定了 modal 的动画类型。类型：slide 从底部滑入滑出|fade 淡入淡出|none 没有动画
                     transparent={true} // 背景是否透明，默认为白色，当为true时表示背景为透明。
-                    visible={this.state.modalVisible} // 是否显示 modal 窗口
-                    onRequestClose={() =>{ this._closeModalWin(); }} // 回调会在用户按下 Android 设备上的后退按键或是 Apple TV 上的菜单键时触发。请务必注意本属性在 Android 平台上为必填，且会在 modal 处于开启状态时阻止BackHandler事件
+                    visible={this.state.modalVisible2} // 是否显示 modal 窗口
+                    onRequestClose={() =>{ this._closeModalWin2(); }} // 回调会在用户按下 Android 设备上的后退按键或是 Apple TV 上的菜单键时触发。请务必注意本属性在 Android 平台上为必填，且会在 modal 处于开启状态时阻止BackHandler事件
                     onShow={()=>{console.log('modal窗口显示了');}} // 回调函数会在 modal 显示时调用
                 >
                     {/* <TouchableWithoutFeedback
@@ -174,7 +237,7 @@ export default class ModalComp extends Component{
             > */}
             <TouchableOpacity
             style={{height:'100%',width:'100%',position:"absolute",top:0,left:0}}
-            onPress={this._closeModalWin}
+            onPress={this._closeModalWin2}
             >
                     <View style={styles.modalLayer}>
 
@@ -195,13 +258,19 @@ export default class ModalComp extends Component{
                             <View style={styles.modalButtonStyle}>
                                 <TouchableOpacity 
                                 style={{width:'50%',height:'100%',alignItems:'center',justifyContent:'center',borderRightWidth:0.5,borderColor:'grey'}}
-                                    onPress={this._closeModalWin}
+                                onPress={()=>{        
+                                    this._closeModalWin2,
+                                    navigation.goBack()
+                                  }}
                                 >
                                     <Text style={{fontSize:13}}>取消</Text>
                                 </TouchableOpacity>
                                 <TouchableOpacity 
                                 style={{width:'50%',height:'100%',alignItems:'center',justifyContent:'center'}}
-                                    onPress={this._onClickDelete}
+                                onPress={()=>{        
+                                    this._onClickDelete
+                                    navigation.goBack()
+                                  }}
                                 >
                                     <Text style={{fontSize:13}}>确认</Text>
                                 </TouchableOpacity>
@@ -249,6 +318,34 @@ export default class ModalComp extends Component{
                 width:'100%',
                 height:'30%',
                 // backgroundColor:'blue'
-            }
+            },
 
+
+            modalLayer2: {
+                backgroundColor: 'rgba(0, 0, 0, 0.45)',
+                flex: 1,
+                justifyContent: 'center',
+                alignItems:'center',
+               
+            },
+            modalContainer2: {
+                width:250,
+                height: 150,
+                backgroundColor: '#fff',
+                justifyContent: 'center',
+                alignItems:'center',
+                borderRadius:10
+            },
+            modalTitleStyle2: {
+                textAlign: 'center',
+                fontSize: 15
+            },
+            modalButtonStyle2: {
+              alignItems:'center',
+              justifyContent:'center',
+              width:'100%',
+              height:'25%',
+              borderTopWidth:0.5,
+              borderColor:'grey'
+          }
         })
