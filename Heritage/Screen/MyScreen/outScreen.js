@@ -46,21 +46,26 @@ render(){
           </View>
         </View>
       <View style={styles.container_body}>
-         <View style={styles.container_bug1}>
+         <TouchableOpacity 
+         activeOpacity={0.8}
+         style={styles.container_bug1}>
              <View style={styles.word}><Text style={{fontSize: 14}}>帮助</Text></View>
              <View style={styles.awe}>
                  <FontAwesome name={'angle-right'} size={20} color={'#000'}/>
              </View>
-         </View>
-         <View style={styles.container_bug2}>
+         </TouchableOpacity>
+         <TouchableOpacity 
+         activeOpacity={0.8}
+         style={styles.container_bug2}>
              <View style={styles.word}><Text style={{fontSize: 14}}>关于我们</Text></View>
              <View style={styles.awe}>
                  <FontAwesome name={'angle-right'} size={20} color={'#000'}/>
              </View>
-         </View>
+         </TouchableOpacity>
       </View>
       <View style={{alignItems:'center', marginTop:25}}>
           <TouchableOpacity 
+          activeOpacity={0.8}
           onPress={() =>{this.Out()}
         }
           style={styles.button}><Text style={{fontSize:13, color:'#955357'}}>退出登录</Text></TouchableOpacity>

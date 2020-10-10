@@ -282,7 +282,14 @@ export default class ModalComp extends Component{
                         </View>
                     </View>
                 </View>
-                <Text style={{fontSize:13,color:'#935258',margin:10}}>认证后可以获得相应的称号</Text>
+                <View style={{margin:10}}>
+                <Text style={{fontSize:13,color:'#935258'}}>
+                    *大学生认证请上传身份证正反面及学生证个人信息页
+                </Text>
+                <Text style={{fontSize:13,color:'#935258'}}>
+                    *手艺人认证请上传身份证正反面及相关证明材料
+                </Text>
+                </View>
                 <View style={{width:'100%',height:200,alignItems:'center',justifyContent:'center'}}>
                     <TouchableOpacity style={styles.submit}
                       onPress={this._openModalWin}>
@@ -333,7 +340,7 @@ export default class ModalComp extends Component{
                           </View>
                             <TouchableOpacity style={styles.modalButtonStyle}
                                      onPress={()=>{     
-                                        this._onClickrenzheng
+                                        this._closeModalWin
                                         navigation.goBack()
                                       }}
                                     >

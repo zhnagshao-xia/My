@@ -63,7 +63,7 @@ export default class homerecommend extends Component {
       .then((response) => response.json())
       .then((json) => {
         this.setState({
-          usericon: json.docs[0].usericon,//usericon: json.docs[0].usericon,
+          usericon: json.docs  .usericon,//usericon: json.docs[0].usericon,
         })
         console.log(json.docs)
       })
@@ -137,7 +137,7 @@ export default class homerecommend extends Component {
         return res.json();
       }).then(function (json) {
         if (json.code == 200) {
-          // Alert.alert("关注成功")
+          Alert.alert("关注成功")
         }
       })
   }
@@ -160,7 +160,7 @@ export default class homerecommend extends Component {
         return res.json();
       }).then(function (json) {
         if (json.code == 200) {
-          // Alert.alert("关注成功")
+          Alert.alert("关注成功")
         }
       })
   }
@@ -183,7 +183,7 @@ export default class homerecommend extends Component {
         return res.json();
       }).then(function (json) {
         if (json.code == 200) {
-          // Alert.alert("关注成功")
+          Alert.alert("关注成功")
         }
       })
   }

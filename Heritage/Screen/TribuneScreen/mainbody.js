@@ -12,14 +12,10 @@ import {
     AsyncStorage,
     NativeModules,
   LayoutAnimation,
-  Dimensions,
 } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import EvilIcons from 'react-native-vector-icons/EvilIcons'
 import Feather from 'react-native-vector-icons/Feather'
-
-import Lightbox from 'react-native-lightbox';
-import Carousel from 'react-native-looped-carousel';
 
 var https = "http://121.196.191.45";
 var http = "http://192.168.50.91:3000";
@@ -40,16 +36,11 @@ UIManager.setLayoutAnimationEnabledExperimental &&
 UIManager.setLayoutAnimationEnabledExperimental(true);
 var ffk = true;
 
-const WINDOW_WIDTH = Dimensions.get('window').width;
-const BASE_PADDING = 10;
-
-
 export default class mainbody extends Component {
 
   state = {
     w: 0,
     h: 0,
-    big: []
   };
 
   _onPress = () => {
@@ -132,7 +123,7 @@ export default class mainbody extends Component {
             return res.json();
           }).then(function (json) {
             if (json.code == 200) {
-              // Alert.alert("收藏成功")
+              Alert.alert("收藏成功")
             }
           })
       }
@@ -153,7 +144,7 @@ export default class mainbody extends Component {
             return res.json();
           }).then(function (json) {
             if (json.code == 200) {
-              // Alert.alert("点赞成功")
+              Alert.alert("点赞成功")
             }
           })
       }
@@ -174,7 +165,7 @@ export default class mainbody extends Component {
             return res.json();
           }).then(function (json) {
             if (json.code == 200) { 
-              // Alert.alert("点赞成功")
+              Alert.alert("点赞成功")
             }
           })
       }
@@ -197,7 +188,7 @@ export default class mainbody extends Component {
             return res.json();
           }).then(function (json) {
             if (json.code == 200) {
-              // Alert.alert("关注成功") 
+              Alert.alert("关注成功") 
             }
           })
       }
@@ -235,20 +226,6 @@ export default class mainbody extends Component {
             console.log("监测用户状态")
             this.checkUserAction();
           }
-          // const big = this.state.big;
-const renderCarousel = () => (
-  <Carousel style={{ width: WINDOW_WIDTH, height: WINDOW_WIDTH }}>
-      {data1.map((item) => {
-            return (
-    <Image
-      style={{ flex: 1 }}
-      resizeMode="contain"
-      source={{ uri: https+item.p}}
-    />
-    )
-          })}
-  </Carousel>
-)
         return (
             <View style={{flex:1}}>
                 <View style={{
@@ -311,14 +288,10 @@ const renderCarousel = () => (
                         data={data1}
                         numColumns={3}
                         renderItem={({ item }) =>
-                        <Lightbox springConfig={{tension: 15, friction: 7}}
-     swipeToDismiss={false} 
-     renderContent={renderCarousel}>
                             <View style={{width:100,height:100}}>
                             <Image style={{ width: 90, height: 90 }}
                                 source={{uri:https+item.p}}
                             ></Image></View>
-                            </Lightbox>
                         }/>
                         </View>
                     </View>
@@ -377,7 +350,7 @@ const renderCarousel = () => (
                                     <Text style={{ fontSize: 13, marginRight: 5 }}> 共12条回复</Text>
                                     <FontAwesome name={'angle-right'} size={20} color={'#000'} />
                                 </TouchableOpacity>
-                                <View style={[styles.box, { width: this.state.w, height: this.state.h }]} />
+                                <View style={[styles.box,]} />
                             </View>
                         }
                     />
@@ -401,7 +374,7 @@ const renderCarousel = () => (
                     <TouchableOpacity 
                     activeOpacity={0.8}
                     style={{ width: 100, height: 40, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-                        <FontAwesome name={'heart-o'} size={20} color={'#000'} />
+                        <Feather name={'message-square'} size={22} color={'#000'} />
                         <Text style={{ fontSize: 15, marginLeft: 5 }}>评论</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
@@ -411,7 +384,7 @@ const renderCarousel = () => (
                         copy_id1=docs._id;
                         this._onClickLikes();
                     }}>
-                        <Feather name={'message-square'} size={22} color={'#000'} />
+                      <FontAwesome name={'heart-o'} size={20} color={'#000'} />
                         <Text style={{ fontSize: 15, marginLeft: 5 }}>{docs.likes}</Text>
                     </TouchableOpacity>
                 </View>
