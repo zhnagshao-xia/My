@@ -41,7 +41,7 @@ export default class App extends Component {
 
     this.setState({modalVisible: true});//加这个
 
-    var navigation = this.props.navigation;
+    // var navigation = this.props.navigation;
     fetch(URL, {
       method: 'POST',
       credentials: "include",
@@ -62,7 +62,7 @@ export default class App extends Component {
   }).then(function (json) {
       if (json.code == 200) {
           // Alert.alert("添加成功")//这个消掉
-          navigation.goBack("地址");
+          // navigation.goBack("地址");
       } 
   })
   }  
@@ -124,9 +124,6 @@ Animated.timing(this.state.progress, {
           }}>
           <AntDesign name={'check'} size={25} color={'#000'} />
           </TouchableOpacity>
-
-
-
           {/* 整个<Modal></Modal>括起来的都加，加在Touchableopacity的下面 */}
           <Modal
                     animationType='fade' // 指定了 modal 的动画类型。类型：slide 从底部滑入滑出|fade 淡入淡出|none 没有动画
@@ -157,11 +154,11 @@ Animated.timing(this.state.progress, {
                           height:'25%',
                           alignItems:'center',
                           }}>
-                              <Text style={{fontSize:15}}>提交成功</Text>
+                              <Text style={{fontSize:15}}>添加成功</Text>
                           </View>
                             <TouchableOpacity style={styles.modalButtonStyle}
                                    onPress={()=>{        
-                                    this._closeModalWin,
+                                    this. _onClickAdd,
                                     navigation.goBack()
                                   }}>
                                         <Text style={{fontSize:15}}>确定</Text>

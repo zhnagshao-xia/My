@@ -374,7 +374,7 @@ export default class mainbody extends Component {
                                     <Text style={{ fontSize: 13, marginRight: 5 }}> 共12条回复</Text>
                                     <FontAwesome name={'angle-right'} size={20} color={'#000'} />
                                 </TouchableOpacity>
-                                <View style={[styles.box, { width: this.state.w, height: this.state.h }]} />
+                                <View style={[styles.box,]} />
                             </View>
                         }
                     />
@@ -398,7 +398,7 @@ export default class mainbody extends Component {
                     <TouchableOpacity 
                     activeOpacity={0.8}
                     style={{ width: 100, height: 40, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-                        <FontAwesome name={'heart-o'} size={20} color={'#000'} />
+                        <Feather name={'message-square'} size={22} color={'#000'} />
                         <Text style={{ fontSize: 15, marginLeft: 5 }}>评论</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
@@ -408,7 +408,7 @@ export default class mainbody extends Component {
                         copy_id1=docs._id;
                         this._onClickLikes();
                     }}>
-                        <Feather name={'message-square'} size={22} color={'#000'} />
+                      <FontAwesome name={'heart-o'} size={20} color={'#000'} />
                         <Text style={{ fontSize: 15, marginLeft: 5 }}>{docs.likes}</Text>
                     </TouchableOpacity>
                 </View>

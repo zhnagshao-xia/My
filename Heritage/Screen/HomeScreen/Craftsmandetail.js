@@ -118,7 +118,7 @@ export default class Craftsmandetail extends Component {
         return res.json();
       }).then(function (json) {
         if (json.code == 200) {
-          Alert.alert("关注成功")
+          // Alert.alert("关注成功")
         }
       })
   }
@@ -141,7 +141,7 @@ export default class Craftsmandetail extends Component {
         return res.json();
       }).then(function (json) {
         if (json.code == 200) {
-          Alert.alert("关注成功")
+          // Alert.alert("关注成功")
         }
       })
   }
@@ -164,7 +164,7 @@ export default class Craftsmandetail extends Component {
         return res.json();
       }).then(function (json) {
         if (json.code == 200) {
-          Alert.alert("关注成功")
+          // Alert.alert("关注成功")
         }
       })
   }
