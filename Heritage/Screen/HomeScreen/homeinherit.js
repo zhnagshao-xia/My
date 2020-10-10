@@ -13,11 +13,11 @@ import {
 import { Tabs } from '@ant-design/react-native';
 import Swiper from 'react-native-swiper';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import Heritage from './Heritage'
+import Inheritor from '../../inheritor'
 export default function homeinherit() {
   return (
     <View style={{ flex: 1 }}>
-            <Heritage />
-          </View>
+      <Inheritor />
+    </View>
   );
 }
