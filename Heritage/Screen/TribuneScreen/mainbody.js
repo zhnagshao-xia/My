@@ -12,10 +12,13 @@ import {
     AsyncStorage,
     NativeModules,
   LayoutAnimation,
+  Dimensions,
 } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import EvilIcons from 'react-native-vector-icons/EvilIcons'
 import Feather from 'react-native-vector-icons/Feather'
+import Lightbox from 'react-native-lightbox';
+import Carousel from 'react-native-looped-carousel';
 
 var https = "http://121.196.191.45";
 var http = "http://192.168.50.91:3000";
@@ -35,6 +38,9 @@ const { UIManager } = NativeModules;
 UIManager.setLayoutAnimationEnabledExperimental &&
 UIManager.setLayoutAnimationEnabledExperimental(true);
 var ffk = true;
+
+const WINDOW_WIDTH = Dimensions.get('window').width;
+const BASE_PADDING = 10;
 
 export default class mainbody extends Component {
 
@@ -226,6 +232,20 @@ export default class mainbody extends Component {
             console.log("监测用户状态")
             this.checkUserAction();
           }
+          const renderCarousel = () =>
+          (
+            <Carousel style={{ width: WINDOW_WIDTH, height: WINDOW_WIDTH }}>
+              {data1.map((item) => {
+                return (
+                  <Image
+                    style={{ flex: 1 }}
+                    resizeMode="contain"
+                    source={{ uri: https + item.p }}
+                  />
+                )
+              })}
+            </Carousel>
+          )
         return (
             <View style={{flex:1}}>
                 <View style={{
@@ -288,10 +308,14 @@ export default class mainbody extends Component {
                         data={data1}
                         numColumns={3}
                         renderItem={({ item }) =>
+                        <Lightbox springConfig={{ tension: 15, friction: 7 }}
+                            swipeToDismiss={false}
+                            renderContent={renderCarousel}
+                           >
                             <View style={{width:100,height:100}}>
                             <Image style={{ width: 90, height: 90 }}
                                 source={{uri:https+item.p}}
-                            ></Image></View>
+                            ></Image></View></Lightbox>
                         }/>
                         </View>
                     </View>

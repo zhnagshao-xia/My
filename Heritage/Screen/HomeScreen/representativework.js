@@ -22,6 +22,7 @@ var URL1 = http + "/shouyiren/personal";
 
 
 const WINDOW_WIDTH = Dimensions.get('window').width;
+const WINDOW_HEIGHT = Dimensions.get('window').height;
 const BASE_PADDING = 10;
 
 // const renderCarousel = () => (
@@ -85,7 +86,7 @@ export default class representativework extends Component {
     const big = this.state.big;
     const renderCarousel = () =>
       (
-        <Carousel style={{ width: WINDOW_WIDTH, height: WINDOW_WIDTH }}>
+        <Carousel style={{ width: WINDOW_WIDTH, height: WINDOW_HEIGHT }}>
           {big.map((item) => {
             return (
               <Image

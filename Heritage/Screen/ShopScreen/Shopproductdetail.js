@@ -53,9 +53,9 @@ export default class App extends Component {
         copyusername=username;
       }
 
-    componentDidMount() {
-        this.fetchData();
-    }
+    // componentDidMount() {
+    //     this.fetchData();
+    // }
 
 
     fetchData() {
@@ -121,6 +121,7 @@ export default class App extends Component {
           easing: Easing.linear,
           
         }).start();
+        this.fetchData();
       }
 
     render() {
