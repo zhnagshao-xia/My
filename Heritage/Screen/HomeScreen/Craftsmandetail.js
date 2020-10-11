@@ -245,6 +245,7 @@ export default class Craftsmandetail extends Component {
                 <Text style={{ fontSize: 15, color: 'black' }}
                 >{data.name}</Text>
                 <TouchableOpacity
+                activeOpacity={0.8}
                   style={styles.like}
                   onPress={() => {
                     copyname = data.name,
@@ -254,11 +255,7 @@ export default class Craftsmandetail extends Component {
                       this._onClickAddguanzhu3(),
                       this.fetchData()
                   }}>
-                  <FontAwesome
-                    name={'plus'}
-                    size={15}
-                    color={'#000'} />
-                  <Text style={{ fontSize: 12, marginLeft: 2 }}>关注</Text>
+                  <Text style={{ fontSize: 12}}>+关注</Text>
                 </TouchableOpacity>
               </View>
             </View>

@@ -196,7 +196,7 @@ export default class VolunteerScreen extends React.Component {
         {Projects && Projects.length != 0 ? (
 
 
-          <Container>
+          <Container style={{backgroundColor:"red",}}>
             <AnimatedMask style={{ opacity: this.state.opacity }} />
             <Animated.View
               style={{

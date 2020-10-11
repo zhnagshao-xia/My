@@ -89,7 +89,7 @@ constructor(props){
                       <View style={{width:4,height:25,backgroundColor:'#c9aa74',marginRight:10}}></View>
                       <Text style={{fontSize:15}}>简介</Text>
                     </View>
-                    <View style={{width:'100%',marginBottom:20}}>
+                    <View style={{width:'100%',marginBottom:20,paddingRight:20}}>
                       <Text style={{fontSize:13}}>{item.jianjie}</Text>
                     </View>
                   </View>

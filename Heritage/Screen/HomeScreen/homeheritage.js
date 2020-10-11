@@ -308,11 +308,12 @@ export default class homeheritage extends Component {
                     top: swiperTop,
                     // backfaceVisibility:'red'
                     }}>
-                        <View style={{width:'100%',height:'20%',alignItems:'center',flexDirection:'row',justifyContent:"space-between"}}>
-                            <Text style={{fontSize:15,color:'#fff',marginLeft:25}}>杭州</Text>
-                            <Text style={{fontSize:12,color:'#fff',marginRight:200}}>232项非遗</Text>
+                        <View style={{width:'100%',height:'20%',alignItems:'center',flexDirection:'row',justifyContent:"space-between",paddingHorizontal:25}}>
+                            <Text style={{fontSize:15,color:'#fff'}}>杭州</Text>
+                            <Text style={{fontSize:12,color:'#fff'}}>232项非遗</Text>
                             <TouchableOpacity 
-                            style={{width:70,height:40,flexDirection:'row',alignItems:'center',justifyContent:'center'}}
+                            activeOpacity={0.8}
+                            style={{flexDirection:'row',alignItems:'center',justifyContent:'center'}}
                             onPress={()=>{
                               navigation.navigate("heritagelist",{cityname:"杭州"}),
                               this.setState({
@@ -329,6 +330,7 @@ export default class homeheritage extends Component {
                         <View style={{width:'100%',height:'80%',alignItems:'center',flexDirection:'row'}}>
                             <ScrollView horizontal={true}>
                             <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            activeOpacity={0.8}
                             onPress={()=>{
                               navigation.navigate("heritageDetails",{xiangmu:"越窑青瓷烧制技艺",cityname:"杭州"}),
                               this.setState({
@@ -342,6 +344,7 @@ export default class homeheritage extends Component {
                                 </ImageBackground>
                             </TouchableOpacity>
                             <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            activeOpacity={0.8}
                             onPress={()=>{
                               navigation.navigate("heritageDetails",{xiangmu:"金石篆刻（西泠印社）",cityname:"杭州"}),
                               this.setState({
@@ -355,6 +358,7 @@ export default class homeheritage extends Component {
                                 </ImageBackground>
                             </TouchableOpacity>
                             <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            activeOpacity={0.8}
                             onPress={()=>{
                               navigation.navigate("heritageDetails",{xiangmu:"江南丝竹",cityname:"杭州"}),
                               this.setState({
@@ -397,11 +401,12 @@ export default class homeheritage extends Component {
                     top: swiperTop,
                     // backfaceVisibility:'red'
                     }}>
-                        <View style={{width:'100%',height:'20%',alignItems:'center',flexDirection:'row',justifyContent:"space-between"}}>
-                            <Text style={{fontSize:15,color:'#fff',marginLeft:25}}>湖州</Text>
-                            <Text style={{fontSize:12,color:'#fff',marginRight:200}}>60项非遗</Text>
+                        <View style={{width:'100%',height:'20%',alignItems:'center',paddingHorizontal:25,flexDirection:'row',justifyContent:"space-between"}}>
+                            <Text style={{fontSize:15,color:'#fff'}}>湖州</Text>
+                            <Text style={{fontSize:12,color:'#fff'}}>60项非遗</Text>
                             <TouchableOpacity 
-                            style={{width:70,height:40,flexDirection:'row',alignItems:'center',justifyContent:'center'}}
+                            activeOpacity={0.8}
+                            style={{flexDirection:'row',alignItems:'center',justifyContent:'center'}}
                             onPress={()=>{
                               navigation.navigate("heritagelist",{cityname:"湖州"}),
                               this.setState({
@@ -418,6 +423,7 @@ export default class homeheritage extends Component {
                         <View style={{width:'100%',height:'80%',alignItems:'center',flexDirection:'row'}}>
                             <ScrollView horizontal={true}>
                             <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            activeOpacity={0.8}
                             onPress={()=>{
                               navigation.navigate("heritageDetails",{xiangmu:"龙舞（长兴百叶龙）",cityname:"湖州"}),
                               this.setState({
@@ -431,6 +437,7 @@ export default class homeheritage extends Component {
                                 </ImageBackground>
                             </TouchableOpacity>
                             <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            activeOpacity={0.8}
                             onPress={()=>{
                               navigation.navigate("heritageDetails",{xiangmu:"湖笔制作技艺",cityname:"湖州"}),
                               this.setState({
@@ -444,6 +451,7 @@ export default class homeheritage extends Component {
                                 </ImageBackground>
                             </TouchableOpacity>
                             <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            activeOpacity={0.8}
                             onPress={()=>{
                               navigation.navigate("heritageDetails",{xiangmu:"辑里湖丝手工制作技艺",cityname:"湖州"}),
                               this.setState({
@@ -484,11 +492,12 @@ export default class homeheritage extends Component {
                     height:180,
                     top: swiperTop,
                     }}>
-                        <View style={{width:'100%',height:'20%',alignItems:'center',flexDirection:'row',justifyContent:"space-between"}}>
-                            <Text style={{fontSize:15,color:'#fff',marginLeft:25}}>嘉兴</Text>
-                            <Text style={{fontSize:12,color:'#fff',marginRight:200}}>87项非遗</Text>
+                        <View style={{width:'100%',height:'20%',alignItems:'center',paddingHorizontal:25,flexDirection:'row',justifyContent:"space-between"}}>
+                            <Text style={{fontSize:15,color:'#fff'}}>嘉兴</Text>
+                            <Text style={{fontSize:12,color:'#fff'}}>87项非遗</Text>
                             <TouchableOpacity 
-                            style={{width:70,height:40,flexDirection:'row',alignItems:'center',justifyContent:'center'}}
+                            activeOpacity={0.8}
+                            style={{flexDirection:'row',alignItems:'center',justifyContent:'center'}}
                             onPress={()=>{
                               navigation.navigate("heritagelist",{cityname:"嘉兴"}),
                               this.setState({
@@ -505,6 +514,7 @@ export default class homeheritage extends Component {
                         <View style={{width:'100%',height:'80%',alignItems:'center',flexDirection:'row'}}>
                             <ScrollView horizontal={true}>
                             <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            activeOpacity={0.8}
                             onPress={()=>{
                               navigation.navigate("heritageDetails",{xiangmu:"中国皮影戏（海宁皮影戏）",cityname:"嘉兴"}),
                               this.setState({
@@ -518,6 +528,7 @@ export default class homeheritage extends Component {
                                 </ImageBackground>
                             </TouchableOpacity>
                             <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            activeOpacity={0.8}
                             onPress={()=>{
                               navigation.navigate("heritageDetails",{xiangmu:"端午节（嘉兴端午习俗）",cityname:"嘉兴"}),
                               this.setState({
@@ -531,6 +542,7 @@ export default class homeheritage extends Component {
                                 </ImageBackground>
                             </TouchableOpacity>
                             <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            activeOpacity={0.8}
                             onPress={()=>{
                               navigation.navigate("heritageDetails",{xiangmu:"灯彩（硖石灯彩）",cityname:"嘉兴"}),
                               this.setState({
@@ -571,11 +583,12 @@ export default class homeheritage extends Component {
                     height:180,
                     top: swiperTop,
                     }}>
-                        <View style={{width:'100%',height:'20%',alignItems:'center',flexDirection:'row',justifyContent:"space-between"}}>
-                            <Text style={{fontSize:15,color:'#fff',marginLeft:25}}>金华</Text>
-                            <Text style={{fontSize:12,color:'#fff',marginRight:200}}>148项非遗</Text>
+                        <View style={{width:'100%',height:'20%',alignItems:'center',paddingHorizontal:25,flexDirection:'row',justifyContent:"space-between"}}>
+                            <Text style={{fontSize:15,color:'#fff'}}>金华</Text>
+                            <Text style={{fontSize:12,color:'#fff'}}>148项非遗</Text>
                             <TouchableOpacity 
-                            style={{width:70,height:40,flexDirection:'row',alignItems:'center',justifyContent:'center'}}
+                            activeOpacity={0.8}
+                            style={{flexDirection:'row',alignItems:'center',justifyContent:'center'}}
                             onPress={()=>{
                               navigation.navigate("heritagelist",{cityname:"金华"}),
                               this.setState({
@@ -592,6 +605,7 @@ export default class homeheritage extends Component {
                         <View style={{width:'100%',height:'80%',alignItems:'center',flexDirection:'row'}}>
                             <ScrollView horizontal={true}>
                             <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            activeOpacity={0.8}
                             onPress={()=>{
                               navigation.navigate('heritageDetails',{xiangmu:"锡雕",cityname:"金华"}),
                               this.setState({
@@ -605,6 +619,7 @@ export default class homeheritage extends Component {
                                 </ImageBackground>
                             </TouchableOpacity>
                             <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            activeOpacity={0.8}
                             onPress={()=>{
                               navigation.navigate('heritageDetails',{xiangmu:"麦秆剪贴",cityname:"金华"}),
                               this.setState({
@@ -618,6 +633,7 @@ export default class homeheritage extends Component {
                                 </ImageBackground>
                             </TouchableOpacity>
                             <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            activeOpacity={0.8}
                             onPress={()=>{
                               navigation.navigate('heritageDetails',{xiangmu:"东阳木雕",cityname:"金华"}),
                               this.setState({
@@ -658,11 +674,12 @@ export default class homeheritage extends Component {
                     height:180,
                     top: swiperTop,
                     }}>
-                        <View style={{width:'100%',height:'20%',alignItems:'center',flexDirection:'row',justifyContent:"space-between"}}>
-                            <Text style={{fontSize:15,color:'#fff',marginLeft:25}}>丽水</Text>
-                            <Text style={{fontSize:12,color:'#fff',marginRight:200}}>125项非遗</Text>
+                        <View style={{width:'100%',height:'20%',alignItems:'center',paddingHorizontal:25,flexDirection:'row',justifyContent:"space-between"}}>
+                            <Text style={{fontSize:15,color:'#fff'}}>丽水</Text>
+                            <Text style={{fontSize:12,color:'#fff'}}>125项非遗</Text>
                             <TouchableOpacity 
-                            style={{width:70,height:40,flexDirection:'row',alignItems:'center',justifyContent:'center'}}
+                            activeOpacity={0.8}
+                            style={{flexDirection:'row',alignItems:'center',justifyContent:'center'}}
                             onPress={()=>{
                               navigation.navigate("heritagelist",{cityname:"丽水"}),
                               this.setState({
@@ -679,6 +696,7 @@ export default class homeheritage extends Component {
                         <View style={{width:'100%',height:'80%',alignItems:'center',flexDirection:'row'}}>
                             <ScrollView horizontal={true}>
                             <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            activeOpacity={0.8}
                             onPress={()=>{
                               navigation.navigate("heritageDetails",{xiangmu:"龙泉青瓷传统烧制技艺",cityname:"丽水"}),
                               this.setState({
@@ -692,6 +710,7 @@ export default class homeheritage extends Component {
                                 </ImageBackground>
                             </TouchableOpacity>
                             <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            activeOpacity={0.8}
                             onPress={()=>{
                               navigation.navigate("heritageDetails",{xiangmu:"青田石雕",cityname:"丽水"}),
                               this.setState({
@@ -705,6 +724,7 @@ export default class homeheritage extends Component {
                                 </ImageBackground>
                             </TouchableOpacity>
                             <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            activeOpacity={0.8}
                             onPress={()=>{
                               navigation.navigate("heritageDetails",{xiangmu:"龙泉宝剑锻制技艺",cityname:"丽水"}),
                               this.setState({
@@ -745,11 +765,12 @@ export default class homeheritage extends Component {
                     height:180,
                     top: swiperTop,
                     }}>
-                        <View style={{width:'100%',height:'20%',alignItems:'center',flexDirection:'row',justifyContent:"space-between"}}>
-                            <Text style={{fontSize:15,color:'#fff',marginLeft:25}}>宁波</Text>
-                            <Text style={{fontSize:12,color:'#fff',marginRight:200}}>120项非遗</Text>
+                        <View style={{width:'100%',height:'20%',alignItems:'center',paddingHorizontal:25,flexDirection:'row',justifyContent:"space-between"}}>
+                            <Text style={{fontSize:15,color:'#fff'}}>宁波</Text>
+                            <Text style={{fontSize:12,color:'#fff'}}>120项非遗</Text>
                             <TouchableOpacity 
-                            style={{width:70,height:40,flexDirection:'row',alignItems:'center',justifyContent:'center'}}
+                            activeOpacity={0.8}
+                            style={{flexDirection:'row',alignItems:'center',justifyContent:'center'}}
                             onPress={()=>{
                               navigation.navigate("heritagelist",{cityname:"宁波"}),
                               this.setState({
@@ -766,6 +787,7 @@ export default class homeheritage extends Component {
                         <View style={{width:'100%',height:'80%',alignItems:'center',flexDirection:'row'}}>
                             <ScrollView horizontal={true}>
                             <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            activeOpacity={0.8}
                             onPress={()=>{
                               navigation.navigate("heritageDetails",{xiangmu:"宁波泥金彩漆",cityname:"宁波"}),
                               this.setState({
@@ -779,6 +801,7 @@ export default class homeheritage extends Component {
                                 </ImageBackground>
                             </TouchableOpacity>
                             <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            activeOpacity={0.8}
                             onPress={()=>{
                               navigation.navigate("heritageDetails",{xiangmu:"中医诊疗法",cityname:"宁波"}),
                               this.setState({
@@ -792,6 +815,7 @@ export default class homeheritage extends Component {
                                 </ImageBackground>
                             </TouchableOpacity>
                             <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            activeOpacity={0.8}
                             onPress={()=>{
                               navigation.navigate("heritageDetails",{xiangmu:"汉族传统婚俗（宁海十里红妆婚俗）",cityname:"宁波"}),
                               this.setState({
@@ -832,11 +856,12 @@ export default class homeheritage extends Component {
                     height:180,
                     top: swiperTop,
                     }}>
-                        <View style={{width:'100%',height:'20%',alignItems:'center',flexDirection:'row',justifyContent:"space-between"}}>
-                            <Text style={{fontSize:15,color:'#fff',marginLeft:25}}>衢州</Text>
-                            <Text style={{fontSize:12,color:'#fff',marginRight:200}}>87项非遗</Text>
+                        <View style={{width:'100%',height:'20%',alignItems:'center',paddingHorizontal:25,flexDirection:'row',justifyContent:"space-between"}}>
+                            <Text style={{fontSize:15,color:'#fff'}}>衢州</Text>
+                            <Text style={{fontSize:12,color:'#fff'}}>87项非遗</Text>
                             <TouchableOpacity 
-                            style={{width:70,height:40,flexDirection:'row',alignItems:'center',justifyContent:'center'}}
+                            activeOpacity={0.8}
+                            style={{flexDirection:'row',alignItems:'center',justifyContent:'center'}}
                             onPress={()=>{
                               navigation.navigate("heritagelist",{cityname:"衢州"}),
                               this.setState({
@@ -853,6 +878,7 @@ export default class homeheritage extends Component {
                         <View style={{width:'100%',height:'80%',alignItems:'center',flexDirection:'row'}}>
                             <ScrollView horizontal={true}>
                             <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            activeOpacity={0.8}
                             onPress={()=>{
                               navigation.navigate("heritageDetails",{xiangmu:"九华立春祭",cityname:"衢州"}),
                               this.setState({
@@ -866,6 +892,7 @@ export default class homeheritage extends Component {
                                 </ImageBackground>
                             </TouchableOpacity>
                             <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            activeOpacity={0.8}
                             onPress={()=>{
                               navigation.navigate("heritageDetails",{xiangmu:"木偶戏（廿八都木偶戏）",cityname:"衢州"}),
                               this.setState({
@@ -879,6 +906,7 @@ export default class homeheritage extends Component {
                                 </ImageBackground>
                             </TouchableOpacity>
                             <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            activeOpacity={0.8}
                             onPress={()=>{
                               navigation.navigate("heritageDetails",{xiangmu:"高腔（西安高腔）",cityname:"衢州"}),
                               this.setState({
@@ -919,11 +947,12 @@ export default class homeheritage extends Component {
                     height:180,
                     top: swiperTop,
                     }}>
-                        <View style={{width:'100%',height:'20%',alignItems:'center',flexDirection:'row',justifyContent:"space-between"}}>
-                            <Text style={{fontSize:15,color:'#fff',marginLeft:25}}>绍兴</Text>
-                            <Text style={{fontSize:12,color:'#fff',marginRight:200}}>110项非遗</Text>
+                        <View style={{width:'100%',height:'20%',alignItems:'center',paddingHorizontal:25,flexDirection:'row',justifyContent:"space-between"}}>
+                            <Text style={{fontSize:15,color:'#fff'}}>绍兴</Text>
+                            <Text style={{fontSize:12,color:'#fff'}}>110项非遗</Text>
                             <TouchableOpacity 
-                            style={{width:70,height:40,flexDirection:'row',alignItems:'center',justifyContent:'center'}}
+                            activeOpacity={0.8}
+                            style={{flexDirection:'row',alignItems:'center',justifyContent:'center'}}
                             onPress={()=>{
                               navigation.navigate("heritagelist",{cityname:"绍兴"}),
                               this.setState({
@@ -940,6 +969,7 @@ export default class homeheritage extends Component {
                         <View style={{width:'100%',height:'80%',alignItems:'center',flexDirection:'row'}}>
                             <ScrollView horizontal={true}>
                             <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            activeOpacity={0.8}
                             onPress={()=>{
                               navigation.navigate("heritageDetails",{xiangmu:"嵊州竹编",cityname:"绍兴"}),
                               this.setState({
@@ -953,6 +983,7 @@ export default class homeheritage extends Component {
                                 </ImageBackground>
                             </TouchableOpacity>
                             <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            activeOpacity={0.8}
                             onPress={()=>{
                               navigation.navigate("heritageDetails",{xiangmu:"绍剧",cityname:"绍兴"}),
                               this.setState({
@@ -966,6 +997,7 @@ export default class homeheritage extends Component {
                                 </ImageBackground>
                             </TouchableOpacity>
                             <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            activeOpacity={0.8}
                             onPress={()=>{
                               navigation.navigate("heritageDetails",{xiangmu:"绍兴黄酒酿制技艺",cityname:"绍兴"}),
                               this.setState({
@@ -1006,11 +1038,12 @@ export default class homeheritage extends Component {
                     height:180,
                     top: swiperTop,
                     }}>
-                        <View style={{width:'100%',height:'20%',alignItems:'center',flexDirection:'row',justifyContent:"space-between"}}>
-                            <Text style={{fontSize:15,color:'#fff',marginLeft:25}}>台州</Text>
-                            <Text style={{fontSize:12,color:'#fff',marginRight:200}}>122项非遗</Text>
+                        <View style={{width:'100%',height:'20%',alignItems:'center',paddingHorizontal:25,flexDirection:'row',justifyContent:"space-between"}}>
+                            <Text style={{fontSize:15,color:'#fff'}}>台州</Text>
+                            <Text style={{fontSize:12,color:'#fff'}}>122项非遗</Text>
                             <TouchableOpacity 
-                            style={{width:70,height:40,flexDirection:'row',alignItems:'center',justifyContent:'center'}}
+                            activeOpacity={0.8}
+                            style={{flexDirection:'row',alignItems:'center',justifyContent:'center'}}
                             onPress={()=>{
                               navigation.navigate("heritagelist",{cityname:"台州"}),
                               this.setState({
@@ -1027,6 +1060,7 @@ export default class homeheritage extends Component {
                         <View style={{width:'100%',height:'80%',alignItems:'center',flexDirection:'row'}}>
                             <ScrollView horizontal={true}>
                             <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            activeOpacity={0.8}
                             onPress={()=>{
                               navigation.navigate("heritageDetails",{xiangmu:"竹刻（黄岩翻簧竹雕）",cityname:"台州"}),
                               this.setState({
@@ -1040,6 +1074,7 @@ export default class homeheritage extends Component {
                                 </ImageBackground>
                             </TouchableOpacity>
                             <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            activeOpacity={0.8}
                             onPress={()=>{
                               navigation.navigate("heritageDetails",{xiangmu:"灯彩（仙居花灯）",cityname:"台州"}),
                               this.setState({
@@ -1053,6 +1088,7 @@ export default class homeheritage extends Component {
                                 </ImageBackground>
                             </TouchableOpacity>
                             <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            activeOpacity={0.8}
                             onPress={()=>{
                               navigation.navigate("heritageDetails",{xiangmu:"乱弹",cityname:"台州"}),
                               this.setState({
@@ -1093,11 +1129,12 @@ export default class homeheritage extends Component {
                     height:180,
                     top: swiperTop,
                     }}>
-                        <View style={{width:'100%',height:'20%',alignItems:'center',flexDirection:'row',justifyContent:"space-between"}}>
-                            <Text style={{fontSize:15,color:'#fff',marginLeft:25}}>温州</Text>
-                            <Text style={{fontSize:12,color:'#fff',marginRight:200}}>183项非遗</Text>
+                        <View style={{width:'100%',height:'20%',alignItems:'center',paddingHorizontal:25,flexDirection:'row',justifyContent:"space-between"}}>
+                            <Text style={{fontSize:15,color:'#fff'}}>温州</Text>
+                            <Text style={{fontSize:12,color:'#fff'}}>183项非遗</Text>
                             <TouchableOpacity 
-                            style={{width:70,height:40,flexDirection:'row',alignItems:'center',justifyContent:'center'}}
+                            activeOpacity={0.8}
+                            style={{flexDirection:'row',alignItems:'center',justifyContent:'center'}}
                             onPress={()=>{
                               navigation.navigate("heritagelist",{cityname:"温州"}),
                               this.setState({
@@ -1114,6 +1151,7 @@ export default class homeheritage extends Component {
                         <View style={{width:'100%',height:'80%',alignItems:'center',flexDirection:'row'}}>
                             <ScrollView horizontal={true}>
                             <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            activeOpacity={0.8}
                             onPress={()=>{
                               navigation.navigate("heritageDetails",{xiangmu:"中国活字印刷术",cityname:"温州"}),
                               this.setState({
@@ -1127,6 +1165,7 @@ export default class homeheritage extends Component {
                                 </ImageBackground>
                             </TouchableOpacity>
                             <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            activeOpacity={0.8}
                             onPress={()=>{
                               navigation.navigate("heritageDetails",{xiangmu:"昆曲",cityname:"温州"}),
                               this.setState({
@@ -1140,6 +1179,7 @@ export default class homeheritage extends Component {
                                 </ImageBackground>
                             </TouchableOpacity>
                             <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            activeOpacity={0.8}
                             onPress={()=>{
                               navigation.navigate("heritageDetails",{xiangmu:"木偶头雕刻（泰顺木偶头雕刻）",cityname:"温州"}),
                               this.setState({
@@ -1180,11 +1220,12 @@ export default class homeheritage extends Component {
                     height:180,
                     top: swiperTop,
                     }}>
-                        <View style={{width:'100%',height:'20%',alignItems:'center',flexDirection:'row',justifyContent:"space-between"}}>
-                            <Text style={{fontSize:15,color:'#fff',marginLeft:25}}>舟山</Text>
-                            <Text style={{fontSize:12,color:'#fff',marginRight:200}}>43项非遗</Text>
+                        <View style={{width:'100%',height:'20%',alignItems:'center',paddingHorizontal:25,flexDirection:'row',justifyContent:"space-between"}}>
+                            <Text style={{fontSize:15,color:'#fff'}}>舟山</Text>
+                            <Text style={{fontSize:12,color:'#fff'}}>43项非遗</Text>
                             <TouchableOpacity 
-                            style={{width:70,height:40,flexDirection:'row',alignItems:'center',justifyContent:'center'}}
+                            activeOpacity={0.8}
+                            style={{flexDirection:'row',alignItems:'center',justifyContent:'center'}}
                             onPress={()=>{
                               navigation.navigate("heritagelist",{cityname:"舟山"}),
                               this.setState({
@@ -1201,6 +1242,7 @@ export default class homeheritage extends Component {
                         <View style={{width:'100%',height:'80%',alignItems:'center',flexDirection:'row'}}>
                             <ScrollView horizontal={true}>
                             <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            activeOpacity={0.8}
                             onPress={()=>{
                               navigation.navigate("heritageDetails",{xiangmu:"观音传说",cityname:"舟山"}),
                               this.setState({
@@ -1214,6 +1256,7 @@ export default class homeheritage extends Component {
                                 </ImageBackground>
                             </TouchableOpacity>
                             <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            activeOpacity={0.8}
                             onPress={()=>{
                               navigation.navigate("heritageDetails",{xiangmu:"舟山贝雕",cityname:"舟山"}),
                               this.setState({
@@ -1227,6 +1270,7 @@ export default class homeheritage extends Component {
                                 </ImageBackground>
                             </TouchableOpacity>
                             <TouchableOpacity style={{width:230,height:140,marginLeft:20}}
+                            activeOpacity={0.8}
                             onPress={()=>{
                               navigation.navigate("heritageDetails",{xiangmu:"民间绘画（普陀渔民画）",cityname:"舟山"}),
                               this.setState({
