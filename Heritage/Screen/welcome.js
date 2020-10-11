@@ -5,8 +5,12 @@ import { AppRegistry,
   View,
   Image,
   Text,
+  StatusBar,
   TouchableOpacity } from 'react-native';
-import Swiper from 'react-native-swiper'
+import Swiper from 'react-native-swiper';
+StatusBar.setBackgroundColor("transparent");
+StatusBar.setTranslucent(false);
+StatusBar.setBarStyle('dark-content');
  
 const styles = StyleSheet.create({
   wrapper: {
