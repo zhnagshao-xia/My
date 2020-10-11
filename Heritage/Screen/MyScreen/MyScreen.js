@@ -179,9 +179,10 @@ export default class MyScreen extends Component {
                   </View>
                   <View style={{flexDirection:'row',alignItems:'center',marginTop:5,}}>
                   <TouchableOpacity
+                  activeOpacity={0.8}
                   onPress={() => navigation.navigate('登录')}>
                     <Text style={{fontSize:16,marginLeft:125,marginRight:5}}>{username}</Text></TouchableOpacity>
-                    <TouchableOpacity>
+                    <TouchableOpacity activeOpacity={0.8}>
                     <FontAwesome name={'pencil'} size={16} color={'#000'}/>
                     </TouchableOpacity>
                     </View>
@@ -190,18 +191,21 @@ export default class MyScreen extends Component {
             </View>
             <View style={styles.contant}>
                 <TouchableOpacity 
+                activeOpacity={0.8}
                     onPress={() => navigation.navigate('收藏',{username:username})}
                     style={{flex:1,backgroundColor:'#fff',alignItems:'center',justifyContent:'center'}}>
                     <Text style={{fontSize:14}}>收藏</Text>
                     <Text>{sum1}</Text>
                 </TouchableOpacity>
                 <TouchableOpacity 
+                activeOpacity={0.8}
                 onPress={() => navigation.navigate('关注',{username:username,usericon:usericon})}
                 style={{flex:1,backgroundColor:'#fff',alignItems:'center',justifyContent:'center'}}>
                     <Text style={{fontSize:14}}>关注</Text>
                     <Text>{sum2}</Text>
                 </TouchableOpacity>
                 <TouchableOpacity 
+                activeOpacity={0.8}
                 onPress={() => navigation.navigate('粉丝',{username:username,usericon:usericon})}
                 style={{flex:1,backgroundColor:'#fff',alignItems:'center',justifyContent:'center'}}>
                     <Text style={{fontSize:14}}>粉丝</Text>
@@ -211,6 +215,7 @@ export default class MyScreen extends Component {
             <View style={styles.footer}>
                 <View style={{height:115,marginBottom:20,backgroundColor:'#fff',alignItems:'center'}}>
                     <TouchableOpacity 
+                    activeOpacity={0.8}
                     onPress={() => navigation.navigate('订单',{username:username})}
                     style={{width:'90%',height:'50%',flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
                         <View style={{flexDirection:'row'}}>
@@ -223,6 +228,7 @@ export default class MyScreen extends Component {
                     </TouchableOpacity>
                     <View style={{width:'90%',height:0.5,backgroundColor:'grey'}}></View>
                     <TouchableOpacity 
+                    activeOpacity={0.8}
                     onPress={() => navigation.navigate('地址',{username:username})}
                     style={{width:'90%',height:'50%',flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
                         <View style={{flexDirection:'row'}}>
@@ -236,6 +242,7 @@ export default class MyScreen extends Component {
                 </View>
                 <View style={{height:170,alignItems:'center',backgroundColor:'#fff'}}>
                 <TouchableOpacity 
+                activeOpacity={0.8}
                 onPress={() => navigation.navigate('认证',{username:username})}
                 style={{width:'90%',height:'33%',flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
                         <View style={{flexDirection:'row'}}>
@@ -248,6 +255,7 @@ export default class MyScreen extends Component {
                     </TouchableOpacity>
                     <View style={{width:'90%',height:0.5,backgroundColor:'grey'}}></View>
                     <TouchableOpacity 
+                    activeOpacity={0.8}
                     onPress={() => navigation.navigate('客服')}
                     style={{width:'90%',height:'33%',flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
                         <View style={{flexDirection:'row'}}>
@@ -259,6 +267,7 @@ export default class MyScreen extends Component {
                     </TouchableOpacity>
                     <View style={{width:'90%',height:0.5,backgroundColor:'grey'}}></View>
                     <TouchableOpacity 
+                    activeOpacity={0.8}
                     onPress={() => navigation.navigate('设置')}
                     style={{width:'90%',height:'33%',flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
                         <View style={{flexDirection:'row'}}>

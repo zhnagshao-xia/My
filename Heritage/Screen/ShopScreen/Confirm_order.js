@@ -188,9 +188,9 @@ export default class App extends Component {
                 </View>
                 <ScrollView style={styles.contant}>
                     <View style={{width:'100%',alignItems:"center"}}>
-                        <View style={{width: '90%', backgroundColor: '#fff', marginTop: 20, borderRadius: 15, flexDirection: 'row',paddingVertical:20 }}>
+                        <View style={{width: '90%', backgroundColor: '#fff', marginTop: 20, borderRadius: 15, flexDirection: 'row',padding:20 }}>
                            
-                                <Image style={{ width: 40, height: 40,marginLeft:15 }} source={require('../../Image/ShopScreen/location.png')}></Image>
+                                <Image style={{ width: 40, height: 40}} source={require('../../Image/ShopScreen/location.png')}></Image>
                             
                             <View style={{ marginLeft: 15}}>
                                 <View style={{flexDirection:"row",justifyContent:'space-between'}}>
@@ -211,15 +211,12 @@ export default class App extends Component {
                                 activeOpacity={0.8}
                                 onPress={() => navigation.navigate('商品详情页面',{goods:item.goods})}
                                 style={styles.one}>
-                                    <View style={{ width: '100%', height: '80%', flexDirection: 'row', alignItems: 'center' }}>
-                                        <View style={{ width: 110, height: '100%' }}>
-                                            <Image style={{ width: 100, height: 100, marginLeft: 15 }} source={{uri:https+item.fengmian}}></Image>
-
-                                        </View>
-                                        <View style={{ width: 230, height: '95%', margin: 15 }}>
+                                    <View style={{ flexDirection: 'row'}}>
+                                            <Image style={{ width: 100, height: 100}} source={{uri:https+item.fengmian}}></Image>
+                                        <View style={{ width: 230,marginLeft:10 ,height:"80%"}}>
                                             <Text style={{ fontSize: 15 }}>{item.miaoshu}</Text>
-                                            <View style={{ flexDirection: 'row-reverse', marginTop: 30 }}>
-                                                <Text style={{ fontSize: 15, color: '#f76220', marginRight: 10 }}>￥{item.price}</Text>
+                                            <View style={{ flexDirection: 'row-reverse',marginTop:40,justifyContent:'flex-start'}}>
+                                                <Text style={{ fontSize: 15, color: '#f76220'}}>￥{item.price}</Text>
                                                 <Text style={{ fontSize: 15 }}>小计：</Text>
                                             </View>
                                         </View>
@@ -321,12 +318,13 @@ const styles = StyleSheet.create({
         backgroundColor: '#f2f2f2',
     },
     one: {
-        height: 130,
+        height:130,
         width: '100%',
         backgroundColor: '#fff',
         marginTop: 20,
-        borderRadius: 10,
         justifyContent: 'center',
+        padding:20,
+        borderRadius:15
     },
     footer: {
         width: '100%',
