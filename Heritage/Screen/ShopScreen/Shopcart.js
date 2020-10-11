@@ -59,43 +59,48 @@ fetchData() {
 const shoppingCartData = {
   "docs": [
       {
-          "shopcar": [
-              {
-                  "goods": "手倚莲花",
-                  "miaoshu": "#乐清黄杨木雕#华东一枝花#于精雕细刻中不乏写意流畅#手倚莲花",
-                  "price": 688,
-                  "fengmian": "/picture/shopping/goods/琢磨/木雕/乐清黄杨木雕2_1.jpg",
-                  "number": "1"
-              },
-              {
-                  "goods": "龙龟",
-                  "miaoshu": "#乐清黄杨木雕#华东一枝花#于精雕细刻中不乏写意流畅#龙龟",
-                  "price": 688,
-                  "fengmian": "/picture/shopping/goods/琢磨/木雕/乐清黄杨木雕12_1.jpg",
-                  "number": "1"
-              },
-              {
-                  "goods": "调皮兔",
-                  "miaoshu": "#乐清黄杨木雕#华东一枝花#于精雕细刻中不乏写意流畅#调皮兔",
-                  "price": 688,
-                  "fengmian": "/picture/shopping/goods/琢磨/木雕/乐清黄杨木雕19_1.jpg",
-                  "number": "1"
-              },
-              {
-                  "goods": "国泰民安",
-                  "miaoshu": "#乐清黄杨木雕#华东一枝花#于精雕细刻中不乏写意流畅#国泰民安",
-                  "price": 688,
-                  "fengmian": "/picture/shopping/goods/琢磨/木雕/乐清黄杨木雕17_1.jpg",
-                  "number": "1"
-              },
-              {
-                  "goods": "牛气冲天",
-                  "miaoshu": "#乐清黄杨木雕#华东一枝花#于精雕细刻中不乏写意流畅#牛气冲天",
-                  "price": 688,
-                  "fengmian": "/picture/shopping/goods/琢磨/木雕/乐清黄杨木雕8_1.jpg",
-                  "number": "1"
-              }
-          ]
+        "shopcar" : [ 
+          {
+              "goods" : "蓝色梦境",
+              "miaoshu" : "#铜雕技艺#五千年青铜文明#江南铜屋#蓝色梦境",
+              "price" : 118,
+              "fengmian" : "/picture/shopping/goods/琢磨/铜雕/铜雕技艺4-1.jpg",
+              "number" : "1",
+              "state" : "0"
+          }, 
+          {
+              "goods" : "剑齿虎",
+              "miaoshu" : "#铜雕技艺#五千年青铜文明#江南铜屋#剑齿虎",
+              "price" : 138,
+              "fengmian" : "/picture/shopping/goods/琢磨/铜雕/铜雕技艺2-1.jpg",
+              "number" : "1",
+              "state" : "0"
+          }, 
+          {
+              "goods" : "憨态小狮",
+              "miaoshu" : "#铜雕技艺#五千年青铜文明#江南铜屋#憨态小狮",
+              "price" : 58,
+              "fengmian" : "/picture/shopping/goods/琢磨/铜雕/铜雕技艺1-1.jpg",
+              "number" : "1",
+              "state" : "0"
+          }, 
+          {
+              "goods" : "定胜糕",
+              "miaoshu" : "#南浔传统糕点制作技艺#南浔相映衬，源远流长，流传至今#具有浓郁历史文化底蕴#定胜糕",
+              "price" : 32,
+              "fengmian" : "/picture/shopping/goods/珍馐/糕点/南浔传统糕点2-1.jpg",
+              "number" : "1",
+              "state" : "0"
+          }, 
+          {
+              "goods" : "重麻酥糖",
+              "miaoshu" : "#南浔传统糕点制作技艺#南浔相映衬，源远流长，流传至今#具有浓郁历史文化底蕴#重麻酥糖",
+              "price" : 32,
+              "fengmian" : "/picture/shopping/goods/珍馐/糕点/南浔传统糕点4-1.jpg",
+              "number" : "1",
+              "state" : "0"
+          }
+      ]
       }
   ]
 }
@@ -304,43 +309,48 @@ this.setState({shoppingCartData: shoppingCartData})
 const shoppingCartData = {
   "docs": [
       {
-          "shopcar": [
-              {
-                  "goods": "手倚莲花",
-                  "miaoshu": "#乐清黄杨木雕#华东一枝花#于精雕细刻中不乏写意流畅#手倚莲花",
-                  "price": 688,
-                  "fengmian": "/picture/shopping/goods/琢磨/木雕/乐清黄杨木雕2_1.jpg",
-                  "number": "1"
-              },
-              {
-                  "goods": "龙龟",
-                  "miaoshu": "#乐清黄杨木雕#华东一枝花#于精雕细刻中不乏写意流畅#龙龟",
-                  "price": 688,
-                  "fengmian": "/picture/shopping/goods/琢磨/木雕/乐清黄杨木雕12_1.jpg",
-                  "number": "1"
-              },
-              {
-                  "goods": "调皮兔",
-                  "miaoshu": "#乐清黄杨木雕#华东一枝花#于精雕细刻中不乏写意流畅#调皮兔",
-                  "price": 688,
-                  "fengmian": "/picture/shopping/goods/琢磨/木雕/乐清黄杨木雕19_1.jpg",
-                  "number": "1"
-              },
-              {
-                  "goods": "国泰民安",
-                  "miaoshu": "#乐清黄杨木雕#华东一枝花#于精雕细刻中不乏写意流畅#国泰民安",
-                  "price": 688,
-                  "fengmian": "/picture/shopping/goods/琢磨/木雕/乐清黄杨木雕17_1.jpg",
-                  "number": "1"
-              },
-              {
-                  "goods": "牛气冲天",
-                  "miaoshu": "#乐清黄杨木雕#华东一枝花#于精雕细刻中不乏写意流畅#牛气冲天",
-                  "price": 688,
-                  "fengmian": "/picture/shopping/goods/琢磨/木雕/乐清黄杨木雕8_1.jpg",
-                  "number": "1"
-              }
-          ]
+        "shopcar" : [ 
+          {
+              "goods" : "蓝色梦境",
+              "miaoshu" : "#铜雕技艺#五千年青铜文明#江南铜屋#蓝色梦境",
+              "price" : 118,
+              "fengmian" : "/picture/shopping/goods/琢磨/铜雕/铜雕技艺4-1.jpg",
+              "number" : "1",
+              "state" : "0"
+          }, 
+          {
+              "goods" : "剑齿虎",
+              "miaoshu" : "#铜雕技艺#五千年青铜文明#江南铜屋#剑齿虎",
+              "price" : 138,
+              "fengmian" : "/picture/shopping/goods/琢磨/铜雕/铜雕技艺2-1.jpg",
+              "number" : "1",
+              "state" : "0"
+          }, 
+          {
+              "goods" : "憨态小狮",
+              "miaoshu" : "#铜雕技艺#五千年青铜文明#江南铜屋#憨态小狮",
+              "price" : 58,
+              "fengmian" : "/picture/shopping/goods/琢磨/铜雕/铜雕技艺1-1.jpg",
+              "number" : "1",
+              "state" : "0"
+          }, 
+          {
+              "goods" : "定胜糕",
+              "miaoshu" : "#南浔传统糕点制作技艺#南浔相映衬，源远流长，流传至今#具有浓郁历史文化底蕴#定胜糕",
+              "price" : 32,
+              "fengmian" : "/picture/shopping/goods/珍馐/糕点/南浔传统糕点2-1.jpg",
+              "number" : "1",
+              "state" : "0"
+          }, 
+          {
+              "goods" : "重麻酥糖",
+              "miaoshu" : "#南浔传统糕点制作技艺#南浔相映衬，源远流长，流传至今#具有浓郁历史文化底蕴#重麻酥糖",
+              "price" : 32,
+              "fengmian" : "/picture/shopping/goods/珍馐/糕点/南浔传统糕点4-1.jpg",
+              "number" : "1",
+              "state" : "0"
+          }
+      ]
       }
   ]
 }
