@@ -19,6 +19,7 @@ import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import { ScrollView } from 'react-native-gesture-handler';
 
 var https = "http://121.196.191.45";
 var http = "http://192.168.50.91:3000";
@@ -267,6 +268,7 @@ export default class App extends Component {
     return (
       <View>
         <View style={{
+          backgroundColor:"#fff",
           height: 45,
           alignItems: "center",
           justifyContent: "center",
@@ -341,10 +343,11 @@ export default class App extends Component {
             </View>
           </Modal>
         </View>
+        <ScrollView>
         <View style={{ width: '100%', height: 50, marginBottom: 15, alignItems: 'center', justifyContent: 'center', flexDirection: 'row', backgroundColor: '#fff' }}>
           <View style={{ alignItems: 'center', justifyContent: 'center', flexDirection: 'row' }}>
             <Text style={{ fontSize: 15 }}>志愿时长</Text>
-            <View style={{ width: 290, height: 30 }}>
+            <View style={{ width: 260, height: 30 }}>
               <View style={styles.containerStyle}>
                 <Animated.View
                   style={[
@@ -403,7 +406,7 @@ export default class App extends Component {
             data={data}
             renderItem={({ item }) =>
               <View style={styles.one}>
-                <View style={{ width: '100%', height: 20, flexDirection: 'row-reverse' }}>
+                <View style={{ width: '100%',flexDirection: 'row-reverse' }}>
                   <TouchableOpacity style={styles.mark}
                     onPress={() => { this._openModalWin(), copytitle2 = item.title }}
                   >
@@ -450,7 +453,9 @@ export default class App extends Component {
                   </Modal>
                 </View>
                 <View style={styles.first}>
-                  <Text style={styles.key}>主题：{item.title}</Text>
+                  <View style={{flexDirection:"row"}}>
+                  <Text>主题：</Text>
+                  <Text style={{width:240}}>{item.title}</Text></View>
                   <TouchableOpacity
                     activeOpacity={0.8}
                     style={styles.message}
@@ -459,7 +464,7 @@ export default class App extends Component {
                   </TouchableOpacity>
                 </View>
                 <View style={styles.second}>
-                  <Text style={styles.key}>地点：{item.author}</Text>
+                  <Text style={{}}>地点：{item.author}</Text>
                   <TouchableOpacity style={{ width: 15, height: 15, marginLeft: 10, alignItems: 'center', justifyContent: 'center' }}
                     onPress={() => { copytitle = item.title, console.log(copytitle), this._onClickAddress(), this._openModalTwo() }}>
                     <EvilIcons
@@ -505,7 +510,7 @@ export default class App extends Component {
                   </Modal>
                 </View>
                 <View style={styles.third}>
-                  <View style={{ width: '72%', height: 40 }}>
+                  <View style={{ width: '72%' }}>
                     <Text style={styles.key}>时间：{item.time}</Text>
                     <Text style={styles.key}>状态：{item.state}</Text>
                   </View>
@@ -559,6 +564,7 @@ export default class App extends Component {
             }
           />
         </View>
+        </ScrollView>
       </View>
     );
   }
@@ -568,26 +574,26 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     backgroundColor: '#f2f2f2',
+    paddingBottom:20
   },
   one: {
     width: '100%',
-    height: 110,
     backgroundColor: '#fff',
+    paddingHorizontal:20,
+    paddingBottom:20,
     marginBottom: 15,
-    // marginTop:20
   },
   key: {
-    marginLeft: 10
+    width:290,
   },
   mark: {
-    width: 20,
+    width: 40,
     height: 20,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   first: {
     width: '100%',
-    height: 20,
     flexDirection: 'row',
     justifyContent: "space-between"
   },
@@ -597,7 +603,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#b7c4b3',
     borderRadius: 5,
     borderWidth: 0.5,
-    marginRight: 50,
     borderColor: 'black'
   },
   second: {

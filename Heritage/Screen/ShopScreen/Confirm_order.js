@@ -229,7 +229,7 @@ export default class App extends Component {
                         </View>
                 </ScrollView>
                 <View style={styles.footer}>
-                    <Text style={{ fontSize: 15, marginLeft: 200 }}>合计：</Text>
+                    <Text style={{ fontSize: 15}}>合计：</Text>
                     <Text style={{ fontSize: 20, color: '#f76220' }}>￥{sum}</Text>
                     <TouchableOpacity 
                     activeOpacity={0.8}
@@ -332,7 +332,9 @@ const styles = StyleSheet.create({
         height: '7%',
         backgroundColor: '#fff',
         flexDirection: 'row',
-        alignItems: 'center'
+        alignItems: 'center',
+        justifyContent:'flex-end',
+        paddingRight:20
     },
     modalLayer: {
         backgroundColor: 'rgba(0, 0, 0, 0.45)',

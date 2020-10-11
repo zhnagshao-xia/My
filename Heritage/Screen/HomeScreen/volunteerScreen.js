@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Card from "./Card";
-import { PanResponder, Animated, View, TouchableOpacity } from "react-native";
+import { PanResponder, Animated, View, TouchableOpacity, ImageBackground } from "react-native";
 import { Appbar } from "react-native-paper";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import Entypo from "react-native-vector-icons/Entypo";
@@ -196,7 +196,10 @@ export default class VolunteerScreen extends React.Component {
         {Projects && Projects.length != 0 ? (
 
 
-          <Container style={{backgroundColor:"red",}}>
+          <Container  style={{backgroundColor:"red"}}>
+            <ImageBackground
+            style={{ width: '100%', height: '100%', resizeMode: 'stretch',justifyContent:"center",alignItems:"center" }}
+                source={require('../../Image/HomeScreen/volunteer_bg.jpg')}>
             <AnimatedMask style={{ opacity: this.state.opacity }} />
             <Animated.View
               style={{
@@ -263,6 +266,7 @@ export default class VolunteerScreen extends React.Component {
                 text={Projects[this.getNextIndex(this.state.index + 1)].text}
               />
             </Animated.View>
+            </ImageBackground>
           </Container>) : (<Text>Loading..</Text>)}
       </>
     );
