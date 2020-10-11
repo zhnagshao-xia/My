@@ -12,10 +12,14 @@ import {
     AsyncStorage,
     NativeModules,
   LayoutAnimation,
+  Dimensions,
 } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import EvilIcons from 'react-native-vector-icons/EvilIcons'
 import Feather from 'react-native-vector-icons/Feather'
+import Lightbox from 'react-native-lightbox';
+import Carousel from 'react-native-looped-carousel';
+import Modal from 'react-native-modalbox';
 
 var https = "http://121.196.191.45";
 var http = "http://192.168.50.91:3000";
@@ -36,11 +40,15 @@ UIManager.setLayoutAnimationEnabledExperimental &&
 UIManager.setLayoutAnimationEnabledExperimental(true);
 var ffk = true;
 
+const WINDOW_WIDTH = Dimensions.get('window').width;
+const BASE_PADDING = 10;
+
 export default class mainbody extends Component {
 
   state = {
     w: 0,
     h: 0,
+
   };
 
   _onPress = () => {
@@ -65,7 +73,11 @@ export default class mainbody extends Component {
             _id,
             docs:[],
             pinglun:[],
-            picture:[]
+            picture:[],
+            isOpen: false,
+            isDisabled: false,
+            swipeToClose: true,
+            sliderValue: 0.3
         }
       }
 
@@ -226,6 +238,20 @@ export default class mainbody extends Component {
             console.log("监测用户状态")
             this.checkUserAction();
           }
+          const renderCarousel = () =>
+          (
+            <Carousel style={{ width: WINDOW_WIDTH, height: WINDOW_WIDTH }}>
+              {data1.map((item) => {
+                return (
+                  <Image
+                    style={{ flex: 1 }}
+                    resizeMode="contain"
+                    source={{ uri: https + item.p }}
+                  />
+                )
+              })}
+            </Carousel>
+          )
         return (
             <View style={{flex:1}}>
                 <View style={{
@@ -288,10 +314,14 @@ export default class mainbody extends Component {
                         data={data1}
                         numColumns={3}
                         renderItem={({ item }) =>
+                        <Lightbox springConfig={{ tension: 15, friction: 7 }}
+                            swipeToDismiss={false}
+                            renderContent={renderCarousel}
+                           >
                             <View style={{width:100,height:100}}>
                             <Image style={{ width: 90, height: 90 }}
                                 source={{uri:https+item.p}}
-                            ></Image></View>
+                            ></Image></View></Lightbox>
                         }/>
                         </View>
                     </View>
@@ -372,6 +402,7 @@ export default class mainbody extends Component {
                         <Text style={{ fontSize: 15, marginLeft: 5 }}>{docs.forward}</Text>
                     </TouchableOpacity>
                     <TouchableOpacity 
+                    onPress={() => this.refs.modal6.open()}
                     activeOpacity={0.8}
                     style={{ width: 100, height: 40, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
                         <Feather name={'message-square'} size={22} color={'#000'} />
@@ -388,7 +419,35 @@ export default class mainbody extends Component {
                         <Text style={{ fontSize: 15, marginLeft: 5 }}>{docs.likes}</Text>
                     </TouchableOpacity>
                 </View>
+                <Modal style={styles.modal4} position={"bottom"} ref={"modal6"} >
+                  <TextInput
+                  maxLength={200} 
+                  multiline={true} 
+                  placeholder='写评论...'
+                  textAlignVertical="top"
+                   style={{width:'70%',
+                   height:120,
+                   backgroundColor:'#f2f2f2',
+                   borderRadius:10,
 
+                   }}></TextInput>
+                  <TouchableOpacity
+         onPress={() => this.refs.modal6.close()}
+                   style={{width:'15%',
+                   height:40,
+                   backgroundColor:'#945357',
+                   borderRadius:10,
+                   alignItems:'center',
+                   justifyContent:'center',
+                   marginTop:70
+                   }}>
+                    <Text style={{fontSize:15,color:'#fff'}}>发送</Text>
+                  </TouchableOpacity>
+          {/* <TouchableOpacity style={{width:'100%',height:'100%',backgroundColor:'blue',alignItems:'center'}}
+           onPress={() => this.refs.modal6.close()} >
+            <Text style={{fontSize:15,marginTop:3}}>取消</Text>
+          </TouchableOpacity>         */}
+        </Modal>
             </View>
         );
     }
@@ -452,6 +511,14 @@ const styles = StyleSheet.create({
       width: 200,
       height:200,
       backgroundColor: 'red',
+    },
+    modal4: {
+      height: 150,
+      width:'100%',
+      alignItems:'center',
+      justifyContent:'space-around',    
+      backgroundColor:'#fff',
+      flexDirection:'row'
     },
 
 }); 

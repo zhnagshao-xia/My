@@ -137,7 +137,7 @@ export default class homerecommend extends Component {
         return res.json();
       }).then(function (json) {
         if (json.code == 200) {
-          Alert.alert("关注成功")
+          // Alert.alert("关注成功")
         }
       })
   }
@@ -160,7 +160,7 @@ export default class homerecommend extends Component {
         return res.json();
       }).then(function (json) {
         if (json.code == 200) {
-          Alert.alert("关注成功")
+          // Alert.alert("关注成功")
         }
       })
   }
@@ -183,7 +183,7 @@ export default class homerecommend extends Component {
         return res.json();
       }).then(function (json) {
         if (json.code == 200) {
-          Alert.alert("关注成功")
+          // Alert.alert("关注成功")
         }
       })
   }
@@ -258,7 +258,14 @@ export default class homerecommend extends Component {
                 </View>
                 <TouchableOpacity
                 activeOpacity={0.8}
-                  onPress={() => this._selectMultiItemPress(item,i)}
+                  onPress={() => 
+                    this._selectMultiItemPress(item,i),
+                    copyusername = username,
+                              copyusericon = usericon,
+                              copyname = item.name,
+                              copytouxiang = item.touxiang,
+                    this._onClickAddguanzhu1(),
+                  this._onClickAddguanzhu2()}
                   style={{
                     borderWidth: 1,
                     borderColor: '#c9c5c5',
@@ -313,7 +320,8 @@ export default class homerecommend extends Component {
                 </View>
                 <TouchableOpacity
                 activeOpacity={0.8}
-                  onPress={() => this._selectMultiItemPress(item,i)}
+                  onPress={() => 
+                    this._selectMultiItemPress(item,i)}
                   style={{
                     borderWidth: 1,
                     borderColor: '#c9c5c5',
