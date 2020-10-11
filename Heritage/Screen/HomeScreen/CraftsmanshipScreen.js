@@ -3,7 +3,8 @@ import { View, Text, Image, ScrollView, TouchableOpacity, StyleSheet, FlatList, 
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
 var https = "http://121.196.191.45";
-var http = "http://192.168.50.91:3000";
+// var http = "http://192.168.50.91:3000";
+var http = "http://121.196.191.45:3000";
 var URL1 = http + "/chuanchengzhi";
 
 export default class CraftsmanshipScreen extends Component {

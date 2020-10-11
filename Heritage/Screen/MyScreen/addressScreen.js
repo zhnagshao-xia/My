@@ -12,7 +12,8 @@ import {
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
-var http="http://192.168.50.91:3000";
+// var http="http://192.168.50.91:3000";
+var http = "http://121.196.191.45:3000";
 var URL = http+"/users/address/list";
 
 export default class addressScreen extends Component {

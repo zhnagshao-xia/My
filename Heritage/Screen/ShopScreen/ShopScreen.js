@@ -23,7 +23,8 @@ const { height, width } = Dimensions.get('window');
 const numColumns = 2;
 
 var https = "http://121.196.191.45";
-var http = "http://192.168.50.91:3000";
+// var http = "http://192.168.50.91:3000";
+var http = "http://121.196.191.45:3000";
 var URL1 = http + "/shopping";
 
 const images = [

@@ -22,7 +22,8 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import { ScrollView } from 'react-native-gesture-handler';
 
 var https = "http://121.196.191.45";
-var http = "http://192.168.50.91:3000";
+// var http = "http://192.168.50.91:3000";
+var http = "http://121.196.191.45:3000";
 var URL1 = http + "/volunteer/history";
 var URL2 = http + "/volunteer/state";
 var URL3 = http + "/volunteer/qrcode";

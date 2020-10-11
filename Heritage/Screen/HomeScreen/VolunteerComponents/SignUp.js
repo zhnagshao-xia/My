@@ -16,7 +16,8 @@ import {
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import LottieView from 'lottie-react-native';//加这个
 
-var http = "http://192.168.50.91:3000";
+// var http = "http://192.168.50.91:3000";
+var http = "http://121.196.191.45:3000";
 var URL1 = http + "/volunteer/details/submit";
 var copyusername;
 

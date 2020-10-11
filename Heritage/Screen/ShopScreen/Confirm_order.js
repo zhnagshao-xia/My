@@ -17,7 +17,8 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import LottieView from 'lottie-react-native';
 
 var https = "http://121.196.191.45";
-var http = "http://192.168.50.91:3000";
+// var http = "http://192.168.50.91:3000";
+var http = "http://121.196.191.45:3000";
 var URL1 = http + "/shopping/shopcar/address";
 var URL2 = http + "/shopping/shopcar/goods";
 var URL3 = http + "/shopping/shopcar/allprice";

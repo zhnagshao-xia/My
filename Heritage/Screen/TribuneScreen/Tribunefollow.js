@@ -5,7 +5,8 @@ import EvilIcons from 'react-native-vector-icons/EvilIcons'
 import Feather from 'react-native-vector-icons/Feather'
 
 var https = "http://121.196.191.45";
-var http = "http://192.168.50.91:3000";
+// var http = "http://192.168.50.91:3000";
+var http = "http://121.196.191.45:3000";
 var URL1 = http + "/luntan/guanzhu";
 var URL2 = http + "/luntan/forward";
 var URL3 = http + "/luntan/likes";

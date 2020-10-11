@@ -4,7 +4,8 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { Tabs, Flex } from '@ant-design/react-native';
 
 var https = "http://121.196.191.45";
-var http = "http://192.168.50.91:3000";
+// var http = "http://192.168.50.91:3000";
+var http = "http://121.196.191.45:3000";
 var URL1 = http + "/luntan/message1";
 var URL2 = http + "/luntan/message2";
 var URL3 = http + "/luntan/message3";

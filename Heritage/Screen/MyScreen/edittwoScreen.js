@@ -20,8 +20,9 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import LottieView from 'lottie-react-native';//加这个
 
-var URL1 = "http://192.168.50.91:3000/users/address/list/change/update";
-var URL2 = "http://192.168.50.91:3000/users/address/list/change/delete"
+var http = "http://121.196.191.45:3000";
+var URL1 = http+"/users/address/list/change/update";
+var URL2 = http+"/users/address/list/change/delete"
 
 export default class ModalComp extends Component{
     constructor(props) {

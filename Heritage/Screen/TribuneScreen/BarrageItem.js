@@ -10,7 +10,8 @@ import PropTypes from 'prop-types';
 import UI from './UI';
 
 var https = "http://121.196.191.45";
-var http = "http://192.168.50.91:3000";
+// var http = "http://192.168.50.91:3000";
+var http = "http://121.196.191.45:3000";
 var URL1 = http + "/luntan/message1";
 
 const imageWidth = 20;

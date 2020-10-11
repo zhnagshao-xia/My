@@ -15,7 +15,8 @@ import {  } from 'react-native-gesture-handler';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 var https = "http://121.196.191.45";
-var http = "http://192.168.50.91:3000";
+// var http = "http://192.168.50.91:3000";
+var http = "http://121.196.191.45:3000";
 var URL = http + "/users/fensi/list";
 var URL1 = http + "/shouyiren/addguanzhu1";//增加用户关注数
 var URL2 = http + "/shouyiren/addguanzhu2";//增加手艺人关注数
