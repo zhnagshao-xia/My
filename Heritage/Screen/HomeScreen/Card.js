@@ -130,7 +130,7 @@ class Project extends React.Component {
               this.props.navigation.navigate('signUp',{title:this.props.title});
             }}
             style={{
-              backgroundColor:'#6092a0',
+              backgroundColor:'#945357',
               position: 'absolute',
               bottom: '5%',
               width:80,
@@ -198,7 +198,7 @@ const Title = styled.Text`
   left: 20px;
   font-size: 24px;
   font-weight: bold;
-  color: white;
+  color: black;
   width: 300px;
 `;
 
@@ -208,7 +208,7 @@ const Author = styled.Text`
   position: absolute;
   bottom: 20px;
   left: 20px;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255,1);
   font-size: 15px;
   font-weight: 600;
   text-transform: uppercase;

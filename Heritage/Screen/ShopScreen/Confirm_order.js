@@ -187,11 +187,11 @@ export default class App extends Component {
                 </View>
                 <ScrollView style={styles.contant}>
                     <View style={{width:'100%',alignItems:"center"}}>
-                        <View style={{ height: 120, width: '90%', backgroundColor: '#fff', marginTop: 20, borderRadius: 15, flexDirection: 'row',paddingTop:20 }}>
+                        <View style={{width: '90%', backgroundColor: '#fff', marginTop: 20, borderRadius: 15, flexDirection: 'row',paddingVertical:20 }}>
                            
                                 <Image style={{ width: 40, height: 40,marginLeft:15 }} source={require('../../Image/ShopScreen/location.png')}></Image>
                             
-                            <View style={{ width: 260, height: 130, marginLeft: 15 }}>
+                            <View style={{ marginLeft: 15}}>
                                 <View style={{flexDirection:"row",justifyContent:'space-between'}}>
                                 <Text style={{ fontSize: 18 }}>{address.shopname}</Text>
                                 <Text style={{ fontSize: 18 }}>{address.telephone}</Text>

@@ -42,7 +42,6 @@ import Shopproductdetail from './ShopScreen/Shopproductdetail'
 import Confirm_order from './ShopScreen/Confirm_order'
 import My_order from './ShopScreen/My_order'
 import Reviewscreen from './ShopScreen/Reviewscreen'
-import Typeone from './ShopScreen/Typeone'
 import Shopclassifymore from './ShopScreen/Shopclassifymore'
 import Shoplist from './ShopScreen/Shoplist'
 import Buynow from './ShopScreen/buynow'
@@ -263,7 +262,6 @@ function MyStack() {
       <Stack.Screen name="确认订单" component={Confirm_order} />
       <Stack.Screen name="我的订单" component={My_order} />
       <Stack.Screen name="评价商品页面" component={Reviewscreen} />
-      <Stack.Screen name="Typeone" component={Typeone} />
       <Stack.Screen name="Shopclassifymore" component={Shopclassifymore}/>
       <Stack.Screen name="Shoplist" component={Shoplist}/>
       <Stack.Screen name="Buynow" component={Buynow}/>
