@@ -12,7 +12,8 @@ import {
     TouchableOpacity } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
-var URL='http://192.168.50.91:3000/regist';
+var http = "http://121.196.191.45:3000";
+var URL=http+'/regist';
 
 export default class registerScreen extends Component {
   constructor(props) {

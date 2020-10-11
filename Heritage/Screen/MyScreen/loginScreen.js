@@ -11,7 +11,8 @@ import {
     TouchableOpacity, EventSubscriptionVendor, AsyncStorage } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
-var URL="http://192.168.50.91:3000/login";
+var http = "http://121.196.191.45:3000";
+var URL=http+"/login";
 
 export default class loginScreen extends Component {
   constructor(props){

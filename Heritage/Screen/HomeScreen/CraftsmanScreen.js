@@ -11,7 +11,8 @@ import { ScrollView, FlatList } from 'react-native-gesture-handler';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
 var https = "http://121.196.191.45";
-var http = "http://192.168.50.91:3000";
+// var http = "http://192.168.50.91:3000";
+var http = "http://121.196.191.45:3000";
 var URL1 = http+"/shouyiren/craftsman";
 var URL2 = http + "/shouyiren/addguanzhu1";
 var URL3 = http + "/shouyiren/addguanzhu2";

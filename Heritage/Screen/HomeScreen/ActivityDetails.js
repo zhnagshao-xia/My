@@ -3,7 +3,8 @@ import { Text, View, FlatList, ScrollView, StyleSheet, Image, TouchableOpacity,T
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
 var https = "http://121.196.191.45";
-var http = "http://192.168.50.91:3000";
+// var http = "http://192.168.50.91:3000";
+var http = "http://121.196.191.45:3000";
 var URL1 = http+"/activity/details";
 
 export default class ActivityDetails extends Component {

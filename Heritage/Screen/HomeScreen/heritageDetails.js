@@ -6,7 +6,8 @@ import Feather from 'react-native-vector-icons/Feather';
 import Modal from 'react-native-modalbox';
 
 var https = "http://121.196.191.45";
-var http = "http://192.168.50.91:3000";
+// var http = "http://192.168.50.91:3000";
+var http = "http://121.196.191.45:3000";
 var URL1 = http + "/feiyi/list/details";
 var URL2 = http + "/feiyi/list/details/shoucang";
 var copyusername;

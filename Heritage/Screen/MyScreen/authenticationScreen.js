@@ -21,7 +21,8 @@ import { TextInput } from 'react-native-paper';
 import ImagePicker from 'react-native-image-crop-picker';
 import LottieView from 'lottie-react-native';
 
-var URL="http://192.168.50.91:3000/users/renzheng";
+var http = "http://121.196.191.45:3000";
+var URL=http+"/users/renzheng";
 
 
 export default class ModalComp extends Component{

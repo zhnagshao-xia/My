@@ -3,7 +3,8 @@ import { View, Text, TouchableOpacity, Image, StyleSheet, SectionList } from 're
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 var https = "http://121.196.191.45";
-var http = "http://192.168.50.91:3000";
+// var http = "http://192.168.50.91:3000";
+var http = "http://121.196.191.45:3000";
 var URL1 = http + "/shopping/shopcar";
 
 export default class Shopcart extends Component {

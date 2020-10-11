@@ -22,7 +22,8 @@ import Carousel from 'react-native-looped-carousel';
 import Modal from 'react-native-modalbox';
 
 var https = "http://121.196.191.45";
-var http = "http://192.168.50.91:3000";
+// var http = "http://192.168.50.91:3000";
+var http = "http://121.196.191.45:3000";
 var URL1 = http+"/luntan/zhengwen";
 var URL2 = http+"/luntan/forward";
 var URL3 = http+"/luntan/likes";
@@ -380,7 +381,7 @@ export default class mainbody extends Component {
                                     <Text style={{ fontSize: 13, marginRight: 5 }}> 共12条回复</Text>
                                     <FontAwesome name={'angle-right'} size={20} color={'#000'} />
                                 </TouchableOpacity>
-                                <View style={[styles.box,]} />
+                                
                             </View>
                         }
                     />
