@@ -241,7 +241,7 @@ export default class mainbody extends Component {
       },
     ]
   };
-  _selectMultiItemPress(item,i) {
+  _selectMultiItemPress(item, i) {
     if (item.select) {
       this.state.selectMultiItem.splice(this.state.selectMultiItem.findIndex(function (x) {
         return x === item.yonghuming;
@@ -289,15 +289,16 @@ export default class mainbody extends Component {
               <View style={{ flexDirection: "row" }}>
                 <TouchableOpacity
                   activeOpacity={0.8}
-                  onPress={() => {this._selectMultiItemPress(item,i),
-                    copyyonghuming2 = item.yonghuming,
+                  onPress={() => {
+                    this._selectMultiItemPress(item, i),
+                      copyyonghuming2 = item.yonghuming,
                       this._onClickPinglunlikes()
-                      // ,this.fetchData()
-                      
+                    // ,this.fetchData()
+
                   }}>
                   <FontAwesome name={'heart'} size={20} color={'#945357'} />
                 </TouchableOpacity>
-                <Text style={{ fontSize: 13, marginLeft: 5 }}>{item.likes+1}</Text>
+                <Text style={{ fontSize: 13, marginLeft: 5 }}>{item.likes + 1}</Text>
               </View>
             </View>
             <View style={{ width: '100%', marginBottom: 10 }}>
@@ -306,7 +307,7 @@ export default class mainbody extends Component {
             <TouchableOpacity
               onPress={() => {
                 if (openOrClose) {
-                  this.beheight(3 * 33)
+                  this.beheight(4 * 33)
                   openOrClose = false
                 } else {
                   this.beheight(0)
@@ -322,7 +323,21 @@ export default class mainbody extends Component {
               <Text style={{ fontSize: 13, marginRight: 5 }}> 共12条回复</Text>
               <FontAwesome name={'angle-right'} size={20} color={'#000'} />
             </TouchableOpacity>
-            <Animated.View style={{ width: 200, height: this.state.stranHeight }} />
+            <Animated.View style={{ width: 200, height: this.state.stranHeight }}>
+              <View style={{ flexDirection: 'column' }}>
+                <View style={{ flexDirection: "row" }}>
+                  <Image
+                    source={require('../../Image/HomeScreen/2.jpg')}
+                    style={{ width: 40, height: 40, backgroundColor: 'black', borderRadius: 50, marginRight: 7 }}>
+                  </Image>
+                  <View style={{ flexDirection: "column", marginTop: 10 }}>
+                    <Text style={{ fontSize: 15, color: 'black', marginRight: 5 }}>{item.yonghuming}</Text>
+                    <Text style={{ fontSize: 12 }}>{item.time}</Text>
+                  </View>
+                </View>
+                <Text style={{ fontSize: 12 }}>haokan</Text>
+              </View>
+            </Animated.View>
           </View>
         )
       } else {
@@ -352,11 +367,12 @@ export default class mainbody extends Component {
               <View style={{ flexDirection: "row" }}>
                 <TouchableOpacity
                   activeOpacity={0.8}
-                  onPress={() => {this._selectMultiItemPress(item,i),
-                    copyyonghuming2 = item.yonghuming,
+                  onPress={() => {
+                    this._selectMultiItemPress(item, i),
+                      copyyonghuming2 = item.yonghuming,
                       this._onClickPinglunlikes()
-                      // ,this.fetchData()
-                      
+                    // ,this.fetchData()
+
                   }}>
                   <FontAwesome name={'heart-o'} size={20} color={'#000'} />
                 </TouchableOpacity>
@@ -364,12 +380,12 @@ export default class mainbody extends Component {
               </View>
             </View>
             <View style={{ width: '100%', marginBottom: 10 }}>
-              <Text style={{ fontSize: 13 }}>{item.huitie}</Text>
+              <Text style={{ fontSize: 15 }}>{item.huitie}</Text>
             </View>
             <TouchableOpacity
               onPress={() => {
                 if (openOrClose) {
-                  this.beheight(3 * 33)
+                  this.beheight(360)
                   openOrClose = false
                 } else {
                   this.beheight(0)
@@ -382,10 +398,83 @@ export default class mainbody extends Component {
                 backgroundColor: '#e7e7e7',
                 borderRadius: 5, alignItems: 'center', flexDirection: 'row'
               }}>
-              <Text style={{ fontSize: 13, marginRight: 5 }}> 共12条回复</Text>
+              <Text style={{ fontSize: 13, marginRight: 5 }}> 共5条回复</Text>
               <FontAwesome name={'angle-right'} size={20} color={'#000'} />
             </TouchableOpacity>
-            <Animated.View style={{ width: 200, height: this.state.stranHeight }} />
+            <Animated.View style={{
+              width: '95%',
+              height: this.state.stranHeight,
+              flexDirection: "column",
+              paddingLeft: 40,
+              overflow: "hidden",
+              paddingTop:10
+            }}>
+              <View style={{ flexDirection: 'column',marginBottom:10 }}>
+                <View style={{ flexDirection: "row" }}>
+                  <Image
+                    source={{uri:https+'/picture/touxiang/fans/a24.jpg'}}
+                    style={{ width: 40, height: 40, backgroundColor: 'black', borderRadius: 50, marginRight: 7 }}>
+                  </Image>
+                  <View style={{ flexDirection: "column"}}>
+                    <Text style={{ fontSize: 15, color: 'black', marginRight: 5 }}>弹琴说爱</Text>
+                    <Text style={{ fontSize: 12 }}>2020-08-18 03：01</Text>
+                  </View>
+                </View>
+                <Text style={{ fontSize: 15, marginLeft: 30 }}>我也觉得好漂亮呀</Text>
+              </View>
+              <View style={{ flexDirection: 'column',marginBottom:10 }}>
+                <View style={{ flexDirection: "row" }}>
+                  <Image
+                    source={{uri:https+'/picture/touxiang/fans/a20.jpg'}}
+                    style={{ width: 40, height: 40, backgroundColor: 'black', borderRadius: 50, marginRight: 7 }}>
+                  </Image>
+                  <View style={{ flexDirection: "column"}}>
+                    <Text style={{ fontSize: 15, color: 'black', marginRight: 5 }}>追足的梦幻</Text>
+                    <Text style={{ fontSize: 12 }}>2020-08-18 14：40</Text>
+                  </View>
+                </View>
+                <Text style={{ fontSize: 15, marginLeft: 30 }}>非遗真的是国家的宝藏</Text>
+              </View>
+              <View style={{ flexDirection: 'column',marginBottom:10 }}>
+                <View style={{ flexDirection: "row" }}>
+                  <Image
+                    source={{uri:https+'/picture/touxiang/fans/a7.jpg'}}
+                    style={{ width: 40, height: 40, backgroundColor: 'black', borderRadius: 50, marginRight: 7 }}>
+                  </Image>
+                  <View style={{ flexDirection: "column"}}>
+                    <Text style={{ fontSize: 15, color: 'black', marginRight: 5 }}>当初的我</Text>
+                    <Text style={{ fontSize: 12 }}>2020-09-1 15：21</Text>
+                  </View>
+                </View>
+                <Text style={{ fontSize: 15, marginLeft: 30 }}>赞同</Text>
+              </View>
+              <View style={{ flexDirection: 'column',marginBottom:10 }}>
+                <View style={{ flexDirection: "row" }}>
+                  <Image
+                    source={{uri:https+'/picture/touxiang/fans/a21.jpg'}}
+                    style={{ width: 40, height: 40, backgroundColor: 'black', borderRadius: 50, marginRight: 7 }}>
+                  </Image>
+                  <View style={{ flexDirection: "column"}}>
+                    <Text style={{ fontSize: 15, color: 'black', marginRight: 5 }}>超级凶鸭</Text>
+                    <Text style={{ fontSize: 12 }}>2020-09-10 10：44</Text>
+                  </View>
+                </View>
+                <Text style={{ fontSize: 15, marginLeft: 30 }}>+1</Text>
+              </View>
+              <View style={{ flexDirection: 'column',marginBottom:10 }}>
+                <View style={{ flexDirection: "row" }}>
+                  <Image
+                    source={{uri:https+'/picture/touxiang/fans/a23.jpg'}}
+                    style={{ width: 40, height: 40, backgroundColor: 'black', borderRadius: 50, marginRight: 7 }}>
+                  </Image>
+                  <View style={{ flexDirection: "column"}}>
+                    <Text style={{ fontSize: 15, color: 'black', marginRight: 5 }}>看瓜少年和猹</Text>
+                    <Text style={{ fontSize: 12 }}>刚刚</Text>
+                  </View>
+                </View>
+                <Text style={{ fontSize: 15, marginLeft: 30 }}>想要原图</Text>
+              </View>
+            </Animated.View>
           </View>
         )
       }
