@@ -72,7 +72,7 @@ export default class App extends Component {
             }).then(function (json) {
                 if (json.code == 200) {
                     // Alert.alert("提交成功")
-                    navigation.navigate("记");
+                    navigation.navigate("志愿者");
                 }
             })
     }
@@ -156,6 +156,7 @@ _closeModalWin = () => {//加这个整个
                                     marginLeft: 55
                                 }}
                                 onPress={() => {
+                                    // this.setState({modalVisible: true}),
                                     this._onClickUp()
                                 }}>
                                 <ImageBackground style={{
