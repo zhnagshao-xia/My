@@ -131,6 +131,7 @@ export default class activityScreen extends Component {
                   }}
                     source={{ uri: https+item.picture1 }}>
                     <TouchableOpacity
+                    activeOpacity={0.8}
                       onPress={() => navigation.navigate('详情', { title: item.title })}
                       style={{
                         backgroundColor: 'rgba(198,164,108,0.7)',

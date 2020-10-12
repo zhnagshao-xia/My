@@ -141,9 +141,9 @@ export default class ActivityDetails extends Component {
                             </View>
                             <Text style={{ textAlign: 'auto', lineHeight: 25, fontSize: 15 }}>&#12288;&#12288;{item.content5}</Text>
                         </View>
-                        <TouchableHighlight 
+                        <TouchableOpacity 
                         onPress={() => navigation.navigate('报名表',{username:username,title:item.title})}
-                        underlayColor="rgba(86,132,145,0.6)"
+                        activeOpacity={0.8}
                         style={{
                             marginTop:30,
                             width:80,
@@ -154,7 +154,7 @@ export default class ActivityDetails extends Component {
                             borderRadius:10
                             }}>
                             <Text style={{color:'#fff',fontSize:14}}>去参加</Text>
-                        </TouchableHighlight>
+                        </TouchableOpacity>
                     </View>
                 }
             />

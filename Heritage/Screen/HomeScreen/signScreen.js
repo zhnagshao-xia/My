@@ -185,7 +185,7 @@ _closeModalWin = () => {//加这个整个
                         </View>
                         <TextInput 
                         multiline={true}  
-                        style={{width:30,height:180,backgroundColor:'#bfbfbf',textAlignVertical: 'top',padding:10}}
+                        style={{width:30,height:180,backgroundColor:'#bfbfbf',textAlignVertical: 'top'}}
                         onChangeText={(text)=>{
                           this.setState({email:text})
                         }}></TextInput>
@@ -198,7 +198,7 @@ _closeModalWin = () => {//加这个整个
                         </View>
                         <TextInput 
                         multiline={true} 
-                        style={{width:30,height:180,backgroundColor:'#bfbfbf',textAlignVertical: 'top',padding:10}}
+                        style={{width:30,height:180,backgroundColor:'#bfbfbf',textAlignVertical: 'top'}}
                         onChangeText={(text)=>{
                           this.setState({telephone:text})
                         }}></TextInput>
@@ -211,7 +211,7 @@ _closeModalWin = () => {//加这个整个
                         </View>
                         <TextInput 
                         multiline={true} 
-                        style={{width:30,height:180,backgroundColor:'#bfbfbf',textAlignVertical: 'top',padding:10}}
+                        style={{width:30,height:180,backgroundColor:'#bfbfbf',textAlignVertical: 'top'}}
                         onChangeText={(text)=>{
                           this.setState({name:text})
                         }}></TextInput>
