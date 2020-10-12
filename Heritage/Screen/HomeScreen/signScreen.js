@@ -177,7 +177,7 @@ _closeModalWin = () => {//加这个整个
                     </View>
                     </TouchableOpacity>
                 </Modal>
-                    <View style={{width:30,height:250,marginLeft:92,marginTop:30}}>
+                    <View style={{width:30,height:310,marginLeft:50,marginTop:30}}>
                         <View style={{width:30,height:70,alignItems:'center',justifyContent:'center'}}>
                             <Text style={{fontSize:15,color:'black'}}>邮</Text>
                             <Text style={{fontSize:15,color:'black'}}>箱</Text>
@@ -185,12 +185,12 @@ _closeModalWin = () => {//加这个整个
                         </View>
                         <TextInput 
                         multiline={true}  
-                        style={{width:30,height:180,backgroundColor:'#bfbfbf',textAlignVertical: 'top'}}
+                        style={{width:30,height:240,backgroundColor:'#bfbfbf',textAlignVertical: 'top'}}
                         onChangeText={(text)=>{
                           this.setState({email:text})
                         }}></TextInput>
                     </View>
-                    <View style={{width:30,height:250,marginLeft:12,marginTop:30}}>
+                    <View style={{width:30,height:250,marginLeft:21,marginTop:30}}>
                         <View style={{width:30,height:70,alignItems:'center',justifyContent:'center'}}>
                             <Text style={{fontSize:15,color:'black'}}>电</Text>
                             <Text style={{fontSize:15,color:'black'}}>话</Text>
@@ -203,7 +203,7 @@ _closeModalWin = () => {//加这个整个
                           this.setState({telephone:text})
                         }}></TextInput>
                     </View>
-                    <View style={{width:30,height:250,marginLeft:12,marginTop:30}}>
+                    <View style={{width:30,height:250,marginLeft:21,marginTop:30}}>
                         <View style={{width:30,height:70,alignItems:'center',justifyContent:'center'}}>
                             <Text style={{fontSize:15,color:'black'}}>姓</Text>
                             <Text style={{fontSize:15,color:'black'}}>名</Text>
@@ -229,7 +229,6 @@ _closeModalWin = () => {//加这个整个
 const styles = StyleSheet.create({
     container:{
         width:'100%',
-        height:660,
         alignItems:'center',
         backgroundColor:'#f2f2f2',
         flexDirection:'column-reverse',
@@ -240,10 +239,10 @@ const styles = StyleSheet.create({
         alignItems:'center',
     },
     bottom:{
-        width:"100%",
-        height:150,
+        width:"120%",
+        height:200,
         position:'absolute',
-        bottom:25
+        bottom:85
     },
     modalLayer: {
         backgroundColor: 'rgba(0, 0, 0, 0.45)',

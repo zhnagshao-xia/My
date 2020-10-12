@@ -105,16 +105,16 @@ _closeModalWin = () => {//加这个整个
         return (
             <View>
                 <View style={{
-                    backgroundColor: "#fff",
+                    // backgroundColor: "#fff",
                     height: 45,
-                    alignItems: "center",
+                    alignItems: "center", 
                     justifyContent: "center",
                     flexDirection: 'row',
                     borderBottomWidth: 0.5,
                     borderBottomColor: "#000",
                 }}>
                     <TouchableOpacity
-                        activeOpacity={0.7}
+                        activeOpacity={0.8}
                         onPress={() => navigation.goBack()}
                         style={{
                             width: 50,
@@ -153,7 +153,7 @@ _closeModalWin = () => {//加这个整个
                                     alignItems: 'center',
                                     justifyContent: 'center',
                                     marginTop: 350,
-                                    marginLeft: 55
+                                    marginLeft: 38
                                 }}
                                 onPress={() => {
                                     // this.setState({modalVisible: true}),
@@ -211,7 +211,7 @@ _closeModalWin = () => {//加这个整个
                     </View>
                     </TouchableOpacity>
                 </Modal>
-                            <View style={{ width: 30, height: 250, marginLeft: 12, marginTop: 30 }}>
+                            <View style={{ width: 30, height: 310, marginLeft: 3, marginTop: 30 }}>
                                 <View style={{ width: 30, height: 70, alignItems: 'center', justifyContent: 'center' }}>
                                     <Text style={{ fontSize: 15, color: 'black' }}>其</Text>
                                     <Text style={{ fontSize: 15, color: 'black' }}>它</Text>
@@ -219,10 +219,10 @@ _closeModalWin = () => {//加这个整个
                                 </View>
                                 <TextInput
                                     multiline={true}
-                                    style={{ width: 30, height: 180, backgroundColor: '#bfbfbf', textAlignVertical: 'top'}}
+                                    style={{ width: 30, height: 240, backgroundColor: '#bfbfbf', textAlignVertical: 'top'}}
                                     onChangeText={(text) => { this.setState({ other: text }) }}></TextInput>
                             </View>
-                            <View style={{ width: 30, height: 250, marginLeft: 12, marginTop: 30 }}>
+                            <View style={{ width: 30, height: 310, marginLeft: 21, marginTop: 30 }}>
                                 <View style={{ width: 30, height: 70, alignItems: 'center', justifyContent: 'center' }}>
                                     <Text style={{ fontSize: 15, color: 'black' }}>邮</Text>
                                     <Text style={{ fontSize: 15, color: 'black' }}>箱</Text>
@@ -230,10 +230,10 @@ _closeModalWin = () => {//加这个整个
                                 </View>
                                 <TextInput
                                     multiline={true}
-                                    style={{ width: 30, height: 180, backgroundColor: '#bfbfbf', textAlignVertical: 'top'}}
+                                    style={{ width: 30, height: 240, backgroundColor: '#bfbfbf', textAlignVertical: 'top'}}
                                     onChangeText={(text) => { this.setState({ email: text }) }}></TextInput>
                             </View>
-                            <View style={{ width: 30, height: 250, marginLeft: 12, marginTop: 30 }}>
+                            <View style={{ width: 30, height: 250, marginLeft: 21, marginTop: 30 }}>
                                 <View style={{ width: 30, height: 70, alignItems: 'center', justifyContent: 'center' }}>
                                     <Text style={{ fontSize: 15, color: 'black' }}>电</Text>
                                     <Text style={{ fontSize: 15, color: 'black' }}>话</Text>
@@ -244,7 +244,7 @@ _closeModalWin = () => {//加这个整个
                                     style={{ width: 30, height: 180, backgroundColor: '#bfbfbf', textAlignVertical: 'top'}}
                                     onChangeText={(text) => { this.setState({ telephone: text }) }}></TextInput>
                             </View>
-                            <View style={{ width: 30, height: 250, marginLeft: 12, marginTop: 30 }}>
+                            <View style={{ width: 30, height: 250, marginLeft: 21, marginTop: 30 }}>
                                 <View style={{ width: 30, height: 70, alignItems: 'center', justifyContent: 'center' }}>
                                     <Text style={{ fontSize: 15, color: 'black' }}>职</Text>
                                     <Text style={{ fontSize: 15, color: 'black' }}>业</Text>
@@ -255,7 +255,7 @@ _closeModalWin = () => {//加这个整个
                                     style={{ width: 30, height: 180, backgroundColor: '#bfbfbf', textAlignVertical: 'top'}}
                                     onChangeText={(text) => { this.setState({ work: text }) }}></TextInput>
                             </View>
-                            <View style={{ width: 30, height: 250, marginLeft: 12, marginTop: 30 }}>
+                            <View style={{ width: 30, height: 250, marginLeft: 21, marginTop: 30 }}>
                                 <View style={{ width: 30, height: 70, alignItems: 'center', justifyContent: 'center' }}>
                                     <Text style={{ fontSize: 15, color: 'black' }}>姓</Text>
                                     <Text style={{ fontSize: 15, color: 'black' }}>名</Text>
@@ -279,7 +279,6 @@ _closeModalWin = () => {//加这个整个
 const styles = StyleSheet.create({
     container: {
         width: '100%',
-        height: 660,
         alignItems: 'center',
         backgroundColor: '#f2f2f2',
         flexDirection: 'column-reverse',
@@ -290,10 +289,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     bottom: {
-        width: "100%",
-        height: 150,
+        width: "120%",
+        height: 200,
         position: 'absolute',
-        bottom: 25
+        bottom:85
     },
     modalLayer: {
         backgroundColor: 'rgba(0, 0, 0, 0.45)',

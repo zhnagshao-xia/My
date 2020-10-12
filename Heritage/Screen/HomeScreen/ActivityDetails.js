@@ -108,7 +108,7 @@ export default class ActivityDetails extends Component {
                         <View style={{ alignItems: "center" }}>
                                 <Image style={{
                                     width: '100%',
-                                    height: 250,
+                                    height: 220,
                                     resizeMode: 'stretch',
                                     marginVertical: 15
                                 }}
@@ -120,7 +120,7 @@ export default class ActivityDetails extends Component {
                             <View style={{ alignItems: "center" }}>
                                 <Image style={{
                                     width: '100%',
-                                    height: 250,
+                                    height: 220,
                                     resizeMode: 'stretch',
                                     marginVertical: 15
                                 }}
@@ -132,7 +132,7 @@ export default class ActivityDetails extends Component {
                             <View style={{ alignItems: "center" }}>
                                 <Image style={{
                                     width: '100%',
-                                    height: 250,
+                                    height: 220,
                                     resizeMode: 'stretch',
                                     marginVertical: 15
                                 }}
