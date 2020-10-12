@@ -41,7 +41,7 @@ export default class DrawerExample extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      input:"",
+      input:"雕",
       currentPage: 0,
       docs: [],
     };
