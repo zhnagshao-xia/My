@@ -1,5 +1,5 @@
 import React ,{Component} from 'react';
-import { Share, ScrollView, Text, View, TouchableOpacity, StyleSheet, ImageBackground, Image, FlatList } from 'react-native';
+import { AsyncStorage,Share, ScrollView, Text, View, TouchableOpacity, StyleSheet, ImageBackground, Image, FlatList } from 'react-native';
 import { Tabs } from '@ant-design/react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
@@ -10,6 +10,8 @@ var https = "http://121.196.191.45";
 // var http = "http://192.168.50.91:3000";
 var http = "http://121.196.191.45:3000";
 var URL1 = http+"/luntan";
+var copyusername;
+var copyyonghuming;
 
 export default class CollectionScreen extends Component{
   constructor(props) {
@@ -21,6 +23,16 @@ export default class CollectionScreen extends Component{
       docs: this.props.multiList,
       selectMultiItem: [],
     }
+  }
+
+  checkUserAction = async () => {
+    const res = await AsyncStorage.getItem('userInfo') || '{}'//AsyncStorage.getItem通过key字段来进行查询存储的数据，把该结果值作为参数传入第二个callback方法
+    const { username = '' } = JSON.parse(res)
+    username && this.setState({
+      username
+    })
+    console.log("888" + username)
+    copyusername = username;
   }
 
   componentDidMount() {
@@ -53,8 +65,9 @@ export default class CollectionScreen extends Component{
  onShare = async () => {
     try {
       const result = await Share.share({
-        message:
-          'React Native | A framework for building native apps using React',
+        message:'来自'+copyusername+'的分享'
+        +'<'+'转发了'+copyyonghuming+'的帖子'+'>'
+        // +copyproject+'\n',
       });
       if (result.action === Share.sharedAction) {
         if (result.activityType) {
@@ -158,7 +171,9 @@ _renderMultiMark() {
                 }}>
                   <TouchableOpacity
                   activeOpacity={0.8}
-                    onPress={() => { this.onShare(); }}>
+                    onPress={() => { 
+                      copyyonghuming=item.yonghuming,
+                      this.onShare(); }}>
                       <View style={{flexDirection: 'row',}}>
                     <EvilIcons name={'share-google'} size={30} color={'#000'} />
               <Text style={{marginLeft:5}}>{item.forward}</Text>
@@ -227,7 +242,9 @@ _renderMultiMark() {
                 }}>
                   <TouchableOpacity
                   activeOpacity={0.8}
-                    onPress={() => { this.onShare(); }}>
+                    onPress={() => { 
+                      copyyonghuming=item.yonghuming,
+                      this.onShare(); }}>
                       <View style={{flexDirection: 'row',}}>
                     <EvilIcons name={'share-google'} size={30} color={'#000'} />
               <Text style={{marginLeft:5}}>{item.forward}</Text>
@@ -262,6 +279,10 @@ _renderMultiMark() {
 render(){
   const { navigation } = this.props;
   const data = this.state.docs;
+  navigation.isFocused = () => {
+    console.log("监测用户状态")
+    this.checkUserAction();
+  }
   return (
     <ScrollView style={{ width: '100%', backgroundColor: '#f2f2f2' }}>
       {this._renderMultiMark()}

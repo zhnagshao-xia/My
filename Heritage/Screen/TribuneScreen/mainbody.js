@@ -41,6 +41,8 @@ var copytouxiang;
 var copyyonghuming2;
 var copyusericon;
 var copyusername2;
+var copyusername3;
+var copyyonghuming3;
 
 const { UIManager } = NativeModules;
 UIManager.setLayoutAnimationEnabledExperimental &&
@@ -102,6 +104,8 @@ export default class mainbody extends Component {
       .finally(() => {
         this.setState({ isLonding: false });
       });
+      console.log("888" + username)
+    copyusername = username;
   }
 
   componentDidMount() {
@@ -269,8 +273,8 @@ export default class mainbody extends Component {
   onShare = async () => {
     try {
       const result = await Share.share({
-        message:
-          'React Native | A framework for building native apps using React',
+        message:'来自'+copyusername+'的分享'
+        +'<'+'转发了'+copyyonghuming3+'的帖子'+'>',
       });
 
       if (result.action === Share.sharedAction) {
@@ -681,7 +685,8 @@ export default class mainbody extends Component {
           <TouchableOpacity style={{ width: 100, height: 40, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}
             activeOpacity={0.8}
             onPress={() => {
-              copy_id = docs._id;
+              copyyonghuming3=docs.yonghuming,
+              copy_id = docs._id,
               this.onShare();
             }}>
             <EvilIcons name={'share-google'} size={30} color={'#000'} />
