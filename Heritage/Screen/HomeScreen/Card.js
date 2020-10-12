@@ -117,13 +117,13 @@ class Project extends React.Component {
           <Cover>
             <Image source={{ uri: this.props.image || undefined }} />
             <AnimatedTitle style={{ top: this.state.titleTop }}>
-              {this.props.title}
+            {this.props.title}
             </AnimatedTitle>
             <Author>by {this.props.author}</Author>
           </Cover>
           
           <AnimatedText style={{ height: this.state.textHeight }}>
-            {this.props.text}
+          &#12288;&#12288;{this.props.text}
           </AnimatedText>
           <Button
             onPress={() => {
@@ -143,7 +143,7 @@ class Project extends React.Component {
           <TouchableOpacity
             style={{
               position: 'absolute',
-              top: 70,
+              top: 20,
               right: 20,
             }}
             onPress={this.closeCard}>

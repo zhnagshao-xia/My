@@ -148,7 +148,7 @@ export default class ActivityDetails extends Component {
                             marginTop:30,
                             width:80,
                             height:35,
-                            backgroundColor:'#6092a0',
+                            backgroundColor:'#945357',
                             justifyContent:"center",
                             alignItems:"center",
                             borderRadius:10

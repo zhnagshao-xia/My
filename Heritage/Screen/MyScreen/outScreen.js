@@ -47,6 +47,7 @@ render(){
         </View>
       <View style={styles.container_body}>
          <TouchableOpacity 
+         onPress={() => navigation.navigate("help")}
          activeOpacity={0.8}
          style={styles.container_bug1}>
              <View style={styles.word}><Text style={{fontSize: 14}}>帮助</Text></View>
@@ -55,6 +56,7 @@ render(){
              </View>
          </TouchableOpacity>
          <TouchableOpacity 
+         onPress={() => navigation.navigate("about")}
          activeOpacity={0.8}
          style={styles.container_bug2}>
              <View style={styles.word}><Text style={{fontSize: 14}}>关于我们</Text></View>
