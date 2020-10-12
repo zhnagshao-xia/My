@@ -133,7 +133,6 @@ export default class addressScreen extends Component {
     add:{
       width:30,
       height:30,
-      backgroundColor:'red',
       marginLeft:140
     },
     one:{

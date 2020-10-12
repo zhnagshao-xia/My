@@ -92,16 +92,26 @@ export default class CollectionScreen extends Component {
             onPress={()=>{
               navigation.navigate('heritageDetails',{xiangmu:item.xiangmu,cityname:item.suozaidi})
             }}>
-              <View style={{ width: '100%', height: 150, alignItems: 'center', backgroundColor: '#fff', flexDirection: 'column-reverse', marginBottom: 20 }}>
-                
+              
+              <View
+              // source={require('../../Image/MyScreen/bg.jpg')}
+              style={{ width: '100%', height: 150, alignItems: 'center', flexDirection: 'column-reverse', marginBottom: 10}}>
+                <View style={{width:'85%',borderRadius:17,overflow:"hidden"}}>
                 <Image 
-                style={{ width: '60%', height: '100%' }} 
+                style={{ width: '100%', height: '100%' }} 
                 source={{ uri: https+item.zhanshitu }}
                 ></Image>
-                <View style={{ width: '100%', height: 30, backgroundColor: 'rgba(20,20,20,0.5)', position: 'absolute', alignItems: 'center', justifyContent: 'center' }}>
+                <View style={{ width: '100%', 
+                backgroundColor: 'rgba(20,20,20,0.5)',
+                  justifyContent: 'center' ,
+                  position:"absolute",
+                  padding:10,
+                  bottom:0}}>
                   <Text style={{ fontSize: 15, color: '#fff' }}>{item.xiangmu}</Text>
                 </View>
-              </View></TouchableOpacity>
+              </View>
+              </View>
+              </TouchableOpacity>
             }
           />
         </ScrollView>
@@ -115,7 +125,7 @@ const styles = StyleSheet.create({
   },
   contant: {
     width: '100%',
-    backgroundColor: '#f2f2f2',
+    backgroundColor: '#fff',
 
   },
 }); 
