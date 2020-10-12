@@ -26,17 +26,21 @@ import Modal from 'react-native-modalbox';
 var https = "http://121.196.191.45";
 // var http = "http://192.168.50.91:3000";
 var http = "http://121.196.191.45:3000";
+var URL = http + "/users/usericon";
 var URL1 = http + "/luntan/zhengwen";
 var URL2 = http + "/luntan/forward";
 var URL3 = http + "/luntan/likes";
 var URL4 = http + "/luntan/zhengwen/addguanzhu";
 var URL5 = http + "/luntan/pinglun/likes";
+var URL6 = http + "/luntan/zhengwen/pinglun";
 var copy_id;
 var copy_id1;
 var copyusername;
 var copyyonghuming;
 var copytouxiang;
 var copyyonghuming2;
+var copyusericon;
+var copyusername2;
 
 const { UIManager } = NativeModules;
 UIManager.setLayoutAnimationEnabledExperimental &&
@@ -54,6 +58,7 @@ export default class mainbody extends Component {
     let _id = route.params._id;
     this.state = {
       username: "立即登录",
+      usericon: "/picture/touxiang/fans/b0.jpg",
       _id,
       docs: [],
       pinglun: [],
@@ -65,6 +70,7 @@ export default class mainbody extends Component {
       stranHeight: new Animated.Value(0),
       pinglun: this.props.multiList,
       selectMultiItem: [],
+      huitie:""
     }
   }
 
@@ -74,6 +80,28 @@ export default class mainbody extends Component {
     username && this.setState({
       username
     })
+    fetch(URL, {//头像
+      method: 'POST',
+      credentials: "include",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: this.state.username,
+      })
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        this.setState({
+          usericon: json.docs[0].usericon,//usericon: json.docs[0].usericon,
+        })
+        console.log(json.docs)
+      })
+      .catch((error) => console.error(error))
+      .finally(() => {
+        this.setState({ isLonding: false });
+      });
   }
 
   componentDidMount() {
@@ -191,6 +219,52 @@ export default class mainbody extends Component {
         }
       })
   }
+
+  _onClickPinglun=()=> {
+    var date = new Date();
+  var seperatorl = "-";
+  var year = date.getFullYear();
+  var month = date.getMonth()+1;
+  var strDate = date.getDate();
+  var hour = date.getHours();
+  var minute = date.getMinutes();
+  if(month>=1&&month<=9){
+    month="0"+month;
+  }
+  if(strDate>=0&&strDate<=9){
+    strDate="0"+strDate;
+  }
+  if(hour>=0&&hour<=9){
+    hour="0"+hour;
+  }
+  if(minute>=1&&minute<=9){
+    minute="0"+minute
+  }
+  var currentdate = year+seperatorl+month+seperatorl+strDate+" "+hour+":"+minute;
+    fetch(URL6, {
+      method: 'POST',
+      credentials: "include",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        _id:this.state._id,
+        username: copyusername2,
+        usericon: copyusericon,
+        time:currentdate,
+        huitie: this.state.huitie
+      })
+    })
+    .then(function (res) {
+      return res.json();
+  }).then(function (json) {
+      if (json.code == 200) {
+          // Alert.alert("添加成功")//这个消掉
+          // navigation.goBack("地址");
+      } 
+  })
+  } 
 
   onShare = async () => {
     try {
@@ -490,6 +564,7 @@ export default class mainbody extends Component {
     const data = this.state.pinglun;
     const data1 = this.state.picture;
     const username = this.state.username;
+    const usericon = this.state.usericon;
     navigation.isFocused = () => {
       console.log("监测用户状态")
       this.checkUserAction();
@@ -640,11 +715,17 @@ export default class mainbody extends Component {
               width: '70%',
               height: 120,
               backgroundColor: '#f2f2f2',
-              borderRadius: 10,
-
-            }}></TextInput>
+              borderRadius: 10,}}
+              onChangeText={(text)=>{
+                this.setState({huitie:text});
+              }}></TextInput>
           <TouchableOpacity
-            onPress={() => this.refs.modal6.close()}
+            onPress={() =>{
+              copyusername2=username,
+              copyusericon=usericon, 
+              this.refs.modal6.close(),
+            this._onClickPinglun(),
+          this.fetchData()}}
             style={{
               width: '15%',
               height: 40,
