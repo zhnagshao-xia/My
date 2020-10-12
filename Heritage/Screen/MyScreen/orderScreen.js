@@ -99,10 +99,10 @@ export default class orderScreen extends Component {
                     activeOpacity={0.8}
                     onPress={()=>navigation.navigate('商品详情页面',{goods:item.goods})}>
                 <Image source={{uri:https+item.fengmian}}
-                 style={{width:85,height:100,margin:10,backgroundColor:'red'}}>
+                 style={{width:85,height:100,backgroundColor:'red'}}>
                 </Image>
                 </TouchableOpacity>
-                <View style={{ width:200,height:85,marginTop:10}}>
+                <View style={{ width:230,height:85,marginLeft:10}}>
                 <TouchableOpacity 
                     activeOpacity={0.8}
                     onPress={()=>navigation.navigate('商品详情页面',{goods:item.goods})}>
@@ -141,12 +141,10 @@ const styles = StyleSheet.create({
     backgroundColor:'#f2f2f2',
   },
  one: {
-    height: 130,
-    width:'90%',
     backgroundColor:'#fff',
-    marginLeft:18,
-    marginTop:18,
     borderRadius:15,
+    margin:10,
+    padding:20
   },
 
   footer:{

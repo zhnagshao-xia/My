@@ -16,7 +16,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 var https = "http://121.196.191.45";
 // var http = "http://192.168.50.91:3000";
 var http = "http://121.196.191.45:3000";
-var URL = http+"/users/guanzhu/list";
+var URL = http + "/users/guanzhu/list";
 var URL1 = http + "/users/deleteguanzhu1";
 var URL2 = http + "/users/deleteguanzhu2";
 var URL3 = http + "/users/deleteguanzhu3";
@@ -25,7 +25,7 @@ var copyyonghuming;
 export default class followScreen extends Component {
   constructor(props) {
     super(props);
-    const {navigation,route} = this.props;
+    const { navigation, route } = this.props;
     let username = route.params.username;
     this.state = {
       username,
@@ -51,14 +51,14 @@ export default class followScreen extends Component {
       })
     })
       .then((response) => response.json())
-      .then((json)=>{  
+      .then((json) => {
         this.setState({
-          docs:json.docs[0].guanzhu,
+          docs: json.docs[0].guanzhu,
         })
       })
-      .catch((error)=>console.error(error))
-      .finally(()=>{
-        this.setState({isLonding:false});
+      .catch((error) => console.error(error))
+      .finally(() => {
+        this.setState({ isLonding: false });
       })
   }
 
@@ -72,7 +72,7 @@ export default class followScreen extends Component {
       },
       body: JSON.stringify({
         username: this.state.username,
-        yonghuming:copyyonghuming,
+        yonghuming: copyyonghuming,
       })
     })
       .then(function (res) {
@@ -94,7 +94,7 @@ export default class followScreen extends Component {
       },
       body: JSON.stringify({
         username: this.state.username,
-        yonghuming:copyyonghuming,
+        yonghuming: copyyonghuming,
       })
     })
       .then(function (res) {
@@ -116,7 +116,7 @@ export default class followScreen extends Component {
       },
       body: JSON.stringify({
         username: this.state.username,
-        yonghuming:copyyonghuming,
+        yonghuming: copyyonghuming,
       })
     })
       .then(function (res) {
@@ -134,64 +134,63 @@ export default class followScreen extends Component {
     return (
       <View style={styles.container}>
         <View style={{
-                    backgroundColor: "#fff",
-                    height: 45,
-                    alignItems: "center",
-                    justifyContent: "center",
-                    flexDirection: 'row',
-                }}>
-                    <TouchableOpacity
-                        activeOpacity={0.8}
-                        onPress={() => navigation.goBack()}
-                        style={{
-                            width: 50,
-                            position: "absolute",
-                            height: "100%",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            left: 0
-                        }}>
-                        <FontAwesome name={'angle-left'} size={25} color={'#000'} />
-                    </TouchableOpacity>
-                    <View style={{ width: 200 }}>
-                        <Text style={{
-                            fontSize: 18,
-                            textAlign: 'center',
-                            textAlignVertical: 'center',
-                        }}>关注</Text>
-                    </View>
-                </View>
+          backgroundColor: "#fff",
+          height: 45,
+          alignItems: "center",
+          justifyContent: "center",
+          flexDirection: 'row',
+        }}>
+          <TouchableOpacity
+            activeOpacity={0.8}
+            onPress={() => navigation.goBack()}
+            style={{
+              width: 50,
+              position: "absolute",
+              height: "100%",
+              justifyContent: "center",
+              alignItems: "center",
+              left: 0
+            }}>
+            <FontAwesome name={'angle-left'} size={25} color={'#000'} />
+          </TouchableOpacity>
+          <View style={{ width: 200 }}>
+            <Text style={{
+              fontSize: 18,
+              textAlign: 'center',
+              textAlignVertical: 'center',
+            }}>关注</Text>
+          </View>
+        </View>
         <ScrollView style={styles.contant}>
-          <View style={{marginBottom:20}}>
-          <FlatList
-            data={data}
-            renderItem={( {item} ) => (
-              <View style={styles.one}>
-                <View style={styles.headphoto}>
-                  <Image style={{ width: '100%', height: '100%', borderRadius: 50 }}
-                    source={{uri:https+item.touxiang}}>
-                  </Image>
-                </View>
-                <View style={styles.massage}>
-                  <View style={{ flexDirection: 'row' }}>
+          <View style={{ marginBottom: 20 }}>
+            <FlatList
+              data={data}
+              renderItem={({ item }) => (
+                <View style={styles.one}>
+                  <View style={styles.massage}>
+                    <View style={styles.headphoto}>
+                      <Image style={{ width: '100%', height: '100%', borderRadius: 50 }}
+                        source={{ uri: https + item.touxiang }}>
+                      </Image>
+                    </View>
                     <Text style={styles.key}>{item.yonghuming}</Text>
                   </View>
-                </View> 
-                <TouchableOpacity
-                onPress={()=>{
-                  copyyonghuming=item.yonghuming,
-                  this._onClickDeleteguanzhu1(),
-                  this._onClickDeleteguanzhu2(),
-                  this._onClickDeleteguanzhu3(),
-                  this.fetchData()
-                  // Alert.alert("已取消关注")
-                }}>
-                <View style={styles.like}>
-                  <Text style={{ fontSize: 13 }}>取消关注</Text>
-                </View></TouchableOpacity>
-              </View>
-            )}
-          />
+                  <TouchableOpacity
+                    onPress={() => {
+                      copyyonghuming = item.yonghuming,
+                        this._onClickDeleteguanzhu1(),
+                        this._onClickDeleteguanzhu2(),
+                        this._onClickDeleteguanzhu3(),
+                        this.fetchData()
+                      // Alert.alert("已取消关注")
+                    }}>
+                    <View style={styles.like}>
+                      <Text style={{ fontSize: 13 }}>取消关注</Text>
+                    </View>
+                  </TouchableOpacity>
+                </View>
+              )}
+            />
           </View>
         </ScrollView>
       </View>
@@ -212,13 +211,14 @@ const styles = StyleSheet.create({
     //   backgroundColor:'blue',
   },
   one: {
-    width: '100%',
-    height: 90,
+    width: '90%',
+    height: 80,
     flexDirection: 'row',
     backgroundColor: '#fff',
     alignItems: 'center',
     borderColor: 'black',
-    borderBottomWidth: 0.5
+    borderBottomWidth: 0.5,
+    justifyContent:"space-between"
     // marginTop:20
   },
   key: {
@@ -226,19 +226,18 @@ const styles = StyleSheet.create({
 
   },
   headphoto: {
-    width: 60,
-    height: 60,
+    width: 45,
+    height: 45,
     backgroundColor: '#fff',
     marginLeft: 15,
     borderRadius: 50,
-    overflow:'hidden',
-    resizeMode:"center"
+    overflow: 'hidden',
+    resizeMode: "center"
   },
   massage: {
-    width: 230,
-    height: 60,
-    //   backgroundColor:'red',
-    justifyContent: 'center'
+    width: "100%",
+    flexDirection: "row",
+    alignItems:"center"
   },
   like: {
     width: 70,

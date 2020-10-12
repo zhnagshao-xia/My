@@ -159,30 +159,48 @@ export default class buynow extends Component {
                         }}>确认订单</Text>
                     </View>
                 </View>
-                <ScrollView style={styles.contant}>
+                <ScrollView>
                     <View style={{ width: '100%', alignItems: "center" }}>
-                        <View style={{ width: '90%', backgroundColor: '#fff', marginTop: 20, borderRadius: 15, flexDirection: 'row', padding: 20 }}>
-
-                            <Image style={{ width: 40, height: 40}} source={require('../../Image/ShopScreen/location.png')}></Image>
-
-                            <View style={{ marginLeft: 15 }}>
-                                <View style={{ flexDirection: "row", justifyContent: 'space-between' }}>
+                        <View style={{
+                            width: '90%',
+                            backgroundColor: "#fff",
+                            padding: 20,
+                            marginVertical: 20,
+                            borderRadius: 17,
+                            flexDirection: "row"
+                        }}>
+                            <Image style={{ width: 40, height: 40 }}
+                                source={require('../../Image/ShopScreen/location.png')}>
+                            </Image>
+                            <View style={{ flexDirection: "column", marginLeft: 10 }}>
+                                <View style={{ flexDirection: "row", width: "95%" }}>
                                     <Text style={{ fontSize: 18 }}>{address.shopname}</Text>
                                     <Text style={{ fontSize: 18 }}>{address.telephone}</Text>
                                 </View>
-                                <Text style={{ fontSize: 15, marginTop: 15 }}>{address.dizhi}</Text>
+                                <View style={{ width: '95%', marginTop: 15 }}>
+                                    <Text style={{ fontSize: 15 }}>{address.dizhi}</Text>
+                                </View>
                             </View>
                         </View>
                         <TouchableOpacity
                             activeOpacity={0.8}
-                            onPress={() => navigation.navigate('商品详情页面', { goods: goods })}
-                            style={styles.one}>
-                            <View style={{ flexDirection: 'row'}}>
-                                    <Image style={{ width: 100, height: 100,}} source={{ uri: https + fengmian }}></Image>
-                                    <View style={{ width: 230,marginLeft:10 ,height:"80%"}}>
+                            onPress={() => navigation.navigate('商品详情页面', { goods: item.goods })}
+                            style={{
+                                height: 130,
+                                width: '100%',
+                                backgroundColor: '#fff',
+                                marginBottom: 20,
+                                justifyContent: 'center',
+                                borderRadius: 15,
+                                paddingHorizontal: 30,
+                                paddingVertical: 20
+                            }}>
+                            <View style={{ flexDirection: 'row' }}>
+                                <Image style={{ width: 100, height: 100 }} source={{ uri: https + fengmian }}></Image>
+                                <View style={{ width: 230, marginLeft: 10, height: "80%" }}>
                                     <Text style={{ fontSize: 15 }}>{miaoshu}</Text>
-                                    <View style={{ flexDirection: 'row-reverse',marginTop:40,justifyContent:'flex-start'}}>
-                                        <Text style={{ fontSize: 15, color: '#f76220', marginRight: 10 }}>￥{price}</Text>
+                                    <View style={{ flexDirection: 'row-reverse', marginTop: 40, justifyContent: 'flex-start' }}>
+                                        <Text style={{ fontSize: 15, color: '#f76220' }}>￥{price}</Text>
                                         <Text style={{ fontSize: 15 }}>小计：</Text>
                                     </View>
                                 </View>
@@ -260,13 +278,13 @@ const styles = StyleSheet.create({
         backgroundColor: '#f2f2f2',
     },
     one: {
-        height:130,
+        height: 130,
         width: '100%',
         backgroundColor: '#fff',
         marginTop: 20,
         justifyContent: 'center',
-        padding:20,
-        borderRadius:15
+        padding: 20,
+        borderRadius: 15
     },
     footer: {
         width: '100%',

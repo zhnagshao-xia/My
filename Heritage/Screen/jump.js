@@ -40,11 +40,11 @@ import Shopcart from './ShopScreen/Shopcart'
 import Shopclassify from './ShopScreen/Shopclassify'
 import Shopproductdetail from './ShopScreen/Shopproductdetail'
 import Confirm_order from './ShopScreen/Confirm_order'
-import My_order from './ShopScreen/My_order'
 import Reviewscreen from './ShopScreen/Reviewscreen'
 import Shopclassifymore from './ShopScreen/Shopclassifymore'
 import Shoplist from './ShopScreen/Shoplist'
 import Buynow from './ShopScreen/buynow'
+import search from './ShopScreen/search'
 
 import Tribunefollow from './TribuneScreen/Tribunefollow'
 import Tribunerecommend from './TribuneScreen/Tribunerecommend'
@@ -260,11 +260,11 @@ function MyStack() {
       <Stack.Screen name="商城分类页面" component={Shopclassify} />
       <Stack.Screen name="商品详情页面" component={Shopproductdetail} />
       <Stack.Screen name="确认订单" component={Confirm_order} />
-      <Stack.Screen name="我的订单" component={My_order} />
       <Stack.Screen name="评价商品页面" component={Reviewscreen} />
       <Stack.Screen name="Shopclassifymore" component={Shopclassifymore}/>
       <Stack.Screen name="Shoplist" component={Shoplist}/>
       <Stack.Screen name="Buynow" component={Buynow}/>
+      <Stack.Screen name="search" component={search}/>
 
       <Stack.Screen name="讨论" component={TribuneScreen} />
       <Stack.Screen name="Tribunefollow" component={Tribunefollow} />
