@@ -162,7 +162,7 @@ export default class followScreen extends Component {
           </View>
         </View>
         <ScrollView style={styles.contant}>
-          <View style={{ marginBottom: 20 }}>
+          <View>
             <FlatList
               data={data}
               renderItem={({ item }) => (
@@ -182,8 +182,8 @@ export default class followScreen extends Component {
                         this._onClickDeleteguanzhu2(),
                         this._onClickDeleteguanzhu3(),
                         this.fetchData()
-                      // Alert.alert("已取消关注")
-                    }}>
+                    }}
+                    style={{alignItems:"center",justifyContent:"center"}}>
                     <View style={styles.like}>
                       <Text style={{ fontSize: 13 }}>取消关注</Text>
                     </View>
@@ -208,18 +208,16 @@ const styles = StyleSheet.create({
   return: {
     width: 30,
     height: 30,
-    //   backgroundColor:'blue',
   },
   one: {
-    width: '90%',
-    height: 80,
+    width: '100%',
     flexDirection: 'row',
     backgroundColor: '#fff',
-    alignItems: 'center',
     borderColor: 'black',
     borderBottomWidth: 0.5,
-    justifyContent:"space-between"
-    // marginTop:20
+    justifyContent:"space-between",
+    paddingHorizontal:10,
+    paddingVertical:20
   },
   key: {
     marginLeft: 10
@@ -229,13 +227,11 @@ const styles = StyleSheet.create({
     width: 45,
     height: 45,
     backgroundColor: '#fff',
-    marginLeft: 15,
     borderRadius: 50,
     overflow: 'hidden',
     resizeMode: "center"
   },
   massage: {
-    width: "100%",
     flexDirection: "row",
     alignItems:"center"
   },
@@ -248,7 +244,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderColor: 'black',
     borderWidth: 1,
-    flexDirection: 'row'
+    // flexDirection: 'row'
   }
 
 })

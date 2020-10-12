@@ -782,7 +782,6 @@ const styles = StyleSheet.create({
   right: {
     width: 250,
     height: 40,
-    backgroundColor: 'red'
   },
   shang: {
     width: '95%',
@@ -804,7 +803,6 @@ const styles = StyleSheet.create({
   box: {
     width: 200,
     height: 200,
-    backgroundColor: 'red',
   },
   modal4: {
     height: 150,

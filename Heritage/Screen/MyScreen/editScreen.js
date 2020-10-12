@@ -211,7 +211,6 @@ Animated.timing(this.state.progress, {
     add:{
       width:30,
       height:30,
-      backgroundColor:'red',
       marginLeft:180,
     },
     box:{

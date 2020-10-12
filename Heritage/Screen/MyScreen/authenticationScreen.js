@@ -246,7 +246,7 @@ export default class ModalComp extends Component{
                                             console.log(this.state.title)
                                         }
                                         return (
-                                            <View style={{marginLeft:10, flexDirection: "row",backgroundColor:'red',width:80,height:80 ,alignItems:'center'}}>
+                                            <View style={{marginLeft:10, flexDirection: "row",width:80,height:80 ,alignItems:'center'}}>
                                                 {/* <Text>{item}</Text> */}
                                                 <Image style={{ height: '100%', width:'100%',}} source={{ uri: item }} />
                                             </View>

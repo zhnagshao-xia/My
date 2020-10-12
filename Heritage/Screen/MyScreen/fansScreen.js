@@ -174,12 +174,12 @@ export default class fansScreen extends Component {
             data={data}
             renderItem={({ item }) =>
               <View style={styles.one}>
+                 <View style={styles.massage}>
                 <View style={styles.headphoto}>
                   <Image style={{ width: '100%', height: '100%', borderRadius: 50 }}
                     source={{ uri: https + item.touxiang }}>
                   </Image>
                 </View>
-                <View style={styles.massage}>
                   <View style={{ flexDirection: 'row' }}>
                     <Text style={styles.key}>{item.yonghuming}</Text>
                   </View>
@@ -192,7 +192,8 @@ export default class fansScreen extends Component {
                       this._onClickAddguanzhu1(),
                       this._onClickAddguanzhu2(),
                       this._onClickAddguanzhu3()
-                  }}>
+                  }}
+                  style={{alignItems:"center",justifyContent:"center"}}>
                   <View style={styles.like}>
                     <Text style={{ fontSize: 17 }}>+</Text>
                     <Text style={{ fontSize: 15 }}>关注</Text>
@@ -215,39 +216,36 @@ const styles = StyleSheet.create({
     backgroundColor: '#f2f2f2',
   },
   contant: {
-
   },
   return: {
     width: 30,
     height: 30,
-      // backgroundColor:'blue',
   },
   one: {
     width: '100%',
-    height: 90,
     flexDirection: 'row',
     backgroundColor: '#fff',
-    alignItems: 'center',
     borderColor: 'black',
     borderBottomWidth: 0.5,
-    // marginTop:20
+    justifyContent:"space-between",
+    paddingHorizontal:10,
+    paddingVertical:20
   },
   key: {
     marginLeft: 10
 
   },
   headphoto: {
-    width: 60,
-    height: 60,
+    width: 45,
+    height: 45,
     backgroundColor: '#fff',
-    marginLeft: 15,
-    borderRadius: 50
+    borderRadius: 50,
+    overflow: 'hidden',
+    resizeMode: "center"
   },
   massage: {
-    width: 230,
-    height: 60,
-    //   backgroundColor:'red',
-    justifyContent: 'center'
+    flexDirection: "row",
+    alignItems:"center"
   },
   like: {
     width: 70,
@@ -258,7 +256,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderColor: 'black',
     borderWidth: 1,
-    flexDirection: 'row'
+    flexDirection:"row"
+    // flexDirection: 'row'
   }
 
 })
