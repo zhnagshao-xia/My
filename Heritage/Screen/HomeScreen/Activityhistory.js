@@ -279,7 +279,7 @@ export default class App extends Component {
             data={data}
             renderItem={({ item }) =>
               <View style={styles.one}>
-                <View style={{ width: '100%', height: 20, flexDirection: 'row-reverse' }}>
+                <View style={{ width: '100%', flexDirection: 'row-reverse' }}>
                   <TouchableOpacity
                     activeOpacity={0.8}
                     style={styles.mark}
@@ -332,8 +332,9 @@ export default class App extends Component {
                   </Modal>
                 </View>
                 <View style={styles.first}>
-                  <Text
-                    style={styles.key}>主题：{item.title}</Text>
+                <View style={{ flexDirection: "row" }}>
+                      <Text>主题：</Text>
+                      <Text style={{ width: 240 }}>{item.title}</Text></View>
                   <TouchableOpacity
                     activeOpacity={0.8}
                     style={styles.message}
@@ -342,7 +343,7 @@ export default class App extends Component {
                   </TouchableOpacity>
                 </View>
                 <View style={styles.second}>
-                  <Text style={styles.key}>地点：{item.address}</Text>
+                  <Text style={{}}>地点：{item.address}</Text>
                   <TouchableOpacity 
                   activeOpacity={0.8}
                   style={{ width: 15, height: 15, marginLeft: 10, alignItems: 'center', justifyContent: 'center' }}
@@ -457,19 +458,18 @@ const styles = StyleSheet.create({
   },
   one: {
     width: '100%',
-    height: 110,
     backgroundColor: '#fff',
+    paddingHorizontal: 20,
     marginBottom: 15,
-    // marginTop:20
   },
   key: {
-    marginLeft: 10,
+    width: 290,
   },
   mark: {
-    width: 20,
+    width: 40,
     height: 20,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   first: {
     width: '100%',
@@ -483,7 +483,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#b7c4b3',
     borderRadius: 5,
     borderWidth: 0.5,
-    marginRight: 50,
     borderColor: 'black'
   },
   second: {
