@@ -395,7 +395,6 @@ const styles = StyleSheet.create({
   works: {
     width: 200,
     height: 120,
-    backgroundColor: 'red',
     flexDirection: 'column-reverse',
   },
   workname: {
@@ -456,7 +455,6 @@ const styles = StyleSheet.create({
     position: 'relative',
     right: 364,
     top: 15,
-    backgroundColor: 'red'
   },
   modal4: {
     height: 150,
@@ -465,6 +463,5 @@ const styles = StyleSheet.create({
   btn: {
     width: 40,
     height: 40,
-    backgroundColor: 'red'
   }
 });

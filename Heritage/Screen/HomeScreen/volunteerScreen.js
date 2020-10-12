@@ -197,7 +197,7 @@ export default class VolunteerScreen extends React.Component {
         {Projects && Projects.length != 0 ? (
 
 
-          <Container  style={{backgroundColor:"red"}}>
+          <Container  style={{}}>
             <ImageBackground
             style={{ width: '100%', height: '100%', resizeMode: 'stretch',justifyContent:"center",alignItems:"center" }}
                 source={require('../../Image/HomeScreen/volunteer_bg.jpg')}>

@@ -246,7 +246,6 @@ const styles = StyleSheet.create({
   massage: {
     width: 230,
     height: 60,
-    //   backgroundColor:'red',
     justifyContent: 'center'
   },
   like:{

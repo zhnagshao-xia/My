@@ -27,7 +27,7 @@ function test() {
 }
 
 function reply(headSrc, str) {
-    var html = "<div class='reply'><div class='msg'><img src=" + headSrc + " /><span class='name'>斜杠青年</span><p>" + str + "</p></div></div>";
+    var html = "<div class='reply'><div class='msg'><img src=" + headSrc + " /><span class='name'>小菲</span><p>" + str + "</p></div></div>";
     return upView(html);
 }
 function ask(headSrc, str) {
