@@ -193,12 +193,12 @@ export default class buynow extends Component {
                                 marginBottom: 20,
                                 justifyContent: 'center',
                                 borderRadius: 15,
-                                paddingHorizontal: 30,
+                                paddingHorizontal: 10,
                                 paddingVertical: 20
                             }}>
                             <View style={{ flexDirection: 'row' }}>
                                 <Image style={{ width: 100, height: 100 }} source={{ uri: https + fengmian }}></Image>
-                                <View style={{ width: 230, marginLeft: 10, height: "80%" }}>
+                                <View style={{ width: 200, marginLeft: 10, height: "80%" }}>
                                     <Text style={{ fontSize: 15 }}>{miaoshu}</Text>
                                     <View style={{ flexDirection: 'row-reverse', marginTop: 40, justifyContent: 'flex-start' }}>
                                         <Text style={{ fontSize: 15, color: '#f76220' }}>￥{price}</Text>
