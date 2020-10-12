@@ -21,6 +21,7 @@ import Feather from 'react-native-vector-icons/Feather'
 import Lightbox from 'react-native-lightbox';
 import Carousel from 'react-native-looped-carousel';
 import Modal from 'react-native-modalbox';
+import Toast, {DURATION} from 'react-native-easy-toast'
 // import Animated from "react-native-reanimated";
 
 var https = "http://121.196.191.45";
@@ -644,7 +645,11 @@ export default class mainbody extends Component {
 
             }}></TextInput>
           <TouchableOpacity
-            onPress={() => this.refs.modal6.close()}
+          activeOpacity={0.8}
+            onPress={()=>{
+              this.refs.toast.show('发送成功',DURATION.LENGTH_LONG);
+              // navigation.goBack()
+          }}
             style={{
               width: '15%',
               height: 40,
@@ -657,6 +662,16 @@ export default class mainbody extends Component {
             <Text style={{ fontSize: 15, color: '#fff' }}>发送</Text>
           </TouchableOpacity>
         </Modal>
+        <Toast
+                    ref="toast"
+                    style={{}}
+                    position='center'
+                    positionValue={200}
+                    fadeInDuration={750}
+                    fadeOutDuration={1000}
+                    opacity={0.8}
+                    textStyle={{color:'#fff'}}
+                />
       </View>
     );
   }

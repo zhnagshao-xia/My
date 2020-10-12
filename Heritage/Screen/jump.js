@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { Button, Text, View, TouchableOpacity, Image, StyleSheet, ImageBackground } from 'react-native';
+import {Animated,Easing,Button, Text, View, TouchableOpacity, Image, StyleSheet, ImageBackground } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
-import FontAwesome from 'react-native-vector-icons/FontAwesome'
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import LottieView from 'lottie-react-native';
 
 import WelcomeScreen from '../Screen/welcome'
 import HomeScreen from './HomeScreen/HomeScreen'
@@ -111,6 +112,7 @@ export function InformationTab({name}) {
 }
 
 export function TribuneTab() {
+  
   return (
     <TribuneTabNavigation.Navigator
       initialRouteName="Tribunerecommend"
@@ -170,8 +172,25 @@ export function PersonalTab() {
   );
 }
 
+
+// constructor(props) {
+//   super(props);
+//   this.state = {
+//     progress: new Animated.Value(0),
+//   };
+// };
+
+// _componentDidMount() {
+//   Animated.timing(this.state.progress, {
+//     toValue: 1,
+//     duration: 2000,
+//     easing: Easing.linear,
+//   }).start();
+// };
+
 //底部导航栏
 function bottom_nav() {
+
   return (
     <Tab.Navigator
       tabBarOptions={{
