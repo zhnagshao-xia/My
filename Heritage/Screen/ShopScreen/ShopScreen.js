@@ -41,6 +41,7 @@ export default class DrawerExample extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      input:"",
       currentPage: 0,
       docs: [],
     };
@@ -85,6 +86,7 @@ export default class DrawerExample extends React.Component {
   render() {
     const { navigation } = this.props;
     const data = this.state.docs;
+    const input = this.state.input;
     return (
       <View>
         <View style={styles.header}>
@@ -108,11 +110,16 @@ export default class DrawerExample extends React.Component {
             </TouchableOpacity>
             <View style={{ width: '75%', height: 30, backgroundColor: '#dcdcdc', marginLeft: 10, borderRadius: 20, flexDirection: 'row', alignItems: 'center' }}>
               <Image style={{ width: 20, height: 20, marginLeft: 10 }} source={require('../../Image/ShopScreen/pic28.png')}></Image>
-              <TextInput style={{ height: 50, width: 250 }} placeholder='搜索你想要的美物'></TextInput>
+              <TextInput 
+              style={{ height: 50, width: 250 }} 
+              placeholder='搜索你想要的美物'
+              onChangeText={(text)=>{
+                this.setState({input:text});
+              }}></TextInput>
             </View>
             <TouchableOpacity
               activeOpacity={0.8}
-              onPress={() => navigation.navigate('search')}
+              onPress={() => navigation.navigate('Searchlist',{input:input})}
               style={{
                 width: 25,
                 height: 25,

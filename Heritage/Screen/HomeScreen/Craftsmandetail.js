@@ -16,6 +16,10 @@ var URL5 = http + "/shouyiren/addguanzhu2";
 var URL6 = http + "/shouyiren/addguanzhu3";
 var copyname;
 var copytouxiang;
+var copyusername;
+var copyname2;
+var chenghao;
+var jianjie;
 
 export default class Craftsmandetail extends Component {
   constructor(props) {
@@ -174,8 +178,10 @@ export default class Craftsmandetail extends Component {
   onShare = async () => {
     try {
       const result = await Share.share({
-        message:
-          'React Native | A framework for building native apps using React',
+        message:'来自'+copyusername+'的分享'+'\n'
+        +'----------------------------------------------'+'\n'
+        +copyname2+' | '+copychenghao+'\n'
+        +copyjianjie+'\n', 
       });
 
       if (result.action === Share.sharedAction) {
@@ -223,6 +229,10 @@ export default class Craftsmandetail extends Component {
           <TouchableOpacity
             activeOpacity={0.6}
             onPress={() => {
+              copyusername=username,
+              copyname2=data.name,
+              copychenghao=data.chenghao,
+              copyjianjie=data.jianjie,
               // this.refs.modal6.open()
               this.onShare();
             }}

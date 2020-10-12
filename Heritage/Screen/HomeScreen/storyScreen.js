@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Share,Text, View, FlatList, ScrollView, StyleSheet, Image, Button, TouchableOpacity } from 'react-native';
+import { AsyncStorage,Share,Text, View, FlatList, ScrollView, StyleSheet, Image, Button, TouchableOpacity } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
 import Modal from 'react-native-modalbox';
@@ -9,6 +9,9 @@ var https = "http://121.196.191.45";
 var http = "http://121.196.191.45:3000";
 var URL1 = http + "/chuanchengzhi/addnumber";
 var URL2 = http + "/chuanchengzhi/details";
+var copyusername;
+var copydescribe;
+var copyproject;
 
 export default class ActivityDetails extends Component {
   constructor(props) {
@@ -23,6 +26,16 @@ export default class ActivityDetails extends Component {
       sliderValue: 0.3,
       docs: []
     };
+  }
+
+  checkUserAction = async () => {
+    const res = await AsyncStorage.getItem('userInfo') || '{}'//AsyncStorage.getItem通过key字段来进行查询存储的数据，把该结果值作为参数传入第二个callback方法
+    const { username = '' } = JSON.parse(res)
+    username && this.setState({
+      username
+    })
+    console.log("888" + username)
+    copyusername = username;
   }
 
   componentDidMount() {//componentDidMount:生命周期
@@ -78,8 +91,10 @@ export default class ActivityDetails extends Component {
   onShare = async () => {
     try {
       const result = await Share.share({
-        message:
-          'React Native | A framework for building native apps using React',
+        message:'来自'+copyusername+'的分享'+'\n'
+        +'----------------------------------------------'+'\n'
+        +'匠心逐梦'+' | '+copydescribe+'\n'
+        +copyproject+'\n',
       });
 
       if (result.action === Share.sharedAction) {
@@ -99,6 +114,11 @@ export default class ActivityDetails extends Component {
   render() {
     const { navigation } = this.props;
     const data = this.state.docs;
+    const docs = this.state.docs[0];
+    navigation.isFocused = () => {
+      console.log("监测用户状态")
+      this.checkUserAction();
+    }
     return (
       <View>
         <View style={{
@@ -128,7 +148,10 @@ export default class ActivityDetails extends Component {
           }}>故事</Text>
           <TouchableOpacity
             activeOpacity={0.8}
-            onPress={() =>{ this.onShare()}}
+            onPress={() =>{ 
+              copydescribe=docs.describe,
+              copyproject=docs.project,
+              this.onShare()}}
             style={{
               width: 50,
               height: "100%",

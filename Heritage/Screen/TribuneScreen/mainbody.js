@@ -41,6 +41,8 @@ var copytouxiang;
 var copyyonghuming2;
 var copyusericon;
 var copyusername2;
+var copyusername3;
+var copyyonghuming3;
 
 const { UIManager } = NativeModules;
 UIManager.setLayoutAnimationEnabledExperimental &&
@@ -102,6 +104,8 @@ export default class mainbody extends Component {
       .finally(() => {
         this.setState({ isLonding: false });
       });
+      console.log("888" + username)
+    copyusername = username;
   }
 
   componentDidMount() {
@@ -269,8 +273,8 @@ export default class mainbody extends Component {
   onShare = async () => {
     try {
       const result = await Share.share({
-        message:
-          'React Native | A framework for building native apps using React',
+        message:'来自'+copyusername+'的分享'
+        +'<'+'转发了'+copyyonghuming3+'的帖子'+'>',
       });
 
       if (result.action === Share.sharedAction) {
@@ -491,7 +495,7 @@ export default class mainbody extends Component {
                   </Image>
                   <View style={{ flexDirection: "column"}}>
                     <Text style={{ fontSize: 15, color: 'black', marginRight: 5 }}>弹琴说爱</Text>
-                    <Text style={{ fontSize: 12 }}>2020-08-18 03：01</Text>
+                    <Text style={{ fontSize: 12 }}>2020-10-11 18：14</Text>
                   </View>
                 </View>
                 <Text style={{ fontSize: 15, marginLeft: 30 }}>我也觉得好漂亮呀</Text>
@@ -504,7 +508,7 @@ export default class mainbody extends Component {
                   </Image>
                   <View style={{ flexDirection: "column"}}>
                     <Text style={{ fontSize: 15, color: 'black', marginRight: 5 }}>追足的梦幻</Text>
-                    <Text style={{ fontSize: 12 }}>2020-08-18 14：40</Text>
+                    <Text style={{ fontSize: 12 }}>2020-10-11 15：40</Text>
                   </View>
                 </View>
                 <Text style={{ fontSize: 15, marginLeft: 30 }}>非遗真的是国家的宝藏</Text>
@@ -517,7 +521,7 @@ export default class mainbody extends Component {
                   </Image>
                   <View style={{ flexDirection: "column"}}>
                     <Text style={{ fontSize: 15, color: 'black', marginRight: 5 }}>当初的我</Text>
-                    <Text style={{ fontSize: 12 }}>2020-09-1 15：21</Text>
+                    <Text style={{ fontSize: 12 }}>2020-10-11 15：21</Text>
                   </View>
                 </View>
                 <Text style={{ fontSize: 15, marginLeft: 30 }}>赞同</Text>
@@ -530,7 +534,7 @@ export default class mainbody extends Component {
                   </Image>
                   <View style={{ flexDirection: "column"}}>
                     <Text style={{ fontSize: 15, color: 'black', marginRight: 5 }}>超级凶鸭</Text>
-                    <Text style={{ fontSize: 12 }}>2020-09-10 10：44</Text>
+                    <Text style={{ fontSize: 12 }}>2020-10-11 10：44</Text>
                   </View>
                 </View>
                 <Text style={{ fontSize: 15, marginLeft: 30 }}>+1</Text>
@@ -543,7 +547,7 @@ export default class mainbody extends Component {
                   </Image>
                   <View style={{ flexDirection: "column"}}>
                     <Text style={{ fontSize: 15, color: 'black', marginRight: 5 }}>看瓜少年和猹</Text>
-                    <Text style={{ fontSize: 12 }}>刚刚</Text>
+                    <Text style={{ fontSize: 12 }}>2020-10-11 10：21</Text>
                   </View>
                 </View>
                 <Text style={{ fontSize: 15, marginLeft: 30 }}>想要原图</Text>
@@ -681,7 +685,8 @@ export default class mainbody extends Component {
           <TouchableOpacity style={{ width: 100, height: 40, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}
             activeOpacity={0.8}
             onPress={() => {
-              copy_id = docs._id;
+              copyyonghuming3=docs.yonghuming,
+              copy_id = docs._id,
               this.onShare();
             }}>
             <EvilIcons name={'share-google'} size={30} color={'#000'} />

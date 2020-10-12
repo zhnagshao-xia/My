@@ -14,11 +14,60 @@ import {
   SectionList,
   FlatList,
 } from 'react-native';
+import { Button, Drawer, List, } from '@ant-design/react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
-export default class Shoplist extends React.Component {
+import EZSwiper from 'react-native-ezswiper';
+const { height, width } = Dimensions.get('window');
+
+var https = "http://121.196.191.45";
+// var http = "http://192.168.50.91:3000";
+var http = "http://121.196.191.45:3000";
+var URL1 = http + "/shopping/find";
+
+export default class Searchlist extends React.Component {
+    constructor(props) {
+        super(props)
+        const { navigation, route } = this.props;
+        let input = route.params.input;
+        this.state = {
+            input,
+            docs: [],
+        };
+      }
+
+    componentDidMount() {
+        this.fetchData();
+      }
+      fetchData() {
+        fetch(URL1, {
+          method: 'POST',
+          credentials: "include",
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            input: 
+            this.state.input
+          })
+        })
+          .then((response) => response.json())
+          .then((json) => {
+            this.setState({
+              docs: json.docs,
+            })
+            // console.log(json.docs)
+          })
+          .catch((error) => console.error(error))
+          .finally(() => {
+            this.setState({ isLonding: false });
+          });
+      }
+
     render() {
         const { navigation } = this.props;
+        const data = this.state.docs
         return (
             <View>
                 <View style={{
@@ -26,6 +75,7 @@ export default class Shoplist extends React.Component {
                 alignItems: "center",
                 justifyContent: "center",
                 flexDirection: 'row',
+                backgroundColor:'#fff'
             }}>
                 <TouchableOpacity
                     activeOpacity={0.8}
@@ -41,11 +91,7 @@ export default class Shoplist extends React.Component {
                     <FontAwesome name={'angle-left'} size={25} color={'#000'} />
                 </TouchableOpacity>
                 <View style={{ width: 200 }}>
-                    <Text style={{
-                        fontSize: 18,
-                        textAlign: 'center',
-                        textAlignVertical: 'center',
-                    }}>dsfghdfhbs</Text>
+                    
                 </View>
             </View>
         <ScrollView style={styles.scrow_container}>
@@ -55,6 +101,7 @@ export default class Shoplist extends React.Component {
                 <SectionList />
 
                 <FlatList
+                  data={data}
                   numColumns={2} // 一行2个
                   renderItem={({ item }) =>
                     <View >
@@ -62,12 +109,12 @@ export default class Shoplist extends React.Component {
                         activeOpacity={0.8}
                         style={styles.item}
                         onPress={()=>{
-                          navigation.navigate("商品详情页面")
+                          navigation.navigate("商品详情页面",{goods:item.goods})
                         }}
                       >
                         <View>
                           <Image
-                            source={require('../../Image/HomeScreen/3.jpg')}
+                            source={{ uri: https + item.fengmian }}
                             style={styles.itemImage}
                           />
                         </View>
@@ -84,18 +131,18 @@ export default class Shoplist extends React.Component {
                             flexDirection: "row",
                             justifyContent: "space-between"
                           }}>
-                            <Text style={styles.itemText}>1213</Text>
+                            <Text style={styles.itemText}>{item.goods}</Text>
                             <Text style={{
                               textAlign: "right",
                               color: "#fff",
                               fontSize: 12
-                            }}>￥2324</Text>
+                            }}>￥{item.price}</Text>
                           </View>
                           <Text style={{
                             textAlign: "right",
                             color: "#fff",
                             fontSize: 8
-                          }}>月销：1341</Text>
+                          }}>月销：{item.sales}</Text>
                         </View>
                       </TouchableOpacity>
                     </View>
@@ -147,7 +194,7 @@ const styles = StyleSheet.create({
     },
     item: {
       backgroundColor: '#fff',
-      width: 121432,
+      width: width / 2,
       height: 270,
       alignItems: 'center',
       justifyContent: 'center',
