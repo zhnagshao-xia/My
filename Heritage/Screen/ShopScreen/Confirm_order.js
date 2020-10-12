@@ -235,9 +235,9 @@ export default class App extends Component {
                                     }}>
                                         <View style={{ flexDirection: 'row'}}>
                                             <Image style={{ width: 100, height: 100}} source={{uri:https+item.fengmian}}></Image>
-                                        <View style={{ width: 200,marginLeft:10 ,height:"80%"}}>
+                                        <View style={{ width: 190,marginLeft:10 ,flexDirection:"column",justifyContent:'space-between'}}>
                                             <Text style={{ fontSize: 15 }}>{item.miaoshu}</Text>
-                                            <View style={{ flexDirection: 'row-reverse',marginTop:40,justifyContent:'flex-start'}}>
+                                            <View style={{ flexDirection: 'row-reverse',justifyContent:'flex-start'}}>
                                                 <Text style={{ fontSize: 15, color: '#f76220'}}>￥{item.price}</Text>
                                                 <Text style={{ fontSize: 15 }}>小计：</Text>
                                             </View>

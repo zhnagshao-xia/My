@@ -188,7 +188,7 @@ export default class buynow extends Component {
                             onPress={() => navigation.navigate('商品详情页面', { goods: item.goods })}
                             style={{
                                 height: 130,
-                                width: '100%',
+                                width: '90%',
                                 backgroundColor: '#fff',
                                 marginBottom: 20,
                                 justifyContent: 'center',
@@ -198,9 +198,9 @@ export default class buynow extends Component {
                             }}>
                             <View style={{ flexDirection: 'row' }}>
                                 <Image style={{ width: 100, height: 100 }} source={{ uri: https + fengmian }}></Image>
-                                <View style={{ width: 200, marginLeft: 10, height: "80%" }}>
+                                <View style={{ width: 190, marginLeft: 10, height: "80%" }}>
                                     <Text style={{ fontSize: 15 }}>{miaoshu}</Text>
-                                    <View style={{ flexDirection: 'row-reverse', marginTop: 40, justifyContent: 'flex-start' }}>
+                                    <View style={{ flexDirection: 'row-reverse', marginTop: 20, justifyContent: 'flex-start' }}>
                                         <Text style={{ fontSize: 15, color: '#f76220' }}>￥{price}</Text>
                                         <Text style={{ fontSize: 15 }}>小计：</Text>
                                     </View>
