@@ -205,6 +205,7 @@ export default class App extends Component {
                             <View style={{ flexDirection: "column", marginLeft: 10 }}>
                                 <View style={{ flexDirection: "row", width: "95%" }}>
                                     <Text style={{ fontSize: 18 }}>{address.shopname}</Text>
+                                    <Text>    </Text>
                                     <Text style={{ fontSize: 18 }}>{address.telephone}</Text>
                                 </View>
                                 <View style={{ width: '95%', marginTop: 15 }}>

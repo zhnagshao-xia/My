@@ -44,7 +44,7 @@ import Reviewscreen from './ShopScreen/Reviewscreen'
 import Shopclassifymore from './ShopScreen/Shopclassifymore'
 import Shoplist from './ShopScreen/Shoplist'
 import Buynow from './ShopScreen/buynow'
-import search from './ShopScreen/search'
+import Searchlist from './ShopScreen/Searchlist'
 
 import Tribunefollow from './TribuneScreen/Tribunefollow'
 import Tribunerecommend from './TribuneScreen/Tribunerecommend'
@@ -264,7 +264,7 @@ function MyStack() {
       <Stack.Screen name="Shopclassifymore" component={Shopclassifymore}/>
       <Stack.Screen name="Shoplist" component={Shoplist}/>
       <Stack.Screen name="Buynow" component={Buynow}/>
-      <Stack.Screen name="search" component={search}/>
+      <Stack.Screen name="Searchlist" component={Searchlist}/>
 
       <Stack.Screen name="讨论" component={TribuneScreen} />
       <Stack.Screen name="Tribunefollow" component={Tribunefollow} />

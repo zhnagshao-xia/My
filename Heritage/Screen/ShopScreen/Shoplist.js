@@ -74,6 +74,7 @@ export default class Shoplist extends React.Component {
                 alignItems: "center",
                 justifyContent: "center",
                 flexDirection: 'row',
+                backgroundColor:'#fff'
             }}>
                 <TouchableOpacity
                     activeOpacity={0.8}
