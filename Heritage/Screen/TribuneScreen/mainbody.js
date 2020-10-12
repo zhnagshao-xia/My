@@ -746,7 +746,7 @@ export default class mainbody extends Component {
         <Toast
                     ref="toast"
                     style={{}}
-                    position='center'
+                    position='top'
                     positionValue={200}
                     fadeInDuration={750}
                     fadeOutDuration={1000}
