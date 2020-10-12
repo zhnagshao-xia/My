@@ -13,6 +13,8 @@ var URL2 = http + "/feiyi/list/details/shoucang";
 var copyusername;
 var copyxiangmu;
 var copyzhanshitu;
+var copyzhanshitu2;
+var copyjianjie;
 
 export default class heritageDetails extends Component {
   constructor(props) {
@@ -103,8 +105,10 @@ export default class heritageDetails extends Component {
   onShare = async () => {
     try {
       const result = await Share.share({
-        message:
-          'React Native | A framework for building native apps using React',
+        message:'来自'+copyusername+'的分享'+'\n'
+        +'----------------------------------------------'+'\n'
+        +'非遗知不知'+' | '+this.state.xiangmu+'\n'
+        +copyjianjie+'\n'
       });
 
       if (result.action === Share.sharedAction) {
@@ -253,7 +257,7 @@ export default class heritageDetails extends Component {
 
   render() {
     const { navigation } = this.props;
-    const data = this.state.docs;
+    const data = this.state.docs[0];
     navigation.isFocused = () => {
       console.log("监测用户状态")
       this.checkUserAction();
@@ -287,7 +291,12 @@ export default class heritageDetails extends Component {
           }}></Text>
           <TouchableOpacity
             activeOpacity={0.8}
-            onPress={() => { this.onShare(); }}
+            onPress={() => {
+              copyjianjie=data.jianjie,
+              copyzhanshitu2=data.zhanshitu,
+              console.log(this.state.docs)
+               this.onShare(); 
+              }}
             style={{
               width: 50,
               height: "100%",

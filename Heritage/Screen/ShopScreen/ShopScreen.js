@@ -16,6 +16,8 @@ import {
 } from 'react-native';
 import { Button, Drawer, List, } from '@ant-design/react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+
 
 import EZSwiper from 'react-native-ezswiper';
 const { height, width } = Dimensions.get('window');
@@ -39,6 +41,7 @@ export default class DrawerExample extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      input:"",
       currentPage: 0,
       docs: [],
     };
@@ -83,20 +86,17 @@ export default class DrawerExample extends React.Component {
   render() {
     const { navigation } = this.props;
     const data = this.state.docs;
+    const input = this.state.input;
     return (
       <View>
         <View style={styles.header}>
           <View style={{ flexDirection: 'row', alignItems: 'center', marginVertical: 10, }}>
-            <TouchableOpacity
+            {/* <TouchableOpacity
               activeOpacity={0.8}
               onPress={() => navigation.navigate('商城分类页面')}
               style={{ width: 25, height: 25, marginLeft: 10, alignItems: 'center' }}>
               <Image style={{ width: '100%', height: '100%' }} source={require('../../Image/ShopScreen/pic26.png')}></Image>
-            </TouchableOpacity>
-            <View style={{ width: '75%', height: 30, backgroundColor: '#dcdcdc', marginLeft: 10, borderRadius: 20, flexDirection: 'row', alignItems: 'center' }}>
-              <Image style={{ width: 20, height: 20, marginLeft: 10 }} source={require('../../Image/ShopScreen/pic28.png')}></Image>
-              <TextInput style={{ height: 50, width: 250 }} placeholder='搜索你想要的美物'></TextInput>
-            </View>
+            </TouchableOpacity> */}
             <TouchableOpacity
               activeOpacity={0.8}
               onPress={() => navigation.navigate('商城购物车')}
@@ -107,6 +107,26 @@ export default class DrawerExample extends React.Component {
                 alignItems: 'center'
               }}>
               <FontAwesome name={'shopping-cart'} size={25} color={'#000'} />
+            </TouchableOpacity>
+            <View style={{ width: '75%', height: 30, backgroundColor: '#dcdcdc', marginLeft: 10, borderRadius: 20, flexDirection: 'row', alignItems: 'center' }}>
+              <Image style={{ width: 20, height: 20, marginLeft: 10 }} source={require('../../Image/ShopScreen/pic28.png')}></Image>
+              <TextInput 
+              style={{ height: 50, width: 250 }} 
+              placeholder='搜索你想要的美物'
+              onChangeText={(text)=>{
+                this.setState({input:text});
+              }}></TextInput>
+            </View>
+            <TouchableOpacity
+              activeOpacity={0.8}
+              onPress={() => navigation.navigate('Searchlist',{input:input})}
+              style={{
+                width: 25,
+                height: 25,
+                marginLeft: 10,
+                alignItems: 'center'
+              }}>
+              <MaterialCommunityIcons name={'shopping-search'} size={25} color={'#000'} />
             </TouchableOpacity>
           </View>
         </View>

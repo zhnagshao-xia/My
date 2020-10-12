@@ -23,15 +23,15 @@ const { height, width } = Dimensions.get('window');
 var https = "http://121.196.191.45";
 // var http = "http://192.168.50.91:3000";
 var http = "http://121.196.191.45:3000";
-var URL1 = http + "/shopping/xiaolei";
+var URL1 = http + "/shopping/find";
 
-export default class Shoplist extends React.Component {
+export default class Searchlist extends React.Component {
     constructor(props) {
         super(props)
         const { navigation, route } = this.props;
-        let xiaolei = route.params.xiaolei;
+        let input = route.params.input;
         this.state = {
-            xiaolei,
+            input,
             docs: [],
         };
       }
@@ -48,7 +48,8 @@ export default class Shoplist extends React.Component {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            xiaolei: this.state.xiaolei
+            input: 
+            this.state.input
           })
         })
           .then((response) => response.json())
@@ -90,11 +91,7 @@ export default class Shoplist extends React.Component {
                     <FontAwesome name={'angle-left'} size={25} color={'#000'} />
                 </TouchableOpacity>
                 <View style={{ width: 200 }}>
-                    <Text style={{
-                        fontSize: 18,
-                        textAlign: 'center',
-                        textAlignVertical: 'center',
-                    }}>{this.state.xiaolei}</Text>
+                    
                 </View>
             </View>
         <ScrollView style={styles.scrow_container}>

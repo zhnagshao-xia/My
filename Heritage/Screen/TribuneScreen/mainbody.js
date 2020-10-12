@@ -27,17 +27,23 @@ import Toast, {DURATION} from 'react-native-easy-toast'
 var https = "http://121.196.191.45";
 // var http = "http://192.168.50.91:3000";
 var http = "http://121.196.191.45:3000";
+var URL = http + "/users/usericon";
 var URL1 = http + "/luntan/zhengwen";
 var URL2 = http + "/luntan/forward";
 var URL3 = http + "/luntan/likes";
 var URL4 = http + "/luntan/zhengwen/addguanzhu";
 var URL5 = http + "/luntan/pinglun/likes";
+var URL6 = http + "/luntan/zhengwen/pinglun";
 var copy_id;
 var copy_id1;
 var copyusername;
 var copyyonghuming;
 var copytouxiang;
 var copyyonghuming2;
+var copyusericon;
+var copyusername2;
+var copyusername3;
+var copyyonghuming3;
 
 const { UIManager } = NativeModules;
 UIManager.setLayoutAnimationEnabledExperimental &&
@@ -55,6 +61,7 @@ export default class mainbody extends Component {
     let _id = route.params._id;
     this.state = {
       username: "立即登录",
+      usericon: "/picture/touxiang/fans/b0.jpg",
       _id,
       docs: [],
       pinglun: [],
@@ -66,6 +73,7 @@ export default class mainbody extends Component {
       stranHeight: new Animated.Value(0),
       pinglun: this.props.multiList,
       selectMultiItem: [],
+      huitie:""
     }
   }
 
@@ -75,6 +83,30 @@ export default class mainbody extends Component {
     username && this.setState({
       username
     })
+    fetch(URL, {//头像
+      method: 'POST',
+      credentials: "include",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: this.state.username,
+      })
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        this.setState({
+          usericon: json.docs[0].usericon,//usericon: json.docs[0].usericon,
+        })
+        console.log(json.docs)
+      })
+      .catch((error) => console.error(error))
+      .finally(() => {
+        this.setState({ isLonding: false });
+      });
+      console.log("888" + username)
+    copyusername = username;
   }
 
   componentDidMount() {
@@ -193,11 +225,57 @@ export default class mainbody extends Component {
       })
   }
 
+  _onClickPinglun=()=> {
+    var date = new Date();
+  var seperatorl = "-";
+  var year = date.getFullYear();
+  var month = date.getMonth()+1;
+  var strDate = date.getDate();
+  var hour = date.getHours();
+  var minute = date.getMinutes();
+  if(month>=1&&month<=9){
+    month="0"+month;
+  }
+  if(strDate>=0&&strDate<=9){
+    strDate="0"+strDate;
+  }
+  if(hour>=0&&hour<=9){
+    hour="0"+hour;
+  }
+  if(minute>=1&&minute<=9){
+    minute="0"+minute
+  }
+  var currentdate = year+seperatorl+month+seperatorl+strDate+" "+hour+":"+minute;
+    fetch(URL6, {
+      method: 'POST',
+      credentials: "include",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        _id:this.state._id,
+        username: copyusername2,
+        usericon: copyusericon,
+        time:currentdate,
+        huitie: this.state.huitie
+      })
+    })
+    .then(function (res) {
+      return res.json();
+  }).then(function (json) {
+      if (json.code == 200) {
+          // Alert.alert("添加成功")//这个消掉
+          // navigation.goBack("地址");
+      } 
+  })
+  } 
+
   onShare = async () => {
     try {
       const result = await Share.share({
-        message:
-          'React Native | A framework for building native apps using React',
+        message:'来自'+copyusername+'的分享'
+        +'<'+'转发了'+copyyonghuming3+'的帖子'+'>',
       });
 
       if (result.action === Share.sharedAction) {
@@ -418,7 +496,7 @@ export default class mainbody extends Component {
                   </Image>
                   <View style={{ flexDirection: "column"}}>
                     <Text style={{ fontSize: 15, color: 'black', marginRight: 5 }}>弹琴说爱</Text>
-                    <Text style={{ fontSize: 12 }}>2020-08-18 03：01</Text>
+                    <Text style={{ fontSize: 12 }}>2020-10-11 18：14</Text>
                   </View>
                 </View>
                 <Text style={{ fontSize: 15, marginLeft: 30 }}>我也觉得好漂亮呀</Text>
@@ -431,7 +509,7 @@ export default class mainbody extends Component {
                   </Image>
                   <View style={{ flexDirection: "column"}}>
                     <Text style={{ fontSize: 15, color: 'black', marginRight: 5 }}>追足的梦幻</Text>
-                    <Text style={{ fontSize: 12 }}>2020-08-18 14：40</Text>
+                    <Text style={{ fontSize: 12 }}>2020-10-11 15：40</Text>
                   </View>
                 </View>
                 <Text style={{ fontSize: 15, marginLeft: 30 }}>非遗真的是国家的宝藏</Text>
@@ -444,7 +522,7 @@ export default class mainbody extends Component {
                   </Image>
                   <View style={{ flexDirection: "column"}}>
                     <Text style={{ fontSize: 15, color: 'black', marginRight: 5 }}>当初的我</Text>
-                    <Text style={{ fontSize: 12 }}>2020-09-1 15：21</Text>
+                    <Text style={{ fontSize: 12 }}>2020-10-11 15：21</Text>
                   </View>
                 </View>
                 <Text style={{ fontSize: 15, marginLeft: 30 }}>赞同</Text>
@@ -457,7 +535,7 @@ export default class mainbody extends Component {
                   </Image>
                   <View style={{ flexDirection: "column"}}>
                     <Text style={{ fontSize: 15, color: 'black', marginRight: 5 }}>超级凶鸭</Text>
-                    <Text style={{ fontSize: 12 }}>2020-09-10 10：44</Text>
+                    <Text style={{ fontSize: 12 }}>2020-10-11 10：44</Text>
                   </View>
                 </View>
                 <Text style={{ fontSize: 15, marginLeft: 30 }}>+1</Text>
@@ -470,7 +548,7 @@ export default class mainbody extends Component {
                   </Image>
                   <View style={{ flexDirection: "column"}}>
                     <Text style={{ fontSize: 15, color: 'black', marginRight: 5 }}>看瓜少年和猹</Text>
-                    <Text style={{ fontSize: 12 }}>刚刚</Text>
+                    <Text style={{ fontSize: 12 }}>2020-10-11 10：21</Text>
                   </View>
                 </View>
                 <Text style={{ fontSize: 15, marginLeft: 30 }}>想要原图</Text>
@@ -491,6 +569,7 @@ export default class mainbody extends Component {
     const data = this.state.pinglun;
     const data1 = this.state.picture;
     const username = this.state.username;
+    const usericon = this.state.usericon;
     navigation.isFocused = () => {
       console.log("监测用户状态")
       this.checkUserAction();
@@ -607,7 +686,8 @@ export default class mainbody extends Component {
           <TouchableOpacity style={{ width: 100, height: 40, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}
             activeOpacity={0.8}
             onPress={() => {
-              copy_id = docs._id;
+              copyyonghuming3=docs.yonghuming,
+              copy_id = docs._id,
               this.onShare();
             }}>
             <EvilIcons name={'share-google'} size={30} color={'#000'} />
@@ -641,9 +721,10 @@ export default class mainbody extends Component {
               width: '70%',
               height: 120,
               backgroundColor: '#f2f2f2',
-              borderRadius: 10,
-
-            }}></TextInput>
+              borderRadius: 10,}}
+              onChangeText={(text)=>{
+                this.setState({huitie:text});
+              }}></TextInput>
           <TouchableOpacity
           activeOpacity={0.8}
             onPress={()=>{

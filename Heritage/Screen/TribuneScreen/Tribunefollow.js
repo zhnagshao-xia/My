@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Share, ScrollView, Text, View, TouchableOpacity, StyleSheet, ImageBackground, Image, FlatList, Alert } from 'react-native';
+import { AsyncStorage,Share, ScrollView, Text, View, TouchableOpacity, StyleSheet, ImageBackground, Image, FlatList, Alert } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import EvilIcons from 'react-native-vector-icons/EvilIcons'
 import Feather from 'react-native-vector-icons/Feather'
@@ -12,6 +12,8 @@ var URL2 = http + "/luntan/forward";
 var URL3 = http + "/luntan/likes";
 var copy_id;
 var copy_id1;
+var copyusername;
+var copyyonghuming;
 
 export default class CollectionScreen extends Component {
   constructor(props) {
@@ -23,6 +25,16 @@ export default class CollectionScreen extends Component {
       docs: this.props.multiList,
       selectMultiItem: [],
     }
+  }
+
+  checkUserAction = async () => {
+    const res = await AsyncStorage.getItem('userInfo') || '{}'//AsyncStorage.getItem通过key字段来进行查询存储的数据，把该结果值作为参数传入第二个callback方法
+    const { username = '' } = JSON.parse(res)
+    username && this.setState({
+      username
+    })
+    console.log("888" + username)
+    copyusername = username;
   }
 
   componentDidMount() {
@@ -96,8 +108,8 @@ export default class CollectionScreen extends Component {
   onShare = async () => {
     try {
       const result = await Share.share({
-        message:
-          'React Native | A framework for building native apps using React',
+        message:'来自'+copyusername+'的分享'
+        +'<'+'转发了'+copyyonghuming+'的帖子'+'>'
 
       });
 
@@ -195,6 +207,7 @@ export default class CollectionScreen extends Component {
                   <TouchableOpacity
                     activeOpacity={0.8}
                     onPress={() => {
+                      copyyonghuming=item.yonghuming,
                       copy_id = item._id;
                       this.onShare();
                     }}>
@@ -270,6 +283,7 @@ export default class CollectionScreen extends Component {
                   <TouchableOpacity
                     activeOpacity={0.8}
                     onPress={() => {
+                      copyyonghuming=item.yonghuming,
                       copy_id = item._id;
                       this.onShare();
                     }}>
@@ -313,6 +327,10 @@ export default class CollectionScreen extends Component {
   render() {
     const { navigation } = this.props;
     const data = this.state.docs;
+    navigation.isFocused = () => {
+      console.log("监测用户状态")
+      this.checkUserAction();
+    }
     return (
       <ScrollView style={{ width: '100%', backgroundColor: '#f2f2f2' }}>
         {this._renderMultiMark()}
