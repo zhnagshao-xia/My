@@ -68,6 +68,7 @@ import loginScreen from './MyScreen/loginScreen'
 import registerScreen from './MyScreen/registerScreen'
 import help from './MyScreen/help'
 import about from './MyScreen/about'
+import Usersaggreement from './MyScreen/usersagreement'
 
 
 const Tab = createBottomTabNavigator();
@@ -310,6 +311,7 @@ function MyStack() {
       <Stack.Screen name="注册" component={registerScreen} options={{ headerShown: false }} />
       <Stack.Screen name="help" component={help} />
       <Stack.Screen name="about" component={about} />
+      <Stack.Screen name="Usersaggreement" component={Usersaggreement}/>
     </Stack.Navigator>
   );
 }

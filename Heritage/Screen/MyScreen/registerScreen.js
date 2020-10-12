@@ -57,6 +57,7 @@ _onClickRegist = () => {
   })
 };
 render(){
+  const { navigation } = this.props;
     return (
         <View style={styles.container}>
           <ImageBackground source={require('../../Image/loginScreen/background.png')} style={styles.Image}>
@@ -105,7 +106,9 @@ render(){
               </View>
               <View style={{flexDirection:'row'}}>
                 <Text>注册即代表您已同意《</Text>
-                <TouchableOpacity><Text style={{color:"#6092a0"}}>注册与使用协议</Text></TouchableOpacity>
+                <TouchableOpacity 
+                activeOpacity='0.8'
+                onPress={()=>navigation.navigate('Usersaggreement')}><Text style={{color:"#6092a0"}}>注册与使用协议</Text></TouchableOpacity>
                 <Text>》</Text>
               </View>
               <TouchableOpacity 
