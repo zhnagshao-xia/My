@@ -11,9 +11,9 @@ export default function CollectionScreen({navigation}) {
   return (
     <View style={{flex:1}}>
       <View style={{height:"55%"}}>
-        {/* <View style={{ flex: 1 }}>
+        <View style={{ flex: 1 }}>
           <Barrage />
-        </View> */}
+        </View>
       </View>
       <View style={{width:"100%",position:"absolute",bottom:0,backgroundColor:"#fff"}}>
       <View style={{

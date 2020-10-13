@@ -114,7 +114,7 @@ _onClickFatie = () => {
       usericon:copyusericon,
       time:currentdate,
       content:this.state.content,
-      picture:"/picture/luntan/a1.jpg"
+      picture:"/picture/luntan/fatietu.jpg"
     })
   })
     .then(function (res) {

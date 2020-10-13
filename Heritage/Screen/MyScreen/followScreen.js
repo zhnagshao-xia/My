@@ -30,8 +30,9 @@ export default class followScreen extends Component {
     this.state = {
       username,
       docs: [],
+      docs: this.props.multiList,
+      selectMultiItem: [],
     };
-    this.fetchData = this.fetchData.bind(this);
   }
 
   componentDidMount() {//componentDidMount:生命周期
@@ -80,6 +81,7 @@ export default class followScreen extends Component {
       }).then(function (json) {
         if (json.code == 200) {
           // Alert.alert("已取消关注")
+          this.fetchData();
         }
       })
   }
@@ -128,6 +130,114 @@ export default class followScreen extends Component {
       })
   }
 
+  static defaultProps =
+    {
+      multiList: [
+        {
+          "id": "0",
+          "name": "音乐",
+          select: false
+        },
+        {
+          "id": "1",
+          "name": "美术",
+          select: false
+        },
+        {
+          "id": "2",
+          "name": "舞蹈",
+          select: false
+        },
+      ]
+    };
+  //多选
+  _selectMultiItemPress(item, i) {
+    if (item.select) {
+      this.state.selectMultiItem.splice(this.state.selectMultiItem.findIndex(function (x) {
+        return x === item.yonghuming;
+      }), 1);
+    } else {
+      this.state.selectMultiItem.push(item.yonghuming);
+    }
+    this.state.docs[i].select = !item.select;
+    this.setState({ docs: this.state.docs });
+  }
+  //递交 选中 
+  _submitMultiPress() {
+    alert(`选中了${JSON.stringify(this.state.selectMultiItem)}`)
+  }
+  //渲染多选标记
+  _renderMultiMark() {
+    const { navigation } = this.props;
+    let username = this.state.username;
+    let usericon = this.state.usericon;
+    let docs = this.state.docs;
+    let len = docs.length;
+    let menuArr = [];
+    for (let i = 0; i < len; i++) {
+      let item = docs[i];
+      if (item.select) {
+        menuArr.push(
+          //选中状态
+          <View style={styles.one}>
+            <View style={styles.massage}>
+              <View style={styles.headphoto}>
+                <Image style={{ width: '100%', height: '100%', borderRadius: 50 }}
+                  source={{ uri: https + item.touxiang }}>
+                </Image>
+              </View>
+              <Text style={styles.key}>{item.yonghuming}</Text>
+            </View>
+            <TouchableOpacity
+            activeOpacity={0.8}
+              onPress={() => 
+                this._selectMultiItemPress(item,i),
+                copyyonghuming = item.yonghuming,
+                  this._onClickDeleteguanzhu1()
+                // this._onClickDeleteguanzhu2(),
+                // this._onClickDeleteguanzhu3(),
+                // this.fetchData();
+              }
+              style={{ alignItems: "center", justifyContent: "center" }}>
+              <View style={styles.like}>
+                <Text style={{ fontSize: 13 }}>+关注</Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+        )
+      } else {
+        menuArr.push(
+
+          // 未选中状态
+          <View style={styles.one}>
+            <View style={styles.massage}>
+              <View style={styles.headphoto}>
+                <Image style={{ width: '100%', height: '100%', borderRadius: 50 }}
+                  source={{ uri: https + item.touxiang }}>
+                </Image>
+              </View>
+              <Text style={styles.key}>{item.yonghuming}</Text>
+            </View>
+            <TouchableOpacity
+            activeOpacity={0.8}
+              onPress={() => 
+                this._selectMultiItemPress(item,i)
+              }
+              style={{ alignItems: "center", justifyContent: "center" }}>
+              <View style={styles.like}>
+                <Text style={{ fontSize: 13 }}>取消关注</Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+        )
+      }
+    }
+    return (
+      //讲各类状态框输出到前端页面
+      <View>{menuArr}</View>
+    );
+  }
+
   render() {
     const { navigation } = this.props;
     const data = this.state.docs;
@@ -163,7 +273,8 @@ export default class followScreen extends Component {
         </View>
         <ScrollView style={styles.contant}>
           <View>
-            <FlatList
+          {this._renderMultiMark()}
+            {/* <FlatList
               data={data}
               renderItem={({ item }) => (
                 <View style={styles.one}>
@@ -178,10 +289,10 @@ export default class followScreen extends Component {
                   <TouchableOpacity
                     onPress={() => {
                       copyyonghuming = item.yonghuming,
-                        this._onClickDeleteguanzhu1(),
-                        this._onClickDeleteguanzhu2(),
-                        this._onClickDeleteguanzhu3(),
-                        this.fetchData()
+                        this._onClickDeleteguanzhu1()
+                        // this._onClickDeleteguanzhu2(),
+                        // this._onClickDeleteguanzhu3(),
+                        // this.fetchData();
                     }}
                     style={{alignItems:"center",justifyContent:"center"}}>
                     <View style={styles.like}>
@@ -190,7 +301,7 @@ export default class followScreen extends Component {
                   </TouchableOpacity>
                 </View>
               )}
-            />
+            /> */}
           </View>
         </ScrollView>
       </View>
@@ -215,9 +326,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderColor: 'black',
     borderBottomWidth: 0.5,
-    justifyContent:"space-between",
-    paddingHorizontal:10,
-    paddingVertical:20
+    justifyContent: "space-between",
+    paddingHorizontal: 10,
+    paddingVertical: 20
   },
   key: {
     marginLeft: 10
@@ -233,7 +344,7 @@ const styles = StyleSheet.create({
   },
   massage: {
     flexDirection: "row",
-    alignItems:"center"
+    alignItems: "center"
   },
   like: {
     width: 70,

@@ -123,7 +123,7 @@ _onClickPinglun = () => {
       usericon:copyusericon,
       time:currentdate,
       pingyu:this.state.pingyu,
-      maijiaxiu:"/picture/shopping/pinglun/琢磨/木雕/2.jpg"
+      maijiaxiu:"/picture/shopping/pinglun/琢磨/铜雕/2.jpg"
     })
   })
     .then(function (res) {

@@ -44,6 +44,7 @@ var copyusericon;
 var copyusername2;
 var copyusername3;
 var copyyonghuming3;
+var copy_id2;
 
 const { UIManager } = NativeModules;
 UIManager.setLayoutAnimationEnabledExperimental &&
@@ -73,9 +74,16 @@ export default class mainbody extends Component {
       stranHeight: new Animated.Value(0),
       pinglun: this.props.multiList,
       selectMultiItem: [],
-      huitie:""
+      huitie:"",
+      textValue:'+关注'
     }
   }
+
+  onPress = () => {
+    this.setState({
+        textValue: "已关注"
+    })
+}
 
   checkUserAction = async () => {
     const res = await AsyncStorage.getItem('userInfo') || '{}'//AsyncStorage.getItem通过key字段来进行查询存储的数据，把该结果值作为参数传入第二个callback方法
@@ -632,13 +640,15 @@ export default class mainbody extends Component {
                 </View>
               </View>
               <TouchableOpacity style={styles.guanzhu}
+              activeOpacity={0.8}
                 onPress={() => {
                   copyusername = username,
                     copyyonghuming = docs.yonghuming,
                     copytouxiang = docs.touxiang,
                     this._onClickAddguanzhu()
-                }}>
-                <Text style={{ fontSize: 12, color: 'black' }}>+关注</Text>
+                },
+                this.onPress}>
+                <Text style={{ fontSize: 12, color: 'black' }}>{this.state.textValue}</Text>
               </TouchableOpacity>
             </View>
             <View style={{ marginVertical: 10 }}>
@@ -728,8 +738,11 @@ export default class mainbody extends Component {
           <TouchableOpacity
           activeOpacity={0.8}
             onPress={()=>{
-              this.refs.toast.show('发送成功',DURATION.LENGTH_LONG);
-              // navigation.goBack()
+              copyusername2=username,
+              copyusericon=usericon,
+              this._onClickPinglun(),
+              this.refs.toast.show('发送成功',DURATION.LENGTH_LONG),
+              navigation.navigate('mainbody',{_id:docs._id})
           }}
             style={{
               width: '15%',

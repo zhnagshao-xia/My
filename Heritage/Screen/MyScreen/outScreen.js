@@ -8,7 +8,7 @@ export default class outScreen extends Component{
         const { navigation } = this.props;
         AsyncStorage.removeItem('userInfo',(error) => {
             if (!error) {
-                Alert.alert("退出成功");
+                // Alert.alert("退出成功");
                 navigation.navigate("登录");
             }
         });

@@ -183,7 +183,7 @@ export default class ModalComp extends Component{
                           height:'25%',
                           alignItems:'center',
                           }}>
-                              <Text style={{fontSize:15}}>添加成功</Text>
+                              <Text style={{fontSize:15}}>修改成功</Text>
                           </View>
                             <TouchableOpacity style={styles.modalButtonStyle2}
                                    onPress={()=>{        

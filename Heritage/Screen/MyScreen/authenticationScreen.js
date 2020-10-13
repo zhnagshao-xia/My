@@ -285,10 +285,10 @@ export default class ModalComp extends Component{
                 </View>
                 <View style={{margin:10}}>
                 <Text style={{fontSize:13,color:'#935258'}}>
-                    *大学生认证请上传身份证正反面及学生证个人信息页
+                    *大学生认证请上传学生证个人信息页
                 </Text>
                 <Text style={{fontSize:13,color:'#935258'}}>
-                    *手艺人认证请上传身份证正反面及相关证明材料
+                    *手艺人认证请上传相关证明材料
                 </Text>
                 </View>
                 <View style={{width:'100%',height:200,alignItems:'center',justifyContent:'center'}}>
