@@ -396,11 +396,9 @@ export default class App extends Component {
                 </View>
                 <View style={styles.third}>
                   <Text style={styles.key}>时间：{item.time}</Text>
-                  <TouchableOpacity 
-                  activeOpacity={0.8}
-                  style={{ width: 40, height: 40, marginLeft: 135, alignItems: 'center', justifyContent: 'center' }}
-                    onPress={() => { copytitle2 = item.title, console.log(copytitle2), this._onClickQrcode(), this._openModalThird() }}>
-                    {/* <FontAwesome
+                  <TouchableOpacity style={{ width: '28%', height: 10, alignItems: 'center', justifyContent: 'center' }}
+                      onPress={() => { copytitle1 = item.title, console.log(copytitle1), this._onClickQrcode(), this._openModalThird() }}>
+                      {/* <FontAwesome
                           name={'th'}
                           size={40}
                           color={'grey'} /> */}

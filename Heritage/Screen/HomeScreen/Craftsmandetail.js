@@ -38,9 +38,16 @@ export default class Craftsmandetail extends Component {
       isOpen: false,
       isDisabled: false,
       swipeToClose: true,
-      sliderValue: 0.3
+      sliderValue: 0.3,
+      textValue:'+关注'
     };
   }
+
+  onPress = () => {
+    this.setState({
+        textValue: "已关注"
+    })
+}
 
   componentDidMount() {
     this.fetchData();
@@ -265,8 +272,9 @@ export default class Craftsmandetail extends Component {
                       this._onClickAddguanzhu2(),
                       this._onClickAddguanzhu3(),
                       this.fetchData()
-                  }}>
-                  <Text style={{ fontSize: 12}}>+关注</Text>
+                  },
+                  this.onPress}>
+                  <Text style={{ fontSize: 12}}>{this.state.textValue}</Text>
                 </TouchableOpacity>
               </View>
             </View>
