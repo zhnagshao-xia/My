@@ -407,7 +407,7 @@ export default class App extends Component {
               data={data}
               renderItem={({ item }) =>
                 <View style={styles.one}>
-                  <View style={{ width: '100%', flexDirection: 'row-reverse' }}>
+                  <View style={{ width: '100%', flexDirection: 'row-reverse'}}>
                     <TouchableOpacity style={styles.mark}
                       onPress={() => { this._openModalWin(), copytitle2 = item.title }}
                     >
@@ -456,7 +456,7 @@ export default class App extends Component {
                   <View style={styles.first}>
                     <View style={{ flexDirection: "row" }}>
                       <Text>主题：</Text>
-                      <Text style={{ width: 240 }}>{item.title}</Text></View>
+                      <Text style={{ width: 280 }}>{item.title}</Text></View>
                     <TouchableOpacity
                       activeOpacity={0.8}
                       style={styles.message}
@@ -516,7 +516,7 @@ export default class App extends Component {
                       <Text style={styles.key}>状态：{item.state}</Text>
                     </View>
 
-                    <TouchableOpacity style={{ width: '28%', height: 40, alignItems: 'center', justifyContent: 'center' }}
+                    <TouchableOpacity style={{ width: '28%', height: 40, alignItems: 'center', justifyContent: 'center',left:29 }}
                       onPress={() => { copytitle1 = item.title, console.log(copytitle1), this._onClickQrcode(), this._openModalThird() }}>
                       {/* <FontAwesome
                           name={'th'}
@@ -590,6 +590,8 @@ const styles = StyleSheet.create({
   mark: {
     width: 40,
     height: 20,
+    left:-10,
+    top:5,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -601,6 +603,7 @@ const styles = StyleSheet.create({
   message: {
     width: 45,
     height: 18,
+    top:8,
     backgroundColor: '#b7c4b3',
     borderRadius: 5,
     borderWidth: 0.5,

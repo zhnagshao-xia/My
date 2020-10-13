@@ -148,7 +148,7 @@ export default class VolunteerScreen extends React.Component {
       .finally(() => {
         this.setState({ isLonding: false });
       });
-    fetch(URL2, {//志愿时长
+    fetch(URL2, {//
       method: 'POST',
       credentials: "include",
       headers: {

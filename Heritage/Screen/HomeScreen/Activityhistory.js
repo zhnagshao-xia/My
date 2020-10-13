@@ -396,7 +396,7 @@ export default class App extends Component {
                 </View>
                 <View style={styles.third}>
                   <Text style={styles.key}>时间：{item.time}</Text>
-                  <TouchableOpacity style={{ width: '28%', height: 10, alignItems: 'center', justifyContent: 'center' }}
+                  <TouchableOpacity style={{ width: '28%', height: 10, left:6,alignItems: 'center', justifyContent: 'center' }}
                       onPress={() => { copytitle1 = item.title, console.log(copytitle1), this._onClickQrcode(), this._openModalThird() }}>
                       {/* <FontAwesome
                           name={'th'}
@@ -466,6 +466,7 @@ const styles = StyleSheet.create({
   mark: {
     width: 40,
     height: 20,
+    left:-10,
     alignItems: 'center',
     justifyContent: 'center',
   },

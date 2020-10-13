@@ -154,7 +154,7 @@ _closeModalWin = () => {//加这个整个
                                     marginLeft: 38
                                 }}
                                 onPress={() => {
-                                    // this.setState({modalVisible: true}),
+                                    this.setState({modalVisible: true}),
                                     this._onClickUp()
                                 }}>
                                 <ImageBackground style={{
