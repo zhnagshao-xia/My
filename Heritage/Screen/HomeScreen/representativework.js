@@ -110,13 +110,14 @@ export default class representativework extends Component {
           >
             <View style={styles.goodsContainer}>
               <View style={{
-                width: 170,
+                width: 140,
                 height: 210,
                 shadowColor: 'red',
                 shadowOffset: { width: 10, height: 10 },
                 shadowOpacity: 0.8,
                 shadowRadius: 10,
-                elevation: 10
+                elevation: 10,
+                left:-15
               }}>
 
                 <ImageBackground source={{ uri: https + item.picture }}
@@ -128,7 +129,7 @@ export default class representativework extends Component {
                     padding: 5
                   }}>
                     <Text style={{ fontSize: 13, color: '#c9aa74' }}>{item.leibie}</Text>
-                    <Text style={{ fontSize: 13, color: '#c9aa74', textAlign: 'right' }}>——————{item.name}</Text>
+                    <Text style={{ fontSize: 13, color: '#c9aa74', textAlign: 'right' }}>——{item.name}</Text>
                   </View>
                 </ImageBackground>
               </View>

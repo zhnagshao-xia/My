@@ -456,7 +456,7 @@ export default class App extends Component {
                   <View style={styles.first}>
                     <View style={{ flexDirection: "row" }}>
                       <Text>主题：</Text>
-                      <Text style={{ width: 280 }}>{item.title}</Text></View>
+                      <Text style={{ width: 240 }}>{item.title}</Text></View>
                     <TouchableOpacity
                       activeOpacity={0.8}
                       style={styles.message}
