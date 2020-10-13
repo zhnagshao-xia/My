@@ -155,7 +155,7 @@ _closeModalWin = () => {//加这个整个
                                 }}
                                 onPress={() => {
                                     this.setState({modalVisible: true}),
-                                    this._onClickUp()
+                                    this._onClickUp();
                                 }}>
                                 <ImageBackground style={{
                                     width: '100%',
