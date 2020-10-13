@@ -12,6 +12,7 @@ import {
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
+var https = "http://121.196.191.45";
 // var http="http://192.168.50.91:3000";
 var http = "http://121.196.191.45:3000";
 var URL = http+"/users/address/list";
@@ -100,7 +101,7 @@ export default class addressScreen extends Component {
             renderItem = {({item})=>
           <View style = {styles.one}>
               <View style={styles.headphoto}>
-                <Image style={{width:'100%',height:'100%',borderRadius:50}} source={{uri:item.shopicon}}></Image>
+                <Image style={{width:'100%',height:'100%',borderRadius:50}} source={{uri:https+item.shopicon}}></Image>
               </View>
               <View style={styles.massage}>
                 <View style={{flexDirection:'row',justifyContent:"space-between"}}>

@@ -389,7 +389,7 @@ export default class mainbody extends Component {
               </View>
             </View>
             <View style={{ width: '100%', marginBottom: 10 }}>
-              <Text style={{ fontSize: 13 }}>{item.huitie}</Text>
+              <Text style={{ fontSize: 15 }}>{item.huitie}</Text>
             </View>
             <TouchableOpacity
               onPress={() => {
@@ -405,26 +405,14 @@ export default class mainbody extends Component {
                 width: '95%',
                 height: 25,
                 backgroundColor: '#e7e7e7',
-                borderRadius: 5, alignItems: 'center', flexDirection: 'row'
+                borderRadius: 5, 
+                alignItems: 'center', 
+                flexDirection: 'row',
+                marginBottom:10
               }}>
-              <Text style={{ fontSize: 13, marginRight: 5 }}> 共12条回复</Text>
+              <Text style={{ fontSize: 13, marginRight: 5 }}> 共5条回复</Text>
               <FontAwesome name={'angle-right'} size={20} color={'#000'} />
             </TouchableOpacity>
-            <Animated.View style={{ width: 200, height: this.state.stranHeight }}>
-              <View style={{ flexDirection: 'column' }}>
-                <View style={{ flexDirection: "row" }}>
-                  <Image
-                    source={require('../../Image/HomeScreen/2.jpg')}
-                    style={{ width: 40, height: 40, backgroundColor: 'black', borderRadius: 50, marginRight: 7 }}>
-                  </Image>
-                  <View style={{ flexDirection: "column", marginTop: 10 }}>
-                    <Text style={{ fontSize: 15, color: 'black', marginRight: 5 }}>{item.yonghuming}</Text>
-                    <Text style={{ fontSize: 12 }}>{item.time}</Text>
-                  </View>
-                </View>
-                <Text style={{ fontSize: 12 }}>haokan</Text>
-              </View>
-            </Animated.View>
           </View>
         )
       } else {
@@ -494,7 +482,7 @@ export default class mainbody extends Component {
               flexDirection: "column",
               paddingLeft: 40,
               overflow: "hidden",
-              paddingTop:10
+              paddingTop:10,
             }}>
               <View style={{ flexDirection: 'column',marginBottom:10 }}>
                 <View style={{ flexDirection: "row" }}>

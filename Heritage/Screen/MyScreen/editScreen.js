@@ -17,6 +17,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import LottieView from 'lottie-react-native';//加这个
 
+var https = "http://121.196.191.45";
 // var http = "http://192.168.50.91:3000";
 var http = "http://121.196.191.45:3000";
 var URL = http+"/users/address/list/add";
@@ -26,7 +27,7 @@ export default class App extends Component {
     super(props);
     const {navigation,route} = this.props;
     let username = route.params.username;
-    let usericon = 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=179057337,2765188365&fm=26&gp=0.jpg'
+    let usericon = '/picture/touxiang/fans/a0.jpg'
     this.state = {
       username,
       usericon,

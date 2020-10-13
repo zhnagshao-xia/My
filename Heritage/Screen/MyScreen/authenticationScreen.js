@@ -293,6 +293,7 @@ export default class ModalComp extends Component{
                 </View>
                 <View style={{width:'100%',height:200,alignItems:'center',justifyContent:'center'}}>
                     <TouchableOpacity style={styles.submit}
+                    activeOpacity={0.8}
                       onPress={this._openModalWin}>
                         <Text style={{fontSize:15,color:'#fff'}}>提交</Text>
                     </TouchableOpacity>
@@ -360,9 +361,9 @@ export default class ModalComp extends Component{
         )}}
         const styles = StyleSheet.create({
             submit:{
-                width:100,
-                height:45,
-                backgroundColor:'#568491',
+                width:70,
+                height:35,
+                backgroundColor:'#945357',
                 borderRadius:5,
                 alignItems:'center',
                 justifyContent:'center',
