@@ -14,6 +14,7 @@ import {
 } from 'react-native';
 import Swiper from 'react-native-swiper';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
 var https = "http://121.196.191.45";
 // var http = "http://192.168.50.91:3000";
@@ -189,28 +190,28 @@ export default class homerecommend extends Component {
       })
   }
 
-  static defaultProps = 
-  {
-    multiList: [
-      {
-        "id": "0",
-        "name": "音乐",
-        select: false
-      },
-      {
-        "id": "1",
-        "name": "美术",
-        select: false
-      },
-      {
-        "id": "2",
-        "name": "舞蹈",
-        select: false
-      },
-    ]
-  };
+  static defaultProps =
+    {
+      multiList: [
+        {
+          "id": "0",
+          "name": "音乐",
+          select: false
+        },
+        {
+          "id": "1",
+          "name": "美术",
+          select: false
+        },
+        {
+          "id": "2",
+          "name": "舞蹈",
+          select: false
+        },
+      ]
+    };
   //多选
-  _selectMultiItemPress(item,i) {
+  _selectMultiItemPress(item, i) {
     if (item.select) {
       this.state.selectMultiItem.splice(this.state.selectMultiItem.findIndex(function (x) {
         return x === item.name;
@@ -242,7 +243,7 @@ export default class homerecommend extends Component {
             <View style={{ width: '100%', height: 190 }}>
               <Image
                 style={{ width: '100%', height: '100%', resizeMode: 'stretch', }}
-                source={{uri:https+item.xingxiangtu}}>
+                source={{ uri: https + item.xingxiangtu }}>
               </Image>
             </View>
             <View style={styles.fourword}>
@@ -258,15 +259,15 @@ export default class homerecommend extends Component {
                   </View>
                 </View>
                 <TouchableOpacity
-                activeOpacity={0.8}
-                  onPress={() => 
-                    this._selectMultiItemPress(item,i),
+                  activeOpacity={0.8}
+                  onPress={() =>
+                    this._selectMultiItemPress(item, i),
                     copyusername = username,
-                              copyusericon = usericon,
-                              copyname = item.name,
-                              copytouxiang = item.touxiang,
+                    copyusericon = usericon,
+                    copyname = item.name,
+                    copytouxiang = item.touxiang,
                     this._onClickAddguanzhu1(),
-                  this._onClickAddguanzhu2()}
+                    this._onClickAddguanzhu2()}
                   style={{
                     borderWidth: 1,
                     borderColor: '#c9c5c5',
@@ -304,7 +305,7 @@ export default class homerecommend extends Component {
             <View style={{ width: '100%', height: 190 }}>
               <Image
                 style={{ width: '100%', height: '100%', resizeMode: 'stretch', }}
-                source={{uri:https+item.xingxiangtu}}>
+                source={{ uri: https + item.xingxiangtu }}>
               </Image>
             </View>
             <View style={styles.fourword}>
@@ -320,9 +321,9 @@ export default class homerecommend extends Component {
                   </View>
                 </View>
                 <TouchableOpacity
-                activeOpacity={0.8}
-                  onPress={() => 
-                    this._selectMultiItemPress(item,i)}
+                  activeOpacity={0.8}
+                  onPress={() =>
+                    this._selectMultiItemPress(item, i)}
                   style={{
                     borderWidth: 1,
                     borderColor: '#c9c5c5',
@@ -528,25 +529,23 @@ export default class homerecommend extends Component {
                 }
               /> */}
             </ScrollView>
-            <View style={{alignItems:"center"}}>
-            <TouchableOpacity
-              activeOpacity={0.8}
-              onPress={() => navigation.navigate('手艺人', { username: username, usericon: usericon })}
-              style={{
-                width: '95%',
-                height: 40,
-                backgroundColor: '#dcdad2',
-                justifyContent: "center",
-                alignItems: 'center',
-                flexDirection: 'row',
-                borderRadius: 8
-              }}>
-              <Text style={{ fontSize: 14, marginRight: 10 }}>查看更多</Text>
-              <FontAwesome
-                name={'angle-double-right'}
-                size={15}
-                color={'#000'} />
-            </TouchableOpacity>
+            <View style={{ alignItems: "center" }}>
+              <TouchableOpacity
+                activeOpacity={0.8}
+                onPress={() => navigation.navigate('手艺人', { username: username, usericon: usericon })}
+                style={{
+                  width: '95%',
+                  height: 35,
+                  justifyContent: "center",
+                  alignItems: 'center',
+                  flexDirection: 'row',
+                  borderColor: '#b5b5b5',
+                  borderWidth: 1,
+                  borderRadius: 6,
+                }}>
+                <Text style={{ letterSpacing: 2 }}>查看更多</Text>
+                <AntDesign name={'caretright'} size={10} color={'#000'} />
+              </TouchableOpacity>
             </View>
           </View>
         </View>
@@ -582,20 +581,18 @@ export default class homerecommend extends Component {
               activeOpacity={0.8}
               onPress={() => navigation.navigate('匠心力作')}
               style={{
-                width: '100%',
-                height: 40,
-                backgroundColor: '#dcdad2',
+                width: '95%',
+                height: 35,
                 justifyContent: "center",
-                alignItems: "center",
+                alignItems: 'center',
                 flexDirection: 'row',
-                borderRadius: 8,
-                marginBottom: 30
+                borderColor: '#b5b5b5',
+                borderWidth: 1,
+                borderRadius: 6,
+                marginBottom:30
               }}>
-              <Text style={{ fontSize: 14, marginRight: 10 }}>查看更多</Text>
-              <FontAwesome
-                name={'angle-double-right'}
-                size={20}
-                color={'#000'} />
+              <Text style={{ letterSpacing: 2 }}>查看更多</Text>
+              <AntDesign name={'caretright'} size={10} color={'#000'} />
             </TouchableOpacity>
           </View>
         </View>

@@ -394,7 +394,7 @@ export default class App extends Component {
                       }}
                         activeOpacity={0.8}
                         onPress={this._closeModaLOk}>
-                        <Text style={{ fontSize: 15 }}>取消</Text>
+                        <Text style={{ fontSize: 15 }}>我知道了</Text>
                       </TouchableOpacity>
                     </View>
                   </View>

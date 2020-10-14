@@ -147,11 +147,11 @@ export default class ActivityDetails extends Component {
                         style={{
                             marginTop:30,
                             width:80,
-                            height:35,
+                            height:36,
                             backgroundColor:'#945357',
                             justifyContent:"center",
                             alignItems:"center",
-                            borderRadius:10
+                            borderRadius:4
                             }}>
                             <Text style={{color:'#fff',fontSize:14}}>去参加</Text>
                         </TouchableOpacity>

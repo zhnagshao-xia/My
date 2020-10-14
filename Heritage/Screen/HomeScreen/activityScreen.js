@@ -117,7 +117,7 @@ export default class activityScreen extends Component {
             <Image style={styles.right}
               source={require('../../Image/activityScreen/right.png')}></Image>
           </View>
-          <View style={{ width: '80%', top: -50, alignItems: "center" }}>
+          <ScrollView style={{ width: '80%', top: -50}}>
             <FlatList
               data={data}
               renderItem={({ item }) =>
@@ -138,7 +138,7 @@ export default class activityScreen extends Component {
                         height: '50%',
                         width: '100%',
                         resizeMode: 'stretch',
-                        justifyContent: 'center'
+                        justifyContent: 'center',paddingHorizontal:20
                       }}>
                       <Text style={styles.demol}>{item.title}</Text>
                       <Text style={styles.demo2}>{item.address}</Text>
@@ -147,7 +147,7 @@ export default class activityScreen extends Component {
                 </View>
               }
             />
-          </View>
+          </ScrollView>
         </View>
       </View>
     )
@@ -167,7 +167,6 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   contant: {
-    flex: 10,
     alignItems: 'center'
   },
   biaozhi: {

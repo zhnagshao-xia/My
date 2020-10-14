@@ -361,12 +361,13 @@ export default class ModalComp extends Component{
         )}}
         const styles = StyleSheet.create({
             submit:{
-                width:70,
-                height:35,
+                marginTop:30,
+                width:80,
+                height:36,
                 backgroundColor:'#945357',
-                borderRadius:5,
-                alignItems:'center',
-                justifyContent:'center',
+                justifyContent:"center",
+                alignItems:"center",
+                borderRadius:4
             },
             modalLayer: {
                 backgroundColor: 'rgba(0, 0, 0, 0.45)',

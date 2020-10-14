@@ -92,7 +92,7 @@ export default class Heritagefenlei extends React.Component {
                             fontSize: 18,
                             textAlign: 'center',
                             textAlignVertical: 'center',
-                        }}>{leibie}({cityname})</Text>
+                        }}>{leibie}（{cityname}）</Text>
                         <TouchableOpacity
                             activeOpacity={0.8}
                             onPress={() => navigation.navigate('heritagelist')}

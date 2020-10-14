@@ -217,8 +217,8 @@ export default class heritageDetails extends Component {
             alignItems: "center",
           }}>
             <View style={{ alignItems: "center" }}>
-              <Text style={{ fontSize: 16 }}>{item.xiangmu}</Text>
-              <Text style={{ lineHeight: 30, fontSize: 15 }}>{item.jibie}</Text>
+              <Text style={{ fontSize: 17 }}>{item.xiangmu}</Text>
+              <Text style={{ lineHeight: 30, fontSize: 13 }}>{item.jibie}</Text>
             </View>
             <View>
               <View style={{ alignItems: "center" }}>

@@ -156,6 +156,7 @@ export default class DrawerExample extends React.Component {
             justifyContent: 'space-around'
           }}>
             <TouchableOpacity
+            style={{alignItems: "center", justifyContent: "center" }}
               activeOpacity={0.8}
               onPress={() => {
                 navigation.navigate('Shopclassifymore', { dalei: "琢磨", pinyin: "ZHUOMO" })
@@ -165,9 +166,10 @@ export default class DrawerExample extends React.Component {
                 source={{ uri: https + "/picture/shopping/class/琢磨/琢磨.jpg" }}
               >
               </Image>
-              <Text style={{ marginTop: 3, fontSize: 13, marginLeft: 18 }}>琢磨</Text>
+              <Text style={{ marginTop: 3, fontSize: 13}}>琢磨</Text>
             </TouchableOpacity>
             <TouchableOpacity
+            style={{alignItems: "center", justifyContent: "center" }}
               activeOpacity={0.8}
               onPress={() => {
                 navigation.navigate('Shopclassifymore', { dalei: "浴火", pinyin: "YUHUO" })
@@ -177,9 +179,10 @@ export default class DrawerExample extends React.Component {
                 source={{ uri: https + "/picture/shopping/class/浴火/浴火.jpg" }}
               >
               </Image>
-              <Text style={{ marginTop: 3, fontSize: 13, marginLeft: 18 }}>浴火</Text>
+              <Text style={{ marginTop: 3, fontSize: 13,}}>浴火</Text>
             </TouchableOpacity>
             <TouchableOpacity
+            style={{alignItems: "center", justifyContent: "center" }}
               activeOpacity={0.8}
               onPress={() => {
                 navigation.navigate('Shopclassifymore', { dalei: "茶道", pinyin: "CHADAO" })
@@ -189,18 +192,18 @@ export default class DrawerExample extends React.Component {
                 source={{ uri: https + "/picture/shopping/class/茶道/茶道.jpg" }}
               >
               </Image>
-              <Text style={{ marginTop: 3, fontSize: 13, marginLeft: 18 }}>茶道</Text>
+              <Text style={{ marginTop: 3, fontSize: 13,}}>茶道</Text>
             </TouchableOpacity>
             <TouchableOpacity
               activeOpacity={0.8}
               onPress={() => navigation.navigate('商城分类页面')}
-              style={{ width: 50, height: 50, alignItems: "center", justifyContent: "center" }}>
+              style={{alignItems: "center", justifyContent: "center" }}>
               <Image
                 style={{ width: 60, height: 60, borderRadius: 50 }}
                 source={{ uri: https + "/picture/shopping/class/全部.jpg" }}
               >
               </Image>
-              <Text style={{ marginTop: 3, fontSize: 13, marginLeft: 12 }}>全部</Text>
+              <Text style={{ marginTop: 3, fontSize: 13, }}>全部</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.last}>

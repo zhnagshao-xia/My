@@ -121,7 +121,6 @@ class Project extends React.Component {
             </AnimatedTitle>
             <Author> {this.props.author}</Author>
           </Cover>
-          
           <AnimatedText style={{ height: this.state.textHeight }}>
           &#12288;&#12288;{this.props.text}
           </AnimatedText>
@@ -132,7 +131,7 @@ class Project extends React.Component {
             style={{
               backgroundColor:'#945357',
               position: 'absolute',
-              bottom: '5%',
+              bottom: '10%',
               width:80,
               left: '40%',
               opacity: this.state.opacity,

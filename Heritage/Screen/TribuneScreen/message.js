@@ -124,15 +124,15 @@ export default class Activity extends Component {
             </View>
           </View>
         </View>
-        <View style={{ width: '100%', height: 50, backgroundColor: '#fff', flexDirection: 'row', justifyContent: 'space-around' }}>
-          <ImageBackground style={{ width: 40, height: 40, marginTop: 10 }}
+        <View style={{ width: '100%',backgroundColor: '#fff', flexDirection: 'row', justifyContent: 'space-around'}}>
+          <ImageBackground style={{ width: 30, height: 30, marginTop: 10 }}
             source={require('../../Image/message/massage.png')}></ImageBackground>
-          <ImageBackground style={{ width: 40, height: 40, marginTop: 10 }}
+          <ImageBackground style={{ width: 30, height: 30, marginTop: 10 }}
             source={require('../../Image/message/love.png')}></ImageBackground>
-          <ImageBackground style={{ width: 40, height: 40, marginTop: 10 }}
+          <ImageBackground style={{ width: 30, height: 30, marginTop: 10 }}
             source={require('../../Image/message/good.png')}></ImageBackground>
         </View>
-        <View style={{ width: '100%', height: 600, backgroundColor: '#f2f2f2' }}>
+        <View style={{ width: '100%', height:'100%', backgroundColor: '#f2f2f2' }}>
           <Tabs
             tabs={tabs}
             tabBarTextStyle={{
@@ -142,7 +142,7 @@ export default class Activity extends Component {
             tabBarUnderlineStyle={{
               width: 65,
               height: 1,
-              marginLeft: 35,
+              marginLeft: 28,
               backgroundColor: '#945357',
             }}
           >
@@ -150,7 +150,7 @@ export default class Activity extends Component {
               <FlatList
                 data={data}
                 renderItem={({ item }) =>
-                    <View style={{ width: '100%', height: 80, backgroundColor: '#fff', marginBottom: 10, flexDirection: 'row', alignItems: 'center', marginTop: 10 }}>
+                    <View style={{ width: '100%', height: 70, backgroundColor: '#fff',flexDirection: 'row', alignItems: 'center', marginTop: 10 }}>
                       <View style={styles.headphoto}>
                         <Image style={{ width: '100%', height: '100%', borderRadius: 50 }}
                           source={{ uri: https + item.usericon }}>
@@ -167,7 +167,7 @@ export default class Activity extends Component {
               <FlatList
                 data={data2}
                 renderItem={({ item }) =>
-                    <View style={{ width: '100%', height: 80, backgroundColor: '#fff', marginBottom: 10, flexDirection: 'row', alignItems: 'center', marginTop: 10 }}>
+                    <View style={{ width: '100%', height: 70, backgroundColor: '#fff',flexDirection: 'row', alignItems: 'center', marginTop: 10 }}>
                       <View style={styles.headphoto}>
                         <Image style={{ width: '100%', height: '100%', borderRadius: 50 }}
                           source={{ uri: https + item.usericon }}>
@@ -184,7 +184,7 @@ export default class Activity extends Component {
               <FlatList
                 data={data3}
                 renderItem={({ item }) =>
-                    <View style={{ width: '100%', height: 80, backgroundColor: '#fff', marginBottom: 15, flexDirection: 'row', alignItems: 'center', marginTop: 10 }}>
+                    <View style={{ width: '100%', height: 70, backgroundColor: '#fff', flexDirection: 'row', alignItems: 'center', marginTop: 10 }}>
                       <View style={styles.headphoto}>
                         <Image style={{ width: '100%', height: '100%', borderRadius: 50 }}
                           source={{ uri: https + item.usericon }}>
@@ -205,8 +205,8 @@ export default class Activity extends Component {
 }
 const styles = StyleSheet.create({
   headphoto: {
-    width: 60,
-    height: 60,
+    width: 50,
+    height: 50,
     backgroundColor: '#fff',
     marginLeft: 15,
     borderRadius: 50,

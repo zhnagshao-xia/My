@@ -5,6 +5,10 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Feather from 'react-native-vector-icons/Feather';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import SimpleLineIcons  from 'react-native-vector-icons/SimpleLineIcons';
+import Ionicons  from 'react-native-vector-icons/Ionicons';
 import LottieView from 'lottie-react-native';
 
 import WelcomeScreen from '../Screen/welcome'
@@ -204,9 +208,9 @@ function bottom_nav() {
         component={HomeScreen}
         options={{
           tabBarIcon: ({ color }) => (
-            <FontAwesome
+            <AntDesign
               name={'home'}
-              size={31}
+              size={28}
               color={color} />
           ),
         }} >
@@ -214,9 +218,9 @@ function bottom_nav() {
       <Tab.Screen name="集市" component={ShopScreen}
         options={{
           tabBarIcon: ({ color }) => (
-            <FontAwesome
-              name={'credit-card'}
-              size={25}
+            <Feather 
+              name={'shopping-bag'}
+              size={26}
               color={color} />
           ),
         }} >
@@ -224,9 +228,9 @@ function bottom_nav() {
       <Tab.Screen name="讨论" component={TribuneScreen}
         options={{
           tabBarIcon: ({ color }) => (
-            <FontAwesome
-              name={'cloud'}
-              size={26}
+            <Ionicons 
+              name={'planet-outline'}
+              size={28}
               color={color} />
           ),
         }} ></Tab.Screen>
@@ -234,9 +238,9 @@ function bottom_nav() {
         component={MyScreen}
         options={{
           tabBarIcon: ({ color }) => (
-            <FontAwesome
-              name={'odnoklassniki'}
-              size={25}
+            <SimpleLineIcons  
+              name={'ghost'}
+              size={24}
               color={color} />
           ),
         }} >

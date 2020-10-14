@@ -128,7 +128,7 @@ export default class representativework extends Component {
                     padding: 5
                   }}>
                     <Text style={{ fontSize: 13, color: '#c9aa74' }}>{item.leibie}</Text>
-                    <Text style={{ fontSize: 13, color: '#c9aa74', textAlign: 'right' }}>------{item.name}</Text>
+                    <Text style={{ fontSize: 13, color: '#c9aa74', textAlign: 'right' }}>——————{item.name}</Text>
                   </View>
                 </ImageBackground>
               </View>

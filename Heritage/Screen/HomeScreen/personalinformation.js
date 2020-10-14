@@ -80,21 +80,21 @@ constructor(props){
       );
   });
     return (
-      <View style={{width:'100%',alignItems:'center',marginVertical:10}}>
+      <ScrollView style={{width:'100%',marginBottom:10}}>
               <FlatList
                 data={data}
                 renderItem={({ item }) =>
-                <View style={{flex:1,alignItems:"center"}}>
-                  <View style={{width:"95%"}}>
+                <View style={{flex:1,alignItems:"center",width:'100%',}}>
+                  <View style={{width:"90%"}}>
                     <View style={{width:'100%',flexDirection:'row',alignItems:'center',marginVertical:10}}>
                       <View style={{width:4,height:25,backgroundColor:'#c9aa74',marginRight:10}}></View>
                       <Text style={{fontSize:15}}>简介</Text>
                     </View>
-                    <View style={{width:'100%',marginBottom:20,paddingRight:20}}>
+                    <View style={{width:'100%',marginBottom:20}}>
                       <Text style={{fontSize:13}}>{item.jianjie}</Text>
                     </View>
                   </View>
-                  <View style={{width:"95%"}}>
+                  <View style={{width:"90%"}}>
                     <View style={{width:'100%',flexDirection:'row',alignItems:'center',marginVertical:10}}>
                       <View style={{width:4,height:25,backgroundColor:'#c9aa74',marginRight:10}}></View>
                       <Text style={{fontSize:15}}>传承之路</Text>
@@ -103,7 +103,7 @@ constructor(props){
                     {items}
                     </View>
                   </View>
-                  <View style={{width:"95%"}}>
+                  <View style={{width:"90%"}}>
                     <View style={{width:'100%',flexDirection:'row',alignItems:'center',marginVertical:10}}>
                       <View style={{width:4,height:25,backgroundColor:'#c9aa74',marginRight:10}}></View>
                       <Text style={{fontSize:15}}>非遗技艺</Text>
@@ -118,7 +118,7 @@ constructor(props){
                 </View>    
                 }
               />
-            </View>
+            </ScrollView>
       );
 }
 }
@@ -192,11 +192,9 @@ const styles = StyleSheet.create({
   process: {
     paddingVertical: 10,
     flexDirection: 'column',
-    paddingRight: 20
 },
 expressRightFirst: {
-    width: 360,
-    paddingLeft: 25,
+    paddingLeft: 15,
     borderLeftWidth: 1,
     borderLeftColor: 'black',
     flexDirection: 'column',
@@ -206,17 +204,16 @@ expressItem: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
-    paddingLeft: 5,
-    width: 370
   
 },
 expressLeft: {
     width: 10,
     height: 10,
     borderRadius: 5,
-    position: 'relative',
-    right: 364,
+    position: "absolute",
+    left:-5,
     top: 15,
+    backgroundColor:"#000"
 },
 modal4: {
   height: 150,

@@ -110,8 +110,6 @@ _closeModalWin = () => {//加这个整个
                     alignItems: "center", 
                     justifyContent: "center",
                     flexDirection: 'row',
-                    borderBottomWidth: 0.5,
-                    borderBottomColor: "#000",
                 }}>
                     <TouchableOpacity
                         activeOpacity={0.8}
@@ -138,7 +136,7 @@ _closeModalWin = () => {//加这个整个
                         <ImageBackground
                             style={{
                                 width: '100%',
-                                marginTop: 30,
+                                marginTop: 5,
                                 height: '100%',
                                 flexDirection: 'row',
                                 borderColor: '#c40018',
@@ -152,7 +150,7 @@ _closeModalWin = () => {//加这个整个
                                     height: 80,
                                     alignItems: 'center',
                                     justifyContent: 'center',
-                                    marginTop: 350,
+                                    marginTop: 410,
                                     marginLeft: 38
                                 }}
                                 onPress={() => {
@@ -211,7 +209,8 @@ _closeModalWin = () => {//加这个整个
                     </View>
                     </TouchableOpacity>
                 </Modal>
-                            <View style={{ width: 30, height: 310, marginLeft: 3, marginTop: 30 }}>
+                <View style={{flexDirection:"row",top:40,right:35}}>
+                            <View style={{ marginLeft:0}}>
                                 <View style={{ width: 30, height: 70, alignItems: 'center', justifyContent: 'center' }}>
                                     <Text style={{ fontSize: 15, color: 'black' }}>其</Text>
                                     <Text style={{ fontSize: 15, color: 'black' }}>它</Text>
@@ -222,8 +221,8 @@ _closeModalWin = () => {//加这个整个
                                     style={{ width: 30, height: 240, backgroundColor: '#bfbfbf', textAlignVertical: 'top'}}
                                     onChangeText={(text) => { this.setState({ other: text }) }}></TextInput>
                             </View>
-                            <View style={{ width: 30, height: 310, marginLeft: 21, marginTop: 30 }}>
-                                <View style={{ width: 30, height: 70, alignItems: 'center', justifyContent: 'center' }}>
+                            <View style={{marginLeft: 21}}>
+                                <View style={{ width: 30, height: 70, alignItems: 'center', justifyContent: 'center'}}>
                                     <Text style={{ fontSize: 15, color: 'black' }}>邮</Text>
                                     <Text style={{ fontSize: 15, color: 'black' }}>箱</Text>
                                     <Text style={{ fontSize: 15, color: 'red' }}>*</Text>
@@ -233,7 +232,7 @@ _closeModalWin = () => {//加这个整个
                                     style={{ width: 30, height: 240, backgroundColor: '#bfbfbf', textAlignVertical: 'top'}}
                                     onChangeText={(text) => { this.setState({ email: text }) }}></TextInput>
                             </View>
-                            <View style={{ width: 30, height: 250, marginLeft: 21, marginTop: 30 }}>
+                            <View style={{marginLeft: 21}}>
                                 <View style={{ width: 30, height: 70, alignItems: 'center', justifyContent: 'center' }}>
                                     <Text style={{ fontSize: 15, color: 'black' }}>电</Text>
                                     <Text style={{ fontSize: 15, color: 'black' }}>话</Text>
@@ -241,10 +240,10 @@ _closeModalWin = () => {//加这个整个
                                 </View>
                                 <TextInput
                                     multiline={true}
-                                    style={{ width: 30, height: 180, backgroundColor: '#bfbfbf', textAlignVertical: 'top'}}
+                                    style={{ width: 30, height: 240, backgroundColor: '#bfbfbf', textAlignVertical: 'top'}}
                                     onChangeText={(text) => { this.setState({ telephone: text }) }}></TextInput>
                             </View>
-                            <View style={{ width: 30, height: 250, marginLeft: 21, marginTop: 30 }}>
+                            <View style={{marginLeft: 21}}>
                                 <View style={{ width: 30, height: 70, alignItems: 'center', justifyContent: 'center' }}>
                                     <Text style={{ fontSize: 15, color: 'black' }}>职</Text>
                                     <Text style={{ fontSize: 15, color: 'black' }}>业</Text>
@@ -252,10 +251,10 @@ _closeModalWin = () => {//加这个整个
                                 </View>
                                 <TextInput
                                     multiline={true}
-                                    style={{ width: 30, height: 180, backgroundColor: '#bfbfbf', textAlignVertical: 'top'}}
+                                    style={{ width: 30, height: 240, backgroundColor: '#bfbfbf', textAlignVertical: 'top'}}
                                     onChangeText={(text) => { this.setState({ work: text }) }}></TextInput>
                             </View>
-                            <View style={{ width: 30, height: 250, marginLeft: 21, marginTop: 30 }}>
+                            <View style={{marginLeft: 21}}>
                                 <View style={{ width: 30, height: 70, alignItems: 'center', justifyContent: 'center' }}>
                                     <Text style={{ fontSize: 15, color: 'black' }}>姓</Text>
                                     <Text style={{ fontSize: 15, color: 'black' }}>名</Text>
@@ -263,8 +262,9 @@ _closeModalWin = () => {//加这个整个
                                 </View>
                                 <TextInput
                                     multiline={true}
-                                    style={{ width: 30, height: 180, backgroundColor: '#bfbfbf', textAlignVertical: 'top'}}
+                                    style={{ width: 30, height: 240, backgroundColor: '#bfbfbf', textAlignVertical: 'top'}}
                                     onChangeText={(text) => { this.setState({ name: text }) }}></TextInput>
+                            </View>
                             </View>
                         </ImageBackground>
                     </View>

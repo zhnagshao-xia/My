@@ -260,7 +260,7 @@ export default class Craftsmandetail extends Component {
               <Image style={styles.headpic}
                 source={{ uri: https + data.touxiang }} />
               <View style={styles.namerow}>
-                <Text style={{ fontSize: 15, color: 'black' }}
+                <Text style={{ fontSize: 19, color: 'black' }}
                 >{data.name}</Text>
                 <TouchableOpacity
                 activeOpacity={0.8}
@@ -274,7 +274,7 @@ export default class Craftsmandetail extends Component {
                       this.fetchData()
                   },
                   this.onPress}>
-                  <Text style={{ fontSize: 12}}>{this.state.textValue}</Text>
+                  <Text style={{ fontSize: 10}}>{this.state.textValue}</Text>
                 </TouchableOpacity>
               </View>
             </View>
@@ -290,20 +290,20 @@ export default class Craftsmandetail extends Component {
             <View style={{ width: '40%', height: '100%', flexDirection: 'row-reverse' }}>
               <View style={styles.fans}>
                 <View style={{ width: 70, height: 30, alignItems: 'center', justifyContent: 'center', flexDirection: "row" }}>
-                  <Text style={{ fontSize: 15, color: '#fff' }}>关注   </Text>
+                  <Text style={{ fontSize: 13, color: '#fff' }}>关注   </Text>
                   <TouchableOpacity
                     activeOpacity={0.8}
                     onPress={() => navigation.navigate('手艺人关注', { name: data.name, username: username, usericon: usericon })}>
-                    <Text style={{ fontSize: 15, color: '#fff' }}>{sum1}</Text>
+                    <Text style={{ fontSize: 13, color: '#fff' }}>{sum1}</Text>
                   </TouchableOpacity>
                 </View>
                 <View style={{ width: 1, height: 20, backgroundColor: '#fff', marginLeft: 5, marginRight: 5 }}></View>
                 <View style={{ width: 70, height: 30, alignItems: 'center', justifyContent: 'center', flexDirection: "row" }}>
-                  <Text style={{ fontSize: 15, color: '#fff' }}>粉丝   </Text>
+                  <Text style={{ fontSize: 13, color: '#fff' }}>粉丝   </Text>
                   <TouchableOpacity
                     activeOpacity={0.8}
                     onPress={() => navigation.navigate('手艺人粉丝', { name: data.name, username: username, usericon: usericon })}>
-                    <Text style={{ fontSize: 15, color: '#fff' }}>{sum2}</Text>
+                    <Text style={{ fontSize: 13, color: '#fff' }}>{sum2}</Text>
                   </TouchableOpacity>
                 </View>
               </View>
@@ -367,13 +367,13 @@ const styles = StyleSheet.create({
   namerow: {
     width: 130,
     height: 30,
-    marginLeft: 40,
+    marginLeft: 30,
     flexDirection: 'row',
     alignItems: 'center',
   },
   like: {
-    width: 55,
-    height: 23,
+    width: 40,
+    height: 17,
     borderColor: 'black',
     borderWidth: 1,
     borderRadius: 5,
@@ -391,7 +391,7 @@ const styles = StyleSheet.create({
   },
   fans: {
     width: 150,
-    height: 35,
+    height: 30,
     backgroundColor: 'rgba(0,0,0,0.5)',
     borderTopLeftRadius: 5,
     borderBottomLeftRadius: 5,

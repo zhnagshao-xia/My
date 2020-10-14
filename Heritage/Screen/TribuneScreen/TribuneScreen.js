@@ -15,14 +15,14 @@ export default function homeheritage({navigation}) {
       onPress={() => navigation.navigate('publish')}
       activeOpacity={0.8}
       style={{position:'absolute',top:10,right:15}}>
-      <Entypo name={'plus'} size={29} color={'grey'} />
+      <Entypo name={'plus'} size={24} color={'grey'} />
       </TouchableOpacity>
       
-      <Badge text={109} dot style={{position:'absolute',top:10,right:55}}>
+      <Badge text={109} dot style={{position:'absolute',top:12,right:45}}>
       <TouchableOpacity
       onPress={() => navigation.navigate('message')}
       activeOpacity={0.8}>
-      <FontAwesome name={'envelope-o'} size={26} color={'grey'} />
+      <FontAwesome name={'envelope-o'} size={20} color={'grey'} />
       </TouchableOpacity>
       </Badge>
       

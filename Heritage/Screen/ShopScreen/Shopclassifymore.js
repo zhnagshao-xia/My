@@ -96,7 +96,7 @@ export default class Shopclassifymore extends React.Component {
                         }}></Text>
                     </View>
                 </View>
-                <ScrollView style={{ marginBottom: 50 }}>
+                <ScrollView>
                     <View style={{
                         width: "100%",
                         alignItems: "center",
@@ -115,18 +115,9 @@ export default class Shopclassifymore extends React.Component {
                                    renderItem={({ item }) =>
                                    tradeBox(item.id,item.name,item.pinyin,item.zhanshitu)
                                    } />
-
-                            <View style={{
-                                borderColor: "#000",
-                                borderRadius: 100,
-                                height: 0.5,
-                                borderWidth: 0.5,
-                                borderStyle:"dashed",
-                                marginTop:30
-                            }}></View>
                         </View>
                     </View>
-                    <Text style={{textAlign:"center",marginTop:20}}>到底啦</Text>
+                    <Text style={{textAlign:"center",marginVertical:30}}>—————————————到底啦—————————————</Text>
                 </ScrollView>
             </View>
         );

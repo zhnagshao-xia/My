@@ -72,13 +72,7 @@ export default class BasicTabsExample extends React.Component {
                                 fontSize: 12,
                                 marginBottom: 10
                             }}>时间沉淀的美</Text>
-                            <View style={{
-                                borderColor: "#000",
-                                borderRadius: 100,
-                                height: 0.5,
-                                borderWidth: 0.5,
-                                borderStyle:"dashed"
-                            }}></View>
+                            <Text style={{textAlign:"center"}}>——————————————————————————————</Text>
                         </View>
                         <View style={{ width: "92%" }}>
                             <View style={{ marginTop: 30, width: 130 }}>
@@ -209,7 +203,7 @@ export default class BasicTabsExample extends React.Component {
                             navigation.navigate('Shopclassifymore',{dalei:"琢磨",pinyin:"ZHUOMO"})
                             }}>
                             <View style={{width:"100%",
-                            height:30,
+                            height:35,
                             marginTop:40,
                             borderColor:'#000',
                             borderWidth:1,
@@ -218,18 +212,11 @@ export default class BasicTabsExample extends React.Component {
                             alignItems:"center",
                             flexDirection:"row"
                             }}>
-                                <Text style={{letterSpacing:2}}>more</Text>
-                                <AntDesign name={'caretright'} size={7} color={'#000'} style={{marginTop:5}} />
+                                <Text style={{letterSpacing:2}}>查看更多</Text>
+                                <AntDesign name={'caretright'} size={10} color={'#000'} />
                             </View>
                             </TouchableOpacity>
-                            <View style={{
-                                borderColor: "#000",
-                                borderRadius: 100,
-                                height: 0.5,
-                                borderWidth: 0.5,
-                                borderStyle:"dashed",
-                                marginTop:30
-                            }}></View>
+                            <Text style={{textAlign:"center",marginTop:30}}>——————————————————————————————</Text>
                         </View>
                         <View style={{ width: "92%" }}>
                             <View style={{ marginTop: 30}}>
@@ -334,7 +321,7 @@ export default class BasicTabsExample extends React.Component {
                                 marginTop:40
                             }}>
                                 <View style={{
-                                    width: "36%",
+                                    width: "40%",
                                     height: "100%",
                                     justifyContent:'center',
                                     alignItems:"center"
@@ -356,7 +343,7 @@ export default class BasicTabsExample extends React.Component {
                             navigation.navigate('Shopclassifymore',{dalei:"浴火",pinyin:"YUHUO"})
                             }}>
                             <View style={{width:"100%",
-                            height:30,
+                            height:35,
                             marginTop:40,
                             borderColor:'#000',
                             borderWidth:1,
@@ -365,17 +352,10 @@ export default class BasicTabsExample extends React.Component {
                             alignItems:"center",
                             flexDirection:"row"
                             }}>
-                                <Text style={{letterSpacing:2}}>more</Text>
-                                <AntDesign name={'caretright'} size={7} color={'#000'} style={{marginTop:5}} />
+                                <Text style={{letterSpacing:2}}>查看更多</Text>
+                                <AntDesign name={'caretright'} size={10} color={'#000'} />
                             </View></TouchableOpacity>
-                            <View style={{
-                                borderColor: "#000",
-                                borderRadius: 100,
-                                height: 0.5,
-                                borderWidth: 0.5,
-                                borderStyle:"dashed",
-                                marginTop:30
-                            }}></View>
+                            <Text style={{textAlign:"center",marginTop:30}}>——————————————————————————————</Text>
                         </View>
                         <View style={{ width: "92%" }}>
                             <View style={{ marginTop: 30, width: 130 }}>
@@ -502,7 +482,7 @@ export default class BasicTabsExample extends React.Component {
                             navigation.navigate('Shopclassifymore',{dalei:"茶道",pinyin:"CHADAO"})
                             }}>
                             <View style={{width:"100%",
-                            height:30,
+                            height:35,
                             marginTop:40,
                             borderColor:'#000',
                             borderWidth:1,
@@ -511,17 +491,10 @@ export default class BasicTabsExample extends React.Component {
                             alignItems:"center",
                             flexDirection:"row"
                             }}>
-                                <Text style={{letterSpacing:2}}>more</Text>
-                                <AntDesign name={'caretright'} size={7} color={'#000'} style={{marginTop:5}} />
+                                <Text style={{letterSpacing:2}}>查看更多</Text>
+                                <AntDesign name={'caretright'} size={10} color={'#000'} />
                             </View></TouchableOpacity>
-                            <View style={{
-                                borderColor: "#000",
-                                borderRadius: 100,
-                                height: 0.5,
-                                borderWidth: 0.5,
-                                borderStyle:"dashed",
-                                marginTop:30
-                            }}></View>
+                            <Text style={{textAlign:"center",marginTop:30}}>——————————————————————————————</Text>
                         </View>
                         <View style={{ width: "92%" }}>
                             <View style={{ marginTop: 30}}>
@@ -648,7 +621,7 @@ export default class BasicTabsExample extends React.Component {
                             navigation.navigate('Shopclassifymore',{dalei:"珍馐",pinyin:"ZHENXIU"})
                             }}>
                             <View style={{width:"100%",
-                            height:30,
+                            height:35,
                             marginTop:40,
                             borderColor:'#000',
                             borderWidth:1,
@@ -657,17 +630,10 @@ export default class BasicTabsExample extends React.Component {
                             alignItems:"center",
                             flexDirection:"row"
                             }}>
-                                <Text style={{letterSpacing:2}}>more</Text>
-                                <AntDesign name={'caretright'} size={7} color={'#000'} style={{marginTop:5}} />
+                                <Text style={{letterSpacing:2}}>查看更多</Text>
+                                <AntDesign name={'caretright'} size={10} color={'#000'} />
                             </View></TouchableOpacity>
-                            <View style={{
-                                borderColor: "#000",
-                                borderRadius: 100,
-                                height: 0.5,
-                                borderWidth: 0.5,
-                                borderStyle:"dashed",
-                                marginTop:30
-                            }}></View>
+                            <Text style={{textAlign:"center",marginTop:30}}>——————————————————————————————</Text>
                         </View>
                         <View style={{ width: "92%" }}>
                             <View style={{ marginTop: 30, width: 130 }}>
@@ -794,7 +760,7 @@ export default class BasicTabsExample extends React.Component {
                             navigation.navigate('Shopclassifymore',{dalei:"市井",pinyin:"SHIJING"})
                             }}>
                             <View style={{width:"100%",
-                            height:30,
+                            height:35,
                             marginTop:40,
                             borderColor:'#000',
                             borderWidth:1,
@@ -803,8 +769,8 @@ export default class BasicTabsExample extends React.Component {
                             alignItems:"center",
                             flexDirection:"row"
                             }}>
-                                <Text style={{letterSpacing:2}}>more</Text>
-                                <AntDesign name={'caretright'} size={7} color={'#000'} style={{marginTop:5}} />
+                                <Text style={{letterSpacing:2}}>查看更多</Text>
+                                <AntDesign name={'caretright'} size={10} color={'#000'} />
                             </View></TouchableOpacity>
                             {/* <View style={{
                                 borderColor: "#000",
@@ -816,7 +782,7 @@ export default class BasicTabsExample extends React.Component {
                             }}></View> */}
                         </View>
                     </View>
-                    <Text style={{textAlign:"center",marginTop:20}}>———————————————到底啦———————————————</Text>
+                    <Text style={{textAlign:"center",marginTop:20}}>—————————————到底啦—————————————</Text>
                 </ScrollView>
             </View>
         );
