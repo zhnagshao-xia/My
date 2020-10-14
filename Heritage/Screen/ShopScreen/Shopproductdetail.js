@@ -195,7 +195,7 @@ export default class App extends Component {
                                         copyfengmian=docs.fengmian,
                                         this.__onClickAddshopcar()
                                     }}>
-                                    <MaterialIcons name={'add-shopping-cart'} size={30} color={'#000'} />
+                                    <MaterialIcons name={'add-shopping-cart'} size={25} color={'#000'} />
                                     </TouchableOpacity>
                                     <Modal
                     animationType='fade' // 指定了 modal 的动画类型。类型：slide 从底部滑入滑出|fade 淡入淡出|none 没有动画
@@ -215,7 +215,6 @@ export default class App extends Component {
                         <View style={styles.modalContainer}>
                           <View style={{width:150,
                             height:'45%',
-                            // backgroundColor:'red',
                             alignItems:'center',
                             justifyContent:'center'
                             }}>
@@ -240,8 +239,8 @@ export default class App extends Component {
                                     <TouchableOpacity
                                         activeOpacity={0.8}
                                         onPress={() => navigation.navigate('Buynow',{goods:docs.goods,miaoshu:docs.miaoshu,fengmian:docs.fengmian,price:docs.price,number:"1"})}
-                                        style={{ width: 80, height: 35, marginLeft: 15, backgroundColor: 'orange', borderRadius: 20, alignItems: 'center', justifyContent: 'center' }}>
-                                        <Text style={{ fontSize: 20 }}>购买</Text>
+                                        style={{ width: 60, height: 25, marginLeft: 15, backgroundColor: 'orange', borderRadius: 20, alignItems: 'center', justifyContent: 'center' }}>
+                                        <Text style={{ fontSize:15}}>购买</Text>
                                     </TouchableOpacity>
                                 </View>
                             </View>

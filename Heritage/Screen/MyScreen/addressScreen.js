@@ -113,7 +113,7 @@ export default class addressScreen extends Component {
               <View style={styles.edit}>
                 <TouchableOpacity 
                 onPress={() => navigation.navigate('修改',{shopname:item.shopname,telephone:item.telephone,dizhi:item.dizhi})}
-                style={{width:50,height:50,justifyContent:'center'}}>
+                style={{width:50,height:50,justifyContent:'center',alignItems:'center',marginLeft:7}}>
                   <Text style={{fontSize:15}}>编辑</Text>
                 </TouchableOpacity>
               </View>
