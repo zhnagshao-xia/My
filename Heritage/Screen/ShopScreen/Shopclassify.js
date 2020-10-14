@@ -283,7 +283,7 @@ export default class BasicTabsExample extends React.Component {
                                     alignItems:"center"
                                 }}>
                                     <Text style={{fontSize:21,fontWeight:"bold"}}>婺州窑</Text>
-                                    <Text>WUZHOUSYAO</Text>
+                                    <Text>WUZHOUYAO</Text>
                                 </View>
                                 <Image style={{
                                     width: "33%",
@@ -334,13 +334,13 @@ export default class BasicTabsExample extends React.Component {
                                 marginTop:40
                             }}>
                                 <View style={{
-                                    width: "33%",
+                                    width: "36%",
                                     height: "100%",
                                     justifyContent:'center',
                                     alignItems:"center"
                                 }}>
                                     <Text style={{fontSize:21,fontWeight:"bold"}}>南宋官窑</Text>
-                                    <Text>GUANYAO</Text>
+                                    <Text>NANSONGGUANYAO</Text>
                                 </View>
                                 <Image style={{
                                     width: "33%",
@@ -806,17 +806,17 @@ export default class BasicTabsExample extends React.Component {
                                 <Text style={{letterSpacing:2}}>more</Text>
                                 <AntDesign name={'caretright'} size={7} color={'#000'} style={{marginTop:5}} />
                             </View></TouchableOpacity>
-                            <View style={{
+                            {/* <View style={{
                                 borderColor: "#000",
                                 borderRadius: 100,
                                 height: 0.5,
                                 borderWidth: 0.5,
                                 borderStyle:"dashed",
                                 marginTop:30
-                            }}></View>
+                            }}></View> */}
                         </View>
                     </View>
-                    <Text style={{textAlign:"center",marginTop:20}}>到底啦</Text>
+                    <Text style={{textAlign:"center",marginTop:20}}>———————————————到底啦———————————————</Text>
                 </ScrollView>
             </View>
         );

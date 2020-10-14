@@ -119,11 +119,6 @@ render(){
                 <Text style={{color:'#fdfdfd'}}>立即注册</Text>
               </TouchableOpacity>
             </View>
-            <View style={styles.container_bottom}>
-              <View style={styles.line}></View>          
-              <TouchableOpacity><Text style={{color:'#fff'}}>联系我们</Text></TouchableOpacity>
-              <View style={styles.line}></View>
-            </View> 
             <TouchableOpacity
             onPress={() => {this.props.navigation.navigate("登录");}}
             activeOpacity={0.7}
@@ -191,11 +186,6 @@ const styles = StyleSheet.create({
       justifyContent:'center',
       alignItems:'center',
       borderRadius:20
-    },
-    container_bottom:{
-      flexDirection:'row',
-      alignItems:'center',
-      marginTop:1
     },
     line:{
       borderWidth:1, 
