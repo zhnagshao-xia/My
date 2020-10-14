@@ -92,7 +92,7 @@ _closeModalWin = () => {//加这个整个
                 <TextInput 
                     placeholderTextColor="#6092a0" 
                     style={{ height: 50, width: 250 }} 
-                    placeholder='请输入用户名...'
+                    placeholder='请输入用户名'
                     onChangeText={(text)=>{
                       this.setState({username:text});
                     }}></TextInput>
@@ -103,7 +103,7 @@ _closeModalWin = () => {//加这个整个
                 <TextInput 
                     placeholderTextColor="#6092a0" 
                     style={{ height: 50, width: 250 }} 
-                    placeholder='请输入密码...'
+                    placeholder='请输入密码'
                     keyboardType='numeric'
                     secureTextEntry={true}
                     onChangeText={(text)=>{
@@ -197,7 +197,7 @@ const styles = StyleSheet.create({
       alignItems: 'center'
     },
     logo_image: {
-      width: '70%',
+      width: '90%',
       height: '95%'
     },
     container_down: {

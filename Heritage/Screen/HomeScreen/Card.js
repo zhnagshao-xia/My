@@ -37,8 +37,8 @@ function Card({
     canOpen={canOpen}
     changeDragAction={changeDragAction}
     image={image}
-    title={title}
-    author={author}
+    // title={title}
+    // author={author}
     navigation={navigation}
     text={text}
     focused={focused}
@@ -119,7 +119,7 @@ class Project extends React.Component {
             <AnimatedTitle style={{ top: this.state.titleTop }}>
             {this.props.title}
             </AnimatedTitle>
-            <Author>by {this.props.author}</Author>
+            <Author> {this.props.author}</Author>
           </Cover>
           
           <AnimatedText style={{ height: this.state.textHeight }}>

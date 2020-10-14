@@ -76,7 +76,7 @@ render(){
                 <TextInput 
                     placeholderTextColor="#6092a0" 
                     style={{ height: 50, width: 250 }} 
-                    placeholder='请输入用户名...' 
+                    placeholder='请输入用户名' 
                     onChangeText={(text)=>{this.setState({username:text});}}></TextInput>
               </View>
               <View style={styles.textinput}>
@@ -88,7 +88,7 @@ render(){
                     secureTextEntry={true}
                     placeholderTextColor="#6092a0" 
                     style={{ height: 50, width: 250 }} 
-                    placeholder='请输入密码...'
+                    placeholder='请输入密码'
                     secureTextEntry={true}
                     onChangeText={(text)=>{this.setState({password:text});}}></TextInput>
               </View>
@@ -101,7 +101,7 @@ render(){
                     secureTextEntry={true}
                     placeholderTextColor="#6092a0" 
                     style={{ height: 50, width: 250 }} 
-                    placeholder='请确认密码...'
+                    placeholder='请确认密码'
                     onChangeText={(text)=>{this.setState({password2:text});}}></TextInput>
               </View>
               <View style={{flexDirection:'row'}}>
@@ -150,7 +150,7 @@ const styles = StyleSheet.create({
       alignItems: 'center'
     },
     logo_image: {
-      width: '70%',
+      width: '90%',
       height: '95%'
     },
     container_down: {

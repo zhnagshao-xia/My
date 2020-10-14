@@ -212,9 +212,9 @@ export default class VolunteerScreen extends React.Component {
               {...this._panResponder.panHandlers}
             >
               <Card
-                title={Projects[this.state.index].title}
+                // title={Projects[this.state.index].title}
                 image={https+Projects[this.state.index].image}
-                author={Projects[this.state.index].author}
+                // author={Projects[this.state.index].author}
                 text={Projects[this.state.index].text}
                 canOpen={true}
                 changeDragAction={this.changeDragAction}
@@ -238,9 +238,9 @@ export default class VolunteerScreen extends React.Component {
               }}
             >
               <Card
-                title={Projects[this.getNextIndex(this.state.index)].title}
+                // title={Projects[this.getNextIndex(this.state.index)].title}
                 image={https+Projects[this.getNextIndex(this.state.index)].image}
-                author={Projects[this.getNextIndex(this.state.index)].author}
+                // author={Projects[this.getNextIndex(this.state.index)].author}
                 text={Projects[this.getNextIndex(this.state.index)].text}
               />
             </Animated.View>
@@ -261,9 +261,9 @@ export default class VolunteerScreen extends React.Component {
               }}
             >
               <Card
-                title={Projects[this.getNextIndex(this.state.index + 1)].title}
+                // title={Projects[this.getNextIndex(this.state.index + 1)].title}
                 image={https+Projects[this.getNextIndex(this.state.index + 1)].image}
-                author={Projects[this.getNextIndex(this.state.index + 1)].author}
+                // author={Projects[this.getNextIndex(this.state.index + 1)].author}
                 text={Projects[this.getNextIndex(this.state.index + 1)].text}
               />
             </Animated.View>
